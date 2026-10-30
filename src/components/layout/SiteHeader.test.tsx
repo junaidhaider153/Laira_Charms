@@ -50,3 +50,4 @@ describe("SiteHeader Component", () => {
     expect(screen.queryByRole("dialog", { name: /Mobile Navigation/i })).not.toBeInTheDocument();
   });
 });
+

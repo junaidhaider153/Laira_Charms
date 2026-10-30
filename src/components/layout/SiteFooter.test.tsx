@@ -38,3 +38,4 @@ describe("SiteFooter Component", () => {
     ).toBeInTheDocument();
   });
 });
+
