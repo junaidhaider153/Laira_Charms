@@ -373,6 +373,289 @@ export interface Database {
           updated_at?: string;
         };
       };
+      custom_requests: {
+        Row: {
+          id: string;
+          customer_id: string | null;
+          guest_email: string | null;
+          guest_token_hash: string | null;
+          title: string;
+          brief: string;
+          product_reference_id: string | null;
+          desired_delivery_date: string | null;
+          status: CustomRequestStatus;
+          assigned_admin_id: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          customer_id?: string | null;
+          guest_email?: string | null;
+          guest_token_hash?: string | null;
+          title: string;
+          brief: string;
+          product_reference_id?: string | null;
+          desired_delivery_date?: string | null;
+          status?: CustomRequestStatus;
+          assigned_admin_id?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          customer_id?: string | null;
+          guest_email?: string | null;
+          guest_token_hash?: string | null;
+          title?: string;
+          brief?: string;
+          product_reference_id?: string | null;
+          desired_delivery_date?: string | null;
+          status?: CustomRequestStatus;
+          assigned_admin_id?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      custom_request_media: {
+        Row: {
+          id: string;
+          request_id: string;
+          storage_path: string;
+          mime_type: string;
+          size_bytes: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          request_id: string;
+          storage_path: string;
+          mime_type: string;
+          size_bytes: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          request_id?: string;
+          storage_path?: string;
+          mime_type?: string;
+          size_bytes?: number;
+          created_at?: string;
+        };
+      };
+      quotations: {
+        Row: {
+          id: string;
+          request_id: string;
+          version: number;
+          status: QuotationStatus;
+          amount_minor: number;
+          currency: string;
+          scope: string;
+          production_days: number;
+          valid_until: string;
+          created_by: string | null;
+          accepted_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          request_id: string;
+          version?: number;
+          status?: QuotationStatus;
+          amount_minor: number;
+          currency?: string;
+          scope: string;
+          production_days: number;
+          valid_until: string;
+          created_by?: string | null;
+          accepted_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          request_id?: string;
+          version?: number;
+          status?: QuotationStatus;
+          amount_minor?: number;
+          currency?: string;
+          scope?: string;
+          production_days?: number;
+          valid_until?: string;
+          created_by?: string | null;
+          accepted_at?: string | null;
+          created_at?: string;
+        };
+      };
+      order_status_history: {
+        Row: {
+          id: string;
+          order_id: string;
+          previous_status: OrderStatus;
+          new_status: OrderStatus;
+          actor_id: string | null;
+          actor_type: string;
+          note: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          order_id: string;
+          previous_status: OrderStatus;
+          new_status: OrderStatus;
+          actor_id?: string | null;
+          actor_type?: string;
+          note?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          order_id?: string;
+          previous_status?: OrderStatus;
+          new_status?: OrderStatus;
+          actor_id?: string | null;
+          actor_type?: string;
+          note?: string | null;
+          created_at?: string;
+        };
+      };
+      conversations: {
+        Row: {
+          id: string;
+          context_type: string;
+          context_id: string | null;
+          customer_id: string | null;
+          guest_email: string | null;
+          guest_token_hash: string | null;
+          title: string;
+          is_closed: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          context_type?: string;
+          context_id?: string | null;
+          customer_id?: string | null;
+          guest_email?: string | null;
+          guest_token_hash?: string | null;
+          title?: string;
+          is_closed?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          context_type?: string;
+          context_id?: string | null;
+          customer_id?: string | null;
+          guest_email?: string | null;
+          guest_token_hash?: string | null;
+          title?: string;
+          is_closed?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      messages: {
+        Row: {
+          id: string;
+          conversation_id: string;
+          sender_id: string | null;
+          sender_type: string;
+          body: string;
+          visibility: MessageVisibility;
+          is_read: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          conversation_id: string;
+          sender_id?: string | null;
+          sender_type: string;
+          body: string;
+          visibility?: MessageVisibility;
+          is_read?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          conversation_id?: string;
+          sender_id?: string | null;
+          sender_type?: string;
+          body?: string;
+          visibility?: MessageVisibility;
+          is_read?: boolean;
+          created_at?: string;
+        };
+      };
+      message_attachments: {
+        Row: {
+          id: string;
+          message_id: string;
+          storage_path: string;
+          file_name: string;
+          mime_type: string;
+          size_bytes: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          message_id: string;
+          storage_path: string;
+          file_name: string;
+          mime_type: string;
+          size_bytes: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          message_id?: string;
+          storage_path?: string;
+          file_name?: string;
+          mime_type?: string;
+          size_bytes?: number;
+          created_at?: string;
+        };
+      };
+      audit_logs: {
+        Row: {
+          id: string;
+          actor_id: string | null;
+          actor_email: string | null;
+          action: string;
+          entity: string;
+          entity_id: string;
+          payload: Json | null;
+          ip_address: string | null;
+          user_agent: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          actor_id?: string | null;
+          actor_email?: string | null;
+          action: string;
+          entity: string;
+          entity_id: string;
+          payload?: Json | null;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          actor_id?: string | null;
+          actor_email?: string | null;
+          action?: string;
+          entity?: string;
+          entity_id?: string;
+          payload?: Json | null;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          created_at?: string;
+        };
+      };
       store_settings: {
         Row: {
           key: string;
@@ -394,6 +677,10 @@ export interface Database {
         };
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }
 
