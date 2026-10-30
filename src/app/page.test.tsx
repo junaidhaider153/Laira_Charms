@@ -3,17 +3,14 @@ import { render, screen } from "@testing-library/react";
 import HomePage from "./page";
 
 describe("HomePage Component", () => {
-  it("renders the brand heading and artisanal identity", () => {
+  it("renders the brand heading and artisanal value story", () => {
     render(<HomePage />);
 
     const brandHeading = screen.getByRole("heading", {
       name: /Handcrafted keepsakes baked to brighten everyday rituals/i,
     });
     expect(brandHeading).toBeInTheDocument();
-
-    const brandLogos = screen.getAllByText(/Laira Charms/i);
-    expect(brandLogos.length).toBeGreaterThan(0);
-    expect(screen.getByText(/Artisanal Keepsakes/i)).toBeInTheDocument();
+    expect(screen.getByText(/Polymer Clay, Resin & Endless Affection/i)).toBeInTheDocument();
   });
 
   it("provides primary call to action links", () => {

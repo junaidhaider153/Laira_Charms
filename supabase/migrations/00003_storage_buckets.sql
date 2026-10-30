@@ -69,3 +69,4 @@ create policy "message_attachments_insert"
     bucket_id = 'message-attachments' and
     (auth.role() = 'authenticated' or auth.role() = 'anon')
   );
+

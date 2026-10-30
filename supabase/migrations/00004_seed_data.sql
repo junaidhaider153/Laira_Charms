@@ -27,3 +27,4 @@ values
     "supported_cities": ["Karachi", "Lahore", "Islamabad", "Rawalpindi", "Faisalabad", "Multan", "Peshawar", "Quetta", "Nationwide"]
   }'::jsonb, true)
 on conflict (key) do nothing;
+

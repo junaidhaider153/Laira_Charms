@@ -275,3 +275,4 @@ create policy "store_settings_admin_write"
 create policy "audit_logs_admin_read"
   on public.audit_logs for select
   using (public.is_admin());
+

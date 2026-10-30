@@ -355,3 +355,4 @@ create table if not exists public.audit_logs (
 
 create index if not exists idx_audit_logs_entity on public.audit_logs(entity, entity_id);
 create index if not exists idx_audit_logs_actor on public.audit_logs(actor_id);
+

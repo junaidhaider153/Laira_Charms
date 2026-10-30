@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Epilogue, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/context/cart-context";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 
 const epilogue = Epilogue({
   subsets: ["latin"],
@@ -50,11 +54,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${epilogue.variable} ${plusJakartaSans.variable}`}>
-      <body className="font-body bg-background text-on-surface antialiased min-h-screen flex flex-col">
-        {children}
+    <html
+      lang="en"
+      className={`${epilogue.variable} ${plusJakartaSans.variable}`}
+      data-scroll-behavior="smooth"
+    >
+      <body className="font-body bg-background text-on-surface antialiased min-h-screen flex flex-col selection:bg-strawberry-subtle selection:text-primary">
+        <CartProvider>
+          <SiteHeader />
+          <CartDrawer />
+          <main className="flex-1 flex flex-col">{children}</main>
+          <SiteFooter />
+        </CartProvider>
       </body>
     </html>
   );
 }
-
