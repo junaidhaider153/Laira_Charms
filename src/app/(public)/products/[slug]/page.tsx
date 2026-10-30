@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/catalog/catalog-service";
+import { getOptionGroupsForProduct } from "@/lib/customization/service";
 import { ProductMediaGallery } from "@/components/product/ProductMediaGallery";
 import { ProductInfo } from "@/components/product/ProductInfo";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
@@ -47,6 +48,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     notFound();
   }
 
+  const optionGroups = product.productType === "customizable"
+    ? await getOptionGroupsForProduct(product.id)
+    : [];
+
   const breadcrumbItems = [
     { label: "Shop", href: "/shop" },
     ...(product.categorySlug
@@ -72,7 +77,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
         {/* Right Column: Pricing, Artisan Lead Time, Customization & Actions */}
         <section aria-label="Product Details and Purchase Options">
-          <ProductInfo product={product} />
+          <ProductInfo product={product} optionGroups={optionGroups} />
         </section>
       </main>
 

@@ -4,13 +4,16 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { formatMoney } from "@/lib/utils";
 import { useCart } from "@/context/cart-context";
+import { OptionSelector } from "@/components/customization/OptionSelector";
 import type { CatalogProduct } from "@/lib/catalog/types";
+import type { OptionGroup } from "@/lib/customization/types";
 
 interface ProductInfoProps {
   product: CatalogProduct;
+  optionGroups?: OptionGroup[];
 }
 
-export function ProductInfo({ product }: ProductInfoProps) {
+export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
   const { addItem, openDrawer } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
@@ -182,17 +185,21 @@ export function ProductInfo({ product }: ProductInfoProps) {
             </button>
           </div>
         ) : product.productType === "customizable" ? (
-          <div className="space-y-3">
-            <Link
-              href={`/shop?type=customizable#custom-options`}
-              className="w-full py-3.5 px-8 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
-            >
-              ✏️ Personalize This Keepsake
-            </Link>
-            <p className="text-[11px] text-center text-espresso-muted">
-              Choose your custom lettering, pastel color palette, and hardware accents.
-            </p>
-          </div>
+          optionGroups && optionGroups.length > 0 ? (
+            <OptionSelector product={product} groups={optionGroups} />
+          ) : (
+            <div className="space-y-3">
+              <Link
+                href={`/shop?type=customizable#custom-options`}
+                className="w-full py-3.5 px-8 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
+              >
+                ✏️ Personalize This Keepsake
+              </Link>
+              <p className="text-[11px] text-center text-espresso-muted">
+                Choose your custom lettering, pastel color palette, and hardware accents.
+              </p>
+            </div>
+          )
         ) : (
           <div className="space-y-3">
             <Link
