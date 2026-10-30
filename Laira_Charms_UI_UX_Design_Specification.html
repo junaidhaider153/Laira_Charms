@@ -1,0 +1,1163 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Laira Charms • Handcrafted Keepsakes &amp; Clay Keychains</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Character & Motion Keyframes */
+@keyframes honeyJump {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  20% {
+    transform: translateY(4px) rotate(-3deg) scale(1.08, 0.92);
+  }
+  45% {
+    transform: translateY(-28px) rotate(6deg) scale(0.94, 1.06);
+  }
+  70% {
+    transform: translateY(-34px) rotate(-4deg) scale(0.98, 1.02);
+  }
+  85% {
+    transform: translateY(2px) rotate(2deg) scale(1.04, 0.95);
+  }
+}
+
+@keyframes sparklePop {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  45% { transform: scale(1.2) rotate(45deg); opacity: 1; }
+  75% { transform: scale(0.9) rotate(90deg); opacity: 0.6; }
+}
+
+@keyframes webSway {
+  0% { transform: rotate(-9deg); }
+  50% { transform: rotate(9deg); }
+  100% { transform: rotate(-9deg); }
+}
+
+@keyframes enderFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
+  }
+  40% {
+    transform: translateY(-12px) rotate(2deg);
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.65);
+  }
+  70% {
+    transform: translateY(-6px) rotate(-1.5deg);
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+  }
+}
+
+@keyframes enderTeleportGlitch {
+  0%, 92%, 100% { opacity: 1; }
+  93% { opacity: 0.2; transform: translate(3px, -4px) scale(0.97); }
+  94% { opacity: 0.9; transform: translate(-3px, 2px); }
+  96% { opacity: 0.3; }
+  97% { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes shinobiSprint {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px));
+  }
+}
+
+@keyframes shinobiBob {
+  0%, 100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(7deg);
+  }
+}
+
+@keyframes puffDust {
+  0% { opacity: 0.8; transform: scale(0.6) translateY(0); }
+  100% { opacity: 0; transform: scale(1.4) translateY(-14px) translateX(-20px); }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-honey-jump, .animate-spidey-sway, .animate-ender-float, .shinobi-runner-track, .animate-sparkle {
+    animation: none !important;
+  }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary":"#ffffff","error-container":"#ffdad6","strawberry-blush":"#F47A95","on-surface":"#281810","surface-dim":"#f2d4c6","primary-fixed-dim":"#ffb2bf","espresso-deep":"#3C2A21","surface-container":"#ffeae0","tertiary-container":"#d39262","canvas-butter":"#FFFDF8","outline":"#887175","surface-variant":"#fbdcce","peach-tint":"#FFF0E6","outline-variant":"dbc0c3","matcha-soft":"#89B086","tertiary-fixed-dim":"#feb784","on-surface-variant":"#554245","inverse-surface":"#3f2c23","background":"#fff8f6","secondary-container":"#c1eabd","on-tertiary-fixed":"#301400","primary-container":"#f47a95","on-primary-fixed-variant":"#82223e","surface-tint":"#a13a54","tertiary-fixed":"#ffdcc5","inverse-on-surface":"#ffede6","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#6b3b12","on-error-container":"#93000a","strawberry-subtle":"#FDE8ED","secondary":"#436743","surface-container-highest":"#fbdcce","on-primary":"#ffffff","surface-container-high":"#ffe2d6","surface-custard":"#FFF5EA","surface-cloud":"#FFFFFF","peach-cream":"#FFB885","primary":"#a13a54","on-primary-fixed":"#3f0016","on-primary-container":"#6d102f","surface":"#fff8f6","secondary-fixed-dim":"#a9d1a5","on-error":"#ffffff","on-secondary-fixed-variant":"#2c4f2d","on-secondary-container":"#476b47","border-warm":"rgba(60, 42, 33, 0.10)","matcha-tint":"#EDF5EB","primary-fixed":"#ffd9de","espresso-muted":"#6E5448","surface-container-lowest":"#ffffff","surface-bright":"#fff8f6","border-tinted":"rgba(244, 122, 149, 0.20)","on-secondary-fixed":"#002106","secondary-fixed":"#c4edbf","on-tertiary-container":"#582c04","on-background":"#281810","error":"#ba1a1a","surface-container-low":"#fff1eb","tertiary":"#875227","inverse-primary":"#ffb2bf"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"space-md":"1rem","space-sm":"0.5rem","gutter-mobile":"1rem","space-xs":"0.25rem","space-3xl":"5.5rem","space-xl":"2.5rem","gutter":"1.5rem","margin-mobile":"1.25rem","space-lg":"1.5rem","margin":"2rem","space-2xl":"4rem"},"fontFamily":{"label-md":["Plus Jakarta Sans"],"display-mobile":["Epilogue"],"headline-lg-mobile":["Epilogue"],"headline-sm":["Epilogue"],"body-sm":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Epilogue"],"headline-md":["Epilogue"],"display":["Epilogue"],"label-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"],"title-sm":["Plus Jakarta Sans"]},"fontSize":{"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"display-mobile":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-sm":["22px",{"lineHeight":"30px","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"title-md":["17px",{"lineHeight":"24px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.03em","fontWeight":"600"}],"body-lg":["17px",{"lineHeight":"26px","fontWeight":"400"}],"headline-lg":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"display":["52px",{"lineHeight":"60px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"title-lg":["20px",{"lineHeight":"28px","fontWeight":"700"}],"title-sm":["15px",{"lineHeight":"22px","fontWeight":"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-strawberry-subtle selection:text-primary"><header class="fixed top-0 left-0 right-0 z-50 shadow-[0_2px_14px_rgba(60,42,33,0.05)]"><!-- DYNAMIC ROTATING TAGLINE ANNOUNCEMENT BAR -->
+<div class="bg-surface-custard border-b border-border-warm text-on-surface py-2 px-4 overflow-hidden relative"><div class="max-w-[1240px] mx-auto flex items-center justify-center min-h-[22px]"><div class="relative w-full text-center flex items-center justify-center font-label-sm text-label-sm tracking-wide transition-all duration-500 ease-in-out" id="ticker-container"><span class="inline-flex items-center gap-2 text-espresso-deep transition-opacity duration-300 transform opacity-100" id="ticker-text" style="opacity: 1; transform: translateY(0px);">🧸 Every charm baked with gentle love &amp; sealed with triple UV diamond glaze</span></div></div></div><!-- DECLUTTERED & BALANCED NAV BAR -->
+<div class="bg-canvas-butter/95 backdrop-blur-md border-b border-border-warm/60"><div class="h-16 md:h-20 max-w-[1240px] mx-auto px-6 flex items-center justify-between gap-4"><a class="flex items-center gap-2.5 shrink-0 group" data-path="home" href="#"><div class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush shadow-sm group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">pets</span></div><div class="flex flex-col"><span class="font-headline-sm text-[20px] md:text-headline-sm text-espresso-deep font-bold tracking-tight leading-none group-hover:text-primary transition-colors">Laira Charms</span><span class="font-label-sm text-[10px] md:text-label-sm text-espresso-muted tracking-wider uppercase mt-0.5">Artisanal Keepsakes</span></div></a><!-- Curated Clean Menu (Shop, Custom Atelier, Story, Lovelist) --><nav class="hidden md:flex items-center gap-1 lg:gap-2"><a class="px-4 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-espresso-deep hover:bg-surface-custard/80 rounded-full transition-all" data-path="shop" href="#featured-charms">Shop</a><a class="px-4 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-espresso-deep hover:bg-surface-custard/80 rounded-full transition-all" data-path="custom-atelier" href="#customizer">Custom Atelier</a><a class="px-4 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-espresso-deep hover:bg-surface-custard/80 rounded-full transition-all" data-path="our-story" href="#quality-recipe">Story &amp; Care</a><a class="px-4 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-espresso-deep hover:bg-surface-custard/80 rounded-full transition-all" data-path="customer-lovelist" href="#customer-gallery">Lovelist</a></nav><!-- Balanced Right Utility Icons --><div class="flex items-center gap-2.5 sm:gap-3 shrink-0"><div class="hidden sm:flex items-center bg-peach-tint/80 hover:bg-peach-tint rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 transition-all"><span class="material-symbols-outlined text-espresso-muted text-[18px] mr-1.5">search</span><input class="bg-transparent border-0 outline-none font-body-sm text-body-sm text-on-surface placeholder:text-espresso-muted/80 w-28 lg:w-36" placeholder="Find charms..." type="text"></div><div class="hidden lg:flex items-center gap-1 bg-surface-custard rounded-full px-2.5 py-1.5 text-label-sm font-label-sm text-espresso-deep cursor-pointer hover:bg-surface-container transition-colors"><span class="">USD ($)</span><span class="material-symbols-outlined text-[15px]">expand_more</span></div><a class="flex items-center gap-2 bg-strawberry-blush text-on-primary rounded-full px-4 py-2 font-label-md text-label-md shadow-sm hover:opacity-95 transition-transform active:scale-95" data-path="cart" href="#cart-toast"><span class="material-symbols-outlined text-[18px]">shopping_bag</span><span class="hidden sm:inline font-bold">Bag</span><span class="bg-surface-cloud text-primary font-bold rounded-full w-5 h-5 flex items-center justify-center text-label-sm font-label-sm shadow-sm">3</span></a><div class="w-8 h-8 rounded-full bg-peach-tint text-espresso-deep flex items-center justify-center hover:bg-strawberry-subtle hover:text-primary transition-colors cursor-pointer shrink-0"><span class="material-symbols-outlined text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-28 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- HERO SECTION WITH SCALLOP / CLOUD CONTOUR -->
+<section class="relative w-full overflow-hidden bg-surface-custard pb-20 pt-10">
+<!-- Decorative Floating Pastel Doodles -->
+<div class="pointer-events-none absolute inset-0 z-0">
+<div class="absolute left-8 top-12 h-20 w-20 rounded-full bg-strawberry-subtle/70 blur-2xl"></div>
+<div class="absolute right-12 top-20 h-28 w-28 rounded-full bg-peach-cream/30 blur-3xl"></div>
+<div class="absolute bottom-24 left-1/3 h-24 w-24 rounded-full bg-matcha-soft/20 blur-2xl"></div>
+</div>
+<div class="relative z-10 mx-auto max-w-[1240px] px-6">
+<!-- Breadcrumb badge pill -->
+<div class="flex justify-center mb-6">
+<div class="inline-flex items-center gap-2 rounded-full bg-surface-cloud px-4 py-1.5 shadow-sm text-espresso-deep">
+<span class="text-strawberry-blush font-bold">🍓</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-espresso-muted">Small Batch Handmade Drops • Limited Atelier Studio</span>
+<span class="text-matcha-soft">✨</span>
+</div>
+</div>
+<!-- Hero Header & JUMPING HONEY BEAR CHARACTER -->
+<div class="text-center max-w-3xl mx-auto mb-10 relative">
+<h1 class="font-display text-display text-espresso-deep tracking-tight mb-5 leading-tight relative inline-block">
+          Tiny Pals &amp; Sweet Keepsakes,<br>
+<span class="relative inline-flex items-center flex-wrap justify-center gap-2">
+<span class="text-strawberry-blush inline-block">Handcrafted Just for You</span>
+<span class="text-strawberry-blush">✨</span>
+<!-- JUMPING HONEY BEAR MASCOT -->
+<span class="relative inline-block ml-1 align-middle group cursor-pointer" title="Hugging Honey Bear jumps for joy!">
+<!-- Sparkle particles -->
+<span class="absolute -top-3 -right-2 text-tertiary-container animate-[sparklePop_2.2s_ease-in-out_infinite] pointer-events-none text-base">✦</span>
+<span class="absolute top-1 -left-3 text-strawberry-blush animate-[sparklePop_2.8s_ease-in-out_infinite_0.7s] pointer-events-none text-sm">✧</span>
+<span class="absolute -bottom-1 -right-3 text-matcha-soft animate-[sparklePop_2.5s_ease-in-out_infinite_1.2s] pointer-events-none text-xs">✨</span>
+<!-- The animated jumping bear card container -->
+<span class="inline-block animate-honey-jump origin-bottom transform-gpu hover:scale-110 transition-transform" style="animation: honeyJump 2.4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;">
+<span class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full p-1 bg-surface-cloud shadow-md border-2 border-strawberry-blush/60 flex items-center justify-center overflow-hidden inline-block align-middle backdrop-blur-sm">
+<img alt="Jumping Honey Bear mascot" class="w-full h-full object-contain p-1 rounded-full pointer-events-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP4rSCttNte0ScSbQJmrjALN9EA9jiusvAp-1Hnl-qjQh2Oj4cGyMw-p2VSEArXWC6Ibeegm7BMcCqCFlDrNpau4w25o4MYuN-dGUdSHypAzQxeSvwY03du3tVLFHvBeryL881auOaUHMDDzDpM-GlLzxi25wcXiYha5awoQpkNMH8jTrBLsSpGtRyQaLoNtzt_6BXu9qVPOEPGvFddiPbYmIBNve60CxJ322B4b3T7itKapvRVFJt">
+</span>
+</span>
+<!-- Squish shadow beneath bear -->
+<span class="block w-10 sm:w-12 h-2 mx-auto bg-espresso-deep/15 rounded-full blur-[1px] -mt-1 scale-90"></span>
+</span>
+</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+          Playful polymer clay charms, hand-glazed figurines, and tactile bag trinkets baked with slow affection and sealed with triple diamond UV glaze for everyday adventures.
+        </p>
+<!-- CTA Action Hub -->
+<div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+<a class="inline-flex items-center gap-2 rounded-full bg-strawberry-blush px-8 py-3.5 font-label-lg text-label-lg text-on-primary shadow-md hover:opacity-95 transition-all transform hover:-translate-y-0.5 active:scale-95" href="#featured-charms">
+<span class="">Explore the New Drop</span>
+<span class="">🍓</span>
+</a>
+<a class="inline-flex items-center gap-2 rounded-full bg-surface-cloud px-7 py-3.5 font-label-lg text-label-lg text-espresso-deep shadow-sm hover:bg-surface-container transition-all transform hover:-translate-y-0.5" href="#customizer">
+<span class="">Design Your Custom Charm</span>
+<span class="material-symbols-outlined text-[18px] text-strawberry-blush">auto_awesome</span>
+</a>
+</div>
+<!-- Micro Feature Badges -->
+<div class="flex flex-wrap items-center justify-center gap-3 mt-8">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint px-3.5 py-1 text-label-sm font-label-sm text-tertiary shadow-sm">
+<span class="material-symbols-outlined text-[14px]">brush</span> Hand-sculpted Polymer Clay
+          </span>
+<span class="inline-flex items-center gap-1.5 rounded-full bg-matcha-tint px-3.5 py-1 text-label-sm font-label-sm text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[14px]">water_drop</span> Water-resistant UV Glaze
+          </span>
+<span class="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle px-3.5 py-1 text-label-sm font-label-sm text-primary shadow-sm">
+<span class="material-symbols-outlined text-[14px]">star</span> 100% Unique Artisanal 1-of-1
+          </span>
+</div>
+</div>
+<!-- Hero Visual Vitrine Showcase (4 Charm Showcase Cards with uploaded assets) -->
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+<!-- Bear Hero Card -->
+<div class="group relative rounded-3xl bg-surface-cloud p-3 shadow-md hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard">
+<img alt="Handcrafted Hugging Honey Bear Clay Charm" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_">
+<span class="absolute top-2.5 left-2.5 rounded-full bg-strawberry-subtle/95 px-2.5 py-0.5 font-label-sm text-label-sm text-primary backdrop-blur-sm">Studio Fave</span>
+</div>
+<div class="pt-3 pb-1 px-1 flex items-center justify-between">
+<div>
+<p class="font-title-sm text-title-sm text-espresso-deep truncate">Honey Bear Charm</p>
+<p class="font-label-sm text-label-sm text-espresso-muted">$18.00 USD</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-peach-tint flex items-center justify-center text-strawberry-blush shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</div>
+</div>
+</div>
+<!-- Spidey Hero Card -->
+<div class="group relative rounded-3xl bg-surface-cloud p-3 shadow-md hover:shadow-xl transition-all duration-300 -translate-y-2 md:translate-y-2">
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard">
+<img alt="Upside-Down Spidey Acrobatic Clay Keychain" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCFJBErDthdL3hVVV_JEZdWGc_oU1MbdwwMf7N05yOHobzRAdhFQzY2dHP2bBcMUH3TURWPZry_MqkgwllT4iqW18pIYzjPusDn1AI9dicV74sUAnz0K-IJqR09LW_jAzu-OHCjV5SCZVULgMXgD_HUQ2bpBaWg5pPIUjGmz7rRo6jTEO_0IWcaTXuYvM2i13mXIWwaCHWaAK8BDWFWNX3OMynRwB-ECro2oB8HDFP8ShOdfj6pmCp">
+<span class="absolute top-2.5 left-2.5 rounded-full bg-matcha-tint/95 px-2.5 py-0.5 font-label-sm text-label-sm text-secondary backdrop-blur-sm">Best Seller</span>
+</div>
+<div class="pt-3 pb-1 px-1 flex items-center justify-between">
+<div>
+<p class="font-title-sm text-title-sm text-espresso-deep truncate">Acrobat Spidey</p>
+<p class="font-label-sm text-label-sm text-espresso-muted">$22.00 USD</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-peach-tint flex items-center justify-center text-strawberry-blush shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</div>
+</div>
+</div>
+<!-- Shinobi Ninja Hero Card -->
+<div class="group relative rounded-3xl bg-surface-cloud p-3 shadow-md hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard">
+<img alt="Shinobi Leaf Ninja Mini Clay Figurine Charm" class="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvJiLMGHVgmSLO-6F0UY_UImVAurSHTuB2iEnH54oMICk91WQaREUHHDMk5K-YW2uNQXaAgEPt38azjf7Kr_fEH6NuPFyhrA5kWNrLqqkOQmza3ajscOGtJaDXmXE_X3gwnE53-N6QiPsHbapRed7qdIATFRviCQ41A_TP9YH-kMKrzdCyfDxPSzsAtpGX7l76mW7p-bZydT4znfe2_PvpZX_1FT-tn5Yh2Aj6odFC2rVNW4hHfylB">
+<span class="absolute top-2.5 left-2.5 rounded-full bg-peach-tint/95 px-2.5 py-0.5 font-label-sm text-label-sm text-tertiary backdrop-blur-sm">Anime Drop</span>
+</div>
+<div class="pt-3 pb-1 px-1 flex items-center justify-between">
+<div>
+<p class="font-title-sm text-title-sm text-espresso-deep truncate">Chibi Shinobi</p>
+<p class="font-label-sm text-label-sm text-espresso-muted">$20.00 USD</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-peach-tint flex items-center justify-center text-strawberry-blush shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</div>
+</div>
+</div>
+<!-- Void Crawler Ender Hero Card -->
+<div class="group relative rounded-3xl bg-surface-cloud p-3 shadow-md hover:shadow-xl transition-all duration-300 -translate-y-2 md:translate-y-2">
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard">
+<img alt="Void Walker Ender Keychain with Star Clasp" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlAn47ftbMELAtDcCJTo2MUrH864bbZ5fVvKE0UrawWPsCvSJEqXlfNWxceX87dhIi46YcOzV3HQlql7v7SmsGy-FNiSy59WamVM2LWubBFN_tFolop8IoQjzUVp6tFpgpB0Bwse7Z_ViBLg7JWcv1FsWYABr022mQ8ZT89W_RNr8qU_hvdlbx5nnEip0s13_evWXtncTp2zDk3MOgdeHPA1Pi6gGMmIqN4pAQHmbKLK6j88UI292">
+<span class="absolute top-2.5 left-2.5 rounded-full bg-strawberry-subtle/95 px-2.5 py-0.5 font-label-sm text-label-sm text-primary backdrop-blur-sm">Gamer Core</span>
+</div>
+<div class="pt-3 pb-1 px-1 flex items-center justify-between">
+<div>
+<p class="font-title-sm text-title-sm text-espresso-deep truncate">Shadow Star Walker</p>
+<p class="font-label-sm text-label-sm text-espresso-muted">$19.00 USD</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-peach-tint flex items-center justify-center text-strawberry-blush shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scalloped Cloud Divider Bottom Mask -->
+<div class="absolute bottom-0 left-0 right-0 h-10 w-full overflow-hidden leading-none z-10 pointer-events-none">
+<svg class="relative block w-full h-10 text-background" fill="currentColor" preserveAspectRatio="none" viewBox="0 0 1200 120">
+<path d="M0,0 C150,90 350,-40 500,60 C650,140 900,-20 1200,40 L1200,120 L0,120 Z"></path>
+</svg>
+</div>
+</section>
+<!-- SECTION 2: FEATURED CHARMS OF THE WEEK WITH SWINGING SPIDEY -->
+<section class="w-full py-16 bg-background relative overflow-visible" id="featured-charms">
+<div class="max-w-[1240px] mx-auto px-6 relative">
+<!-- Header with SWINGING UPSIDE-DOWN SPIDEY -->
+<div class="relative text-center max-w-2xl mx-auto mb-12">
+<!-- Animated Hanging Spidey Mascot on Silk Cobweb line -->
+<div class="hidden sm:block absolute -top-16 right-0 md:-right-8 lg:-right-16 z-20 pointer-events-auto group cursor-pointer" title="Acrobat Spidey hanging from a silky web thread!">
+<div class="origin-top animate-spidey-sway" style="animation: webSway 3.6s ease-in-out infinite; transform-origin: top center;">
+<!-- Cobweb hanging line with tiny web knots -->
+<div class="w-[2px] h-14 bg-gradient-to-b from-stone-400/80 via-stone-300 to-strawberry-blush mx-auto relative">
+<span class="absolute top-2 -left-2 text-[10px] text-espresso-muted/60">🕸️</span>
+<span class="absolute top-8 -right-2 text-[8px] text-strawberry-blush">✦</span>
+</div>
+<!-- Spidey circular pendant preview hanging upside down -->
+<div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-strawberry-blush bg-surface-cloud shadow-lg overflow-hidden group-hover:scale-110 group-hover:rotate-12 transition-all p-0.5">
+<img alt="Swinging Upside-Down Spidey Charm" class="w-full h-full object-contain p-0.5 transform rotate-180 hover:rotate-180" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkROyQ2bBrnZfR5p9m5lzVwlxS1pcqWnUwHnddkweLhpBebPO5749QAuSp1BEqnabG3E1XFqDcThcrr6cbUuMojwq-Vq2-pr9ReRATj4fv58PVfGE_-aMmke4jsGx2k0StN7a55IUzRRDO27fCgYuFkhkdf7oNB-bM1FOz9BXYM-inELMRsK6SufPLnim4NVY2NkhOziV6JZ2bfgpjFWC0snKbNUGMQ4f9yZeY5fC_NSq6654Tq6Ip">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+</div>
+<!-- Mini speech tag on hover -->
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-espresso-deep text-on-primary text-[10px] px-2 py-0.5 rounded-full font-label-sm shadow-sm pointer-events-none">
+                Thwip! 🕸️
+              </div>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 text-strawberry-blush mb-2">
+<span class="">✦</span>
+<span class="font-headline-md text-headline-md text-espresso-deep font-bold">Featured Charms of the Week</span>
+<span class="">✦</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Fresh out of the studio oven! Each piece is individually sculpted, oven-fired, hand-painted with fine acrylic inks, and sealed in triple glossy UV crystal glaze.
+        </p>
+<!-- Interactive Category Filters -->
+<div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="charm-filter-bar">
+<button class="filter-btn active-filter rounded-full bg-strawberry-blush text-on-primary px-4 py-1.5 font-label-md text-label-md shadow-sm transition-all" data-category="all" type="button">
+            All Charms (42)
+          </button>
+<button class="filter-btn rounded-full bg-surface-cloud text-espresso-deep hover:bg-surface-custard px-4 py-1.5 font-label-md text-label-md shadow-sm transition-all" data-category="critters" type="button">
+            Cute Critters
+          </button>
+<button class="filter-btn rounded-full bg-surface-cloud text-espresso-deep hover:bg-surface-custard px-4 py-1.5 font-label-md text-label-md shadow-sm transition-all" data-category="heroes" type="button">
+            Anime &amp; Pop Heroes
+          </button>
+<button class="filter-btn rounded-full bg-surface-cloud text-espresso-deep hover:bg-surface-custard px-4 py-1.5 font-label-md text-label-md shadow-sm transition-all" data-category="gaming" type="button">
+            Gaming Sprites
+          </button>
+<button class="filter-btn rounded-full bg-surface-cloud text-espresso-deep hover:bg-surface-custard px-4 py-1.5 font-label-md text-label-md shadow-sm transition-all" data-category="pastry" type="button">
+            Sweet Pastry Charms
+          </button>
+</div>
+</div>
+<!-- Product Cards Grid: 8-Vitrine Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- CARD 1: Cuddle Bear -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="critters">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img alt="Honey teddy bear polymer clay keepsake" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🍯</span> Studio Favorite
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Cuddle Bear Clay Charm</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Chubby polymer bear with warm caramel undertones, fine hand-painted blush cheeks, and stainless silver swivel ring.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$18.00</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Cuddle Bear Clay Charm', 18)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 2: Upside-Down Spidey -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="heroes">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img alt="Upside-Down Spidey Acrobatic Charm" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCFJBErDthdL3hVVV_JEZdWGc_oU1MbdwwMf7N05yOHobzRAdhFQzY2dHP2bBcMUH3TURWPZry_MqkgwllT4iqW18pIYzjPusDn1AI9dicV74sUAnz0K-IJqR09LW_jAzu-OHCjV5SCZVULgMXgD_HUQ2bpBaWg5pPIUjGmz7rRo6jTEO_0IWcaTXuYvM2i13mXIWwaCHWaAK8BDWFWNX3OMynRwB-ECro2oB8HDFP8ShOdfj6pmCp">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🕸️</span> Best Seller
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Acrobat Spidey Keyring</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Vibrant crimson and indigo hero sculpted hanging inverted by hand-twisted silver wire webbing with spider-sigil backing.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$22.00</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Acrobat Spidey Keyring', 22)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 3: Chibi Shinobi -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="heroes">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img alt="Shinobi Ninja Handmade Clay Keychain" class="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvJiLMGHVgmSLO-6F0UY_UImVAurSHTuB2iEnH54oMICk91WQaREUHHDMk5K-YW2uNQXaAgEPt38azjf7Kr_fEH6NuPFyhrA5kWNrLqqkOQmza3ajscOGtJaDXmXE_X3gwnE53-N6QiPsHbapRed7qdIATFRviCQ41A_TP9YH-kMKrzdCyfDxPSzsAtpGX7l76mW7p-bZydT4znfe2_PvpZX_1FT-tn5Yh2Aj6odFC2rVNW4hHfylB">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🍃</span> Anime Edition
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Chibi Shinobi Pendant</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Features the iconic spiky hair and leaf forehead protector with rich mandarin jumpsuits sculpted from pre-tinted Japanese polymer.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$20.00</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Chibi Shinobi Pendant', 20)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 4: Shadow Ender Star -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="gaming">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img alt="Shadow Ender Star Clasp Keychain" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlAn47ftbMELAtDcCJTo2MUrH864bbZ5fVvKE0UrawWPsCvSJEqXlfNWxceX87dhIi46YcOzV3HQlql7v7SmsGy-FNiSy59WamVM2LWubBFN_tFolop8IoQjzUVp6tFpgpB0Bwse7Z_ViBLg7JWcv1FsWYABr022mQ8ZT89W_RNr8qU_hvdlbx5nnEip0s13_evWXtncTp2zDk3MOgdeHPA1Pi6gGMmIqN4pAQHmbKLK6j88UI292">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">⭐</span> Pixel Star Clasp
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Shadow Star Walker</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Midnight charcoal silhouette with electric amethyst eyes paired with our custom five-point golden star clip clasp.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$19.00</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Shadow Star Walker', 19)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 5: Bear in Strawberry Basket -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="critters">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img alt="Handcrafted Teddy Bear Keepsake Bag Charm" class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🧸</span> Small Batch
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Honey Teddy Keepsake</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Curved arms and cozy posture, fired with triple-strength core clay to survive backpacks, keyrings, and travel cases.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$18.50</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Honey Teddy Keepsake', 18.5)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 6: Matcha Cat Swiss Roll Charm -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="pastry">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" data-alt="Close up artisanal polymer clay miniature charm shaped like a matcha green roll cake with sweet sleeping kitty face, whipped cream swirls, and tiny red berry details, bathed in soft studio lighting on cream linen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk3Z-iguUECUvUWJT-ZaI6_ZMBsBs9TGn3fRt6Le6RmO_XKTL16uROILplBPC0oTIKr1h_r-lk29-TByvGj4aNtNdDs_UAuV0TYQFrl664uEknA-v30wMS2_FeEvgZy5cswIhqN7pH6yi_LStl6vhX3LtJBW2EQ7V1AO04pv_7rTTSAT42J4DP0N6BtoYdNAGGLTRn0x5PsqgCWxy34-bKwt-T9NxBR--o5MKjUQY">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🍵</span> Pastry Cafe
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Matcha Roll Neko Charm</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Soft jade green clay swirl topped with miniature fake powdered sugar and a glossy resin strawberry slice.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$17.00</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Matcha Roll Neko Charm', 17)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 7: Strawberry Purin Pudding Charm -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="pastry">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" data-alt="Miniature Japanese caramel purin pudding clay keychain accessory with glossy amber syrup top, white whipped cream dollop, and heart-shaped carabiner clasp on warm wooden cafe desk." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGv135mV4alOOTxXNWNYmVdD8ShpejuRiombUoJ5ld9GMNxxAPObvrSeNkWwA8ySNWpDvmnMVlyMNRiCOiTn3aulUH3HeIG370Kr_CxR_ivx6owkYrO9eEfrtV27_Zm8ZlT1HCKEQJbObadZF1RuEz7xmjIV-PJWd9659-AxMFLhAzGj6Rwa7IhH_EbS5OZzyrj5h4r3K5fM5uE2CgxZqVDA9GNQawzVSmUnGiqJs">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🍮</span> Custard Purin
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Amber Caramel Purin Charm</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Jelly-like glazed polymer custard with hand-dripped caramel syrup layer and delicate gold star dangle bead.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$16.50</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Amber Caramel Purin Charm', 16.5)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- CARD 8: Cloud Bunny Mochi Charm -->
+<div class="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-item-category="critters">
+<div>
+<div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
+<img class="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500" data-alt="Delicate handmade clay snow bunny mochi keychain with pink tipped floppy ears, tiny gold bell accessory, and pastel pink cord, macro photograph on a soft warm custard table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP08iCBRGaLFOWpY3ISIZt6BqxgZ9C0cO0-DE7Rjz9Z2_TMhtC0QEnr65fdKUAP6_bi7Clnnt0ydfrWKZAbcQFm0FL2uBccyOGKeU0T4KxeXvEh_APhkyde_mJl6axqvB5ZBqB6a9fJAyLTPbYc5uiBRRedS30Vtv_7b9KnU7OwD-6tkqHCz2te_QOikLYu6DaIWM3C0kFAV3hqXcGLjwe1bWOWiPWWSAHXAQeQaU">
+<div class="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-sm flex items-center gap-1">
+<span class="">🐰</span> Limited Restock
+              </div>
+<button aria-label="Save to lovelist" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-1">Mochi Usagi Snow Bunny</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
+              Silky matte-textured bunny silhouette with gentle blush accents and miniature pastel chime bell.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">$17.50</span>
+<button class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-sm active:scale-95" onclick="addToBag('Mochi Usagi Snow Bunny', 17.5)" type="button">
+<span class="">Add</span>
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom View All Button -->
+<div class="mt-12 text-center">
+<button class="inline-flex items-center gap-2 rounded-full bg-strawberry-blush text-on-primary px-8 py-3.5 font-label-lg text-label-lg shadow-sm hover:opacity-95 transition-all transform hover:-translate-y-0.5" type="button">
+<span class="">View All 42 Creations</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: BUILD YOUR BESPOKE CHARM WITH HOVERING SHADOW ENDER -->
+<section class="w-full py-20 bg-surface-custard relative overflow-hidden" id="customizer">
+<div class="max-w-[1240px] mx-auto px-6 relative z-10">
+<!-- Heading with HOVERING / TELEPORTING SHADOW ENDER CHARACTER -->
+<div class="relative text-center max-w-2xl mx-auto mb-14">
+<!-- Floating Amethyst Ender Guardian -->
+<div class="hidden md:flex absolute -top-8 -left-12 lg:-left-20 flex-col items-center group cursor-pointer" title="Shadow Star Walker watching over your custom creations!">
+<div class="relative w-16 h-20 lg:w-20 lg:h-24 rounded-2xl bg-espresso-deep/90 border border-purple-400/50 p-1 flex flex-col items-center justify-center animate-ender-float" style="animation: enderFloat 3.8s ease-in-out infinite, enderTeleportGlitch 7s infinite;">
+<img alt="Hovering Shadow Star Walker" class="w-full h-full object-contain p-0.5 rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqcUvA5IBYRyGT_pniC4JxE53G4ZN0VtoMVTNyRgu25ygEbRkGSkxqu0pMM4GheVEMBUs-M29Q1RLkbInQi5UiKeYS_-yT9IjZRxnBDx_JbNWhZ5QTNRh9IRngoLbfZWipo2s4lG8TyImX3UvceTpHZpzWiwNHw6TTm190s4ESn82tWZ5zsIJuAgZknDcq3XikAbvEjJqOozcxV8GtfNWlr_GbBCMPMWYXdpqeH26RYqYB-lFmJPrT">
+<div class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-purple-400 animate-ping"></div>
+</div>
+<span class="mt-2 text-[11px] font-label-sm text-purple-700 bg-surface-cloud/90 px-2 py-0.5 rounded-full shadow-sm">Teleporting Observer</span>
+</div>
+<span class="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle text-primary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-3">
+<span class="">✨</span> Interactive Charm Atelier
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-espresso-deep font-bold tracking-tight">
+          Build Your Bespoke Charm
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          Pick your hand-sculpted clay muse, pair it with artisan clasp hardware, and string tiny sweets to create your signature bag companion.
+        </p>
+</div>
+<!-- Customizer Studio Grid: Controls & Live Preview -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Interactive Controls (Left 7 Cols) -->
+<div class="lg:col-span-7 bg-surface-cloud rounded-3xl p-6 lg:p-8 shadow-sm space-y-8">
+<!-- STEP 1: Select Charm Figurine -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-lg text-label-lg text-espresso-deep flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-label-sm flex items-center justify-center font-bold">1</span>
+                Choose Core Clay Pal
+              </span>
+<span class="font-label-sm text-label-sm text-strawberry-blush" id="active-char-name">Hugging Honey Bear (+$14)</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="char-selector-group">
+<!-- Bear Option -->
+<button class="char-opt-btn active-custom-opt flex flex-col items-center p-3 rounded-2xl bg-surface-custard border-2 border-strawberry-blush text-center transition-all" data-char="Honey Bear" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_" data-price="14" type="button">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 bg-surface-cloud shadow-sm">
+<img alt="Honey Bear" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_">
+</div>
+<span class="font-title-sm text-title-sm text-espresso-deep leading-snug">Honey Bear</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">$14.00</span>
+</button>
+<!-- Spidey Option -->
+<button class="char-opt-btn flex flex-col items-center p-3 rounded-2xl bg-surface-cloud text-center hover:bg-surface-custard transition-all" data-char="Acrobat Spidey" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuBCFJBErDthdL3hVVV_JEZdWGc_oU1MbdwwMf7N05yOHobzRAdhFQzY2dHP2bBcMUH3TURWPZry_MqkgwllT4iqW18pIYzjPusDn1AI9dicV74sUAnz0K-IJqR09LW_jAzu-OHCjV5SCZVULgMXgD_HUQ2bpBaWg5pPIUjGmz7rRo6jTEO_0IWcaTXuYvM2i13mXIWwaCHWaAK8BDWFWNX3OMynRwB-ECro2oB8HDFP8ShOdfj6pmCp" data-price="16" type="button">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 bg-surface-custard shadow-sm">
+<img alt="Acrobat Spidey" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCFJBErDthdL3hVVV_JEZdWGc_oU1MbdwwMf7N05yOHobzRAdhFQzY2dHP2bBcMUH3TURWPZry_MqkgwllT4iqW18pIYzjPusDn1AI9dicV74sUAnz0K-IJqR09LW_jAzu-OHCjV5SCZVULgMXgD_HUQ2bpBaWg5pPIUjGmz7rRo6jTEO_0IWcaTXuYvM2i13mXIWwaCHWaAK8BDWFWNX3OMynRwB-ECro2oB8HDFP8ShOdfj6pmCp">
+</div>
+<span class="font-title-sm text-title-sm text-espresso-deep leading-snug">Spidey</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">$16.00</span>
+</button>
+<!-- Ninja Option -->
+<button class="char-opt-btn flex flex-col items-center p-3 rounded-2xl bg-surface-cloud text-center hover:bg-surface-custard transition-all" data-char="Chibi Shinobi" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuCvJiLMGHVgmSLO-6F0UY_UImVAurSHTuB2iEnH54oMICk91WQaREUHHDMk5K-YW2uNQXaAgEPt38azjf7Kr_fEH6NuPFyhrA5kWNrLqqkOQmza3ajscOGtJaDXmXE_X3gwnE53-N6QiPsHbapRed7qdIATFRviCQ41A_TP9YH-kMKrzdCyfDxPSzsAtpGX7l76mW7p-bZydT4znfe2_PvpZX_1FT-tn5Yh2Aj6odFC2rVNW4hHfylB" data-price="15" type="button">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 bg-surface-custard shadow-sm">
+<img alt="Shinobi Ninja" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvJiLMGHVgmSLO-6F0UY_UImVAurSHTuB2iEnH54oMICk91WQaREUHHDMk5K-YW2uNQXaAgEPt38azjf7Kr_fEH6NuPFyhrA5kWNrLqqkOQmza3ajscOGtJaDXmXE_X3gwnE53-N6QiPsHbapRed7qdIATFRviCQ41A_TP9YH-kMKrzdCyfDxPSzsAtpGX7l76mW7p-bZydT4znfe2_PvpZX_1FT-tn5Yh2Aj6odFC2rVNW4hHfylB">
+</div>
+<span class="font-title-sm text-title-sm text-espresso-deep leading-snug">Shinobi</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">$15.00</span>
+</button>
+<!-- Ender Option -->
+<button class="char-opt-btn flex flex-col items-center p-3 rounded-2xl bg-surface-cloud text-center hover:bg-surface-custard transition-all" data-char="Shadow Walker" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlAn47ftbMELAtDcCJTo2MUrH864bbZ5fVvKE0UrawWPsCvSJEqXlfNWxceX87dhIi46YcOzV3HQlql7v7SmsGy-FNiSy59WamVM2LWubBFN_tFolop8IoQjzUVp6tFpgpB0Bwse7Z_ViBLg7JWcv1FsWYABr022mQ8ZT89W_RNr8qU_hvdlbx5nnEip0s13_evWXtncTp2zDk3MOgdeHPA1Pi6gGMmIqN4pAQHmbKLK6j88UI292" data-price="15" type="button">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 bg-surface-custard shadow-sm">
+<img alt="Shadow Ender" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlAn47ftbMELAtDcCJTo2MUrH864bbZ5fVvKE0UrawWPsCvSJEqXlfNWxceX87dhIi46YcOzV3HQlql7v7SmsGy-FNiSy59WamVM2LWubBFN_tFolop8IoQjzUVp6tFpgpB0Bwse7Z_ViBLg7JWcv1FsWYABr022mQ8ZT89W_RNr8qU_hvdlbx5nnEip0s13_evWXtncTp2zDk3MOgdeHPA1Pi6gGMmIqN4pAQHmbKLK6j88UI292">
+</div>
+<span class="font-title-sm text-title-sm text-espresso-deep leading-snug">Shadow Star</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">$15.00</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: Choose Hardware Clasp -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-lg text-label-lg text-espresso-deep flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-label-sm flex items-center justify-center font-bold">2</span>
+                Choose Hardware Clasp
+              </span>
+<span class="font-label-sm text-label-sm text-strawberry-blush" id="active-clasp-name">Star Carabiner (+$5)</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="clasp-selector-group">
+<button class="clasp-opt-btn active-custom-opt p-3 rounded-2xl bg-surface-custard border-2 border-strawberry-blush text-center flex flex-col items-center transition-all" data-clasp="Golden Star Carabiner" data-price="5" type="button">
+<span class="material-symbols-outlined text-[26px] text-tertiary mb-1">hotel_class</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Star Clasp</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">Gold • $5.00</span>
+</button>
+<button class="clasp-opt-btn p-3 rounded-2xl bg-surface-cloud text-center flex flex-col items-center hover:bg-surface-custard transition-all" data-clasp="Heart Rosy Clasp" data-price="5" type="button">
+<span class="material-symbols-outlined text-[26px] text-strawberry-blush mb-1">favorite</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Heart Clasp</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">Rose • $5.00</span>
+</button>
+<button class="clasp-opt-btn p-3 rounded-2xl bg-surface-cloud text-center flex flex-col items-center hover:bg-surface-custard transition-all" data-clasp="Classic Swivel Ring" data-price="3" type="button">
+<span class="material-symbols-outlined text-[26px] text-outline mb-1">radio_button_checked</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Swivel Ring</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">Steel • $3.00</span>
+</button>
+<button class="clasp-opt-btn p-3 rounded-2xl bg-surface-cloud text-center flex flex-col items-center hover:bg-surface-custard transition-all" data-clasp="Pastel Beaded Strap" data-price="4" type="button">
+<span class="material-symbols-outlined text-[26px] text-matcha-soft mb-1">all_inclusive</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Phone Cord</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">Mint • $4.00</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Add Dangle Accents -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-lg text-label-lg text-espresso-deep flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-label-sm flex items-center justify-center font-bold">3</span>
+                Select Tiny Dangles (Pick up to 2)
+              </span>
+<span class="font-label-sm text-label-sm text-espresso-muted">Multi-select allowed</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="dangle-selector-group">
+<button class="dangle-opt-btn active-dangle p-3 rounded-2xl bg-surface-custard border-2 border-strawberry-blush text-center flex flex-col items-center transition-all" data-dangle="Mini Strawberry Bead" data-price="3" type="button">
+<span class="text-2xl mb-1">🍓</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Strawberry</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">+$3.00</span>
+</button>
+<button class="dangle-opt-btn active-dangle p-3 rounded-2xl bg-surface-custard border-2 border-strawberry-blush text-center flex flex-col items-center transition-all" data-dangle="Lucky Pastry Bell" data-price="2" type="button">
+<span class="text-2xl mb-1">🔔</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Chime Bell</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">+$2.00</span>
+</button>
+<button class="dangle-opt-btn p-3 rounded-2xl bg-surface-cloud text-center flex flex-col items-center hover:bg-surface-custard transition-all" data-dangle="Mini Clay Macaron" data-price="4" type="button">
+<span class="text-2xl mb-1">🧁</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Mini Macaron</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">+$4.00</span>
+</button>
+<button class="dangle-opt-btn p-3 rounded-2xl bg-surface-cloud text-center flex flex-col items-center hover:bg-surface-custard transition-all" data-dangle="Pastel Star Gem" data-price="2" type="button">
+<span class="text-2xl mb-1">✨</span>
+<span class="font-title-sm text-title-sm text-espresso-deep">Star Gem</span>
+<span class="font-label-sm text-label-sm text-espresso-muted">+$2.00</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Live Atelier Preview Card (Right 5 Cols Sticky) -->
+<div class="lg:col-span-5 bg-surface-cloud rounded-3xl p-6 lg:p-8 shadow-md sticky top-32">
+<div class="flex items-center justify-between border-b pb-4 mb-5 border-border-warm">
+<span class="font-title-sm text-title-sm text-espresso-deep font-bold">Studio Preview</span>
+<span class="inline-flex items-center gap-1 rounded-full bg-matcha-tint text-secondary px-3 py-0.5 text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Made to Order
+            </span>
+</div>
+<!-- Dynamic Visual Canvas -->
+<div class="relative w-full aspect-square rounded-2xl bg-surface-custard p-4 flex flex-col items-center justify-center overflow-hidden mb-6 shadow-inner">
+<!-- Simulated Clasp Layer -->
+<div class="mb-2 px-3 py-1 bg-surface-cloud rounded-full shadow-sm text-label-sm font-label-sm text-espresso-deep flex items-center gap-1" id="preview-clasp-badge">
+<span class="material-symbols-outlined text-[16px] text-tertiary">hotel_class</span>
+<span id="preview-clasp-text" class="">Golden Star Carabiner</span>
+</div>
+<!-- Main Figurine Centerpiece -->
+<div class="w-44 h-44 rounded-2xl overflow-hidden shadow-lg bg-surface-cloud relative group">
+<img alt="Customized Charm Preview" class="w-full h-full object-cover transition-all duration-300" id="preview-char-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_">
+</div>
+<!-- Dangles Ribbon -->
+<div class="mt-3 flex items-center gap-2" id="preview-dangles-list">
+<span class="px-2.5 py-1 bg-surface-cloud/90 rounded-full text-label-sm font-label-sm text-espresso-deep shadow-sm">🍓 Strawberry</span>
+<span class="px-2.5 py-1 bg-surface-cloud/90 rounded-full text-label-sm font-label-sm text-espresso-deep shadow-sm">🔔 Chime Bell</span>
+</div>
+</div>
+<!-- Custom Recipe Bill -->
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span id="bill-char-desc" class="">Honey Bear Clay Base</span>
+<span id="bill-char-price" class="">$14.00</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span id="bill-clasp-desc" class="">Golden Star Carabiner</span>
+<span id="bill-clasp-price" class="">$5.00</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant" id="bill-dangles-row">
+<span id="bill-dangles-desc" class="">Dangles (Strawberry + Bell)</span>
+<span id="bill-dangles-price" class="">$5.00</span>
+</div>
+<div class="pt-3 border-t border-border-warm flex justify-between items-baseline">
+<span class="font-title-md text-title-md text-espresso-deep font-bold">Estimated Total</span>
+<span class="font-headline-sm text-headline-sm text-strawberry-blush font-bold" id="bill-total-price">$24.00</span>
+</div>
+</div>
+<!-- Add Custom Creation Button -->
+<button class="w-full rounded-full bg-strawberry-blush text-on-primary py-4 font-label-lg text-label-lg font-bold shadow-md hover:opacity-95 transition-all transform hover:-translate-y-0.5 active:scale-98 flex items-center justify-center gap-2" id="btn-add-custom" type="button">
+<span class="material-symbols-outlined text-[20px]">brush</span>
+<span class="">Craft &amp; Add Custom to Bag</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-espresso-muted mt-3">
+            Hand-glazed &amp; baked in 3-5 studio business days.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: THE SECRET RECIPE: CRAFTED TO LAST -->
+<section class="w-full py-20 bg-background" id="quality-recipe">
+<div class="max-w-[1240px] mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-peach-tint text-tertiary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-3">
+<span class="">🍰</span> Studio Durability Recipe
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-espresso-deep font-bold tracking-tight">
+          Not Fragile: Built for Daily Adventures
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          We know charms live rough lives on backpacks, tote bags, and keys. Here is how we engineered our keepsakes to last through years of cuddles and pocket scratches.
+        </p>
+</div>
+<!-- 4 Pillars of Handmade Durability -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Pillar 1 -->
+<div class="bg-surface-custard rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-strawberry-subtle text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[28px]">local_fire_department</span>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-2">Triple-Baked Durability</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              We slow-cure polymer clay at gentle calibrated temperatures, ensuring zero brittle bubbles and maximum flex-strength under drops.
+            </p>
+</div>
+<div class="pt-4 flex items-center gap-1.5 text-strawberry-blush font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Impact Tested
+          </div>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-surface-custard rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-peach-tint text-tertiary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[28px]">diamond</span>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-2">Diamond UV Resin Glaze</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Every charm receives three micro-layers of crystal UV resin. The shell mimics kiln-fired porcelain gloss and shields painted acrylics.
+            </p>
+</div>
+<div class="pt-4 flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> 100% Water Resistant
+          </div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface-custard rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-matcha-tint text-secondary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[28px]">link</span>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-2">Reinforced Jump Rings</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Screw eye pins are anchored deep into the raw clay core with industrial adhesive before firing, withstanding 20+ lbs of purse pull.
+            </p>
+</div>
+<div class="pt-4 flex items-center gap-1.5 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Snag-Proof Guarantee
+          </div>
+</div>
+<!-- Pillar 4 -->
+<div class="bg-surface-custard rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-strawberry-subtle text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[28px]">redeem</span>
+</div>
+<h3 class="font-title-md text-title-md text-espresso-deep font-bold mb-2">Sweet Bakery Unboxing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Shipped inside tiny recyclable bakery boxes packed with pastel crinkle paper, wax seal stickers, and care instructions.
+            </p>
+</div>
+<div class="pt-4 flex items-center gap-1.5 text-strawberry-blush font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Ready to Gift
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: IN THE WILD / CHARM DIARIES -->
+<section class="w-full py-20 bg-surface-custard relative overflow-hidden" id="customer-gallery">
+<div class="max-w-[1240px] mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<span class="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle text-primary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-2">
+<span class="">📷</span> Everyday Moments
+          </span>
+<h2 class="font-headline-lg text-headline-lg text-espresso-deep font-bold tracking-tight">
+            Charm Diaries • In the Wild
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            See where our handmade companions end up! Tag <span class="font-bold text-strawberry-blush">@LairaCharms</span> to be featured.
+          </p>
+</div>
+<div class="mt-4 md:mt-0 flex items-center gap-2">
+<div class="flex -space-x-2">
+<div class="w-9 h-9 rounded-full bg-strawberry-blush text-on-primary flex items-center justify-center font-bold text-label-sm border-2 border-surface-cloud">4.9</div>
+</div>
+<span class="font-label-md text-label-md text-espresso-deep">Over 1,400+ 5-Star Keepsake Bags</span>
+</div>
+</div>
+<!-- Customer Gallery Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Wild Card 1: Tote Styling -->
+<div class="bg-surface-cloud rounded-3xl p-5 shadow-sm space-y-4">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-custard">
+<img alt="Honey Bear Charm clipped to natural cotton canvas tote" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_">
+</div>
+<div>
+<div class="flex items-center gap-1 text-strawberry-blush text-[16px] mb-1">
+<span class="">♥</span><span class="">♥</span><span class="">♥</span><span class="">♥</span><span class="">♥</span>
+</div>
+<p class="font-body-sm text-body-sm text-espresso-deep italic">
+              “The honey bear charm has survived 6 months on my college tote through rain and crowded trains without a single scratch! Cutest accessory I own.”
+            </p>
+<p class="font-label-sm text-label-sm text-espresso-muted mt-2">— Maya K. • Berkeley, CA</p>
+</div>
+</div>
+<!-- Wild Card 2: Spidey Backpack -->
+<div class="bg-surface-cloud rounded-3xl p-5 shadow-sm space-y-4">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-custard">
+<img alt="Upside down Spidey keychain on black commuter backpack" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCFJBErDthdL3hVVV_JEZdWGc_oU1MbdwwMf7N05yOHobzRAdhFQzY2dHP2bBcMUH3TURWPZry_MqkgwllT4iqW18pIYzjPusDn1AI9dicV74sUAnz0K-IJqR09LW_jAzu-OHCjV5SCZVULgMXgD_HUQ2bpBaWg5pPIUjGmz7rRo6jTEO_0IWcaTXuYvM2i13mXIWwaCHWaAK8BDWFWNX3OMynRwB-ECro2oB8HDFP8ShOdfj6pmCp">
+</div>
+<div>
+<div class="flex items-center gap-1 text-strawberry-blush text-[16px] mb-1">
+<span class="">♥</span><span class="">♥</span><span class="">♥</span><span class="">♥</span><span class="">♥</span>
+</div>
+<p class="font-body-sm text-body-sm text-espresso-deep italic">
+              “Spidey hanging upside down on my backpack gets compliments every single day at the cafe! The resin shine looks like smooth candy glass.”
+            </p>
+<p class="font-label-sm text-label-sm text-espresso-muted mt-2">— Julian R. • Austin, TX</p>
+</div>
+</div>
+<!-- Wild Card 3: Switch / Phone Clasp -->
+<div class="bg-surface-cloud rounded-3xl p-5 shadow-sm space-y-4">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-custard">
+<img alt="Shadow Ender star keychain on pastel purple game pouch" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlAn47ftbMELAtDcCJTo2MUrH864bbZ5fVvKE0UrawWPsCvSJEqXlfNWxceX87dhIi46YcOzV3HQlql7v7SmsGy-FNiSy59WamVM2LWubBFN_tFolop8IoQjzUVp6tFpgpB0Bwse7Z_ViBLg7JWcv1FsWYABr022mQ8ZT89W_RNr8qU_hvdlbx5nnEip0s13_evWXtncTp2zDk3MOgdeHPA1Pi6gGMmIqN4pAQHmbKLK6j88UI292">
+</div>
+<div>
+<div class="flex items-center gap-1 text-strawberry-blush text-[16px] mb-1">
+<span class="">♥</span><span class="">♥</span><span class="">♥</span><span class="">♥</span><span class="">♥</span>
+</div>
+<p class="font-body-sm text-body-sm text-espresso-deep italic">
+              “The purple star clasp on the shadow walker charm matches my gaming case so cleanly. It arrived in the sweetest bakery box with stickers.”
+            </p>
+<p class="font-label-sm text-label-sm text-espresso-muted mt-2">— Chloe T. • Toronto, ON</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: FAQ & SWEET CARE INSTRUCTIONS -->
+<section class="w-full py-20 bg-background">
+<div class="max-w-[880px] mx-auto px-6">
+<div class="text-center mb-12">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle text-primary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-2">
+<span class="">🌸</span> Helpful Answers
+        </span>
+<h2 class="font-headline-md text-headline-md text-espresso-deep font-bold">
+          Frequently Wondered Questions
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          Everything you need to know about polymer clay care, custom commission slots, and shipping.
+        </p>
+</div>
+<!-- Accordion Pills -->
+<div class="space-y-4">
+<details class="group bg-surface-cloud rounded-2xl p-5 shadow-sm transition-all open:bg-surface-custard">
+<summary class="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
+<span class="">Are clay charms waterproof and scratch-resistant?</span>
+<span class="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Yes! While unfinished polymer clay can be porous, every Laira Charms piece is sealed with 3 glossy coats of jewelry-grade UV resin. They easily survive rain, sink splashes, and daily pocket rubbing. We do suggest avoiding perfume sprays or prolonged underwater soaking.
+          </div>
+</details>
+<details class="group bg-surface-cloud rounded-2xl p-5 shadow-sm transition-all open:bg-surface-custard">
+<summary class="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
+<span class="">Can I request a custom character or pet portrait?</span>
+<span class="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Absolutely! We open 15 bespoke pet and anime commission slots on the first Sunday of every month. You can submit reference photos through our Custom Atelier, and we will sculpt your favorite furry friend or gaming avatar with custom hardware.
+          </div>
+</details>
+<details class="group bg-surface-cloud rounded-2xl p-5 shadow-sm transition-all open:bg-surface-custard">
+<summary class="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
+<span class="">How fast do charm orders ship out?</span>
+<span class="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Ready-to-ship charms from our Weekly Drops ship within 24 to 48 hours. Custom Atelier pieces that require fresh baking, painting, and UV glazing cure in 3 to 5 business days before departing our sweet studio.
+          </div>
+</details>
+<details class="group bg-surface-cloud rounded-2xl p-5 shadow-sm transition-all open:bg-surface-custard">
+<summary class="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
+<span class="">What is your 30-Day Snag &amp; Snap Warranty?</span>
+<span class="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            If your charm ever snaps from its jump ring or sustains damage within 30 days of arrival during normal daily wear, send us a quick photo! We will fix it at no cost or craft an identical replacement right away.
+          </div>
+</details>
+</div>
+<!-- Quick Contact Box -->
+<div class="mt-12 rounded-3xl bg-peach-tint p-6 text-center">
+<h4 class="font-title-sm text-title-sm text-espresso-deep font-bold mb-1">Have a special question?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Our studio maker reads every message personally with a cup of warm tea.</p>
+<button class="inline-flex items-center gap-2 rounded-full bg-surface-cloud text-espresso-deep px-6 py-2.5 font-label-md text-label-md shadow-sm hover:bg-surface-custard transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-strawberry-blush">mail</span>
+<span class="">Message Studio Maker</span>
+</button>
+</div>
+</div>
+</section>
+<!-- RUNNING SHINOBI WANDERING MASCOT TRACK (Anatono inspiration) -->
+<section class="w-full relative overflow-hidden bg-surface-custard/70 border-t border-b border-border-warm py-4 select-none">
+<div class="absolute inset-0 bg-[radial-gradient(#dbc0c3_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+<div class="max-w-[1240px] mx-auto px-6 relative flex items-center justify-between pointer-events-none">
+<span class="font-label-sm text-label-sm text-espresso-muted/60 tracking-wider uppercase flex items-center gap-2">
+<span class="">🍃</span> Studio Delivery Express Path
+        </span>
+<span class="font-label-sm text-label-sm text-espresso-muted/60 hidden sm:inline">Hover on ninja to sprint! ✨</span>
+</div>
+<!-- Character running along screen track -->
+<div class="relative w-full h-16 overflow-hidden pointer-events-auto">
+<div class="absolute top-1 left-0 flex items-center gap-2 cursor-pointer group shinobi-runner-track" id="shinobi-runner" style="animation: shinobiSprint 16s linear infinite;">
+<!-- Ninja Figurine with energetic bob stride -->
+<div class="relative w-12 h-14 rounded-full bg-surface-cloud shadow-md border-2 border-orange-300 p-0.5 transform -rotate-12 group-hover:scale-125 transition-transform" style="animation: shinobiBob 0.35s ease-in-out infinite;">
+<img alt="Running Chibi Shinobi" class="w-full h-full object-contain rounded-full pointer-events-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbU26_JaA85KI0I3T5PGMyOgIbFCxgkxMnGcWoUPTQPp5eycUh32CA3kaJUiODb6OEoWjvz3JP8xHj1BIeJObe5laytXPi7v6JXlwnjJfNcGBnwt4qiCovOk-fe6UAr9YHlfpMOzkBbR3uMR0nJWbNlVKQX8MtztKbJJ7W0RebV1dZhx1ijWXESG57xEXZsZJAe97e1RZzZYqieLbdWleuk1ZGSKUm6t-UyN6GgdnFsXNf-xcKRffW">
+</div>
+<!-- Anime Running Smoke / Star Puffs -->
+<div class="flex items-center -space-x-1 opacity-75">
+<span class="text-xs text-orange-400 animate-[puffDust_0.6s_ease-out_infinite]">💨</span>
+<span class="text-[10px] text-amber-500 animate-[puffDust_0.8s_ease-out_infinite_0.2s]">✦</span>
+<span class="text-xs text-strawberry-blush animate-[puffDust_0.7s_ease-out_infinite_0.4s]">🍓</span>
+</div>
+<!-- Dialogue speech bubble on hover -->
+<div class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-espresso-deep text-on-primary text-label-sm px-2.5 py-1 rounded-full shadow-lg -translate-y-6 -translate-x-4">
+            Dattebayo! Special Delivery 📦💨
+          </div>
+</div>
+</div>
+</section>
+<!-- TOAST NOTIFICATION FOR MICRO-INTERACTIONS -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none" id="cart-toast">
+<div class="bg-espresso-deep text-on-primary rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-strawberry-blush text-on-primary flex items-center justify-center text-sm font-bold">🍓</span>
+<div>
+<p class="font-title-sm text-title-sm text-on-primary" id="toast-title">Added to Bag!</p>
+<p class="font-label-sm text-label-sm text-peach-cream" id="toast-desc">Your keepsake is resting safely in your tote.</p>
+</div>
+</div>
+</div>
+<!-- INLINE VANILLA JAVASCRIPT FOR INTERACTIVE MODULES -->
+<script>
+    // Toast Notification helper
+    function showToast(title, desc) {
+      const toast = document.getElementById('cart-toast');
+      const titleEl = document.getElementById('toast-title');
+      const descEl = document.getElementById('toast-desc');
+      if (titleEl && descEl && toast) {
+        titleEl.textContent = title;
+        descEl.textContent = desc;
+        toast.classList.remove('translate-y-32', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.add('translate-y-32', 'opacity-0');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3200);
+      }
+    }
+
+    // Add To Bag Quick Action
+    function addToBag(itemName, price) {
+      showToast('Added ' + itemName + '!', '$' + price.toFixed(2) + ' • Carefully packaged with love');
+    }
+
+    // Dynamic Tagline Ticker
+    const taglines = [
+      "✨ Small batch handmade drops • Limited studio oven batches",
+      "🧸 Every charm baked with gentle love & sealed with triple UV diamond glaze",
+      "🚚 Free worldwide studio shipping on orders over $35 🍓",
+      "✨ Tiny pals, infinite personal magic — handcrafted just for you"
+    ];
+    let taglineIndex = 0;
+    const tickerText = document.getElementById('ticker-text');
+
+    if (tickerText) {
+      setInterval(() => {
+        tickerText.style.opacity = '0';
+        tickerText.style.transform = 'translateY(6px)';
+        setTimeout(() => {
+          taglineIndex = (taglineIndex + 1) % taglines.length;
+          tickerText.textContent = taglines[taglineIndex];
+          tickerText.style.opacity = '1';
+          tickerText.style.transform = 'translateY(0)';
+        }, 300);
+      }, 4000);
+    }
+
+    // Shinobi interactive hover speed up
+    const shinobiRunner = document.getElementById('shinobi-runner');
+    if (shinobiRunner) {
+      shinobiRunner.addEventListener('mouseenter', () => {
+        shinobiRunner.style.animationDuration = '6s';
+      });
+      shinobiRunner.addEventListener('mouseleave', () => {
+        shinobiRunner.style.animationDuration = '16s';
+      });
+    }
+
+    // Category Filter Chips
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('[data-item-category]');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-strawberry-blush', 'text-on-primary');
+            b.classList.add('bg-surface-cloud', 'text-espresso-deep');
+          });
+          btn.classList.add('bg-strawberry-blush', 'text-on-primary');
+          btn.classList.remove('bg-surface-cloud', 'text-espresso-deep');
+
+          const category = btn.getAttribute('data-category');
+          items.forEach(card => {
+            const cardCat = card.getAttribute('data-item-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Customizer Dynamic State
+      let customState = {
+        char: 'Honey Bear',
+        charPrice: 14,
+        charImg: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_',
+        clasp: 'Golden Star Carabiner',
+        claspPrice: 5,
+        dangles: [
+          { name: 'Strawberry', price: 3 },
+          { name: 'Chime Bell', price: 2 }
+        ]
+      };
+
+      function updateCustomizerUI() {
+        const previewImg = document.getElementById('preview-char-img');
+        const previewClaspText = document.getElementById('preview-clasp-text');
+        const previewDanglesList = document.getElementById('preview-dangles-list');
+        const billCharDesc = document.getElementById('bill-char-desc');
+        const billCharPrice = document.getElementById('bill-char-price');
+        const billClaspDesc = document.getElementById('bill-clasp-desc');
+        const billClaspPrice = document.getElementById('bill-clasp-price');
+        const billDanglesDesc = document.getElementById('bill-dangles-desc');
+        const billDanglesPrice = document.getElementById('bill-dangles-price');
+        const billTotalPrice = document.getElementById('bill-total-price');
+
+        if (previewImg) previewImg.src = customState.charImg;
+        if (previewClaspText) previewClaspText.textContent = customState.clasp;
+
+        // Render Dangle Chips in Preview
+        if (previewDanglesList) {
+          previewDanglesList.innerHTML = '';
+          customState.dangles.forEach(d => {
+            const span = document.createElement('span');
+            span.className = 'px-2.5 py-1 bg-surface-cloud/90 rounded-full text-label-sm font-label-sm text-espresso-deep shadow-sm';
+            span.textContent = d.name;
+            previewDanglesList.appendChild(span);
+          });
+        }
+
+        const danglesTotal = customState.dangles.reduce((acc, curr) => acc + curr.price, 0);
+        const grandTotal = customState.charPrice + customState.claspPrice + danglesTotal;
+
+        if (billCharDesc) billCharDesc.textContent = customState.char + ' Clay Base';
+        if (billCharPrice) billCharPrice.textContent = '$' + customState.charPrice.toFixed(2);
+        if (billClaspDesc) billClaspDesc.textContent = customState.clasp;
+        if (billClaspPrice) billClaspPrice.textContent = '$' + customState.claspPrice.toFixed(2);
+        if (billDanglesDesc) billDanglesDesc.textContent = 'Dangles (' + customState.dangles.map(d => d.name).join(', ') + ')';
+        if (billDanglesPrice) billDanglesPrice.textContent = '$' + danglesTotal.toFixed(2);
+        if (billTotalPrice) billTotalPrice.textContent = '$' + grandTotal.toFixed(2);
+      }
+
+      // Step 1: Character selection
+      const charBtns = document.querySelectorAll('.char-opt-btn');
+      charBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          charBtns.forEach(b => {
+            b.classList.remove('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+            b.classList.add('bg-surface-cloud');
+          });
+          btn.classList.add('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+          btn.classList.remove('bg-surface-cloud');
+
+          customState.char = btn.getAttribute('data-char');
+          customState.charPrice = parseFloat(btn.getAttribute('data-price'));
+          customState.charImg = btn.getAttribute('data-img');
+
+          const nameIndicator = document.getElementById('active-char-name');
+          if (nameIndicator) nameIndicator.textContent = customState.char + ' (+$' + customState.charPrice + ')';
+
+          updateCustomizerUI();
+        });
+      });
+
+      // Step 2: Clasp selection
+      const claspBtns = document.querySelectorAll('.clasp-opt-btn');
+      claspBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          claspBtns.forEach(b => {
+            b.classList.remove('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+            b.classList.add('bg-surface-cloud');
+          });
+          btn.classList.add('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+          btn.classList.remove('bg-surface-cloud');
+
+          customState.clasp = btn.getAttribute('data-clasp');
+          customState.claspPrice = parseFloat(btn.getAttribute('data-price'));
+
+          const nameIndicator = document.getElementById('active-clasp-name');
+          if (nameIndicator) nameIndicator.textContent = customState.clasp + ' (+$' + customState.claspPrice + ')';
+
+          updateCustomizerUI();
+        });
+      });
+
+      // Step 3: Dangles multi-selection
+      const dangleBtns = document.querySelectorAll('.dangle-opt-btn');
+      dangleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const dName = btn.getAttribute('data-dangle');
+          const dPrice = parseFloat(btn.getAttribute('data-price'));
+          const existsIndex = customState.dangles.findIndex(d => d.name === dName);
+
+          if (existsIndex > -1) {
+            // Remove
+            customState.dangles.splice(existsIndex, 1);
+            btn.classList.remove('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+            btn.classList.add('bg-surface-cloud');
+          } else {
+            // Add if under max 2
+            if (customState.dangles.length >= 2) {
+              const removed = customState.dangles.shift();
+              dangleBtns.forEach(b => {
+                if (b.getAttribute('data-dangle') === removed.name) {
+                  b.classList.remove('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+                  b.classList.add('bg-surface-cloud');
+                }
+              });
+            }
+            customState.dangles.push({ name: dName, price: dPrice });
+            btn.classList.add('bg-surface-custard', 'border-2', 'border-strawberry-blush');
+            btn.classList.remove('bg-surface-cloud');
+          }
+          updateCustomizerUI();
+        });
+      });
+
+      // Add Custom Charm to Bag
+      const addCustomBtn = document.getElementById('btn-add-custom');
+      if (addCustomBtn) {
+        addCustomBtn.addEventListener('click', () => {
+          const grandTotal = customState.charPrice + customState.claspPrice + customState.dangles.reduce((acc, c) => acc + c.price, 0);
+          showToast('Custom ' + customState.char + ' Charm Created!', '$' + grandTotal.toFixed(2) + ' • Queued for the studio oven!');
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-custard pt-16 pb-12"><div class="max-w-[1240px] mx-auto px-6"><div class="bg-surface-cloud rounded-xl p-8 lg:p-12 mb-16 shadow-[0_8px_24px_-4px_rgba(60,42,33,0.07)] flex flex-col md:flex-row items-center justify-between gap-8"><div class="max-w-md text-center md:text-left"><div class="inline-flex items-center gap-2 bg-strawberry-subtle text-primary rounded-full px-3 py-1 text-label-sm font-label-sm mb-3"><span class="">✨</span> Secret Drop Access</div><h3 class="font-headline-sm text-headline-sm text-espresso-deep mb-2 font-bold">Join the Charm Club</h3><p class="font-body-md text-body-md text-on-surface-variant">Receive monthly secret drops, bespoke clay recipe previews, and a sweet 15% off your first handmade charm.</p></div><div class="w-full md:w-auto flex flex-col sm:flex-row gap-2 shrink-0"><input class="bg-canvas-butter rounded-full px-5 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-espresso-muted outline-none min-w-[260px] focus:ring-2 focus:ring-primary/20" placeholder="Your email address..." type="email"><button class="bg-strawberry-blush text-on-primary rounded-full px-7 py-3 font-label-lg text-label-lg font-bold shadow-[0_4px_12px_-2px_rgba(60,42,33,0.05)] hover:opacity-95 transition-all" type="button">Join Club</button></div></div><div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12"><div class="space-y-4"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush"><span class="material-symbols-outlined text-[18px]">pets</span></div><span class="font-headline-sm text-headline-sm text-espresso-deep font-bold">Laira Charms</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Individually shaped, painted, and glazed clay keepsakes crafted with love to make everyday accessories a little more magical.</p><div class="flex items-center gap-2 pt-2"><span class="inline-flex items-center gap-1 bg-matcha-tint text-secondary rounded-full px-3 py-1 text-label-sm font-label-sm"><span class="material-symbols-outlined text-[14px]">verified</span> Handcrafted 1-of-1</span><span class="inline-flex items-center gap-1 bg-peach-tint text-tertiary rounded-full px-3 py-1 text-label-sm font-label-sm"><span class="material-symbols-outlined text-[14px]">favorite</span> Resin Glazed</span></div></div><div><h4 class="font-title-sm text-title-sm text-espresso-deep mb-4">Boutique Treasures</h4><ul class="space-y-2.5"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Pastel Animals &amp; Bear Charms</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Strawberry Milk Keychain Series</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Matcha Teacup Phone Straps</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Mini Vitrine Collector Sets</li></ul></div><div><h4 class="font-title-sm text-title-sm text-espresso-deep mb-4">Atelier Care</h4><ul class="space-y-2.5"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Clay Care &amp; Waterproofing Guide</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">30-Day Snag &amp; Snap Warranty</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Worldwide Shipping &amp; Packaging</li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface cursor-pointer">Custom Commission Requests</li></ul></div><div><h4 class="font-title-sm text-title-sm text-espresso-deep mb-4">Maker Promise</h4><div class="bg-surface-container-low rounded-lg p-4 space-y-2"><div class="flex items-center gap-2 text-primary font-bold text-label-md font-label-md"><span class="material-symbols-outlined text-[18px]">shield</span> 100% Artisan Sealed</div><p class="font-body-sm text-body-sm text-on-surface-variant">Every charm receives triple UV-resin coating to protect its hand-painted details from drops, pocket rubs, and daily wear.</p></div></div></div><div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-espresso-muted"><p class="">© 2024 Laira Charms Atelier. Crafted with warmth &amp; clay dust.</p><div class="flex items-center gap-6"><span class="hover:text-espresso-deep cursor-pointer">Privacy Confection</span><span class="hover:text-espresso-deep cursor-pointer">Terms of Sweetness</span><span class="hover:text-espresso-deep cursor-pointer">Cookie Recipe</span></div></div></div></footer>
+
+</body></html>

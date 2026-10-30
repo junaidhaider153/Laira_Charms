@@ -1,0 +1,47 @@
+name: Laira Charms CI Guardrails
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Lint, Typecheck, Unit Tests & Build
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NEXT_PUBLIC_SUPABASE_URL: https://dummy-project.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: dummy-anon-key-for-development
+      SUPABASE_SERVICE_ROLE_KEY: dummy-service-role-key-for-server-only
+      SUPABASE_DB_URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+      RESEND_API_KEY: re_dummy_mock_key_for_testing
+      EMAIL_FROM: Laira Charms <no-reply@lairacharms.pk>
+      GUEST_TOKEN_SECRET: test-guest-token-secret-must-be-32-chars-long
+      ADMIN_BOOTSTRAP_TOKEN: test-admin-bootstrap-token
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Strict TypeScript Check
+        run: npm run typecheck
+
+      - name: Unit & Component Tests
+        run: npm run test
+
+      - name: Production Build
+        run: npm run build
