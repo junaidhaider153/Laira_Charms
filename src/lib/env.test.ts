@@ -15,3 +15,4 @@ describe("Environment Configuration & Validation", () => {
     expect(() => new URL(env.NEXT_PUBLIC_APP_URL)).not.toThrow();
   });
 });
+

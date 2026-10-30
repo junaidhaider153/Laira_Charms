@@ -25,3 +25,4 @@ test.describe("Laira Charms Smoke Test", () => {
     await expect(page.getByRole("link", { name: /Explore Collection/i })).toBeVisible();
   });
 });
+

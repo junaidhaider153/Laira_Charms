@@ -55,3 +55,4 @@ Configure your local Supabase keys and transactional email keys. Never commit `.
 11. **Unit 10**: Website Realtime Messaging & Thread Isolation
 12. **Unit 11**: Customer Accounts & Admin Experience Polish
 13. **Unit 12**: Security Hardening, Accessibility Audit & Release Runbooks
+

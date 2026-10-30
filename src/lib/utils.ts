@@ -46,3 +46,4 @@ export function toMinorUnits(majorAmount: number | string): number {
   }
   return Math.round(majorAmount * 100);
 }
+
