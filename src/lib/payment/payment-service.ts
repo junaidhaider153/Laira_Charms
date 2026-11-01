@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import { getOrderByReference, MEMORY_ORDERS } from "@/lib/checkout/order-service";
 import { PAKISTANI_PAYMENT_ACCOUNTS } from "./bank-details";
+import { enqueueNotification } from "@/lib/notifications/outbox-service";
 import type {
   PaymentRecord,
   SubmitPaymentProofInput,
@@ -227,6 +228,22 @@ export async function submitPaymentProof(
     }
   }
 
+  // Safely enqueue proof received notification (FR-017)
+  try {
+    const recipientEmail = order.shippingAddressSnapshot.email || order.guestEmail || "customer@example.pk";
+    await enqueueNotification({
+      recipientEmail,
+      recipientName: order.shippingAddressSnapshot.fullName,
+      eventType: "proof_received",
+      idempotencyKey: `proof_received_${order.reference}_${payment.proofSubmittedAt || Date.now()}`,
+      data: {
+        orderReference: order.reference,
+      },
+    });
+  } catch {
+    // Invariant: Notification failure never corrupts payment submission
+  }
+
   return {
     order,
     payment,
@@ -337,6 +354,35 @@ export async function reviewPayment(
     } catch {
       // Fallback
     }
+  }
+
+  // Safely enqueue review notification (FR-017)
+  try {
+    const recipientEmail = order.shippingAddressSnapshot.email || order.guestEmail || "customer@example.pk";
+    if (input.action === "verify") {
+      await enqueueNotification({
+        recipientEmail,
+        recipientName: order.shippingAddressSnapshot.fullName,
+        eventType: "payment_verified",
+        idempotencyKey: `payment_verified_${order.reference}`,
+        data: {
+          orderReference: order.reference,
+        },
+      });
+    } else {
+      await enqueueNotification({
+        recipientEmail,
+        recipientName: order.shippingAddressSnapshot.fullName,
+        eventType: "proof_rejected",
+        idempotencyKey: `proof_rejected_${order.reference}_${Date.now()}`,
+        data: {
+          orderReference: order.reference,
+          reason: payment.rejectionReason,
+        },
+      });
+    }
+  } catch {
+    // Invariant: Notification failure never corrupts payment verification
   }
 
   return {

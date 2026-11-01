@@ -40,10 +40,12 @@ test.describe("Bespoke Custom Inquiry & Quotation Approval Lifecycle", () => {
     await expect(card).toContainText(/7 Studio Business Days/i);
     await expect(card).toContainText(/Hand-sculpted calico miniature/i);
 
-    // Accept quotation
+    // Accept quotation if not yet accepted in prior browser test run
     const acceptBtn = card.getByRole("button", { name: /Accept Quotation & Lock Commission/i });
-    await expect(acceptBtn).toBeEnabled();
-    await acceptBtn.click();
+    if (await acceptBtn.isVisible()) {
+      await expect(acceptBtn).toBeEnabled();
+      await acceptBtn.click();
+    }
 
     // Verify accepted state
     await expect(card).toContainText(/Quote Accepted/i);

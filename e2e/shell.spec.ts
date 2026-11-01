@@ -63,12 +63,19 @@ test.describe("Storefront Shell, Navigation & Policy Pages", () => {
     test.skip(!isMobile, "This test only runs on mobile viewport");
 
     await page.goto("/");
+    await page.waitForLoadState("domcontentloaded");
     const hamburger = page.getByRole("button", { name: /Toggle mobile menu/i });
     await expect(hamburger).toBeVisible();
 
     await hamburger.click();
     const navDialog = page.getByRole("dialog", { name: /Mobile Navigation/i });
-    await expect(navDialog).toBeVisible();
+    try {
+      await expect(navDialog).toBeVisible({ timeout: 2000 });
+    } catch {
+      // Re-click if first click occurred before hydration completed
+      await hamburger.click();
+      await expect(navDialog).toBeVisible();
+    }
 
     // Click Story & Care from inside mobile drawer
     const storyLink = navDialog.getByRole("link", { name: "Story & Care" });

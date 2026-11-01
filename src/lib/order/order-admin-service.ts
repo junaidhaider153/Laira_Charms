@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import { MEMORY_ORDERS } from "@/lib/checkout/order-service";
 import { MEMORY_PAYMENTS } from "@/lib/payment/payment-service";
+import { enqueueNotification } from "@/lib/notifications/outbox-service";
 import {
   canTransitionOrderStatus,
   type OrderStatus,
@@ -170,6 +171,48 @@ export async function transitionOrderStatus(
     } catch {
       // Fallback
     }
+  }
+
+  // Safely enqueue lifecycle status notifications (FR-017)
+  try {
+    const recipientEmail = order.shippingAddressSnapshot?.email || order.guestEmail || "customer@example.pk";
+    const recipientName = order.shippingAddressSnapshot?.fullName || "Valued Collector";
+    if (targetStatus === "shipped") {
+      await enqueueNotification({
+        recipientEmail,
+        recipientName,
+        eventType: "order_shipped",
+        idempotencyKey: `order_shipped_${order.reference}`,
+        data: {
+          orderReference: order.reference,
+          courierName: trackingInfo?.courierPartner || "Courier Partner",
+          trackingNumber: trackingInfo?.trackingNumber || "N/A",
+          trackingUrl: trackingInfo?.trackingUrl || "#",
+        },
+      });
+    } else if (targetStatus === "in_production") {
+      await enqueueNotification({
+        recipientEmail,
+        recipientName,
+        eventType: "order_in_production",
+        idempotencyKey: `order_in_production_${order.reference}`,
+        data: {
+          orderReference: order.reference,
+        },
+      });
+    } else if (targetStatus === "delivered") {
+      await enqueueNotification({
+        recipientEmail,
+        recipientName,
+        eventType: "order_delivered",
+        idempotencyKey: `order_delivered_${order.reference}`,
+        data: {
+          orderReference: order.reference,
+        },
+      });
+    }
+  } catch {
+    // Invariant: Notification failure never corrupts status transition
   }
 
   return { order, historyEntry };

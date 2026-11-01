@@ -45,13 +45,13 @@ test.describe("Realtime Website Messaging & Internal Note Isolation Flow", () =>
     await expect(page.locator("body")).toContainText("Dutch gold leaf sheets in stock");
 
     // 8. Admin posts an internal note
-    const internalNoteCheckbox = page.getByLabel(/Post as Studio Internal Note/i);
+    const internalNoteCheckbox = page.getByLabel(/Post as Studio Internal Note/i).first();
     await internalNoteCheckbox.check();
 
-    const adminTextarea = page.getByPlaceholder(/Write an internal studio note/i);
+    const adminTextarea = page.getByPlaceholder(/Write an internal studio note/i).first();
     await adminTextarea.fill("Batch #4 clay shaped and baking at 130C in atelier oven.");
 
-    const saveNoteBtn = page.getByRole("button", { name: /Save Note/i });
+    const saveNoteBtn = page.getByRole("button", { name: /Save Note/i }).first();
     await saveNoteBtn.click();
 
     // Verify admin sees the new internal note with amber badge

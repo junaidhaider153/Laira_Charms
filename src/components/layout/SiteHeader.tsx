@@ -142,13 +142,16 @@ export function SiteHeader() {
             <button
               onClick={openDrawer}
               className="flex items-center gap-2 bg-strawberry-blush text-white rounded-full px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold shadow-sm hover:opacity-95 transition-all active:scale-95"
-              aria-label={`Open shopping bag, ${itemCount} items`}
             >
-              <span className="text-sm">🛍️</span>
-              <span className="hidden sm:inline">Bag</span>
-              <span className="bg-white text-primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center ml-0.5 shadow-sm">
+              <span className="text-sm" aria-hidden="true">🛍️</span>
+              <span className="sr-only sm:not-sr-only">Bag</span>
+              <span
+                className="bg-white text-primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center ml-0.5 shadow-sm"
+                aria-hidden="true"
+              >
                 {itemCount}
               </span>
+              <span className="sr-only"> - Open shopping bag, {itemCount} items</span>
             </button>
 
             {/* Mobile Hamburger Button */}

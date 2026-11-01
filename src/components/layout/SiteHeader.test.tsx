@@ -32,7 +32,7 @@ describe("SiteHeader Component", () => {
 
     expect(screen.getByLabelText(/Search charms/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Account Profile/i)).toHaveAttribute("href", "/account");
-    expect(screen.getByLabelText(/Open shopping bag/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Bag/i })).toBeInTheDocument();
   });
 
   it("toggles mobile menu drawer when hamburger button is clicked", () => {

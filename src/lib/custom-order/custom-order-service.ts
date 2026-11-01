@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import { generateGuestToken, verifyGuestToken } from "@/lib/auth/guest-token";
+import { enqueueNotification } from "@/lib/notifications/outbox-service";
 import type {
   CustomRequest,
   Quotation,
@@ -136,6 +137,24 @@ export async function createCustomRequest(
   const trackingUrl = guestToken
     ? `/custom-order/status/${requestId}?token=${encodeURIComponent(guestToken)}`
     : `/account/custom-orders/${requestId}`;
+
+  // Safely enqueue guest access / acknowledgment notification (FR-017)
+  try {
+    const recipientEmail = input.customerEmail;
+    if (recipientEmail && guestToken) {
+      await enqueueNotification({
+        recipientEmail,
+        recipientName: input.customerName || "Valued Collector",
+        eventType: "guest_access",
+        idempotencyKey: `guest_access_req_${requestId}`,
+        data: {
+          accessUrl: trackingUrl,
+        },
+      });
+    }
+  } catch {
+    // Invariant: Notification failure never corrupts request creation
+  }
 
   return { request: newRequest, guestToken, trackingUrl };
 }

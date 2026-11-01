@@ -181,7 +181,7 @@ export function SiteFooter() {
             <span>•</span>
             <Link href="/contact" className="hover:text-espresso-deep">Support</Link>
             <span>•</span>
-            <Link href="/admin" className="hover:text-espresso-deep text-espresso-muted/60">Admin Portal</Link>
+            <Link href="/admin" className="hover:text-espresso-deep text-espresso-muted">Admin Portal</Link>
           </div>
         </div>
       </div>

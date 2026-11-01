@@ -13,7 +13,7 @@ const config: Config = {
       colors: {
         "on-tertiary": "#ffffff",
         "error-container": "#ffdad6",
-        "strawberry-blush": "#F47A95",
+        "strawberry-blush": "#C5375A",
         "on-surface": "#281810",
         "surface-dim": "#f2d4c6",
         "primary-fixed-dim": "#ffb2bf",

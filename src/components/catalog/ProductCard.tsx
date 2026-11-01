@@ -113,7 +113,7 @@ export function ProductCard({ product }: ProductCardProps) {
               <button
                 onClick={handleQuickAdd}
                 className="px-4 py-2 rounded-full bg-strawberry-blush text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-xs flex items-center gap-1.5 active:scale-95"
-                aria-label={`Quick add ${product.title} to bag`}
+                aria-label={`+ Bag: Quick add ${product.title} to bag`}
               >
                 <span>+ Bag</span>
               </button>

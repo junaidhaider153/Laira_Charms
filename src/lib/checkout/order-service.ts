@@ -2,6 +2,7 @@ import crypto from "crypto";
 import { generateGuestToken, verifyGuestToken } from "@/lib/auth/guest-token";
 import { calculateOrderTotals } from "./shipping";
 import type { CreateOrderInput, Order, OrderItem } from "./types";
+import { enqueueNotification } from "@/lib/notifications/outbox-service";
 
 function isLiveSupabaseConfigured(): boolean {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -206,6 +207,23 @@ export async function createOrder(
   // Update memory store
   MEMORY_ORDERS.set(orderId, newOrder);
   MEMORY_IDEMPOTENCY_INDEX.set(input.idempotencyKey, orderId);
+
+  // Safely enqueue order placed notification (FR-017: failures never corrupt business state)
+  try {
+    const recipientEmail = input.address.email || "customer@example.pk";
+    await enqueueNotification({
+      recipientEmail,
+      recipientName: input.address.fullName,
+      eventType: "order_placed",
+      idempotencyKey: `order_placed_${reference}`,
+      data: {
+        orderReference: reference,
+        totalPaisa: newOrder.totalMinor,
+      },
+    });
+  } catch {
+    // Invariant: Notification dispatch errors do not fail order creation
+  }
 
   const orderUrl = guestToken
     ? `/orders/${reference}?token=${encodeURIComponent(guestToken)}`
