@@ -45,7 +45,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <form
           action="/search"
           method="GET"
-          className="mt-4 max-w-md flex items-center bg-surface-cloud rounded-full px-4 py-2 border border-border-warm shadow-xs focus-within:ring-2 focus-within:ring-primary/20"
+          className="mt-4 max-w-md flex items-center bg-surface-cloud rounded-full px-4 py-2 border border-border-warm/60 shadow-xs focus-within:ring-2 focus-within:ring-strawberry-blush/30 transition-all"
         >
           <span className="text-sm mr-2 text-espresso-muted">🔍</span>
           <input
@@ -53,12 +53,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             name="q"
             defaultValue={query}
             placeholder="Search by name, charm style or material..."
-            className="w-full bg-transparent border-0 outline-none text-xs text-on-surface placeholder:text-espresso-muted"
+            className="w-full bg-transparent border-0 outline-none text-xs text-espresso-deep placeholder:text-espresso-muted/60"
             aria-label="Search query"
           />
           <button
             type="submit"
-            className="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-bold shrink-0 hover:bg-opacity-95"
+            className="px-5 py-2 rounded-full bg-strawberry-blush text-on-primary text-xs font-bold shrink-0 hover:opacity-95 shadow-xs transition-all active:scale-95"
           >
             Search
           </button>

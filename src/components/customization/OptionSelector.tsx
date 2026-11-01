@@ -76,21 +76,21 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
   return (
     <div className="space-y-6 pt-4 border-t border-border-warm" data-testid="customization-engine">
       {/* Live Customizer Price Header */}
-      <div className="p-4 rounded-2xl bg-surface-custard border border-border-warm flex items-center justify-between">
+      <div className="p-4 rounded-3xl bg-surface-custard border border-border-warm/60 flex items-center justify-between shadow-xs">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-espresso-muted block">
+          <span className="font-label-sm text-[11px] font-bold uppercase tracking-wider text-espresso-muted block">
             Customized Unit Price
           </span>
-          <span className="font-headline text-2xl font-bold text-primary">
+          <span className="font-headline text-2xl font-bold text-strawberry-blush">
             {formatMoney(validation.calculatedUnitPriceMinor)}
           </span>
         </div>
 
         <div className="text-right">
-          <span className="text-[10px] font-semibold text-secondary uppercase bg-matcha-tint px-2.5 py-1 rounded-full inline-block">
+          <span className="text-[10px] font-semibold text-secondary uppercase bg-matcha-tint px-3 py-1 rounded-full inline-block shadow-xs">
             ⏱️ {product.leadTimeDays}d Craft Time
           </span>
-          <span className="text-[11px] text-espresso-muted block mt-1">
+          <span className="font-label-sm text-[11px] text-espresso-muted block mt-1">
             Handmade to order
           </span>
         </div>
@@ -115,7 +115,7 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
                     className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep flex items-center gap-1.5"
                   >
                     <span>{group.name}</span>
-                    {group.isRequired && <span className="text-primary">*</span>}
+                    {group.isRequired && <span className="text-strawberry-blush">*</span>}
                   </label>
                   <span className="text-[11px] text-espresso-muted font-mono">
                     {currentLen}/{maxLen}
@@ -132,10 +132,10 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
                     onChange={(e) => {
                       setCustomText(e.target.value.toUpperCase());
                     }}
-                    className={`w-full px-4 py-3 rounded-2xl border font-headline font-bold tracking-widest text-sm bg-surface-cloud text-espresso-deep uppercase focus:outline-none focus:ring-2 transition-all ${
+                    className={`w-full px-4 py-3 rounded-2xl border font-headline font-bold tracking-widest text-sm bg-surface-cloud text-espresso-deep uppercase focus:outline-none focus:ring-2 transition-all shadow-xs ${
                       groupError
                         ? "border-error focus:ring-error"
-                        : "border-border-warm focus:ring-primary focus:border-primary"
+                        : "border-border-warm focus:ring-primary/20 focus:border-strawberry-blush"
                     }`}
                   />
                 </div>
@@ -163,18 +163,18 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
               <div className="flex items-center justify-between">
                 <span className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep flex items-center gap-1.5">
                   <span>{group.name}</span>
-                  {group.isRequired && <span className="text-primary">*</span>}
+                  {group.isRequired && <span className="text-strawberry-blush">*</span>}
                 </span>
 
                 {/* Selected label preview */}
-                <span className="text-xs font-semibold text-primary">
+                <span className="text-xs font-semibold text-strawberry-blush">
                   {group.values.find((v) => v.id === selectedOptions[group.id])?.label}
                 </span>
               </div>
 
               {/* Swatches Rail (for colors) */}
               {hasColorSwatches ? (
-                <div className="flex items-center gap-3 flex-wrap pt-1">
+                <div className="flex items-center gap-2.5 flex-wrap pt-1">
                   {group.values.map((val) => {
                     const isSelected = selectedOptions[group.id] === val.id;
                     return (
@@ -184,13 +184,13 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
                         onClick={() => handleOptionSelect(group.id, val.id)}
                         className={`relative flex items-center gap-2 px-3.5 py-2 rounded-2xl border transition-all text-xs font-bold ${
                           isSelected
-                            ? "border-primary bg-surface-cloud shadow-xs scale-102 ring-2 ring-primary ring-offset-1"
-                            : "border-border-warm bg-surface-cloud/60 hover:border-espresso-deep/30 text-espresso-muted"
+                            ? "border-strawberry-blush bg-surface-custard shadow-xs scale-102 ring-2 ring-strawberry-blush/40"
+                            : "border-border-warm bg-surface-cloud hover:border-espresso-deep/30 text-espresso-muted"
                         }`}
                         aria-pressed={isSelected}
                       >
                         <span
-                          className="w-4 h-4 rounded-full border border-black/10 shrink-0"
+                          className="w-4 h-4 rounded-full border border-black/10 shrink-0 shadow-xs"
                           style={{ backgroundColor: val.colorHex }}
                         />
                         <span>{val.label}</span>
@@ -208,16 +208,16 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
                         key={val.id}
                         type="button"
                         onClick={() => handleOptionSelect(group.id, val.id)}
-                        className={`p-3 rounded-2xl border text-left transition-all flex items-center justify-between text-xs font-semibold ${
+                        className={`p-3.5 rounded-2xl border text-left transition-all flex items-center justify-between text-xs font-semibold ${
                           isSelected
-                            ? "border-primary bg-primary/5 text-primary shadow-xs ring-1 ring-primary"
+                            ? "border-strawberry-blush bg-surface-custard text-espresso-deep shadow-xs ring-1 ring-strawberry-blush"
                             : "border-border-warm bg-surface-cloud hover:border-espresso-deep/30 text-espresso-deep"
                         }`}
                         aria-pressed={isSelected}
                       >
                         <div className="flex items-center gap-2">
-                          <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                            isSelected ? "border-primary bg-primary text-white text-[9px]" : "border-border-warm"
+                          <span className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${
+                            isSelected ? "border-strawberry-blush bg-strawberry-blush text-white" : "border-border-warm"
                           }`}>
                             {isSelected && "✓"}
                           </span>
@@ -251,8 +251,8 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
 
       {/* Selected Options Breakdown Summary */}
       {validation.selectedBreakdown.length > 0 && (
-        <div className="p-3.5 rounded-2xl bg-surface-cloud border border-border-warm/70 space-y-1 text-xs">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-espresso-muted block mb-1">
+        <div className="p-4 rounded-3xl bg-surface-cloud border border-border-warm/60 space-y-1.5 text-xs shadow-xs">
+          <span className="font-label-sm text-[10px] font-bold uppercase tracking-wider text-espresso-muted block mb-1">
             Customization Breakdown:
           </span>
           {validation.selectedBreakdown.map((item, idx) => (
@@ -263,7 +263,7 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
               {item.deltaMinor > 0 ? (
                 <span className="font-bold text-secondary">+{formatMoney(item.deltaMinor)}</span>
               ) : (
-                <span className="text-[10px] text-espresso-muted">Included</span>
+                <span className="text-[10px] text-espresso-muted font-medium">Included</span>
               )}
             </div>
           ))}
@@ -274,19 +274,21 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
       <button
         type="button"
         onClick={handleAddToCart}
-        className={`w-full py-4 px-8 rounded-full font-bold text-sm transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center gap-2 ${
+        className={`w-full py-4 px-8 rounded-full font-label-lg text-label-lg font-bold transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-98 ${
           isAdded
-            ? "bg-emerald-600 text-white"
-            : "bg-primary hover:bg-opacity-95 text-white active:scale-98"
+            ? "bg-secondary text-white"
+            : "bg-strawberry-blush hover:opacity-95 text-on-primary"
         }`}
       >
         {isAdded ? (
           <>✓ Custom Charm Added to Bag</>
         ) : (
-          <>🛍️ Add Custom Keepsake • {formatMoney(validation.calculatedUnitPriceMinor)}</>
+          <>
+            <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+            Add Custom Keepsake • {formatMoney(validation.calculatedUnitPriceMinor)}
+          </>
         )}
       </button>
     </div>
   );
 }
-

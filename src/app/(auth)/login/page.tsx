@@ -25,7 +25,7 @@ export default function LoginPage() {
       {resetSuccess && (
         <div
           role="status"
-          className="mb-4 p-3 bg-matcha-tint border border-secondary/20 text-secondary text-sm rounded-2xl"
+          className="mb-4 p-3.5 bg-matcha-tint border border-matcha-soft/30 text-matcha-soft text-xs font-semibold rounded-2xl"
         >
           ✓ Your password has been successfully reset. Please sign in with your new credentials.
         </div>
@@ -34,7 +34,7 @@ export default function LoginPage() {
       {authCodeError && (
         <div
           role="alert"
-          className="mb-4 p-3 bg-error-container text-error text-sm rounded-2xl"
+          className="mb-4 p-3.5 bg-error-container text-error text-xs font-semibold rounded-2xl border border-error/20"
         >
           The verification link may have expired or is invalid. Please try requesting a new link.
         </div>
@@ -43,7 +43,7 @@ export default function LoginPage() {
       {state?.message && !state.success && (
         <div
           role="alert"
-          className="mb-4 p-3 bg-error-container text-error text-sm rounded-2xl"
+          className="mb-4 p-3.5 bg-error-container text-error text-xs font-semibold rounded-2xl border border-error/20"
         >
           {state.message}
         </div>
@@ -55,7 +55,7 @@ export default function LoginPage() {
         <div>
           <label
             htmlFor="email"
-            className="block text-xs font-semibold uppercase tracking-wider text-espresso-muted mb-1"
+            className="block text-xs font-bold text-espresso-deep mb-1"
           >
             Email Address
           </label>
@@ -65,7 +65,7 @@ export default function LoginPage() {
             type="email"
             autoComplete="email"
             required
-            className="w-full px-4 py-2.5 rounded-2xl bg-surface-cloud border border-border-warm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm"
+            className="w-full px-4 py-2.5 rounded-2xl bg-canvas-butter border border-border-warm text-espresso-deep placeholder:text-espresso-muted/50 focus:outline-none focus:ring-2 focus:ring-strawberry-blush focus:border-transparent text-xs transition-all"
             placeholder="you@example.com"
           />
           {state?.fieldErrors?.email && (
@@ -79,13 +79,13 @@ export default function LoginPage() {
           <div className="flex justify-between items-center mb-1">
             <label
               htmlFor="password"
-              className="block text-xs font-semibold uppercase tracking-wider text-espresso-muted"
+              className="block text-xs font-bold text-espresso-deep"
             >
               Password
             </label>
             <Link
               href="/forgot-password"
-              className="text-xs font-semibold text-primary hover:underline"
+              className="text-xs font-bold text-strawberry-blush-dark hover:underline"
             >
               Forgot password?
             </Link>
@@ -96,7 +96,7 @@ export default function LoginPage() {
             type="password"
             autoComplete="current-password"
             required
-            className="w-full px-4 py-2.5 rounded-2xl bg-surface-cloud border border-border-warm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm"
+            className="w-full px-4 py-2.5 rounded-2xl bg-canvas-butter border border-border-warm text-espresso-deep placeholder:text-espresso-muted/50 focus:outline-none focus:ring-2 focus:ring-strawberry-blush focus:border-transparent text-xs transition-all"
             placeholder="••••••••"
           />
           {state?.fieldErrors?.password && (
@@ -109,7 +109,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full mt-2 py-3 px-4 rounded-full bg-primary text-white font-bold text-sm hover:bg-opacity-95 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full mt-2 py-3 px-5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isPending ? (
             <>
@@ -124,7 +124,7 @@ export default function LoginPage() {
 
       <div className="mt-6 text-center text-xs text-espresso-muted">
         Don&apos;t have an account yet?{" "}
-        <Link href="/register" className="font-bold text-primary hover:underline">
+        <Link href="/register" className="font-bold text-strawberry-blush-dark hover:underline">
           Create one now
         </Link>
       </div>

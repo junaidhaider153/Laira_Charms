@@ -10,7 +10,7 @@ export default function TermsPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Breadcrumbs items={[{ label: "Terms of Service" }]} />
 
-      <div className="bg-canvas-butter p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm mt-4">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm mt-4">
         <h1 className="font-headline text-3xl sm:text-4xl font-bold text-espresso-deep mb-4">
           Terms of Service
         </h1>

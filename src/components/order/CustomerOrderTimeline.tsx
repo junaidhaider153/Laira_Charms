@@ -82,26 +82,26 @@ export function CustomerOrderTimeline({
   }
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-surface-custard border border-border-warm shadow-xs space-y-6">
-      <div className="border-b border-border-warm pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+    <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-6">
+      <div className="border-b border-border-warm/50 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h2 className="font-headline font-bold text-xl text-espresso-deep">
+          <h2 className="font-headline font-bold text-xl sm:text-2xl text-espresso-deep">
             Artisanal Commission Progress
           </h2>
-          <p className="text-xs text-espresso-muted mt-0.5">
+          <p className="font-body-sm text-xs sm:text-sm text-espresso-muted mt-0.5">
             Follow your handcrafted keepsake through each studio milestone.
           </p>
         </div>
 
         {orderStatus === "on_hold" && (
-          <span className="px-3 py-1 rounded-full bg-error/15 text-error font-bold text-xs self-start sm:self-auto flex items-center gap-1.5">
+          <span className="px-3 py-1 rounded-full bg-error/15 text-error font-bold text-xs self-start sm:self-auto flex items-center gap-1.5 shadow-xs">
             <span>⚠️</span> On Hold (Action Needed)
           </span>
         )}
       </div>
 
       {/* Stepper Timeline */}
-      <ol className="relative border-l-2 border-border-warm ml-4 sm:ml-6 space-y-8" role="list">
+      <ol className="relative border-l-2 border-border-warm/60 ml-4 sm:ml-6 space-y-8" role="list">
         {STEPS.map((step, idx) => {
           const isCompleted = idx < activeIndex || (idx === activeIndex && orderStatus === "delivered");
           const isCurrent = idx === activeIndex && orderStatus !== "delivered";
@@ -114,11 +114,11 @@ export function CustomerOrderTimeline({
             >
               {/* Stepper Icon Indicator */}
               <span
-                className={`absolute -left-9 sm:-left-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 text-xs font-bold transition-all ${
+                className={`absolute -left-9 sm:-left-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 text-xs font-bold transition-all shadow-xs ${
                   isCompleted
                     ? "bg-secondary text-white border-secondary"
                     : isCurrent
-                    ? "bg-primary text-white border-primary ring-4 ring-primary/20 animate-pulse"
+                    ? "bg-strawberry-blush text-white border-strawberry-blush ring-4 ring-strawberry-blush/20 animate-pulse"
                     : "bg-surface-cloud text-espresso-muted border-border-warm"
                 }`}
               >
@@ -131,7 +131,7 @@ export function CustomerOrderTimeline({
                   <h3
                     className={`font-headline font-bold text-sm sm:text-base ${
                       isCurrent
-                        ? "text-primary"
+                        ? "text-strawberry-blush"
                         : isCompleted
                         ? "text-espresso-deep"
                         : "text-espresso-muted"
@@ -140,19 +140,19 @@ export function CustomerOrderTimeline({
                     {step.label}
                   </h3>
                   {isCurrent && (
-                    <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+                    <span className="px-2.5 py-0.5 rounded-full bg-strawberry-subtle text-primary text-[10px] font-bold uppercase tracking-wider shadow-xs">
                       Current Stage
                     </span>
                   )}
                 </div>
 
-                <p className="text-xs text-espresso-muted leading-relaxed">
+                <p className="font-body-sm text-xs text-espresso-muted leading-relaxed">
                   {step.description}
                 </p>
 
                 {/* Tracking info callout on Dispatched step */}
                 {step.id === "dispatched" && (isCompleted || isCurrent) && courierInfo && (
-                  <div className="mt-3 p-3 rounded-2xl bg-surface-cloud border border-border-warm/80 text-xs text-espresso-deep space-y-1.5 inline-block">
+                  <div className="mt-3 p-4 rounded-2xl bg-surface-custard border border-border-warm text-xs text-espresso-deep space-y-1.5 inline-block shadow-xs">
                     <div className="flex items-center gap-2">
                       <span className="text-base">📦</span>
                       <span className="font-bold">
@@ -169,7 +169,7 @@ export function CustomerOrderTimeline({
                         href={courierInfo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline mt-1"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-strawberry-blush hover:underline mt-1"
                       >
                         Track Package with Courier &rarr;
                       </a>
@@ -184,4 +184,3 @@ export function CustomerOrderTimeline({
     </div>
   );
 }
-

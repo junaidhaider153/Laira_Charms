@@ -16,176 +16,173 @@ export function SiteFooter() {
   }
 
   return (
-    <footer className="bg-surface-custard border-t border-border-warm mt-auto">
-      {/* Upper 4-Column Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand Mission & Identity */}
-          <div className="space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush text-xl font-bold shadow-sm group-hover:scale-105 transition-transform">
-                ✨
-              </div>
-              <div>
-                <span className="font-headline font-bold text-xl text-espresso-deep leading-tight block">
-                  Laira Charms
-                </span>
-                <span className="text-[10px] font-semibold text-espresso-muted tracking-wider uppercase block">
-                  Artisanal Keepsakes
-                </span>
-              </div>
-            </Link>
-            <p className="text-xs text-espresso-muted leading-relaxed">
-              Every charm is lovingly hand-sculpted in Pakistan from premium polymer clay, oven-cured, and sealed with a triple UV diamond glaze for drop-resistant durability.
-            </p>
-            <div className="flex items-center gap-2 text-xs font-semibold text-espresso-deep pt-1">
-              <span>🇵🇰</span> Handcrafted with pride in Pakistan
+    <footer className="w-full bg-surface-custard pt-16 pb-12 mt-auto border-t border-border-warm">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+        {/* Join the Charm Club Newsletter Vitrine */}
+        <div className="bg-surface-cloud rounded-3xl p-8 lg:p-12 mb-16 shadow-[0_8px_24px_-4px_rgba(60,42,33,0.07)] border border-border-warm/60 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-md text-center md:text-left">
+            <div className="inline-flex items-center gap-2 bg-strawberry-subtle text-primary rounded-full px-3.5 py-1 text-label-sm font-label-sm mb-3 font-bold">
+              <span>✨</span> Secret Drop Access
             </div>
-          </div>
-
-          {/* Quick Shop Links */}
-          <div className="space-y-3">
-            <h4 className="font-headline font-bold text-sm text-espresso-deep uppercase tracking-wider">
-              Atelier &amp; Collections
-            </h4>
-            <ul className="space-y-2 text-xs text-espresso-muted">
-              <li>
-                <Link href="/shop" className="hover:text-primary transition-colors">
-                  Ready-Made Charms
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop?category=personalized-charms" className="hover:text-primary transition-colors">
-                  Personalized Nameplates
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom-order" className="hover:text-primary transition-colors">
-                  Request Bespoke Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-primary transition-colors">
-                  Workshop Story &amp; Craft
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-primary transition-colors">
-                  Contact Our Studio
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Customer Care & Policies */}
-          <div className="space-y-3">
-            <h4 className="font-headline font-bold text-sm text-espresso-deep uppercase tracking-wider">
-              Customer Care
-            </h4>
-            <ul className="space-y-2 text-xs text-espresso-muted">
-              <li>
-                <Link href="/shipping" className="hover:text-primary transition-colors">
-                  Shipping &amp; Delivery Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/returns" className="hover:text-primary transition-colors">
-                  Returns &amp; Replacement Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-primary transition-colors">
-                  Charm Care &amp; FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-primary transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-primary transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter & Payment Safety */}
-          <div className="space-y-4">
-            <h4 className="font-headline font-bold text-sm text-espresso-deep uppercase tracking-wider">
-              Studio Updates
-            </h4>
-            <p className="text-xs text-espresso-muted leading-relaxed">
-              Subscribe for new batch drops, limited seasonal charms, and atelier previews.
+            <h3 className="font-headline text-2xl md:text-headline-sm text-espresso-deep mb-2 font-bold">
+              Join the Charm Club
+            </h3>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Receive monthly secret drops, bespoke clay recipe previews, and a sweet discount on your next handmade charm.
             </p>
+          </div>
 
+          <div className="w-full md:w-auto flex flex-col sm:flex-row gap-2 shrink-0">
             {newsletterSubmitted ? (
-              <div className="p-3 bg-matcha-tint border border-secondary/20 text-secondary text-xs rounded-2xl font-medium">
-                ✓ Thank you! You&apos;re subscribed to studio drops.
+              <div className="p-4 bg-matcha-tint border border-secondary/30 text-secondary text-sm rounded-full font-semibold px-6 shadow-xs flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">verified</span>
+                Thank you! You&apos;re subscribed to studio drops.
               </div>
             ) : (
-              <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2.5 w-full">
                 <input
                   type="email"
                   required
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="w-full px-3.5 py-2.5 rounded-full bg-surface-cloud border border-border-warm text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  placeholder="Your email address..."
                   aria-label="Email address for newsletter"
+                  className="bg-canvas-butter rounded-full px-5 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-espresso-muted outline-none min-w-[260px] border border-border-warm focus:ring-2 focus:ring-primary/20 transition-all"
                 />
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+                  className="bg-strawberry-blush text-on-primary rounded-full px-7 py-3 font-label-lg text-label-lg font-bold shadow-[0_4px_12px_-2px_rgba(60,42,33,0.05)] hover:opacity-95 transition-all active:scale-95 text-center"
                 >
                   Join Collector Club
                 </button>
               </form>
             )}
+          </div>
+        </div>
 
-            {/* Payment Verification Badges */}
-            <div className="pt-2">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-espresso-muted block mb-1.5">
-                Verified Payment Options
+        {/* 4-Column Boutique Information Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-border-warm/60">
+          {/* Brand Mission & Identity */}
+          <div className="space-y-4">
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <div className="w-9 h-9 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush shadow-xs group-hover:scale-105 transition-transform">
+                <span className="material-symbols-outlined text-[20px]" aria-hidden="true">pets</span>
+              </div>
+              <span className="font-headline font-bold text-xl text-espresso-deep leading-none group-hover:text-primary transition-colors">
+                Laira Charms
               </span>
-              <div className="flex flex-wrap gap-1.5 text-[11px] font-semibold text-espresso-deep">
-                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">
-                  Meezan Bank
-                </span>
-                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">
-                  Bank Transfer
-                </span>
-                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">
-                  EasyPaisa
-                </span>
-                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">
-                  JazzCash
-                </span>
+            </Link>
+            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Individually shaped, oven-baked, hand-painted, and triple UV diamond glazed clay keepsakes crafted with love in Pakistan.
+            </p>
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <span className="inline-flex items-center gap-1 bg-matcha-tint text-secondary rounded-full px-3 py-1 text-label-sm font-label-sm">
+                <span className="material-symbols-outlined text-[14px]">verified</span> Handcrafted 1-of-1
+              </span>
+              <span className="inline-flex items-center gap-1 bg-peach-tint text-tertiary rounded-full px-3 py-1 text-label-sm font-label-sm">
+                <span className="material-symbols-outlined text-[14px]">favorite</span> Resin Glazed
+              </span>
+            </div>
+          </div>
+
+          {/* Boutique Treasures */}
+          <div>
+            <h4 className="font-title-sm text-title-sm text-espresso-deep mb-4 font-bold">
+              Boutique Treasures
+            </h4>
+            <ul className="space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
+              <li>
+                <Link href="/shop" className="hover:text-espresso-deep transition-colors">
+                  Ready-Made Drops &amp; Critters
+                </Link>
+              </li>
+              <li>
+                <Link href="/custom-order" className="hover:text-espresso-deep transition-colors">
+                  Custom Atelier Commissions
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?category=personalized-charms" className="hover:text-espresso-deep transition-colors">
+                  Pastel Nameplate Charms
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-espresso-deep transition-colors">
+                  Workshop Story &amp; Care
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Atelier Care & Policy Links */}
+          <div>
+            <h4 className="font-title-sm text-title-sm text-espresso-deep mb-4 font-bold">
+              Atelier Care
+            </h4>
+            <ul className="space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
+              <li>
+                <Link href="/shipping" className="hover:text-espresso-deep transition-colors">
+                  Shipping &amp; Delivery Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/returns" className="hover:text-espresso-deep transition-colors">
+                  Returns &amp; Replacement Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-espresso-deep transition-colors">
+                  Charm Care &amp; FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-espresso-deep transition-colors">
+                  Contact Studio Maker
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Maker Promise Card */}
+          <div>
+            <h4 className="font-title-sm text-title-sm text-espresso-deep mb-4 font-bold">
+              Maker Promise
+            </h4>
+            <div className="bg-surface-container-low rounded-2xl p-4 space-y-2 border border-border-warm/50">
+              <div className="flex items-center gap-2 text-primary font-bold text-label-md font-label-md">
+                <span className="material-symbols-outlined text-[18px]">shield</span>
+                100% Artisan Sealed
+              </div>
+              <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Every charm receives triple UV-resin coating to protect its hand-painted details from drops, pocket rubs, and daily wear.
+              </p>
+              <div className="pt-2 flex flex-wrap gap-1.5 text-[10px] font-bold text-espresso-muted">
+                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">Meezan IBAN</span>
+                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">EasyPaisa</span>
+                <span className="px-2 py-0.5 rounded-md bg-surface-cloud border border-border-warm/60">JazzCash</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Legal / Copyright Bar */}
-      <div className="border-t border-border-warm/60 py-6 bg-canvas-butter/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-espresso-muted">
+        {/* Bottom Legal & Administrative Bar */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-espresso-muted">
           <p>
-            &copy; {new Date().getFullYear()} Laira Charms. All rights reserved. Sculpted &amp; baked in Pakistan.
+            &copy; {new Date().getFullYear()} Laira Charms Atelier. Handcrafted in Pakistan with warmth &amp; clay dust.
           </p>
-          <div className="flex items-center gap-4 text-[11px]">
-            <Link href="/privacy" className="hover:text-espresso-deep">Privacy</Link>
-            <span>•</span>
-            <Link href="/terms" className="hover:text-espresso-deep">Terms</Link>
-            <span>•</span>
-            <Link href="/contact" className="hover:text-espresso-deep">Support</Link>
-            <span>•</span>
-            <Link href="/admin" className="hover:text-espresso-deep text-espresso-muted">Admin Portal</Link>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="hover:text-espresso-deep transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-espresso-deep transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/admin/orders" className="hover:text-espresso-deep transition-colors text-espresso-deep font-semibold">
+              Admin Portal
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

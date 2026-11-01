@@ -104,7 +104,7 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search products by title, category, or slug..."
-          className="w-full sm:flex-1 px-4 py-2.5 rounded-2xl border border-border-warm bg-surface-cloud text-xs text-espresso-deep focus:ring-2 focus:ring-primary"
+          className="w-full sm:flex-1 px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs text-espresso-deep focus:outline-none focus:ring-2 focus:ring-strawberry-blush focus:border-transparent transition-all placeholder:text-espresso-muted/50"
         />
 
         <div className="flex items-center gap-1.5 w-full sm:w-auto">
@@ -112,10 +112,10 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold capitalize transition-colors border ${
+              className={`px-4 py-1.5 rounded-full text-xs font-bold capitalize transition-all border active:scale-95 ${
                 statusFilter === st
-                  ? "bg-espresso-deep text-white border-espresso-deep"
-                  : "bg-surface-cloud text-espresso-muted border-border-warm hover:text-espresso-deep"
+                  ? "bg-strawberry-blush text-on-primary border-strawberry-blush shadow-xs"
+                  : "bg-surface-cloud text-espresso-muted border-border-warm hover:text-espresso-deep hover:bg-surface-custard"
               }`}
             >
               {st}
@@ -125,9 +125,9 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
       </div>
 
       {/* Products Table */}
-      <div className="rounded-3xl bg-surface-custard border border-border-warm shadow-xs overflow-x-auto">
+      <div className="rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-sm overflow-x-auto">
         <table className="w-full text-left text-xs text-espresso-deep">
-          <thead className="bg-surface-cloud border-b border-border-warm text-espresso-muted uppercase font-bold text-[10px] tracking-wider">
+          <thead className="bg-surface-custard/60 border-b border-border-warm text-espresso-muted uppercase font-bold text-[10px] tracking-wider">
             <tr>
               <th className="py-3.5 px-4">Product</th>
               <th className="py-3.5 px-4">Category &amp; Type</th>
@@ -146,7 +146,7 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
               </tr>
             ) : (
               filteredProducts.map((prod) => (
-                <tr key={prod.id} className="hover:bg-surface-cloud/40 transition-colors">
+                <tr key={prod.id} className="hover:bg-canvas-butter/60 transition-colors">
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-3">
                       <div className="relative w-12 h-12 rounded-xl bg-surface-cloud overflow-hidden border border-border-warm/60 shrink-0">
@@ -222,7 +222,7 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
                     <Link
                       href={`/products/${prod.slug}`}
                       target="_blank"
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors"
+                      className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
                     >
                       <span>View</span>
                       <span className="text-[10px]">↗</span>

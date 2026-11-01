@@ -52,10 +52,10 @@ export default async function CustomRequestStatusPage({
         ]}
       />
 
-      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm space-y-8">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm space-y-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-warm pb-6">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-strawberry-blush-dark block">
               Commission Reference #{request.id.slice(0, 8).toUpperCase()}
             </span>
             <h1 className="font-headline text-2xl sm:text-3xl font-bold text-espresso-deep mt-1">
@@ -63,7 +63,7 @@ export default async function CustomRequestStatusPage({
             </h1>
           </div>
 
-          <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-matcha-tint text-secondary border border-secondary/20">
+          <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-matcha-tint text-matcha-soft border border-matcha-soft/20">
             {request.status.replace("_", " ")}
           </span>
         </div>
@@ -77,9 +77,9 @@ export default async function CustomRequestStatusPage({
             return (
               <div
                 key={step.key}
-                className={`p-4 rounded-2xl border transition-all ${
+                className={`p-4 rounded-3xl border transition-all shadow-xs ${
                   isCurrent
-                    ? "bg-primary/5 border-primary ring-2 ring-primary/20"
+                    ? "bg-strawberry-subtle/40 border-strawberry-blush ring-2 ring-strawberry-blush/20"
                     : isCompleted
                     ? "bg-surface-custard border-border-warm"
                     : "bg-surface-cloud/40 border-border-warm/60 opacity-60"
@@ -88,7 +88,7 @@ export default async function CustomRequestStatusPage({
                 <div className="flex items-center gap-2 mb-1.5">
                   <span
                     className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      isCompleted ? "bg-primary text-white" : "bg-border-warm text-espresso-muted"
+                      isCompleted ? "bg-strawberry-blush text-on-primary" : "bg-border-warm text-espresso-muted"
                     }`}
                   >
                     {isCompleted ? "✓" : idx + 1}
@@ -105,7 +105,7 @@ export default async function CustomRequestStatusPage({
 
         {/* If Quote is Issued, Show Direct Action Card */}
         {activeQuote && request.status === "quote_issued" && (
-          <div className="p-6 rounded-2xl bg-strawberry-subtle border border-primary/20 text-center space-y-3">
+          <div className="p-6 rounded-3xl bg-peach-tint border border-strawberry-blush/20 text-center space-y-3 shadow-xs">
             <span className="text-2xl block">🎉</span>
             <h3 className="font-headline font-bold text-lg text-espresso-deep">
               A Formal Quotation is Ready for Your Approval!
@@ -116,7 +116,7 @@ export default async function CustomRequestStatusPage({
             <div>
               <Link
                 href={`/custom-order/quotes/${activeQuote.id}${token ? `?token=${encodeURIComponent(token)}` : ""}`}
-                className="inline-block py-3 px-8 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-xs shadow-sm transition-all"
+                className="inline-block py-3 px-8 rounded-full bg-strawberry-blush hover:opacity-95 text-on-primary font-bold text-xs shadow-xs transition-all active:scale-95"
               >
                 Review &amp; Accept Quotation →
               </Link>
@@ -125,7 +125,7 @@ export default async function CustomRequestStatusPage({
         )}
 
         {/* Brief Reference */}
-        <div className="space-y-2 text-xs border-t border-border-warm pt-6">
+        <div className="space-y-2 text-xs border-t border-border-warm/60 pt-6">
           <span className="font-headline font-bold text-espresso-deep block uppercase tracking-wider">
             Commission Specifications
           </span>

@@ -153,7 +153,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
 
         <button
           onClick={openCreateForm}
-          className="px-4 py-2 rounded-2xl bg-primary text-white font-bold text-xs hover:bg-opacity-95 shadow-xs transition-all"
+          className="px-5 py-2.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 shadow-xs transition-all active:scale-95"
         >
           + Add New Address
         </button>
@@ -175,7 +175,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
       {isFormOpen && (
         <form
           onSubmit={handleSubmit}
-          className="p-6 rounded-3xl bg-surface-custard border-2 border-primary/30 shadow-xs space-y-4"
+          className="p-6 rounded-3xl bg-surface-cloud border-2 border-strawberry-blush/30 shadow-md space-y-4"
         >
           <div className="flex items-center justify-between border-b border-border-warm pb-3">
             <h3 className="font-headline font-bold text-base text-espresso-deep">
@@ -193,7 +193,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="recipientName" className="block text-xs font-bold text-espresso-deep mb-1">
-                Recipient Full Name <span className="text-primary">*</span>
+                Recipient Full Name <span className="text-strawberry-blush-dark">*</span>
               </label>
               <input
                 id="recipientName"
@@ -202,13 +202,13 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
                 value={recipientName}
                 onChange={(e) => setRecipientName(e.target.value)}
                 placeholder="e.g. Ayesha Noor"
-                className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
               />
             </div>
 
             <div>
               <label htmlFor="phone" className="block text-xs font-bold text-espresso-deep mb-1">
-                Mobile Number (03xx) <span className="text-primary">*</span>
+                Mobile Number (03xx) <span className="text-strawberry-blush-dark">*</span>
               </label>
               <input
                 id="phone"
@@ -217,14 +217,14 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="03001234567"
-                className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs font-mono focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs font-mono focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
             <label htmlFor="addressLine1" className="block text-xs font-bold text-espresso-deep mb-1">
-              Street Address &amp; House/Apartment # <span className="text-primary">*</span>
+              Street Address &amp; House/Apartment # <span className="text-strawberry-blush-dark">*</span>
             </label>
             <input
               id="addressLine1"
@@ -233,14 +233,14 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
               value={addressLine1}
               onChange={(e) => setAddressLine1(e.target.value)}
               placeholder="e.g. House 14-B, Street 3, Sector F-7/1"
-              className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label htmlFor="city" className="block text-xs font-bold text-espresso-deep mb-1">
-                City <span className="text-primary">*</span>
+                City <span className="text-strawberry-blush-dark">*</span>
               </label>
               <input
                 id="city"
@@ -249,19 +249,19 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="e.g. Islamabad"
-                className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
               />
             </div>
 
             <div>
               <label htmlFor="province" className="block text-xs font-bold text-espresso-deep mb-1">
-                Province / Territory <span className="text-primary">*</span>
+                Province / Territory <span className="text-strawberry-blush-dark">*</span>
               </label>
               <select
                 id="province"
                 value={province}
                 onChange={(e) => setProvince(e.target.value as PakistaniProvince)}
-                className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
               >
                 {PAKISTANI_PROVINCES.map((p) => (
                   <option key={p} value={p}>
@@ -282,7 +282,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
                 value={postalCode}
                 onChange={(e) => setPostalCode(e.target.value)}
                 placeholder="44000"
-                className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs font-mono focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs font-mono focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
               />
             </div>
           </div>
@@ -297,7 +297,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
               value={deliveryNotes}
               onChange={(e) => setDeliveryNotes(e.target.value)}
               placeholder="e.g. Near commercial market, ring gate bell twice"
-              className="w-full px-3.5 py-2 rounded-xl border border-border-warm bg-surface-cloud text-xs focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-xs focus:ring-2 focus:ring-strawberry-blush focus:border-transparent outline-none transition-all"
             />
           </div>
 
@@ -306,7 +306,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
               type="checkbox"
               checked={isDefault}
               onChange={(e) => setIsDefault(e.target.checked)}
-              className="rounded text-primary focus:ring-primary"
+              className="rounded text-strawberry-blush focus:ring-strawberry-blush"
             />
             <span>Set as default shipping destination</span>
           </label>
@@ -315,14 +315,14 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
             <button
               type="button"
               onClick={() => setIsFormOpen(false)}
-              className="px-4 py-2 rounded-xl border border-border-warm text-xs font-semibold text-espresso-muted hover:text-espresso-deep"
+              className="px-5 py-2.5 rounded-full border border-border-warm text-xs font-semibold text-espresso-muted hover:text-espresso-deep hover:bg-canvas-butter transition-all"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:bg-opacity-95 disabled:opacity-50"
+              className="px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary text-xs font-bold shadow-xs hover:opacity-95 disabled:opacity-50 transition-all active:scale-95"
             >
               {isSubmitting ? "Saving..." : editingAddress ? "Update Address" : "Save Address"}
             </button>
@@ -342,20 +342,20 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
           addresses.map((addr) => (
             <div
               key={addr.id}
-              className={`p-5 rounded-3xl bg-surface-custard border transition-all space-y-3 relative ${
+              className={`p-6 rounded-3xl bg-surface-cloud border transition-all space-y-3 relative shadow-xs ${
                 addr.isDefault
-                  ? "border-primary shadow-xs ring-1 ring-primary/20"
-                  : "border-border-warm"
+                  ? "border-strawberry-blush shadow-sm ring-1 ring-strawberry-blush/20"
+                  : "border-border-warm/60 hover:border-border-warm"
               }`}
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-sm text-espresso-deep">
+                    <span className="font-bold text-sm text-espresso-deep font-headline">
                       {addr.recipientName}
                     </span>
                     {addr.isDefault && (
-                      <span className="px-2 py-0.5 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-wider">
+                      <span className="px-2.5 py-0.5 rounded-full bg-strawberry-blush text-on-primary text-[10px] font-bold uppercase tracking-wider">
                         Default
                       </span>
                     )}
@@ -366,14 +366,14 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => openEditForm(addr)}
-                    className="p-1.5 rounded-lg text-xs text-espresso-muted hover:text-espresso-deep hover:bg-surface-cloud"
+                    className="p-2 rounded-xl text-xs text-espresso-muted hover:text-espresso-deep hover:bg-surface-custard transition-colors"
                     title="Edit Address"
                   >
                     ✏️
                   </button>
                   <button
                     onClick={() => handleDelete(addr.id)}
-                    className="p-1.5 rounded-lg text-xs text-error hover:bg-error/10"
+                    className="p-2 rounded-xl text-xs text-error hover:bg-error/10 transition-colors"
                     title="Delete Address"
                   >
                     🗑️
@@ -398,7 +398,7 @@ export function AddressBook({ initialAddresses }: AddressBookProps) {
                 <div className="pt-2 border-t border-border-warm/50">
                   <button
                     onClick={() => handleSetDefault(addr.id)}
-                    className="text-xs font-bold text-primary hover:underline"
+                    className="text-xs font-bold text-strawberry-blush-dark hover:underline"
                   >
                     Set as Default Address
                   </button>

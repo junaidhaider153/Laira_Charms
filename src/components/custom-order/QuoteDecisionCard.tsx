@@ -56,11 +56,11 @@ export function QuoteDecisionCard({
   }
 
   return (
-    <div className="bg-surface-cloud p-6 sm:p-10 rounded-3xl border border-border-warm shadow-sm space-y-6 max-w-3xl mx-auto" data-testid="quote-decision-card">
+    <div className="bg-surface-cloud p-6 sm:p-10 rounded-3xl border border-border-warm/50 shadow-sm space-y-6 max-w-3xl mx-auto" data-testid="quote-decision-card">
       {/* Header & Status Indicator */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-warm pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-warm/50 pb-5">
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
+          <span className="font-label-sm text-[10px] font-bold uppercase tracking-widest text-primary block">
             Official Studio Quotation • Version {currentQuote.version}
           </span>
           <h2 className="font-headline text-xl sm:text-2xl font-bold text-espresso-deep mt-0.5">
@@ -70,19 +70,19 @@ export function QuoteDecisionCard({
 
         {/* Status Badge */}
         {isAccepted ? (
-          <span className="px-3 py-1 rounded-full text-xs font-bold bg-matcha-tint text-secondary flex items-center gap-1.5">
+          <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-matcha-tint text-secondary flex items-center gap-1.5 shadow-xs">
             ✓ Quote Accepted
           </span>
         ) : isDeclined ? (
-          <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-error">
+          <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-red-100 text-error shadow-xs">
             ✕ Quote Declined
           </span>
         ) : isExpired ? (
-          <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-50 text-error border border-error/30" role="status">
+          <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-red-50 text-error border border-error/30 shadow-xs" role="status">
             ⚠️ Quote Expired
           </span>
         ) : (
-          <span className="px-3 py-1 rounded-full text-xs font-bold bg-strawberry-subtle text-primary border border-primary/20">
+          <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-strawberry-subtle text-primary border border-primary/20 shadow-xs">
             ⏳ Pending Decision
           </span>
         )}
@@ -100,66 +100,63 @@ export function QuoteDecisionCard({
         </div>
       )}
 
-      {/* Pricing and Lead Time Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm space-y-1">
-          <span className="text-xs text-espresso-muted font-medium">All-Inclusive Quotation Total:</span>
-          <div className="font-headline text-3xl font-bold text-primary">
-            {formatMoney(currentQuote.amountMinor)}
-          </div>
-          <span className="text-[11px] text-espresso-muted">PKR (includes custom sculpting &amp; gift box)</span>
-        </div>
-
-        <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm space-y-2 text-xs">
-          <div>
-            <span className="text-espresso-muted block">Studio Production Craft Time:</span>
-            <strong className="text-espresso-deep">{currentQuote.productionDays} Studio Business Days</strong>
-          </div>
-          <div>
-            <span className="text-espresso-muted block">Quotation Validity Window:</span>
-            <strong className={isExpired ? "text-error" : "text-espresso-deep"}>
-              Valid until {expiryFormatted}
-            </strong>
-          </div>
-        </div>
-      </div>
-
       {/* Scope of Work */}
-      <div className="p-5 rounded-2xl bg-surface-custard/50 border border-border-warm space-y-2">
-        <h4 className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep">
-          Studio Scope of Craftsmanship
-        </h4>
-        <p className="text-xs text-espresso-deep/90 leading-relaxed whitespace-pre-line">
+      <div className="space-y-2">
+        <h3 className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-muted">
+          Artisanal Scope &amp; Specifications
+        </h3>
+        <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm text-sm text-espresso-deep whitespace-pre-line leading-relaxed shadow-xs">
           {currentQuote.scope}
-        </p>
+        </div>
       </div>
 
-      {/* Original Brief Reference */}
-      <div className="text-xs text-espresso-muted space-y-1 border-t border-border-warm pt-4">
-        <span className="font-bold text-espresso-deep block">Original Commission Brief:</span>
-        <p className="italic bg-surface-custard px-3 py-2 rounded-xl border border-border-warm/60">
-          &ldquo;{request.brief}&rdquo;
-        </p>
+      {/* Price & Timing Metrics */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="p-5 rounded-2xl bg-canvas-butter border border-border-warm/60 shadow-xs">
+          <span className="font-label-sm text-[11px] text-espresso-muted block font-medium">Approved Amount</span>
+          <span className="font-headline text-2xl font-bold text-strawberry-blush block mt-0.5">
+            {formatMoney(currentQuote.amountMinor)}
+          </span>
+          <span className="text-[10px] text-espresso-muted">PKR (Includes gift packaging)</span>
+        </div>
+
+        <div className="p-5 rounded-2xl bg-canvas-butter border border-border-warm/60 shadow-xs">
+          <span className="font-label-sm text-[11px] text-espresso-muted block font-medium">Production Window</span>
+          <span className="font-headline text-2xl font-bold text-espresso-deep block mt-0.5">
+            {currentQuote.productionDays} Studio Business Days
+          </span>
+          <span className="text-[10px] text-espresso-muted">Baking, painting &amp; UV cure</span>
+        </div>
+
+        <div className="p-5 rounded-2xl bg-canvas-butter border border-border-warm/60 shadow-xs">
+          <span className="font-label-sm text-[11px] text-espresso-muted block font-medium">Offer Valid Until</span>
+          <span className="font-headline text-lg sm:text-xl font-bold text-espresso-deep block mt-1">
+            {expiryFormatted}
+          </span>
+          <span className="text-[10px] text-espresso-muted">
+            {isExpired ? "Slot expired" : "Locked commission rate"}
+          </span>
+        </div>
       </div>
 
       {/* Action Decision Buttons */}
       <div className="pt-2">
         {isAccepted ? (
-          <div className="p-4 rounded-2xl bg-matcha-tint text-secondary text-xs font-semibold text-center space-y-2">
-            <p>Your bespoke commission is officially locked in! Our studio has begun preparing clay batches.</p>
+          <div className="p-5 rounded-3xl bg-matcha-tint text-secondary text-xs font-semibold text-center space-y-3 shadow-xs">
+            <p>🎉 Your bespoke commission is officially locked in! Our studio has begun preparing clay batches.</p>
             <Link
               href="/shop"
-              className="inline-block font-bold underline hover:opacity-80"
+              className="inline-flex items-center gap-1 font-bold underline hover:opacity-80"
             >
-              Continue Exploring Shop →
+              Continue Exploring Shop &rarr;
             </Link>
           </div>
         ) : isDeclined ? (
-          <div className="p-4 rounded-2xl bg-surface-custard text-espresso-muted text-xs text-center">
+          <div className="p-5 rounded-3xl bg-surface-custard text-espresso-muted text-xs text-center border border-border-warm">
             This quotation has been declined. If your concept requirements change, feel free to submit a new inquiry anytime!
           </div>
         ) : isExpired ? (
-          <div className="p-4 rounded-2xl bg-red-50 border border-error/20 text-center space-y-3">
+          <div className="p-5 rounded-3xl bg-red-50 border border-error/20 text-center space-y-3">
             <p className="text-xs font-semibold text-error">
               ⚠️ This quotation expired on {expiryFormatted}. For handmade commissions, quotes lock for 7 days to preserve material batch pricing.
             </p>
@@ -178,7 +175,7 @@ export function QuoteDecisionCard({
               type="button"
               disabled={isProcessing}
               onClick={() => handleDecision("accept")}
-              className="w-full sm:flex-1 py-4 px-8 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-xs transition-all shadow-md active:scale-98 disabled:opacity-50"
+              className="w-full sm:flex-1 py-4 px-8 rounded-full bg-strawberry-blush hover:opacity-95 text-on-primary font-bold text-xs transition-all shadow-md active:scale-98 disabled:opacity-50 transform hover:-translate-y-0.5"
             >
               {isProcessing ? "Confirming..." : "✓ Accept Quotation & Lock Commission"}
             </button>
@@ -187,7 +184,7 @@ export function QuoteDecisionCard({
               type="button"
               disabled={isProcessing}
               onClick={() => handleDecision("decline")}
-              className="w-full sm:w-auto py-4 px-6 rounded-full bg-surface-custard hover:bg-red-50 text-error font-bold text-xs border border-border-warm transition-all disabled:opacity-50"
+              className="w-full sm:w-auto py-4 px-6 rounded-full bg-surface-custard hover:bg-red-50 text-error font-bold text-xs border border-border-warm transition-all disabled:opacity-50 shadow-xs"
             >
               Decline Quote
             </button>
@@ -197,4 +194,3 @@ export function QuoteDecisionCard({
     </div>
   );
 }
-

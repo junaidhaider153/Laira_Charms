@@ -41,19 +41,19 @@ export function CheckoutForm() {
 
   if (items.length === 0) {
     return (
-      <div className="max-w-3xl mx-auto px-4 py-16 text-center">
-        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-peach-tint/60 flex items-center justify-center text-2xl">
+      <div className="max-w-3xl mx-auto px-4 py-20 text-center">
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-strawberry-subtle flex items-center justify-center text-3xl shadow-xs">
           🛍️
         </div>
-        <h1 className="font-headline font-bold text-2xl text-espresso-deep mb-2">
+        <h1 className="font-headline font-bold text-2xl sm:text-3xl text-espresso-deep mb-2">
           Your Shopping Bag is Empty
         </h1>
-        <p className="text-espresso-muted text-sm max-w-sm mx-auto mb-6">
+        <p className="font-body-sm text-espresso-muted text-sm max-w-sm mx-auto mb-6">
           Please add at least one handcrafted keepsake to your bag before checking out.
         </p>
         <Link
           href="/shop"
-          className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 shadow-sm transition-all"
+          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 shadow-md transition-all active:scale-95"
         >
           Browse Keepsake Catalog &rarr;
         </Link>
@@ -138,7 +138,7 @@ export function CheckoutForm() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       <div className="mb-8">
         <Link
           href="/cart"
@@ -146,10 +146,10 @@ export function CheckoutForm() {
         >
           &larr; Back to Shopping Bag
         </Link>
-        <h1 className="font-headline font-bold text-3xl text-espresso-deep">
+        <h1 className="font-headline font-bold text-3xl sm:text-4xl text-espresso-deep">
           Checkout
         </h1>
-        <p className="text-xs sm:text-sm text-espresso-muted mt-1">
+        <p className="font-body-sm text-xs sm:text-sm text-espresso-muted mt-1">
           Complete your delivery details across Pakistan. Direct manual bank transfer instructions follow.
         </p>
       </div>
@@ -165,9 +165,9 @@ export function CheckoutForm() {
         {/* Left Column: Shipping & Customer Details */}
         <div className="lg:col-span-7 space-y-6">
           {/* Contact Information */}
-          <div className="p-6 rounded-2xl bg-surface-custard border border-border-warm shadow-xs space-y-4">
-            <h2 className="font-headline font-bold text-lg text-espresso-deep flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-peach-tint text-primary text-xs flex items-center justify-center font-bold">
+          <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-5">
+            <h2 className="font-headline font-bold text-xl text-espresso-deep flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-xs flex items-center justify-center font-bold">
                 1
               </span>
               Contact Information
@@ -179,7 +179,7 @@ export function CheckoutForm() {
                   htmlFor="fullName"
                   className="block text-xs font-bold text-espresso-deep mb-1.5"
                 >
-                  Full Name <span className="text-primary">*</span>
+                  Full Name <span className="text-strawberry-blush">*</span>
                 </label>
                 <input
                   type="text"
@@ -189,9 +189,9 @@ export function CheckoutForm() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Ayesha Noor"
-                  className={`w-full px-4 py-2.5 rounded-xl border ${
+                  className={`w-full px-4 py-3 rounded-2xl border ${
                     errors.fullName ? "border-error ring-1 ring-error" : "border-border-warm"
-                  } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+                  } bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs transition-all`}
                 />
                 {errors.fullName && (
                   <p className="text-[11px] text-error mt-1">{errors.fullName}</p>
@@ -203,7 +203,7 @@ export function CheckoutForm() {
                   htmlFor="email"
                   className="block text-xs font-bold text-espresso-deep mb-1.5"
                 >
-                  Email Address <span className="text-primary">*</span>
+                  Email Address <span className="text-strawberry-blush">*</span>
                 </label>
                 <input
                   type="email"
@@ -213,9 +213,9 @@ export function CheckoutForm() {
                   onChange={handleChange}
                   required
                   placeholder="ayesha@example.com"
-                  className={`w-full px-4 py-2.5 rounded-xl border ${
+                  className={`w-full px-4 py-3 rounded-2xl border ${
                     errors.email ? "border-error ring-1 ring-error" : "border-border-warm"
-                  } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+                  } bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs transition-all`}
                 />
                 {errors.email && (
                   <p className="text-[11px] text-error mt-1">{errors.email}</p>
@@ -228,7 +228,7 @@ export function CheckoutForm() {
                 htmlFor="phone"
                 className="block text-xs font-bold text-espresso-deep mb-1.5"
               >
-                Pakistani Mobile Number <span className="text-primary">*</span>
+                Pakistani Mobile Number <span className="text-strawberry-blush">*</span>
               </label>
               <input
                 type="tel"
@@ -238,11 +238,11 @@ export function CheckoutForm() {
                 onChange={handleChange}
                 required
                 placeholder="03001234567"
-                className={`w-full px-4 py-2.5 rounded-xl border ${
+                className={`w-full px-4 py-3 rounded-2xl border ${
                   errors.phone ? "border-error ring-1 ring-error" : "border-border-warm"
-                } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+                } bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs transition-all`}
               />
-              <p className="text-[11px] text-espresso-muted mt-1">
+              <p className="font-label-sm text-[11px] text-espresso-muted mt-1">
                 Used by courier rider for delivery coordination (e.g. 03001234567).
               </p>
               {errors.phone && (
@@ -252,9 +252,9 @@ export function CheckoutForm() {
           </div>
 
           {/* Delivery Address */}
-          <div className="p-6 rounded-2xl bg-surface-custard border border-border-warm shadow-xs space-y-4">
-            <h2 className="font-headline font-bold text-lg text-espresso-deep flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-peach-tint text-primary text-xs flex items-center justify-center font-bold">
+          <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-5">
+            <h2 className="font-headline font-bold text-xl text-espresso-deep flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-xs flex items-center justify-center font-bold">
                 2
               </span>
               Delivery Address (Pakistan)
@@ -265,7 +265,7 @@ export function CheckoutForm() {
                 htmlFor="streetAddress"
                 className="block text-xs font-bold text-espresso-deep mb-1.5"
               >
-                Street Address / House / Flat <span className="text-primary">*</span>
+                Street Address / House / Flat <span className="text-strawberry-blush">*</span>
               </label>
               <input
                 type="text"
@@ -275,9 +275,9 @@ export function CheckoutForm() {
                 onChange={handleChange}
                 required
                 placeholder="House 14-B, Street 3, Sector F-7/1"
-                className={`w-full px-4 py-2.5 rounded-xl border ${
+                className={`w-full px-4 py-3 rounded-2xl border ${
                   errors.streetAddress ? "border-error ring-1 ring-error" : "border-border-warm"
-                } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+                } bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs transition-all`}
               />
               {errors.streetAddress && (
                 <p className="text-[11px] text-error mt-1">{errors.streetAddress}</p>
@@ -290,7 +290,7 @@ export function CheckoutForm() {
                   htmlFor="city"
                   className="block text-xs font-bold text-espresso-deep mb-1.5"
                 >
-                  City <span className="text-primary">*</span>
+                  City <span className="text-strawberry-blush">*</span>
                 </label>
                 <input
                   type="text"
@@ -300,9 +300,9 @@ export function CheckoutForm() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Islamabad"
-                  className={`w-full px-4 py-2.5 rounded-xl border ${
+                  className={`w-full px-4 py-3 rounded-2xl border ${
                     errors.city ? "border-error ring-1 ring-error" : "border-border-warm"
-                  } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+                  } bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs transition-all`}
                 />
                 {errors.city && (
                   <p className="text-[11px] text-error mt-1">{errors.city}</p>
@@ -314,14 +314,14 @@ export function CheckoutForm() {
                   htmlFor="province"
                   className="block text-xs font-bold text-espresso-deep mb-1.5"
                 >
-                  Province / Region <span className="text-primary">*</span>
+                  Province / Region <span className="text-strawberry-blush">*</span>
                 </label>
                 <select
                   id="province"
                   name="province"
                   value={form.province}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
                 >
                   {PAKISTANI_PROVINCES.map((prov) => (
                     <option key={prov} value={prov}>
@@ -339,7 +339,7 @@ export function CheckoutForm() {
                   htmlFor="postalCode"
                   className="block text-xs font-bold text-espresso-deep mb-1.5"
                 >
-                  Postal Code <span className="text-primary">*</span>
+                  Postal Code <span className="text-strawberry-blush">*</span>
                 </label>
                 <input
                   type="text"
@@ -350,9 +350,9 @@ export function CheckoutForm() {
                   required
                   maxLength={5}
                   placeholder="44000"
-                  className={`w-full px-4 py-2.5 rounded-xl border ${
+                  className={`w-full px-4 py-3 rounded-2xl border ${
                     errors.postalCode ? "border-error ring-1 ring-error" : "border-border-warm"
-                  } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+                  } bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs transition-all`}
                 />
                 {errors.postalCode && (
                   <p className="text-[11px] text-error mt-1">{errors.postalCode}</p>
@@ -374,25 +374,25 @@ export function CheckoutForm() {
                 value={form.orderNotes}
                 onChange={handleChange}
                 placeholder="e.g. Please ring bell twice or leave with security."
-                className="w-full px-4 py-2.5 rounded-xl border border-border-warm bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
               />
             </div>
           </div>
 
-          {/* Payment Method Instructions Callout */}
-          <div className="p-6 rounded-2xl bg-surface-custard border border-border-warm shadow-xs space-y-3">
-            <h2 className="font-headline font-bold text-lg text-espresso-deep flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-peach-tint text-primary text-xs flex items-center justify-center font-bold">
+          {/* Payment Method Callout */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-3">
+            <h2 className="font-headline font-bold text-xl text-espresso-deep flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-xs flex items-center justify-center font-bold">
                 3
               </span>
               Payment Method: Manual Transfer (Pakistan)
             </h2>
 
-            <div className="p-4 rounded-xl bg-surface-cloud border border-border-warm text-xs text-espresso-deep space-y-2">
-              <div className="flex items-center gap-2 font-bold text-espresso-deep">
+            <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm/60 text-xs text-espresso-deep space-y-2">
+              <div className="flex items-center gap-2 font-bold text-espresso-deep text-sm">
                 <span>🏦</span> Meezan Bank &bull; EasyPaisa &bull; JazzCash
               </div>
-              <p className="text-[11px] text-espresso-muted leading-relaxed">
+              <p className="text-xs text-espresso-muted leading-relaxed">
                 To guarantee secure handmade commissions, we process payments via verified direct manual transfers. After clicking <span className="font-bold text-espresso-deep">&quot;Place Order&quot;</span>, our studio bank IBAN and wallet accounts will be presented on screen to upload your transfer screenshot proof.
               </p>
             </div>
@@ -400,7 +400,7 @@ export function CheckoutForm() {
         </div>
 
         {/* Right Column: Order Summary & Place Order CTA */}
-        <div className="lg:col-span-5 p-6 rounded-2xl bg-surface-custard border border-border-warm shadow-xs space-y-5 sticky top-24">
+        <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-surface-custard border border-border-warm/60 shadow-sm space-y-5 sticky top-28">
           <h2 className="font-headline font-bold text-xl text-espresso-deep border-b border-border-warm pb-3">
             Order Review ({itemCount})
           </h2>
@@ -409,7 +409,7 @@ export function CheckoutForm() {
           <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
             {items.map((item) => (
               <div key={item.id} className="flex items-center gap-3 py-2 border-b border-border-warm/40 text-xs">
-                <div className="relative w-12 h-12 rounded-lg bg-surface-cloud overflow-hidden shrink-0 border border-border-warm/50">
+                <div className="relative w-12 h-12 rounded-xl bg-surface-cloud overflow-hidden shrink-0 border border-border-warm/50 shadow-xs">
                   {item.imageUrl ? (
                     <Image
                       src={item.imageUrl}
@@ -428,7 +428,7 @@ export function CheckoutForm() {
                   <p className="font-bold text-espresso-deep truncate">{item.title}</p>
                   <p className="text-[11px] text-espresso-muted">Qty: {item.quantity}</p>
                   {item.customText && (
-                    <p className="text-[10px] text-primary font-mono truncate">
+                    <p className="text-[10px] text-strawberry-blush font-mono truncate">
                       Stamped: &quot;{item.customText}&quot;
                     </p>
                   )}
@@ -457,7 +457,7 @@ export function CheckoutForm() {
             <div className="border-t border-border-warm pt-3 flex justify-between items-baseline text-sm">
               <span className="font-headline font-bold text-espresso-deep">Total Due</span>
               <div className="text-right">
-                <span className="font-headline font-bold text-2xl text-espresso-deep">
+                <span className="font-headline font-bold text-2xl text-strawberry-blush">
                   {formatMoney(totalMinor)}
                 </span>
                 <span className="block text-[10px] text-espresso-muted">PKR (Includes Delivery)</span>
@@ -468,7 +468,7 @@ export function CheckoutForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 px-6 rounded-full bg-primary text-white font-bold text-sm text-center block hover:bg-opacity-95 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="w-full py-4 px-6 rounded-full bg-strawberry-blush text-on-primary font-bold text-sm text-center block hover:opacity-95 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:scale-98"
           >
             {isSubmitting ? (
               <span className="inline-flex items-center gap-2">
@@ -479,11 +479,11 @@ export function CheckoutForm() {
                 Confirming Order...
               </span>
             ) : (
-              `Place Order &bull; ${formatMoney(totalMinor)}`
+              `Place Order • ${formatMoney(totalMinor)}`
             )}
           </button>
 
-          <p className="text-[11px] text-center text-espresso-muted leading-tight">
+          <p className="font-label-sm text-[11px] text-center text-espresso-muted leading-tight">
             By placing your order, you confirm acceptance of our handmade lead time and direct payment policy.
           </p>
         </div>

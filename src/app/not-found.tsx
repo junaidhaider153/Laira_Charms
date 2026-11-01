@@ -15,13 +15,13 @@ export default function NotFound() {
       <div className="flex flex-wrap gap-4 justify-center">
         <Link
           href="/"
-          className="px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-opacity-95 transition-all shadow-sm"
+          className="px-6 py-3 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
         >
           Explore Collection
         </Link>
         <Link
           href="/custom-order"
-          className="px-6 py-3 rounded-full bg-surface-custard text-espresso-deep font-semibold hover:bg-surface-container transition-all"
+          className="px-6 py-3 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
         >
           Request Custom Charm
         </Link>

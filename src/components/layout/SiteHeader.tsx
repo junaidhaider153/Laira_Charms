@@ -7,7 +7,8 @@ import { useCart } from "@/context/cart-context";
 
 const ANNOUNCEMENTS = [
   "🧸 Every charm baked with gentle love & sealed with triple UV diamond glaze",
-  "🌸 Free delivery across Pakistan on orders above Rs. 3,000",
+  "✨ Small batch handmade drops • Limited studio oven batches",
+  "🚚 Free delivery across Pakistan on orders over Rs. 3,000 🍓",
   "🎨 Custom Atelier open: bespoke character charms sculpted to order",
   "📦 Dispatched via reliable couriers nationwide with careful gift packaging",
 ];
@@ -53,32 +54,34 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full">
-      {/* Announcement Ticker */}
-      <div className="bg-surface-custard border-b border-border-warm text-on-surface py-2 px-4 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex items-center justify-center min-h-[20px] text-center">
-          <p
-            key={announcementIndex}
-            className="text-xs font-semibold tracking-wide text-espresso-deep transition-opacity duration-500 animate-fadeIn"
-          >
-            {ANNOUNCEMENTS[announcementIndex]}
-          </p>
+    <header className="fixed top-0 left-0 right-0 z-50 shadow-[0_2px_14px_rgba(60,42,33,0.05)]">
+      {/* Dynamic Rotating Tagline Announcement Bar */}
+      <div className="bg-surface-custard border-b border-border-warm text-on-surface py-2 px-4 overflow-hidden relative">
+        <div className="max-w-[1240px] mx-auto flex items-center justify-center min-h-[22px]">
+          <div className="relative w-full text-center flex items-center justify-center font-label-sm text-label-sm tracking-wide">
+            <span
+              key={announcementIndex}
+              className="inline-flex items-center gap-2 text-espresso-deep transition-opacity duration-300 animate-fadeIn"
+            >
+              {ANNOUNCEMENTS[announcementIndex]}
+            </span>
+          </div>
         </div>
       </div>
 
       {/* Main Navigation Bar */}
       <div className="bg-canvas-butter/95 backdrop-blur-md border-b border-border-warm/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        <div className="h-16 md:h-20 max-w-[1240px] mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Identity */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush text-xl font-bold shadow-sm group-hover:scale-105 transition-transform">
-              ✨
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 shrink group min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush-dark shadow-sm group-hover:scale-105 transition-transform shrink-0">
+              <span className="material-symbols-outlined text-[20px] sm:text-[22px]" aria-hidden="true">pets</span>
             </div>
-            <div className="flex flex-col">
-              <span className="font-headline font-bold text-lg sm:text-2xl text-espresso-deep leading-none group-hover:text-primary transition-colors">
+            <div className="flex flex-col min-w-0">
+              <span className="font-headline text-[17px] sm:text-[20px] md:text-headline-sm text-espresso-deep font-bold tracking-tight leading-none group-hover:text-primary transition-colors truncate">
                 Laira Charms
               </span>
-              <span className="text-[10px] sm:text-xs font-semibold text-espresso-muted tracking-wider uppercase mt-1">
+              <span className="hidden sm:block font-label-sm text-[10px] md:text-label-sm text-espresso-muted tracking-wider uppercase mt-0.5 truncate">
                 Artisanal Keepsakes
               </span>
             </div>
@@ -92,10 +95,10 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-2 text-sm font-semibold rounded-full transition-all ${
+                  className={`px-4 py-2 text-label-lg font-label-lg rounded-full transition-all ${
                     isActive
-                      ? "text-primary bg-strawberry-subtle font-bold"
-                      : "text-espresso-muted hover:text-espresso-deep hover:bg-surface-custard"
+                      ? "text-primary bg-strawberry-subtle font-bold shadow-xs"
+                      : "text-on-surface-variant hover:text-espresso-deep hover:bg-surface-custard/80"
                   }`}
                 >
                   {link.label}
@@ -104,49 +107,56 @@ export function SiteHeader() {
             })}
           </nav>
 
-          {/* Utility Controls */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Search Input (Desktop) */}
+          {/* Right Utility Icons */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            {/* Search Input */}
             <form
               action="/search"
               method="GET"
-              className="hidden md:flex items-center bg-peach-tint/80 hover:bg-peach-tint rounded-full px-3.5 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 transition-all border border-border-warm/40"
+              className="hidden sm:flex items-center bg-peach-tint/80 hover:bg-peach-tint rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 transition-all border border-border-warm/40"
             >
-              <span className="text-xs mr-2 text-espresso-muted">🔍</span>
+              <span className="material-symbols-outlined text-espresso-muted text-[18px] mr-1.5">
+                search
+              </span>
               <input
                 type="text"
                 name="q"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Find charms..."
-                className="bg-transparent border-0 outline-none text-xs text-on-surface placeholder:text-espresso-muted/80 w-28 xl:w-36"
+                className="bg-transparent border-0 outline-none font-body-sm text-body-sm text-on-surface placeholder:text-espresso-muted/80 w-28 lg:w-36 p-0 focus:ring-0"
                 aria-label="Search charms"
               />
             </form>
 
             {/* Currency Pill */}
-            <div className="hidden sm:flex items-center gap-1 bg-surface-custard border border-border-warm/60 rounded-full px-2.5 py-1 text-xs font-bold text-espresso-deep">
+            <div className="hidden lg:flex items-center gap-1 bg-surface-custard rounded-full px-2.5 py-1.5 text-label-sm font-label-sm text-espresso-deep border border-border-warm/40 cursor-default">
               <span>PKR (Rs.)</span>
             </div>
 
-            {/* Account Icon */}
+            {/* Account Profile Link */}
             <Link
               href="/account"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-peach-tint text-espresso-deep flex items-center justify-center hover:bg-strawberry-subtle hover:text-primary transition-colors"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-peach-tint text-espresso-deep flex items-center justify-center hover:bg-strawberry-subtle hover:text-primary transition-colors cursor-pointer shrink-0"
               aria-label="Account Profile"
+              title="Account Profile"
             >
-              <span className="text-sm">👤</span>
+              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
             </Link>
 
-            {/* Shopping Bag Trigger */}
+            {/* Shopping Bag Trigger Button */}
             <button
               onClick={openDrawer}
-              className="flex items-center gap-2 bg-strawberry-blush text-white rounded-full px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold shadow-sm hover:opacity-95 transition-all active:scale-95"
+              className="flex items-center gap-1.5 sm:gap-2 bg-strawberry-blush text-on-primary rounded-full px-2.5 py-1.5 sm:px-4 sm:py-2 font-label-md text-label-md shadow-sm hover:opacity-95 transition-transform active:scale-95 shrink-0"
             >
-              <span className="text-sm" aria-hidden="true">🛍️</span>
-              <span className="sr-only sm:not-sr-only">Bag</span>
+              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z" />
+              </svg>
+              <span className="font-bold hidden sm:inline">Bag</span>
               <span
-                className="bg-white text-primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center ml-0.5 shadow-sm"
+                className="bg-surface-cloud text-primary font-bold rounded-full w-5 h-5 flex items-center justify-center text-label-sm font-label-sm shadow-sm"
                 aria-hidden="true"
               >
                 {itemCount}
@@ -157,11 +167,13 @@ export function SiteHeader() {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden w-9 h-9 rounded-full bg-surface-custard border border-border-warm flex items-center justify-center text-espresso-deep hover:bg-surface-container transition-colors"
+              className="lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-surface-custard border border-border-warm flex items-center justify-center text-espresso-deep hover:bg-surface-container transition-colors shrink-0"
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? "✕" : "☰"}
+              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
+                {isMobileMenuOpen ? "close" : "menu"}
+              </span>
             </button>
           </div>
         </div>
@@ -187,79 +199,87 @@ export function SiteHeader() {
               {/* Header inside mobile drawer */}
               <div className="p-5 bg-surface-custard border-b border-border-warm flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xl">✨</span>
+                  <div className="w-8 h-8 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush">
+                    <span className="material-symbols-outlined text-[18px]">pets</span>
+                  </div>
                   <span className="font-headline font-bold text-lg text-espresso-deep">
                     Laira Charms
                   </span>
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-8 h-8 rounded-full bg-surface-cloud text-espresso-muted hover:text-espresso-deep flex items-center justify-center"
+                  className="w-8 h-8 rounded-full bg-surface-cloud text-espresso-muted hover:text-espresso-deep flex items-center justify-center shadow-xs"
                   aria-label="Close mobile menu"
                 >
-                  ✕
+                  <span className="material-symbols-outlined text-[18px]">close</span>
                 </button>
               </div>
 
-              {/* Mobile Search */}
-              <div className="p-4 border-b border-border-warm/60">
-                <form
-                  action="/search"
-                  method="GET"
-                  onSubmit={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center bg-peach-tint rounded-full px-3.5 py-2 border border-border-warm/40"
-                >
-                  <span className="text-xs mr-2 text-espresso-muted">🔍</span>
-                  <input
-                    type="text"
-                    name="q"
-                    placeholder="Find charms..."
-                    className="w-full bg-transparent border-0 outline-none text-xs text-on-surface placeholder:text-espresso-muted"
-                  />
-                </form>
-              </div>
+              {/* Navigation Links inside Drawer */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-1.5">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`flex items-center justify-between px-4 py-3 rounded-2xl text-label-lg font-label-lg transition-all ${
+                        isActive
+                          ? "bg-strawberry-subtle text-primary font-bold shadow-xs"
+                          : "text-espresso-deep hover:bg-surface-custard"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      <span className="material-symbols-outlined text-[16px] text-espresso-muted">
+                        arrow_forward
+                      </span>
+                    </Link>
+                  );
+                })}
 
-              {/* Navigation Links */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-2xl text-sm font-semibold text-espresso-deep hover:bg-surface-custard transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="pt-4 border-t border-border-warm/60 mt-4 space-y-1">
+                <div className="pt-4 mt-4 border-t border-border-warm">
                   <Link
                     href="/account"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-2xl text-sm font-semibold text-espresso-deep hover:bg-surface-custard transition-colors"
+                    className="flex items-center gap-3 px-4 py-3 rounded-2xl text-label-lg text-espresso-deep hover:bg-surface-custard"
                   >
-                    👤 My Account &amp; Orders
+                    <span className="material-symbols-outlined text-[20px] text-primary">
+                      person
+                    </span>
+                    <span>My Account &amp; Orders</span>
                   </Link>
-                  <Link
-                    href="/shipping"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-2.5 text-xs text-espresso-muted hover:text-espresso-deep"
-                  >
-                    Shipping Policy
-                  </Link>
-                  <Link
-                    href="/returns"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-2.5 text-xs text-espresso-muted hover:text-espresso-deep"
-                  >
-                    Returns &amp; Exchanges
-                  </Link>
+
+                  <div className="p-4 mt-4 rounded-2xl bg-surface-custard border border-border-warm text-center space-y-1">
+                    <span className="font-label-sm text-label-sm text-espresso-muted uppercase tracking-wider block">
+                      Pakistani D2C Atelier
+                    </span>
+                    <span className="font-title-sm text-title-sm text-espresso-deep font-bold block">
+                      Free Shipping Above Rs. 3,000
+                    </span>
+                    <span className="text-body-sm text-on-surface-variant block">
+                      Delivery via Trax, PostEx &amp; TCS
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Footer contact details inside drawer */}
-              <div className="p-5 bg-surface-custard border-t border-border-warm text-xs text-espresso-muted">
-                <p className="font-semibold text-espresso-deep mb-1">Handcrafted in Pakistan</p>
-                <p>Triple UV glaze • Custom atelier open</p>
+              {/* Search bar inside drawer */}
+              <div className="p-4 bg-surface-custard/50 border-t border-border-warm">
+                <form action="/search" method="GET" className="relative">
+                  <input
+                    type="text"
+                    name="q"
+                    placeholder="Search charms..."
+                    className="w-full bg-surface-cloud border border-border-warm rounded-full px-4 py-2.5 text-body-sm text-espresso-deep placeholder:text-espresso-muted/70 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  />
+                  <button
+                    type="submit"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-espresso-muted"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">search</span>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -268,4 +288,3 @@ export function SiteHeader() {
     </header>
   );
 }
-

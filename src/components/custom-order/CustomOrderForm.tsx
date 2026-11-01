@@ -91,48 +91,48 @@ export function CustomOrderForm({
 
   if (submissionResult) {
     return (
-      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm text-center max-w-2xl mx-auto space-y-6">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/50 shadow-sm text-center max-w-2xl mx-auto space-y-6">
         <div className="w-16 h-16 rounded-full bg-strawberry-subtle text-strawberry-blush flex items-center justify-center text-3xl mx-auto shadow-xs">
           🎨
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs uppercase font-bold tracking-widest text-primary">
-            Inquiry Logged Successfully
+          <span className="font-label-sm text-xs uppercase font-bold tracking-widest text-primary block">
+            Bespoke Inquiry Received
           </span>
           <h2 className="font-headline text-2xl sm:text-3xl font-bold text-espresso-deep">
-            Your Bespoke Concept is in Studio Review
+            Your Bespoke Concept is in Studio Review!
           </h2>
-          <p className="text-sm text-espresso-muted leading-relaxed">
-            Our master craft artisan will review your sculpture brief, reference photos, and required lead time. You will receive a formalized itemized quotation within 24 hours.
+          <p className="font-body-sm text-sm text-espresso-muted max-w-md mx-auto leading-relaxed">
+            Our atelier sculptor will review your inspiration photos and issue an official quotation with guaranteed delivery timing within 24 business hours.
+          </p>
+          <div className="font-mono text-xs font-bold text-espresso-deep mt-2">
+            Inquiry Reference Code: <span className="text-strawberry-blush">{submissionResult.requestId}</span>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-surface-custard border border-border-warm text-xs text-espresso-deep space-y-2">
+          <p className="font-bold text-sm">Save Your Direct Tracking Link:</p>
+          <div className="p-2.5 bg-surface-cloud rounded-xl border border-border-warm/60 font-mono text-[11px] break-all select-all text-strawberry-blush">
+            {typeof window !== "undefined" ? window.location.origin : ""}{submissionResult.trackingUrl}
+          </div>
+          <p className="text-[11px] text-espresso-muted">
+            We also emailed you a secure access link to follow your quotation and chat directly with our studio artists.
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-surface-custard border border-border-warm text-left space-y-1.5 text-xs">
-          <div className="flex items-center justify-between">
-            <span className="text-espresso-muted">Inquiry Reference Code:</span>
-            <code className="font-mono font-bold text-espresso-deep bg-surface-cloud px-2 py-0.5 rounded">
-              {submissionResult.requestId.slice(0, 8).toUpperCase()}
-            </code>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-espresso-muted">Confirmation Sent To:</span>
-            <span className="font-semibold text-espresso-deep">{customerEmail}</span>
-          </div>
-        </div>
-
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href={submissionResult.trackingUrl}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-xs transition-all shadow-sm"
+            className="px-8 py-3.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 shadow-md transition-all active:scale-95 text-center"
           >
-            Track Commission Status →
+            Track Commission Status
           </Link>
           <Link
             href="/shop"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-surface-custard hover:bg-border-warm/60 text-espresso-deep font-bold text-xs border border-border-warm transition-all"
+            className="px-8 py-3.5 rounded-full bg-surface-custard text-espresso-deep font-semibold text-xs hover:bg-surface-container transition-all border border-border-warm text-center shadow-xs"
           >
-            Back to Shop
+            Explore Ready-Made Charms
           </Link>
         </div>
       </div>
@@ -140,170 +140,146 @@ export function CustomOrderForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8" data-testid="custom-order-form">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-surface-cloud p-6 sm:p-10 rounded-3xl border border-border-warm/50 shadow-sm space-y-8 max-w-3xl mx-auto"
+    >
+      <div className="border-b border-border-warm/50 pb-5">
+        <span className="font-label-sm text-xs uppercase font-bold tracking-widest text-primary block mb-1">
+          Custom Commission Atelier
+        </span>
+        <h2 className="font-headline text-2xl sm:text-3xl font-bold text-espresso-deep">
+          Design Your 1-of-1 Keepsake
+        </h2>
+        <p className="font-body-sm text-sm text-espresso-muted mt-1 leading-relaxed">
+          From miniature pet portraits to anime sprites and bespoke bag charms, tell us your concept and our studio will sculpt your dream charm.
+        </p>
+      </div>
+
       {formErrors.general && (
         <div className="p-4 rounded-2xl bg-red-50 border border-error/30 text-error text-xs font-semibold" role="alert">
           ⚠️ {formErrors.general}
         </div>
       )}
 
-      {/* Step 1: Commission Concept & Brief */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm space-y-5">
-        <div className="border-b border-border-warm pb-3">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
-            Step 1 of 3
-          </span>
-          <h3 className="font-headline font-bold text-lg text-espresso-deep">
-            Artisanal Concept &amp; Specifications
-          </h3>
-        </div>
-
-        {/* Title */}
-        <div className="space-y-1.5">
-          <label htmlFor="custom-title" className="block text-xs font-bold uppercase tracking-wider text-espresso-deep">
-            Keepsake Concept Title <span className="text-primary">*</span>
-          </label>
-          <input
-            id="custom-title"
-            type="text"
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Miniature Calico Cat with Gold Bell"
-            className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-surface-custard text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-          />
-          {formErrors.title && <p className="text-xs text-error font-medium">{formErrors.title}</p>}
-        </div>
-
-        {/* Brief */}
-        <div className="space-y-1.5">
-          <label htmlFor="custom-brief" className="block text-xs font-bold uppercase tracking-wider text-espresso-deep">
-            Detailed Sculpture Brief <span className="text-primary">*</span>
-          </label>
-          <textarea
-            id="custom-brief"
-            required
-            rows={4}
-            value={brief}
-            onChange={(e) => setBrief(e.target.value)}
-            placeholder="Describe your vision in detail: colors, character expressions, pose, special accessories (mini hat, collar, floral wreath), and preferred dimensions..."
-            className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-surface-custard text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-          />
-          <p className="text-[11px] text-espresso-muted">
-            Minimum 15 characters. Be as specific as possible to help us sculpt the exact likeness.
-          </p>
-          {formErrors.brief && <p className="text-xs text-error font-medium">{formErrors.brief}</p>}
-        </div>
-
-        {/* Desired Delivery Date */}
-        <div className="space-y-1.5">
-          <label htmlFor="custom-date" className="block text-xs font-bold uppercase tracking-wider text-espresso-deep">
-            Desired Delivery Date (Optional)
-          </label>
-          <input
-            id="custom-date"
-            type="date"
-            min={minDateStr}
-            value={desiredDeliveryDate}
-            onChange={(e) => setDesiredDeliveryDate(e.target.value)}
-            className="w-full sm:w-64 px-4 py-2.5 rounded-2xl border border-border-warm bg-surface-custard text-espresso-deep text-xs focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-          />
-          <p className="text-[11px] text-espresso-muted">
-            Bespoke hand-sculpting, curing, and triple diamond glazing requires at least 7 studio business days.
-          </p>
-          {formErrors.desiredDeliveryDate && (
-            <p className="text-xs text-error font-medium">{formErrors.desiredDeliveryDate}</p>
-          )}
-        </div>
+      {/* Concept Title */}
+      <div className="space-y-1.5">
+        <label htmlFor="custom-title" className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep block">
+          Keepsake Concept Title <span className="text-strawberry-blush">*</span>
+        </label>
+        <input
+          id="custom-title"
+          type="text"
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="e.g. Miniature Calico Cat with Gold Star Clasp"
+          className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-sm text-espresso-deep focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
+        />
+        {formErrors.title && (
+          <p className="text-xs text-error font-medium">{formErrors.title}</p>
+        )}
       </div>
 
-      {/* Step 2: Reference Image Uploads */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm space-y-4">
-        <div className="border-b border-border-warm pb-3">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
-            Step 2 of 3
-          </span>
-          <h3 className="font-headline font-bold text-lg text-espresso-deep">
-            Reference Photographs &amp; Sketches
-          </h3>
-          <p className="text-xs text-espresso-muted mt-0.5">
-            Upload clear photos of your pet, character reference, or sketches (up to 5 photos, max 5MB each).
-          </p>
-        </div>
+      {/* Detailed Brief */}
+      <div className="space-y-1.5">
+        <label htmlFor="custom-brief" className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep block">
+          Detailed Sculpture Brief <span className="text-strawberry-blush">*</span>
+        </label>
+        <textarea
+          id="custom-brief"
+          required
+          rows={5}
+          value={brief}
+          onChange={(e) => setBrief(e.target.value)}
+          placeholder="Describe your vision: pose, facial expression, colors, size (~3-5cm), hardware clip style, and any specific markings."
+          className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-sm text-espresso-deep focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
+        />
+        <p className="font-label-sm text-[11px] text-espresso-muted">
+          Minimum 20 characters. The more details you share, the closer the sculpture matches your dream!
+        </p>
+        {formErrors.brief && (
+          <p className="text-xs text-error font-medium">{formErrors.brief}</p>
+        )}
+      </div>
 
-        <div className="border-2 border-dashed border-border-warm rounded-2xl p-6 text-center hover:border-primary transition-colors bg-surface-custard/50">
+      {/* Target Delivery Date (Optional) */}
+      <div className="space-y-1.5">
+        <label htmlFor="custom-date" className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep block">
+          Desired Delivery Date (Optional)
+        </label>
+        <input
+          id="custom-date"
+          type="date"
+          min={minDateStr}
+          value={desiredDeliveryDate}
+          onChange={(e) => setDesiredDeliveryDate(e.target.value)}
+          className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-sm text-espresso-deep focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
+        />
+        <p className="font-label-sm text-[11px] text-espresso-muted">
+          Handmade bespoke sculptures require at least 7-10 business days for sculpting, curing, and triple UV glaze.
+        </p>
+      </div>
+
+      {/* Photo Reference Uploads */}
+      <div className="space-y-3">
+        <label className="font-headline font-bold text-xs uppercase tracking-wider text-espresso-deep block">
+          Reference Photos / Sketches (Up to 5 images, max 5MB each)
+        </label>
+
+        <div className="border-2 border-dashed border-border-warm rounded-3xl p-6 bg-surface-custard/40 text-center hover:bg-surface-custard/70 transition-colors">
           <input
             type="file"
-            id="reference-files"
+            id="referenceFiles"
             multiple
             accept="image/png,image/jpeg,image/webp"
             onChange={handleFileSelect}
-            className="hidden"
+            className="sr-only"
+            disabled={referenceFiles.length >= 5}
           />
-          <label
-            htmlFor="reference-files"
-            className="cursor-pointer flex flex-col items-center justify-center gap-2"
-          >
-            <span className="text-2xl">📸</span>
-            <span className="text-xs font-bold text-primary hover:underline">
-              Click to select reference images
+          <label htmlFor="referenceFiles" className="cursor-pointer block space-y-1">
+            <span className="material-symbols-outlined text-[32px] text-strawberry-blush">add_photo_alternate</span>
+            <span className="block font-bold text-sm text-espresso-deep">
+              Click to choose reference images
             </span>
-            <span className="text-[11px] text-espresso-muted">
-              PNG, JPG, or WebP up to 5MB
+            <span className="block text-[11px] text-espresso-muted">
+              Pet photos from multiple angles, anime art, or color palettes.
             </span>
           </label>
         </div>
 
         {referenceFiles.length > 0 && (
-          <div className="space-y-2 pt-2">
-            <span className="text-[11px] font-bold uppercase text-espresso-muted">
-              Selected Attachments ({referenceFiles.length}/5):
-            </span>
-            <ul className="space-y-1.5">
-              {referenceFiles.map((file, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-surface-custard border border-border-warm text-xs text-espresso-deep"
+          <div className="flex flex-wrap gap-2 pt-2">
+            {referenceFiles.map((file, idx) => (
+              <span
+                key={idx}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-custard border border-border-warm text-xs text-espresso-deep font-medium shadow-xs"
+              >
+                <span className="truncate max-w-[150px]">{file.name}</span>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveFile(idx)}
+                  className="text-error hover:text-red-700 font-bold"
+                  aria-label={`Remove ${file.name}`}
                 >
-                  <span className="truncate max-w-xs">{file.name}</span>
-                  <div className="flex items-center gap-3">
-                    <span className="text-[10px] text-espresso-muted font-mono">
-                      {(file.size / 1024).toFixed(0)} KB
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveFile(idx)}
-                      className="text-error hover:text-red-700 font-bold text-xs"
-                      aria-label={`Remove ${file.name}`}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  ✕
+                </button>
+              </span>
+            ))}
           </div>
         )}
       </div>
 
-      {/* Step 3: Customer Information */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm space-y-4">
-        <div className="border-b border-border-warm pb-3">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
-            Step 3 of 3
-          </span>
-          <h3 className="font-headline font-bold text-lg text-espresso-deep">
-            Contact &amp; Studio Quotation Dispatch
-          </h3>
-          <p className="text-xs text-espresso-muted mt-0.5">
-            We deliver quotation decisions directly via your portal link and email.
-          </p>
-        </div>
+      {/* Customer Contact Information */}
+      <div className="pt-4 border-t border-border-warm/50 space-y-4">
+        <h3 className="font-headline font-bold text-lg text-espresso-deep">
+          Your Contact Information
+        </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label htmlFor="customer-name" className="block text-xs font-bold uppercase tracking-wider text-espresso-deep">
-              Your Name <span className="text-primary">*</span>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="space-y-1">
+            <label htmlFor="customer-name" className="text-xs font-bold text-espresso-deep block">
+              Your Name <span className="text-strawberry-blush">*</span>
             </label>
             <input
               id="customer-name"
@@ -311,17 +287,17 @@ export function CustomOrderForm({
               required
               value={customerName}
               onChange={(e) => setCustomerName(e.target.value)}
-              placeholder="e.g. Fatima Tariq"
-              className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-surface-custard text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              placeholder="e.g. Fatima Ali"
+              className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-sm text-espresso-deep focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
             />
             {formErrors.customerName && (
               <p className="text-xs text-error font-medium">{formErrors.customerName}</p>
             )}
           </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="customer-email" className="block text-xs font-bold uppercase tracking-wider text-espresso-deep">
-              Email Address <span className="text-primary">*</span>
+          <div className="space-y-1">
+            <label htmlFor="customer-email" className="text-xs font-bold text-espresso-deep block">
+              Email Address <span className="text-strawberry-blush">*</span>
             </label>
             <input
               id="customer-email"
@@ -330,47 +306,53 @@ export function CustomOrderForm({
               value={customerEmail}
               onChange={(e) => setCustomerEmail(e.target.value)}
               placeholder="fatima@example.com"
-              className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-surface-custard text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-sm text-espresso-deep focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
             />
             {formErrors.customerEmail && (
               <p className="text-xs text-error font-medium">{formErrors.customerEmail}</p>
             )}
           </div>
-        </div>
 
-        <div className="space-y-1.5">
-          <label htmlFor="customer-phone" className="block text-xs font-bold uppercase tracking-wider text-espresso-deep">
-            Pakistani Mobile Number <span className="text-primary">*</span>
-          </label>
-          <input
-            id="customer-phone"
-            type="tel"
-            required
-            value={customerPhone}
-            onChange={(e) => setCustomerPhone(e.target.value)}
-            placeholder="03001234567"
-            className="w-full sm:w-64 px-4 py-3 rounded-2xl border border-border-warm bg-surface-custard text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-          />
-          <p className="text-[11px] text-espresso-muted">
-            Used for delivery tracking and courier SMS updates.
-          </p>
-          {formErrors.customerPhone && (
-            <p className="text-xs text-error font-medium">{formErrors.customerPhone}</p>
-          )}
+          <div className="space-y-1">
+            <label htmlFor="customer-phone" className="text-xs font-bold text-espresso-deep block">
+              Pakistani Mobile Number <span className="text-strawberry-blush">*</span>
+            </label>
+            <input
+              id="customer-phone"
+              type="tel"
+              required
+              value={customerPhone}
+              onChange={(e) => setCustomerPhone(e.target.value)}
+              placeholder="03001234567"
+              className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-sm text-espresso-deep focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
+            />
+            {formErrors.customerPhone && (
+              <p className="text-xs text-error font-medium">{formErrors.customerPhone}</p>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Submit Button */}
-      <div className="text-center pt-2">
+      {/* Submit Action */}
+      <div className="pt-4 border-t border-border-warm/50">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full sm:w-auto min-w-[280px] py-4 px-10 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-sm transition-all shadow-md active:scale-98 disabled:opacity-50"
+          className="w-full py-4 px-8 rounded-full bg-strawberry-blush text-on-primary font-bold text-sm transition-all shadow-md hover:opacity-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-98"
         >
-          {isSubmitting ? "Transmitting to Atelier..." : "✨ Submit Bespoke Inquiry for Review"}
+          {isSubmitting ? (
+            <span>Sending to Atelier...</span>
+          ) : (
+            <>
+              <span className="material-symbols-outlined text-[20px]">auto_awesome</span>
+              <span>Submit Bespoke Inquiry</span>
+            </>
+          )}
         </button>
+        <p className="font-label-sm text-[11px] text-center text-espresso-muted mt-2">
+          No advance payment required until you approve our official studio quotation.
+        </p>
       </div>
     </form>
   );
 }
-

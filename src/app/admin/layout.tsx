@@ -24,7 +24,7 @@ export default function AdminLayout({
                 Laira Charms
               </span>
             </Link>
-            <span className="px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-bold tracking-wider uppercase">
+            <span className="px-3 py-1 rounded-full bg-strawberry-blush text-on-primary text-[10px] font-bold tracking-wider uppercase shadow-xs">
               Admin Portal
             </span>
           </div>

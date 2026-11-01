@@ -67,11 +67,11 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
     <main className="min-h-screen bg-canvas-butter py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Success Header */}
-        <div className="p-8 rounded-3xl bg-surface-custard border border-border-warm text-center shadow-xs">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-peach-tint flex items-center justify-center text-3xl">
+        <div className="p-8 rounded-3xl bg-surface-cloud border border-border-warm/60 text-center shadow-sm">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-3xl bg-peach-tint border border-strawberry-blush/20 flex items-center justify-center text-3xl shadow-xs">
             ✨
           </div>
-          <span className="inline-block px-3.5 py-1 rounded-full bg-secondary/15 text-secondary font-bold text-xs uppercase tracking-wider mb-2">
+          <span className="inline-block px-3.5 py-1 rounded-full bg-matcha-tint text-matcha-soft border border-matcha-soft/20 font-bold text-xs uppercase tracking-wider mb-2">
             Order Confirmed
           </span>
           <h1 className="font-headline font-bold text-3xl sm:text-4xl text-espresso-deep mb-2">
@@ -81,14 +81,14 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
             We have received your keepsake order. Our artisan studio will begin crafting once payment proof is submitted and verified.
           </p>
 
-          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-surface-cloud border border-border-warm font-mono text-xs sm:text-sm text-espresso-deep">
+          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-canvas-butter border border-border-warm font-mono text-xs sm:text-sm text-espresso-deep">
             <span className="text-espresso-muted font-sans font-medium">Order Reference:</span>
-            <span className="font-bold text-primary">{order.reference}</span>
+            <span className="font-bold text-strawberry-blush-dark">{order.reference}</span>
           </div>
         </div>
 
         {/* Payment Required Action Card */}
-        <div className="p-6 rounded-3xl bg-peach-tint/60 border border-primary/20 shadow-xs space-y-4">
+        <div className="p-6 rounded-3xl bg-peach-tint/60 border border-strawberry-blush/20 shadow-xs space-y-4">
           <div className="flex items-start gap-3">
             <span className="text-2xl shrink-0">💳</span>
             <div>
@@ -96,7 +96,7 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
                 Next Step: Complete Payment &amp; Upload Proof
               </h2>
               <p className="text-xs text-espresso-muted mt-1 leading-relaxed">
-                Your order is currently <span className="font-bold text-espresso-deep">Awaiting Payment</span>. Please transfer the total amount of <span className="font-bold text-primary">{formatMoney(order.totalMinor)}</span> via Meezan Bank, EasyPaisa, or JazzCash, then submit your transaction screenshot.
+                Your order is currently <span className="font-bold text-espresso-deep">Awaiting Payment</span>. Please transfer the total amount of <span className="font-bold text-strawberry-blush-dark">{formatMoney(order.totalMinor)}</span> via Meezan Bank, EasyPaisa, or JazzCash, then submit your transaction screenshot.
               </p>
             </div>
           </div>
@@ -104,13 +104,13 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
             <Link
               href={paymentProofUrl}
-              className="py-3 px-6 rounded-full bg-primary text-white font-bold text-xs text-center hover:bg-opacity-95 shadow-sm transition-all"
+              className="py-3 px-6 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs text-center hover:opacity-95 shadow-xs transition-all active:scale-95"
             >
               Upload Payment Proof Screenshot &rarr;
             </Link>
             <Link
               href="/shop"
-              className="py-3 px-6 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs text-center hover:bg-surface-container transition-all"
+              className="py-3 px-6 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs text-center hover:bg-surface-container transition-all active:scale-95"
             >
               Browse More Charms
             </Link>
@@ -128,7 +128,7 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Items List */}
           <div className="md:col-span-7 space-y-4">
-            <div className="p-6 rounded-3xl bg-surface-custard border border-border-warm shadow-xs space-y-4">
+            <div className="p-6 rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-sm space-y-4">
               <h3 className="font-headline font-bold text-lg text-espresso-deep border-b border-border-warm pb-3">
                 Items in This Commission ({order.items.length})
               </h3>
@@ -189,7 +189,7 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
           {/* Shipping & Financial Breakdown */}
           <div className="md:col-span-5 space-y-6">
             {/* Delivery Address */}
-            <div className="p-6 rounded-3xl bg-surface-custard border border-border-warm shadow-xs space-y-3">
+            <div className="p-6 rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-sm space-y-3">
               <h3 className="font-headline font-bold text-lg text-espresso-deep border-b border-border-warm pb-3">
                 Delivery Address
               </h3>
@@ -210,7 +210,7 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
             </div>
 
             {/* Financial Summary */}
-            <div className="p-6 rounded-3xl bg-surface-custard border border-border-warm shadow-xs space-y-3">
+            <div className="p-6 rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-sm space-y-3">
               <h3 className="font-headline font-bold text-lg text-espresso-deep border-b border-border-warm pb-3">
                 Payment Summary
               </h3>

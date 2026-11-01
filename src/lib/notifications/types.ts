@@ -64,3 +64,4 @@ export interface IEmailProvider {
     text: string
   ): Promise<EmailProviderResponse>;
 }
+

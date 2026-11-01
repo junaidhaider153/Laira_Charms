@@ -24,9 +24,9 @@ export default async function AdminInquiriesPage() {
         </p>
       </div>
 
-      <div className="rounded-3xl bg-surface-custard border border-border-warm shadow-xs overflow-x-auto">
+      <div className="rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-sm overflow-x-auto">
         <table className="w-full text-left text-xs text-espresso-deep">
-          <thead className="bg-surface-cloud border-b border-border-warm text-espresso-muted uppercase font-bold text-[10px] tracking-wider">
+          <thead className="bg-surface-custard/60 border-b border-border-warm text-espresso-muted uppercase font-bold text-[10px] tracking-wider">
             <tr>
               <th className="py-3.5 px-4">Commission Title</th>
               <th className="py-3.5 px-4">Customer Contact</th>
@@ -104,7 +104,7 @@ export default async function AdminInquiriesPage() {
                     <td className="py-3.5 px-4 text-right whitespace-nowrap space-x-2">
                       <Link
                         href={`/custom-order/status/${req.id}`}
-                        className="inline-flex items-center px-3 py-1.5 rounded-xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors"
+                        className="inline-flex items-center px-4 py-1.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
                       >
                         Inspect &rarr;
                       </Link>

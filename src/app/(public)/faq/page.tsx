@@ -34,7 +34,7 @@ export default function FaqPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Breadcrumbs items={[{ label: "Frequently Asked Questions" }]} />
 
-      <div className="bg-canvas-butter p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm mt-4">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm mt-4">
         <h1 className="font-headline text-3xl sm:text-4xl font-bold text-espresso-deep mb-4">
           Frequently Asked Questions
         </h1>
@@ -46,10 +46,10 @@ export default function FaqPage() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl bg-surface-custard border border-border-warm/60 space-y-2"
+              className="p-6 rounded-3xl bg-surface-custard border border-border-warm/60 space-y-2 shadow-xs"
             >
               <h3 className="font-headline font-bold text-base text-espresso-deep flex items-start gap-2">
-                <span className="text-primary font-bold">Q.</span>
+                <span className="text-strawberry-blush-dark font-bold">Q.</span>
                 <span>{faq.q}</span>
               </h3>
               <p className="text-xs sm:text-sm text-espresso-muted leading-relaxed pl-6">
@@ -59,14 +59,14 @@ export default function FaqPage() {
           ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border-warm flex flex-wrap gap-4 items-center justify-between">
+        <div className="mt-10 pt-6 border-t border-border-warm/60 flex flex-wrap gap-4 items-center justify-between">
           <div>
             <h4 className="font-headline font-bold text-sm text-espresso-deep">Still have a question?</h4>
             <p className="text-xs text-espresso-muted">Reach out to our studio team directly.</p>
           </div>
           <Link
             href="/contact"
-            className="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+            className="px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
           >
             Contact Atelier
           </Link>

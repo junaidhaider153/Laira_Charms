@@ -41,7 +41,7 @@ export function AdminOrderFilters({
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search by reference (LC-...), customer name, phone number, or city..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-border-warm bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-border-warm bg-canvas-butter text-espresso-deep text-xs focus:outline-none focus:ring-2 focus:ring-strawberry-blush focus:border-transparent transition-all placeholder:text-espresso-muted/50"
         />
         {searchQuery && (
           <button
@@ -63,18 +63,18 @@ export function AdminOrderFilters({
             <button
               key={tab.id}
               onClick={() => onStatusChange(tab.id)}
-              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 border ${
+              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 border active:scale-95 ${
                 isActive
-                  ? "bg-espresso-deep text-white border-espresso-deep shadow-xs"
-                  : "bg-surface-custard border-border-warm text-espresso-muted hover:text-espresso-deep hover:bg-surface-cloud"
+                  ? "bg-strawberry-blush text-on-primary border-strawberry-blush shadow-xs"
+                  : "bg-surface-cloud border-border-warm text-espresso-muted hover:text-espresso-deep hover:bg-surface-custard"
               }`}
             >
               <span>{tab.label}</span>
               <span
                 className={`px-2 py-0.5 rounded-full text-[10px] ${
                   isActive
-                    ? "bg-white/20 text-white"
-                    : "bg-peach-tint text-primary font-bold"
+                    ? "bg-white/25 text-white font-bold"
+                    : "bg-peach-tint text-strawberry-blush-dark font-bold"
                 }`}
               >
                 {count}

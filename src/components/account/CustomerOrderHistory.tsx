@@ -23,7 +23,7 @@ export function CustomerOrderHistory({ orders }: CustomerOrderHistoryProps) {
         </p>
         <Link
           href="/shop"
-          className="inline-block mt-4 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-bold hover:bg-opacity-95 shadow-xs transition-all"
+          className="inline-block mt-4 px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary text-xs font-bold hover:opacity-95 shadow-xs transition-all active:scale-95"
         >
           Explore Charm Catalog &rarr;
         </Link>
@@ -54,11 +54,11 @@ export function CustomerOrderHistory({ orders }: CustomerOrderHistoryProps) {
           return (
             <div
               key={order.id}
-              className="p-5 rounded-3xl bg-surface-custard border border-border-warm shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors hover:bg-surface-cloud/40"
+              className="p-6 rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-strawberry-blush/30 hover:shadow-sm"
             >
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-primary text-sm">
+                  <span className="font-mono font-bold text-strawberry-blush-dark text-sm">
                     {order.reference}
                   </span>
                   <span
@@ -93,7 +93,7 @@ export function CustomerOrderHistory({ orders }: CustomerOrderHistoryProps) {
 
                 <Link
                   href={`/orders/${order.reference}`}
-                  className="px-4 py-2 rounded-xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors whitespace-nowrap"
+                  className="px-5 py-2 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all whitespace-nowrap active:scale-95"
                 >
                   Track &rarr;
                 </Link>

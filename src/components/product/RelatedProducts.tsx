@@ -49,7 +49,7 @@ export async function RelatedProducts({
         </div>
         <Link
           href="/shop"
-          className="text-xs font-bold text-primary hover:underline shrink-0 hidden sm:inline-block"
+          className="text-xs font-bold text-strawberry-blush-dark hover:underline shrink-0 hidden sm:inline-block"
         >
           View Full Catalog →
         </Link>

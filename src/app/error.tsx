@@ -28,13 +28,13 @@ export default function ErrorBoundary({
       <div className="flex gap-4">
         <button
           onClick={() => reset()}
-          className="px-6 py-2.5 rounded-full bg-primary text-white font-semibold hover:bg-opacity-90 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95 focus:outline-none focus:ring-2 focus:ring-strawberry-blush focus:ring-offset-2"
         >
           Try Again
         </button>
         <a
           href="/"
-          className="px-6 py-2.5 rounded-full bg-surface-custard text-espresso-deep font-semibold hover:bg-surface-container transition-all"
+          className="px-6 py-2.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
         >
           Return Home
         </a>

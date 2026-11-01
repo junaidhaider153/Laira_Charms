@@ -32,13 +32,13 @@ export default function VerifyEmailPage() {
       <div className="space-y-3">
         <Link
           href="/login"
-          className="block w-full py-3 px-4 rounded-full bg-primary text-white font-bold text-sm hover:bg-opacity-95 transition-all shadow-sm"
+          className="block w-full py-3 px-5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
         >
           Proceed to Sign In
         </Link>
         <Link
           href="/"
-          className="block w-full py-3 px-4 rounded-full bg-surface-custard text-espresso-deep font-semibold text-sm hover:bg-surface-container transition-all"
+          className="block w-full py-3 px-5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
         >
           Return to Storefront
         </Link>

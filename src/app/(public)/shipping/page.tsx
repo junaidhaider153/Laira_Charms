@@ -11,7 +11,7 @@ export default function ShippingPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Breadcrumbs items={[{ label: "Shipping Policy" }]} />
 
-      <div className="bg-canvas-butter p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm mt-4">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm mt-4">
         <h1 className="font-headline text-3xl sm:text-4xl font-bold text-espresso-deep mb-4">
           Shipping &amp; Delivery Policy
         </h1>
@@ -27,12 +27,12 @@ export default function ShippingPage() {
             <p className="text-espresso-muted">
               We deliver to all major cities and regions across Pakistan, including Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Peshawar, Multan, and Quetta.
             </p>
-            <div className="p-4 bg-surface-custard rounded-2xl border border-border-warm/60 space-y-2">
+            <div className="p-5 bg-surface-custard rounded-3xl border border-border-warm/60 space-y-2 shadow-xs">
               <div className="flex justify-between font-semibold">
                 <span>Standard Delivery (Nationwide)</span>
-                <span className="text-primary font-bold">Rs. 250</span>
+                <span className="text-strawberry-blush-dark font-bold">Rs. 250</span>
               </div>
-              <div className="flex justify-between font-semibold text-secondary">
+              <div className="flex justify-between font-semibold text-matcha-soft">
                 <span>Orders over Rs. 3,000</span>
                 <span className="font-bold">FREE SHIPPING</span>
               </div>
@@ -72,16 +72,16 @@ export default function ShippingPage() {
           </section>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border-warm flex flex-wrap gap-4">
+        <div className="mt-10 pt-6 border-t border-border-warm/60 flex flex-wrap gap-4">
           <Link
             href="/shop"
-            className="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+            className="px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
           >
             Explore Ready Charms
           </Link>
           <Link
             href="/contact"
-            className="px-6 py-2.5 rounded-full bg-surface-custard text-espresso-deep font-semibold text-xs hover:bg-surface-container transition-all"
+            className="px-6 py-2.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
           >
             Have a Shipping Question?
           </Link>

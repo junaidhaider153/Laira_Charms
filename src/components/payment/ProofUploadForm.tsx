@@ -92,13 +92,13 @@ export function ProofUploadForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 rounded-3xl bg-surface-custard border border-border-warm shadow-xs space-y-6">
+    <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-6">
       <div>
-        <h3 className="font-headline font-bold text-xl text-espresso-deep">
+        <h3 className="font-headline font-bold text-xl sm:text-2xl text-espresso-deep">
           Upload Payment Proof Screenshot
         </h3>
-        <p className="text-xs text-espresso-muted mt-0.5">
-          Submit your bank receipt or wallet transaction screenshot to initiate studio verification.
+        <p className="font-body-sm text-xs sm:text-sm text-espresso-muted mt-0.5">
+          Attach your mobile banking or wallet receipt screenshot so our studio can verify your transfer.
         </p>
       </div>
 
@@ -110,39 +110,39 @@ export function ProofUploadForm({
       )}
 
       {/* Payment Method Selector */}
-      <div>
-        <label className="block text-xs font-bold text-espresso-deep mb-2">
-          Payment Method Used <span className="text-primary">*</span>
+      <div className="space-y-2">
+        <label className="block text-xs font-bold text-espresso-deep">
+          Selected Transfer Channel <span className="text-strawberry-blush">*</span>
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {PAKISTANI_PAYMENT_ACCOUNTS.map((acc) => (
             <label
               key={acc.id}
-              className={`p-3 rounded-xl border flex items-center gap-2.5 cursor-pointer transition-colors ${
+              className={`p-3.5 rounded-2xl border text-xs font-semibold cursor-pointer transition-all flex items-center justify-between ${
                 methodId === acc.id
-                  ? "bg-peach-tint border-primary font-bold text-espresso-deep"
-                  : "bg-surface-cloud border-border-warm text-espresso-muted hover:border-espresso-muted"
+                  ? "border-strawberry-blush bg-surface-custard text-espresso-deep shadow-xs ring-1 ring-strawberry-blush"
+                  : "border-border-warm bg-canvas-butter hover:bg-surface-cloud text-espresso-muted"
               }`}
             >
+              <span className="font-bold">{acc.name}</span>
               <input
                 type="radio"
-                name="methodId"
+                name="paymentChannel"
                 value={acc.id}
                 checked={methodId === acc.id}
                 onChange={() => setMethodId(acc.id as "meezan" | "easypaisa" | "jazzcash")}
-                className="text-primary focus:ring-primary h-4 w-4"
+                className="text-strawberry-blush focus:ring-primary"
               />
-              <span className="text-xs">{acc.name}</span>
             </label>
           ))}
         </div>
       </div>
 
+      {/* Sender Name & Transaction Reference */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Sender Name */}
         <div>
           <label htmlFor="senderName" className="block text-xs font-bold text-espresso-deep mb-1.5">
-            Sender Account Title / Name <span className="text-primary">*</span>
+            Sender Name / Title on Account <span className="text-strawberry-blush">*</span>
           </label>
           <input
             type="text"
@@ -151,19 +151,16 @@ export function ProofUploadForm({
             onChange={(e) => setSenderName(e.target.value)}
             required
             placeholder="e.g. Ayesha Noor"
-            className={`w-full px-4 py-2.5 rounded-xl border ${
-              fieldErrors.senderName ? "border-error ring-1 ring-error" : "border-border-warm"
-            } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+            className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
           />
           {fieldErrors.senderName && (
             <p className="text-[11px] text-error mt-1">{fieldErrors.senderName}</p>
           )}
         </div>
 
-        {/* Transaction ID */}
         <div>
           <label htmlFor="transactionId" className="block text-xs font-bold text-espresso-deep mb-1.5">
-            Transaction / Reference ID <span className="text-primary">*</span>
+            Bank Ref / Transaction ID (TID) <span className="text-strawberry-blush">*</span>
           </label>
           <input
             type="text"
@@ -171,10 +168,8 @@ export function ProofUploadForm({
             value={transactionId}
             onChange={(e) => setTransactionId(e.target.value)}
             required
-            placeholder="e.g. TXN-12345678 or TID 98765"
-            className={`w-full px-4 py-2.5 rounded-xl border ${
-              fieldErrors.transactionId ? "border-error ring-1 ring-error" : "border-border-warm"
-            } bg-surface-cloud text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary`}
+            placeholder="e.g. 9876543210 or Raast ID"
+            className="w-full px-4 py-3 rounded-2xl border border-border-warm bg-canvas-butter text-espresso-deep text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-strawberry-blush shadow-xs"
           />
           {fieldErrors.transactionId && (
             <p className="text-[11px] text-error mt-1">{fieldErrors.transactionId}</p>
@@ -182,29 +177,28 @@ export function ProofUploadForm({
         </div>
       </div>
 
-      {/* Proof File Input */}
-      <div>
-        <label htmlFor="proofFile" className="block text-xs font-bold text-espresso-deep mb-1.5">
-          Receipt Screenshot (PNG, JPG, WEBP, or PDF &bull; Max 5 MB) <span className="text-primary">*</span>
+      {/* File Upload Box */}
+      <div className="space-y-2">
+        <label className="block text-xs font-bold text-espresso-deep">
+          Transfer Screenshot (PNG, JPG, PDF up to 5 MB) <span className="text-strawberry-blush">*</span>
         </label>
-        <div className="p-4 rounded-2xl border-2 border-dashed border-border-warm bg-surface-cloud text-center hover:bg-surface-container/60 transition-colors">
+        <div className="p-6 border-2 border-dashed border-border-warm rounded-3xl bg-surface-custard/40 text-center hover:bg-surface-custard/70 transition-colors">
           <input
             type="file"
             id="proofFile"
             accept="image/png,image/jpeg,image/webp,application/pdf"
             onChange={handleFileChange}
-            className="hidden"
+            className="sr-only"
           />
-          <label
-            htmlFor="proofFile"
-            className="cursor-pointer flex flex-col items-center justify-center space-y-1.5"
-          >
-            <span className="text-2xl">📸</span>
-            <span className="text-xs font-bold text-primary hover:underline">
-              {selectedFileName ? "Change selected screenshot" : "Select or drag receipt screenshot"}
+          <label htmlFor="proofFile" className="cursor-pointer block">
+            <span className="material-symbols-outlined text-[32px] text-strawberry-blush mb-2">
+              cloud_upload
             </span>
-            <span className="text-[11px] text-espresso-muted">
-              {selectedFileName ? `Selected: ${selectedFileName}` : "Supported formats: JPG, PNG, WEBP, PDF (Max 5MB)"}
+            <span className="block font-bold text-sm text-espresso-deep">
+              {selectedFileName ? selectedFileName : "Choose receipt file or tap to browse"}
+            </span>
+            <span className="block text-[11px] text-espresso-muted mt-1">
+              Supports screenshots from Meezan App, EasyPaisa, or JazzCash.
             </span>
           </label>
         </div>
@@ -213,23 +207,13 @@ export function ProofUploadForm({
       <button
         type="submit"
         disabled={isUploading}
-        className="w-full py-3.5 px-6 rounded-full bg-primary text-white font-bold text-sm text-center block hover:bg-opacity-95 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+        className="w-full py-4 px-6 rounded-full bg-strawberry-blush text-on-primary font-bold text-sm text-center block hover:opacity-95 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:scale-98"
       >
-        {isUploading ? (
-          <span className="inline-flex items-center gap-2">
-            <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24" fill="none">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-            </svg>
-            Submitting Proof...
-          </span>
-        ) : (
-          "Submit Payment Proof for Studio Review"
-        )}
+        {isUploading ? "Uploading & Verifying Proof..." : "Submit Payment Proof for Studio Review"}
       </button>
 
-      <p className="text-[11px] text-center text-espresso-muted leading-tight">
-        Note: Submitting proof submits your record for manual bank reconciliation. Our artisan reviews transfers within 2-4 business hours.
+      <p className="font-label-sm text-[11px] text-center text-espresso-muted leading-tight">
+        Manual reviews are performed by studio artists during business hours (10 AM - 8 PM PKT).
       </p>
     </form>
   );

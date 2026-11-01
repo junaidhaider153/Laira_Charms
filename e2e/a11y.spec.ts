@@ -94,3 +94,4 @@ test.describe('WCAG 2.1 AA Automated Accessibility Audit (M14, FR-020)', () => {
     expect(scanResults.violations).toEqual([]);
   });
 });
+

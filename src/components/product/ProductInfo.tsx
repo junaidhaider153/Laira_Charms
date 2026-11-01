@@ -63,24 +63,24 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
         <span className="text-border-warm">•</span>
 
         {product.productType === "ready_made" && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-matcha-tint text-secondary">
-            ⚡ Ready-Made In Stock
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold bg-matcha-tint text-secondary shadow-xs">
+            <span>⚡</span> Ready-Made In Stock
           </span>
         )}
         {product.productType === "customizable" && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-strawberry-subtle text-primary">
-            ✏️ Customizable Keepsake
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold bg-strawberry-subtle text-primary shadow-xs">
+            <span>✏️</span> Customizable Keepsake
           </span>
         )}
         {product.productType === "bespoke_quote" && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-peach-tint text-espresso-deep">
-            🎨 Bespoke Commission
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold bg-peach-tint text-tertiary shadow-xs">
+            <span>🎨</span> Bespoke Commission
           </span>
         )}
       </div>
 
       {/* Title */}
-      <h1 className="font-headline text-2xl sm:text-3xl lg:text-4xl font-bold text-espresso-deep leading-tight">
+      <h1 className="font-headline text-3xl sm:text-4xl lg:text-display text-espresso-deep font-bold tracking-tight leading-tight">
         {product.title}
       </h1>
 
@@ -88,21 +88,21 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
       <div className="flex items-baseline gap-3">
         {product.productType === "bespoke_quote" ? (
           <div>
-            <span className="text-xs text-espresso-muted block mb-0.5">Starting commission estimate:</span>
-            <span className="font-headline text-3xl font-bold text-primary">
+            <span className="font-label-sm text-xs text-espresso-muted block mb-0.5">Starting commission estimate:</span>
+            <span className="font-headline text-3xl sm:text-headline-md font-bold text-strawberry-blush">
               {formatMoney(product.basePriceMinor)}
             </span>
           </div>
         ) : (
-          <span className="font-headline text-3xl font-bold text-primary">
+          <span className="font-headline text-3xl sm:text-headline-md font-bold text-strawberry-blush">
             {formatMoney(product.basePriceMinor)}
           </span>
         )}
-        <span className="text-xs text-espresso-muted font-medium">PKR (incl. craft packaging)</span>
+        <span className="font-label-sm text-xs text-espresso-muted font-medium">PKR (incl. craft packaging)</span>
       </div>
 
       {/* Stock & Studio Lead Time Banner */}
-      <div className="p-4 rounded-2xl bg-surface-custard border border-border-warm text-xs space-y-1.5">
+      <div className="p-4 rounded-3xl bg-surface-custard border border-border-warm/60 text-xs space-y-1.5 shadow-xs">
         <div className="flex items-center gap-2 font-bold text-espresso-deep">
           {product.productType === "ready_made" ? (
             <>
@@ -129,7 +129,7 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
       </div>
 
       {/* Description */}
-      <div className="prose prose-sm text-espresso-deep/90 leading-relaxed">
+      <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
         <p>{product.description}</p>
       </div>
 
@@ -138,7 +138,7 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
         {product.productType === "ready_made" ? (
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             {/* Quantity Selector */}
-            <div className="flex items-center justify-between border border-border-warm rounded-full bg-surface-cloud px-3 py-2 w-full sm:w-36 shrink-0">
+            <div className="flex items-center justify-between border border-border-warm/60 rounded-full bg-surface-cloud px-3 py-2 w-full sm:w-36 shrink-0 shadow-xs">
               <button
                 type="button"
                 onClick={() => handleQuantityChange(-1)}
@@ -146,7 +146,7 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
                 className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-espresso-deep hover:bg-surface-custard disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 aria-label="Decrease quantity"
               >
-                −
+                <span aria-hidden="true">−</span>
               </button>
               <span className="font-headline font-bold text-espresso-deep text-sm" aria-live="polite">
                 {quantity}
@@ -158,7 +158,7 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
                 className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-espresso-deep hover:bg-surface-custard disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 aria-label="Increase quantity"
               >
-                +
+                <span aria-hidden="true">+</span>
               </button>
             </div>
 
@@ -167,12 +167,12 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
               type="button"
               onClick={handleAddToCart}
               disabled={isOutOfStock}
-              className={`flex-1 py-3.5 px-8 rounded-full font-bold text-sm transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center gap-2 ${
+              className={`flex-1 py-4 px-8 rounded-full font-label-lg text-label-lg font-bold transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center gap-2 ${
                 isAdded
-                  ? "bg-emerald-600 text-white"
+                  ? "bg-secondary text-white"
                   : isOutOfStock
                   ? "bg-espresso-muted/30 text-espresso-muted cursor-not-allowed"
-                  : "bg-primary hover:bg-opacity-95 text-white active:scale-98"
+                  : "bg-strawberry-blush hover:opacity-95 text-white active:scale-98"
               }`}
             >
               {isAdded ? (
@@ -180,7 +180,10 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
               ) : isOutOfStock ? (
                 <>Out of Stock</>
               ) : (
-                <>🛍️ Add to Bag • {formatMoney(product.basePriceMinor * quantity)}</>
+                <>
+                  <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+                  Add to Bag • {formatMoney(product.basePriceMinor * quantity)}
+                </>
               )}
             </button>
           </div>
@@ -191,11 +194,11 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
             <div className="space-y-3">
               <Link
                 href={`/shop?type=customizable#custom-options`}
-                className="w-full py-3.5 px-8 rounded-full bg-primary hover:bg-opacity-95 text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
+                className="w-full py-4 px-8 rounded-full bg-strawberry-blush hover:opacity-95 text-white font-label-lg text-label-lg font-bold transition-all shadow-md flex items-center justify-center gap-2"
               >
-                ✏️ Personalize This Keepsake
+                <span>✏️ Personalize This Keepsake</span>
               </Link>
-              <p className="text-[11px] text-center text-espresso-muted">
+              <p className="font-label-sm text-xs text-center text-espresso-muted">
                 Choose your custom lettering, pastel color palette, and hardware accents.
               </p>
             </div>
@@ -204,11 +207,11 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
           <div className="space-y-3">
             <Link
               href={`/custom-order?ref=${product.slug}`}
-              className="w-full py-3.5 px-8 rounded-full bg-espresso-deep hover:bg-opacity-90 text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
+              className="w-full py-4 px-8 rounded-full bg-espresso-deep hover:bg-opacity-95 text-white font-label-lg text-label-lg font-bold transition-all shadow-md flex items-center justify-center gap-2"
             >
-              🎨 Request Custom Commission Quote
+              <span>🎨 Request Custom Commission Quote</span>
             </Link>
-            <p className="text-[11px] text-center text-espresso-muted">
+            <p className="font-label-sm text-xs text-center text-espresso-muted">
               Upload reference sketches or pet photos for bespoke hand-sculpted miniature art.
             </p>
           </div>
@@ -221,28 +224,28 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
           Studio Craftsmanship &amp; Care
         </h3>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-espresso-muted">
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 bg-surface-cloud p-3 rounded-2xl border border-border-warm/40 shadow-xs">
             <span className="text-strawberry-blush text-sm">✨</span>
             <span>
               <strong className="text-espresso-deep block">Triple UV Diamond Glaze</strong>
               High-gloss glass finish, drop-resistant &amp; scratch-cured.
             </span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 bg-surface-cloud p-3 rounded-2xl border border-border-warm/40 shadow-xs">
             <span className="text-strawberry-blush text-sm">💧</span>
             <span>
               <strong className="text-espresso-deep block">Water-Resistant Clay</strong>
               Withstands rain and everyday splashes. Wipe clean gently.
             </span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 bg-surface-cloud p-3 rounded-2xl border border-border-warm/40 shadow-xs">
             <span className="text-strawberry-blush text-sm">🇵🇰</span>
             <span>
               <strong className="text-espresso-deep block">Handcrafted in Pakistan</strong>
               Every piece sculpted by hand in our studio with love.
             </span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 bg-surface-cloud p-3 rounded-2xl border border-border-warm/40 shadow-xs">
             <span className="text-strawberry-blush text-sm">📦</span>
             <span>
               <strong className="text-espresso-deep block">Gift Presentation</strong>

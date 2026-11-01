@@ -170,9 +170,9 @@ export function ProductMediaGallery({ media, title }: ProductMediaGalleryProps) 
                 tabIndex={isSelected ? 0 : -1}
                 onClick={() => setActiveIndex(idx)}
                 onKeyDown={(e) => handleThumbnailKeyDown(e, idx)}
-                className={`relative w-20 h-20 rounded-2xl overflow-hidden shrink-0 border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                className={`relative w-20 h-20 rounded-2xl overflow-hidden shrink-0 border-2 transition-all focus:outline-none focus:ring-2 focus:ring-strawberry-blush focus:ring-offset-2 ${
                   isSelected
-                    ? "border-primary shadow-sm scale-102"
+                    ? "border-strawberry-blush shadow-xs scale-102 ring-2 ring-strawberry-blush/20"
                     : "border-transparent opacity-70 hover:opacity-100"
                 }`}
               >

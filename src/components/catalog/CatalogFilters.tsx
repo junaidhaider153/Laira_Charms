@@ -52,10 +52,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
             e.preventDefault();
             navigateTo(createFilterUrl("category", ""));
           }}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
+          className={`px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap shrink-0 ${
             !currentCategory
-              ? "bg-primary text-white shadow-xs"
-              : "bg-surface-cloud text-espresso-muted hover:text-espresso-deep border border-border-warm"
+              ? "bg-strawberry-blush text-on-primary shadow-xs font-bold"
+              : "bg-surface-cloud text-espresso-deep hover:bg-surface-custard border border-border-warm/60 shadow-xs"
           }`}
         >
           All Keepsakes
@@ -72,10 +72,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
                 e.preventDefault();
                 navigateTo(url);
               }}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
+              className={`px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap shrink-0 ${
                 isActive
-                  ? "bg-primary text-white shadow-xs"
-                  : "bg-surface-cloud text-espresso-muted hover:text-espresso-deep border border-border-warm"
+                  ? "bg-strawberry-blush text-on-primary shadow-xs font-bold"
+                  : "bg-surface-cloud text-espresso-deep hover:bg-surface-custard border border-border-warm/60 shadow-xs"
               }`}
             >
               {cat.name}
@@ -84,11 +84,11 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
         })}
       </div>
 
-      {/* Second Row: Filters, Count, and Sort Selector */}
-      <div className="p-4 rounded-2xl bg-surface-cloud border border-border-warm shadow-xs flex flex-wrap items-center justify-between gap-4">
+      {/* Second Row: Filter Badges, Counter, and Sort Selector */}
+      <div className="p-4 sm:p-5 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm flex flex-wrap items-center justify-between gap-4">
         {/* Left: Product Type filter chips */}
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-espresso-muted mr-1">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="font-label-sm text-[11px] font-bold uppercase tracking-wider text-espresso-muted mr-1">
             Filter:
           </span>
           <Link
@@ -97,10 +97,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", ""));
             }}
-            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
+            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
               !currentType
-                ? "bg-surface-custard text-espresso-deep font-bold"
-                : "text-espresso-muted hover:text-espresso-deep"
+                ? "bg-surface-custard text-espresso-deep border border-border-warm/60 font-bold shadow-xs"
+                : "text-espresso-muted hover:text-espresso-deep bg-background"
             }`}
           >
             All
@@ -111,10 +111,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", "ready_made"));
             }}
-            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
+            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
               currentType === "ready_made"
-                ? "bg-matcha-tint text-secondary font-bold"
-                : "text-espresso-muted hover:text-espresso-deep"
+                ? "bg-matcha-tint text-secondary border border-secondary/20 font-bold shadow-xs"
+                : "text-espresso-muted hover:text-espresso-deep bg-background"
             }`}
           >
             In Stock (Ready)
@@ -125,10 +125,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", "customizable"));
             }}
-            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
+            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
               currentType === "customizable"
-                ? "bg-strawberry-subtle text-primary font-bold"
-                : "text-espresso-muted hover:text-espresso-deep"
+                ? "bg-strawberry-subtle text-primary border border-primary/20 font-bold shadow-xs"
+                : "text-espresso-muted hover:text-espresso-deep bg-background"
             }`}
           >
             Personalized
@@ -139,10 +139,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", "bespoke_quote"));
             }}
-            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
+            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
               currentType === "bespoke_quote"
-                ? "bg-peach-tint text-espresso-deep font-bold"
-                : "text-espresso-muted hover:text-espresso-deep"
+                ? "bg-peach-tint text-tertiary border border-border-warm font-bold shadow-xs"
+                : "text-espresso-muted hover:text-espresso-deep bg-background"
             }`}
           >
             Bespoke Atelier
@@ -155,7 +155,7 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
                 e.preventDefault();
                 navigateTo(pathname);
               }}
-              className="ml-2 text-[11px] font-bold text-error hover:underline"
+              className="ml-2 font-label-sm text-[11px] font-bold text-error hover:underline"
             >
               Clear Filters
             </Link>
@@ -164,16 +164,16 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
 
         {/* Right: Item Count & Sort Dropdown */}
         <div className="flex items-center gap-3">
-          <span className="text-xs font-semibold text-espresso-muted">
+          <span className="font-body-sm text-xs font-semibold text-espresso-muted">
             Showing <strong className="text-espresso-deep">{totalProducts}</strong> charms
           </span>
 
-          <div className="flex items-center gap-1.5 bg-surface-custard border border-border-warm/60 rounded-full px-3 py-1.5 text-xs text-espresso-deep font-semibold">
-            <span className="text-[11px] text-espresso-muted">Sort:</span>
+          <div className="flex items-center gap-1.5 bg-surface-custard border border-border-warm/60 rounded-full px-3.5 py-1.5 text-xs text-espresso-deep font-semibold shadow-xs">
+            <span className="font-label-sm text-[11px] text-espresso-muted">Sort:</span>
             <select
               value={currentSort}
               onChange={handleSortChange}
-              className="bg-transparent border-0 outline-none text-xs font-bold text-espresso-deep cursor-pointer focus:ring-0 p-0 pr-1"
+              className="bg-transparent border-0 outline-none font-label-sm text-xs font-bold text-espresso-deep cursor-pointer focus:ring-0 p-0 pr-1"
               aria-label="Sort catalog products"
             >
               <option value="newest">Newest First</option>

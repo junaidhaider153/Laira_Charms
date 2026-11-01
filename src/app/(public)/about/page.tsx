@@ -11,8 +11,8 @@ export default function AboutPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Breadcrumbs items={[{ label: "Our Story & Craft" }]} />
 
-      <div className="bg-canvas-butter p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm mt-4">
-        <div className="inline-flex items-center gap-2 rounded-full bg-strawberry-subtle text-primary px-3.5 py-1 text-xs font-bold mb-4">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm mt-4">
+        <div className="inline-flex items-center gap-2 rounded-full bg-strawberry-subtle text-strawberry-blush-dark px-3.5 py-1 text-xs font-bold mb-4">
           <span>🍓</span> Baked with Love in Pakistan
         </div>
 
@@ -24,26 +24,26 @@ export default function AboutPage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-          <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm/60 text-center">
+          <div className="p-6 rounded-3xl bg-surface-custard border border-border-warm/60 text-center shadow-xs">
             <span className="text-3xl block mb-2">🤲</span>
             <h3 className="font-headline font-bold text-sm text-espresso-deep mb-1">Hand-Sculpted</h3>
             <p className="text-xs text-espresso-muted">Every miniature leaf, eye, and petal is rolled and shaped with fine clay tools.</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm/60 text-center">
+          <div className="p-6 rounded-3xl bg-surface-custard border border-border-warm/60 text-center shadow-xs">
             <span className="text-3xl block mb-2">✨</span>
             <h3 className="font-headline font-bold text-sm text-espresso-deep mb-1">UV Diamond Glaze</h3>
             <p className="text-xs text-espresso-muted">Triple-coated and UV cured for a glassy, scratch-resistant, durable finish.</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm/60 text-center">
+          <div className="p-6 rounded-3xl bg-surface-custard border border-border-warm/60 text-center shadow-xs">
             <span className="text-3xl block mb-2">💎</span>
             <h3 className="font-headline font-bold text-sm text-espresso-deep mb-1">Tarnish-Resistant</h3>
             <p className="text-xs text-espresso-muted">Fitted with sturdy gold and silver-tone lobster clasps and reinforced jump rings.</p>
           </div>
         </div>
 
-        <div className="space-y-6 text-sm text-espresso-deep leading-relaxed pt-4 border-t border-border-warm">
+        <div className="space-y-6 text-sm text-espresso-deep leading-relaxed pt-6 border-t border-border-warm/60">
           <h2 className="font-headline text-xl font-bold text-espresso-deep">
             Charm Care Instructions
           </h2>
@@ -54,16 +54,16 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border-warm flex flex-wrap gap-4">
+        <div className="mt-10 pt-6 border-t border-border-warm/60 flex flex-wrap gap-4">
           <Link
             href="/shop"
-            className="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+            className="px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
           >
             Shop the Collection
           </Link>
           <Link
             href="/custom-order"
-            className="px-6 py-2.5 rounded-full bg-surface-custard text-espresso-deep font-semibold text-xs hover:bg-surface-container transition-all"
+            className="px-6 py-2.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
           >
             Commission a Bespoke Charm
           </Link>

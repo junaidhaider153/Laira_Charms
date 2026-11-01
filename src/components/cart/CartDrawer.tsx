@@ -70,35 +70,35 @@ export function CartDrawer() {
         >
           {/* Header */}
           <div className="p-6 bg-surface-custard border-b border-border-warm flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🛍️</span>
+            <div className="flex items-center gap-2.5">
+              <span className="material-symbols-outlined text-[22px] text-strawberry-blush">shopping_bag</span>
               <h2 className="font-headline font-bold text-xl text-espresso-deep">
                 Your Charm Bag ({itemCount})
               </h2>
             </div>
             <button
               onClick={closeDrawer}
-              className="w-9 h-9 rounded-full bg-surface-cloud text-espresso-muted hover:text-espresso-deep hover:bg-surface-container flex items-center justify-center transition-colors"
+              className="w-9 h-9 rounded-full bg-surface-cloud text-espresso-muted hover:text-espresso-deep hover:bg-surface-container flex items-center justify-center transition-colors shadow-xs"
               aria-label="Close Shopping Bag"
             >
-              ✕
+              <span className="material-symbols-outlined text-[18px]">close</span>
             </button>
           </div>
 
           {/* Free Shipping Progress Indicator */}
-          <div className="px-6 py-3 bg-peach-tint/60 border-b border-border-warm/50 text-xs">
+          <div className="px-6 py-3.5 bg-peach-tint/60 border-b border-border-warm/50 text-xs">
             {freeShippingRemainingMinor > 0 ? (
               <p className="text-espresso-muted mb-1.5 font-medium">
-                Add <span className="font-bold text-primary">{formatMoney(freeShippingRemainingMinor)}</span> more for <span className="font-bold text-espresso-deep">Free Delivery</span> across Pakistan!
+                Add <span className="font-bold text-strawberry-blush">{formatMoney(freeShippingRemainingMinor)}</span> more for <span className="font-bold text-espresso-deep">Free Delivery</span> across Pakistan!
               </p>
             ) : (
               <p className="text-secondary font-bold mb-1.5 flex items-center gap-1.5">
                 <span>🎉</span> You unlocked Free Standard Delivery!
               </p>
             )}
-            <div className="w-full bg-surface-cloud h-2 rounded-full overflow-hidden border border-border-warm/30">
+            <div className="w-full bg-surface-cloud h-2.5 rounded-full overflow-hidden border border-border-warm/30 shadow-inner">
               <div
-                className="bg-primary h-full transition-all duration-300 rounded-full"
+                className="bg-strawberry-blush h-full transition-all duration-300 rounded-full"
                 style={{ width: `${freeShippingProgress}%` }}
               />
             </div>
@@ -108,19 +108,19 @@ export function CartDrawer() {
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-strawberry-subtle flex items-center justify-center text-3xl mb-4">
+                <div className="w-16 h-16 rounded-full bg-strawberry-subtle flex items-center justify-center text-3xl mb-4 shadow-xs">
                   🧸
                 </div>
                 <h3 className="font-headline font-bold text-lg text-espresso-deep mb-2">
                   Your bag is currently empty
                 </h3>
-                <p className="text-xs text-espresso-muted max-w-xs mb-6">
+                <p className="font-body-sm text-xs text-espresso-muted max-w-xs mb-6">
                   Explore our handcrafted keepsakes, customized nameplates, and clay keychains.
                 </p>
                 <Link
                   href="/shop"
                   onClick={closeDrawer}
-                  className="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+                  className="px-7 py-3 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
                 >
                   Explore Charms
                 </Link>
@@ -129,10 +129,10 @@ export function CartDrawer() {
               items.map((item) => (
                 <div
                   key={item.id}
-                  className="p-4 rounded-2xl bg-surface-cloud border border-border-warm shadow-sm flex gap-4 items-start"
+                  className="p-4 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-xs flex gap-4 items-start"
                 >
                   {/* Thumbnail */}
-                  <div className="w-16 h-16 rounded-xl bg-surface-custard border border-border-warm/60 flex items-center justify-center text-2xl shrink-0 overflow-hidden">
+                  <div className="w-16 h-16 rounded-2xl bg-surface-custard border border-border-warm/40 flex items-center justify-center text-2xl shrink-0 overflow-hidden shadow-xs">
                     {item.imageUrl && item.imageUrl.startsWith("http") ? (
                       <img
                         src={item.imageUrl}
@@ -149,7 +149,7 @@ export function CartDrawer() {
                     <h4 className="font-headline font-bold text-sm text-espresso-deep truncate">
                       {item.title}
                     </h4>
-                    <p className="font-bold text-xs text-primary mt-0.5">
+                    <p className="font-bold text-xs text-strawberry-blush mt-0.5">
                       {formatMoney(item.unitPriceMinor)}
                     </p>
 
@@ -171,13 +171,13 @@ export function CartDrawer() {
 
                     {/* Quantity controls */}
                     <div className="flex items-center justify-between mt-3">
-                      <div className="flex items-center border border-border-warm rounded-full bg-surface-cloud overflow-hidden">
+                      <div className="flex items-center border border-border-warm/60 rounded-full bg-surface-custard/60 overflow-hidden shadow-xs">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
                           className="w-7 h-7 flex items-center justify-center text-espresso-muted hover:text-espresso-deep hover:bg-surface-custard transition-colors text-xs font-bold"
                           aria-label={`Decrease quantity of ${item.title}`}
                         >
-                          -
+                          <span aria-hidden="true">-</span>
                         </button>
                         <span className="w-7 text-center text-xs font-bold text-espresso-deep">
                           {item.quantity}
@@ -187,7 +187,7 @@ export function CartDrawer() {
                           className="w-7 h-7 flex items-center justify-center text-espresso-muted hover:text-espresso-deep hover:bg-surface-custard transition-colors text-xs font-bold"
                           aria-label={`Increase quantity of ${item.title}`}
                         >
-                          +
+                          <span aria-hidden="true">+</span>
                         </button>
                       </div>
 
@@ -221,14 +221,14 @@ export function CartDrawer() {
                 <Link
                   href="/cart"
                   onClick={closeDrawer}
-                  className="w-full py-3 px-4 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs text-center hover:bg-surface-container transition-all"
+                  className="w-full py-3 px-4 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs text-center hover:bg-surface-container transition-all shadow-xs"
                 >
                   View Full Bag
                 </Link>
                 <Link
                   href="/checkout"
                   onClick={closeDrawer}
-                  className="w-full py-3 px-4 rounded-full bg-primary text-white font-bold text-xs text-center hover:bg-opacity-95 transition-all shadow-sm"
+                  className="w-full py-3 px-4 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs text-center hover:opacity-95 transition-all shadow-xs active:scale-95"
                 >
                   Checkout
                 </Link>
@@ -240,4 +240,3 @@ export function CartDrawer() {
     </div>
   );
 }
-

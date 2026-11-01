@@ -139,6 +139,25 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+const fallbackCart: CartContextType = {
+  items: [],
+  itemCount: 0,
+  subtotalMinor: 0,
+  isDrawerOpen: false,
+  openDrawer: () => {},
+  closeDrawer: () => {},
+  toggleDrawer: () => {},
+  addItem: () => {},
+  removeItem: () => {},
+  updateQuantity: () => {},
+  clearCart: () => {},
+};
+
+export function useOptionalCart(): CartContextType {
+  const context = useContext(CartContext);
+  return context || fallbackCart;
+}
+
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {

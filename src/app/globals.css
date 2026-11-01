@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,8 +19,30 @@
   }
 }
 
+/* Material Symbols Outlined Icon Styling */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+  .animate-honey-jump,
+  .animate-spidey-sway,
+  .animate-ender-float,
+  .shinobi-runner-track,
+  .animate-sparkle,
   *,
   *::before,
   *::after {
@@ -29,7 +53,7 @@
   }
 }
 
-/* Custom scrollbar styling for modern browsers */
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -47,4 +71,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #a13a54;
 }
-

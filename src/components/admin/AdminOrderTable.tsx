@@ -26,10 +26,10 @@ export function AdminOrderTable({ orders }: AdminOrderTableProps) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-3xl border border-border-warm bg-surface-custard shadow-xs">
+    <div className="overflow-x-auto rounded-3xl border border-border-warm/60 bg-surface-cloud shadow-sm">
       <table className="w-full text-left text-xs border-collapse">
         <thead>
-          <tr className="border-b border-border-warm bg-surface-cloud/60 text-espresso-muted font-bold">
+          <tr className="border-b border-border-warm bg-surface-custard/60 text-espresso-muted font-bold">
             <th className="py-3.5 px-4">Order Ref</th>
             <th className="py-3.5 px-4">Date</th>
             <th className="py-3.5 px-4">Customer</th>
@@ -53,9 +53,9 @@ export function AdminOrderTable({ orders }: AdminOrderTableProps) {
             return (
               <tr
                 key={order.id}
-                className="hover:bg-surface-cloud/40 transition-colors"
+                className="hover:bg-canvas-butter/60 transition-colors"
               >
-                <td className="py-3.5 px-4 font-mono font-bold text-primary whitespace-nowrap">
+                <td className="py-3.5 px-4 font-mono font-bold text-strawberry-blush-dark whitespace-nowrap">
                   {order.reference}
                 </td>
                 <td className="py-3.5 px-4 text-espresso-muted whitespace-nowrap">
@@ -83,12 +83,12 @@ export function AdminOrderTable({ orders }: AdminOrderTableProps) {
                   <span
                     className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                       order.paymentStatus === "verified"
-                        ? "bg-secondary/15 text-secondary"
+                        ? "bg-matcha-tint text-matcha-soft border border-matcha-soft/20"
                         : order.paymentStatus === "verification_pending"
-                        ? "bg-peach-tint text-primary"
+                        ? "bg-peach-tint text-strawberry-blush-dark border border-strawberry-blush/20"
                         : order.paymentStatus === "rejected"
-                        ? "bg-error/15 text-error"
-                        : "bg-surface-cloud text-espresso-muted"
+                        ? "bg-error/15 text-error border border-error/20"
+                        : "bg-surface-custard text-espresso-muted"
                     }`}
                   >
                     {order.paymentStatus.replace("_", " ")}
@@ -104,7 +104,7 @@ export function AdminOrderTable({ orders }: AdminOrderTableProps) {
                 <td className="py-3.5 px-4 text-right whitespace-nowrap">
                   <Link
                     href={`/admin/orders/${order.reference}`}
-                    className="inline-flex items-center px-3 py-1.5 rounded-xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors"
+                    className="inline-flex items-center px-4 py-1.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
                   >
                     Manage &rarr;
                   </Link>

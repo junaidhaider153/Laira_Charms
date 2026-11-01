@@ -18,21 +18,22 @@ export function CatalogGrid({
 }: CatalogGridProps) {
   if (products.length === 0) {
     return (
-      <div className="py-20 px-4 text-center max-w-md mx-auto">
-        <div className="w-20 h-20 rounded-full bg-strawberry-subtle text-strawberry-blush flex items-center justify-center text-3xl mx-auto mb-4 shadow-sm">
+      <div className="py-20 px-6 text-center max-w-md mx-auto bg-surface-cloud rounded-3xl border border-border-warm/50 shadow-sm my-8">
+        <div className="w-20 h-20 rounded-full bg-strawberry-subtle text-strawberry-blush flex items-center justify-center text-3xl mx-auto mb-4 shadow-xs">
           🧸
         </div>
         <h3 className="font-headline font-bold text-xl text-espresso-deep mb-2">
           No charms found
         </h3>
-        <p className="text-sm text-espresso-muted mb-6 leading-relaxed">
+        <p className="font-body-sm text-body-sm text-espresso-muted mb-6 leading-relaxed">
           {emptyMessage} Try adjusting your search query, price range, or category filter.
         </p>
         <Link
           href={resetHref}
-          className="inline-flex items-center px-6 py-2.5 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
         >
-          View All Charms
+          <span>View All Charms</span>
+          <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
         </Link>
       </div>
     );
@@ -46,4 +47,3 @@ export function CatalogGrid({
     </div>
   );
 }
-

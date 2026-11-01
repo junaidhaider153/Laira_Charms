@@ -11,7 +11,7 @@ export default function ReturnsPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Breadcrumbs items={[{ label: "Returns & Exchanges" }]} />
 
-      <div className="bg-canvas-butter p-8 sm:p-12 rounded-3xl border border-border-warm shadow-sm mt-4">
+      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm mt-4">
         <h1 className="font-headline text-3xl sm:text-4xl font-bold text-espresso-deep mb-4">
           Returns &amp; Replacement Policy
         </h1>
@@ -53,16 +53,16 @@ export default function ReturnsPage() {
           </section>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border-warm flex gap-4">
+        <div className="mt-10 pt-6 border-t border-border-warm/60 flex gap-4">
           <Link
             href="/contact"
-            className="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 transition-all shadow-sm"
+            className="px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
           >
             Report an Issue / Message Atelier
           </Link>
           <Link
             href="/faq"
-            className="px-6 py-2.5 rounded-full bg-surface-custard text-espresso-deep font-semibold text-xs hover:bg-surface-container transition-all"
+            className="px-6 py-2.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
           >
             Care Instructions FAQ
           </Link>

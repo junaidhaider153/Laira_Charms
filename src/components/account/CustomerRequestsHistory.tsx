@@ -21,7 +21,7 @@ export function CustomerRequestsHistory({ requests }: CustomerRequestsHistoryPro
         </p>
         <Link
           href="/custom-order"
-          className="inline-block mt-4 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-bold hover:bg-opacity-95 shadow-xs transition-all"
+          className="inline-block mt-4 px-6 py-2.5 rounded-full bg-strawberry-blush text-on-primary text-xs font-bold hover:opacity-95 shadow-xs transition-all active:scale-95"
         >
           Commission a Bespoke Design &rarr;
         </Link>
@@ -51,7 +51,7 @@ export function CustomerRequestsHistory({ requests }: CustomerRequestsHistoryPro
           return (
             <div
               key={req.id}
-              className="p-5 rounded-3xl bg-surface-custard border border-border-warm shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+              className="p-6 rounded-3xl bg-surface-cloud border border-border-warm/60 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-strawberry-blush/30 hover:shadow-sm"
             >
               <div className="space-y-1.5 max-w-xl">
                 <div className="flex items-center gap-2">
@@ -61,10 +61,10 @@ export function CustomerRequestsHistory({ requests }: CustomerRequestsHistoryPro
                   <span
                     className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                       req.status === "quote_issued"
-                        ? "bg-secondary text-white"
+                        ? "bg-matcha-soft text-white"
                         : req.status === "accepted"
-                        ? "bg-secondary/15 text-secondary border border-secondary/30"
-                        : "bg-peach-tint text-primary border border-primary/20"
+                        ? "bg-matcha-tint text-matcha-soft border border-matcha-soft/30"
+                        : "bg-peach-tint text-strawberry-blush-dark border border-strawberry-blush/20"
                     }`}
                   >
                     {req.status.replace("_", " ")}
@@ -89,7 +89,7 @@ export function CustomerRequestsHistory({ requests }: CustomerRequestsHistoryPro
               <div className="flex items-center gap-2 w-full sm:w-auto justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-border-warm/40">
                 <Link
                   href={`/custom-order/status/${req.id}`}
-                  className="px-4 py-2 rounded-xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors whitespace-nowrap"
+                  className="px-5 py-2 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all whitespace-nowrap active:scale-95"
                 >
                   View Status &rarr;
                 </Link>

@@ -168,7 +168,7 @@ export function ChatThread({
         <button
           onClick={handleToggleStatus}
           type="button"
-          className="px-3.5 py-1.5 rounded-xl border border-border-warm bg-surface-custard text-espresso-deep text-xs font-bold hover:bg-surface-cloud transition-colors whitespace-nowrap"
+          className="px-4 py-2 rounded-full border border-border-warm bg-surface-custard text-espresso-deep text-xs font-bold hover:bg-surface-cloud transition-all whitespace-nowrap active:scale-95"
         >
           {conversation.isClosed ? "Reopen Thread" : "Mark Resolved"}
         </button>
@@ -305,7 +305,7 @@ export function ChatThread({
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
                 title="Attach design photo or screenshot"
-                className="p-2.5 rounded-2xl bg-surface-custard border border-border-warm text-espresso-deep hover:bg-surface-container transition-colors text-sm"
+                className="p-3 rounded-2xl bg-canvas-butter border border-border-warm text-espresso-deep hover:bg-surface-custard transition-colors text-sm"
               >
                 📎
               </button>
@@ -325,20 +325,20 @@ export function ChatThread({
                     ? "Write an internal studio note (visible to admins only)..."
                     : "Type a message to the studio (Press Enter to send)..."
                 }
-                className={`flex-1 p-3 rounded-2xl border text-xs text-espresso-deep focus:outline-none focus:ring-2 resize-none ${
+                className={`flex-1 p-3 rounded-2xl border text-xs text-espresso-deep focus:outline-none focus:ring-2 resize-none transition-all ${
                   isInternalNote
                     ? "bg-amber-50/60 border-amber-300 focus:ring-amber-500"
-                    : "bg-surface-custard border-border-warm focus:ring-primary"
+                    : "bg-canvas-butter border-border-warm focus:ring-strawberry-blush"
                 }`}
               />
 
               <button
                 type="submit"
                 disabled={isSending || (!inputText.trim() && pendingAttachments.length === 0)}
-                className={`px-5 py-3 rounded-2xl font-bold text-xs text-white transition-all shadow-xs disabled:opacity-40 ${
+                className={`px-6 py-3 rounded-full font-bold text-xs text-white transition-all shadow-xs active:scale-95 disabled:opacity-40 ${
                   isInternalNote
                     ? "bg-amber-700 hover:bg-amber-800"
-                    : "bg-primary hover:bg-opacity-95"
+                    : "bg-strawberry-blush text-on-primary hover:opacity-95"
                 }`}
               >
                 {isSending ? "Sending..." : isInternalNote ? "Save Note" : "Send"}

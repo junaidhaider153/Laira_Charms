@@ -23,16 +23,16 @@ export default function AccountLayout({
     <main className="min-h-screen bg-canvas-butter py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Account Header */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-surface-custard border border-border-warm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+        <div className="p-6 sm:p-8 rounded-3xl bg-surface-custard border border-border-warm/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-peach-tint flex items-center justify-center text-2xl border border-primary/20 shrink-0">
+            <div className="w-14 h-14 rounded-3xl bg-peach-tint flex items-center justify-center text-2xl border border-strawberry-blush/20 shrink-0 shadow-xs">
               🌸
             </div>
             <div>
-              <span className="px-2.5 py-0.5 rounded-full bg-secondary/15 text-secondary text-[10px] font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full bg-matcha-tint text-secondary border border-secondary/20 text-[10px] font-bold uppercase tracking-wider">
                 Keepsake Collector Club
               </span>
-              <h1 className="font-headline font-bold text-2xl sm:text-3xl text-espresso-deep mt-1">
+              <h1 className="font-headline font-bold text-2xl sm:text-3xl text-espresso-deep mt-1.5">
                 My Studio Account
               </h1>
             </div>
@@ -40,19 +40,19 @@ export default function AccountLayout({
 
           <Link
             href="/shop"
-            className="px-4 py-2 rounded-2xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors"
+            className="px-5 py-2.5 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all shadow-xs active:scale-95"
           >
             Explore Catalog &rarr;
           </Link>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none border-b border-border-warm/60">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none border-b border-border-warm/40">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-4 py-2.5 rounded-2xl text-xs font-bold text-espresso-deep hover:bg-surface-custard transition-colors flex items-center gap-2 whitespace-nowrap border border-transparent hover:border-border-warm"
+              className="px-5 py-2.5 rounded-full text-xs font-bold text-espresso-deep hover:bg-surface-custard transition-all flex items-center gap-2 whitespace-nowrap border border-transparent hover:border-border-warm/60"
             >
               <span>{link.icon}</span>
               <span>{link.label}</span>

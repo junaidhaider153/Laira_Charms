@@ -38,7 +38,7 @@ export function PaymentStatusCard({
     : `/orders/${order.reference}`;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 w-full">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -48,17 +48,17 @@ export function PaymentStatusCard({
           >
             &larr; Back to Order Details
           </Link>
-          <h1 className="font-headline font-bold text-3xl text-espresso-deep">
+          <h1 className="font-headline font-bold text-3xl sm:text-4xl text-espresso-deep">
             Payment &amp; Verification
           </h1>
-          <p className="text-xs sm:text-sm text-espresso-muted mt-1">
-            Order Reference: <span className="font-mono font-bold text-primary">{order.reference}</span>
+          <p className="font-body-sm text-xs sm:text-sm text-espresso-muted mt-1">
+            Order Reference: <span className="font-mono font-bold text-strawberry-blush">{order.reference}</span>
           </p>
         </div>
 
         <div className="text-left sm:text-right">
-          <span className="text-[11px] text-espresso-muted block font-medium">Order Total</span>
-          <span className="font-headline font-bold text-2xl text-espresso-deep">
+          <span className="font-label-sm text-[11px] text-espresso-muted block font-medium">Order Total</span>
+          <span className="font-headline font-bold text-2xl sm:text-3xl text-espresso-deep">
             {formatMoney(order.totalMinor)}
           </span>
         </div>
@@ -66,25 +66,26 @@ export function PaymentStatusCard({
 
       {/* STATE 1: VERIFIED */}
       {payment.status === "verified" && (
-        <div className="p-8 rounded-3xl bg-surface-custard border-2 border-secondary/40 shadow-sm text-center space-y-4">
-          <div className="w-16 h-16 mx-auto rounded-full bg-secondary/15 text-secondary flex items-center justify-center text-3xl">
+        <div className="p-8 sm:p-10 rounded-3xl bg-surface-cloud border-2 border-secondary/40 shadow-sm text-center space-y-4">
+          <div className="w-16 h-16 mx-auto rounded-full bg-matcha-tint text-secondary flex items-center justify-center text-3xl shadow-xs">
             ✨
           </div>
-          <span className="inline-block px-3.5 py-1 rounded-full bg-secondary/20 text-secondary font-bold text-xs uppercase tracking-wider">
+          <span className="inline-block px-4 py-1 rounded-full bg-matcha-tint text-secondary font-bold text-xs uppercase tracking-wider">
             Payment Verified &bull; Confirmed
           </span>
           <h2 className="font-headline font-bold text-2xl sm:text-3xl text-espresso-deep">
             Your Payment is Confirmed!
           </h2>
-          <p className="text-espresso-muted text-sm sm:text-base max-w-lg mx-auto">
+          <p className="font-body-md text-espresso-muted text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
             Our studio has verified your bank transfer on our account statement. Your handmade charms are now scheduled for custom sculpting and glaze baking!
           </p>
           <div className="pt-2">
             <Link
               href={orderUrl}
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-primary text-white font-bold text-xs hover:bg-opacity-95 shadow-sm transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 shadow-sm transition-all active:scale-95"
             >
-              View Order Confirmation &rarr;
+              <span>View Order Confirmation</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
           </div>
         </div>
@@ -92,27 +93,32 @@ export function PaymentStatusCard({
 
       {/* STATE 2: VERIFICATION PENDING */}
       {payment.status === "verification_pending" && (
-        <div className="p-8 rounded-3xl bg-peach-tint/70 border border-primary/30 shadow-xs space-y-5">
+        <div className="p-8 sm:p-10 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-5">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-peach-tint text-tertiary flex items-center justify-center text-2xl shrink-0 shadow-xs">
               ⏳
             </div>
             <div>
-              <span className="inline-block px-3 py-0.5 rounded-full bg-primary/15 text-primary font-bold text-[10px] uppercase tracking-wider mb-1">
+              <span className="inline-block px-3 py-0.5 rounded-full bg-peach-tint text-tertiary font-bold text-xs uppercase tracking-wider mb-2">
                 Under Studio Review
               </span>
-              <h2 className="font-headline font-bold text-2xl text-espresso-deep">
+              <h2 className="font-headline font-bold text-xl sm:text-2xl text-espresso-deep">
                 Payment Proof Received
               </h2>
-              <p className="text-xs sm:text-sm text-espresso-muted mt-1 leading-relaxed">
-                Thank you! We have received your screenshot proof. Our artisan cross-references bank and mobile wallet statements within <span className="font-bold text-espresso-deep">2 to 4 business hours</span>. Once confirmed, you will receive an update and your commission will begin crafting.
+              <p className="font-body-sm text-xs sm:text-sm text-espresso-muted mt-1 leading-relaxed">
+                Thank you! We received your proof upload on{" "}
+                <span className="font-semibold text-espresso-deep">
+                  {payment.proofSubmittedAt
+                    ? new Date(payment.proofSubmittedAt).toLocaleString("en-PK")
+                    : "record"}
+                </span>
+                . Our studio artists manually match transaction references with our bank statements.
               </p>
             </div>
           </div>
 
           {payment.paymentMethodSnapshot && (
-            <div className="p-4 rounded-2xl bg-surface-cloud border border-border-warm text-xs space-y-1.5">
-              <span className="font-bold text-espresso-deep block mb-1">Submitted Transfer Details:</span>
+            <div className="p-4 rounded-2xl bg-surface-custard border border-border-warm text-xs space-y-1">
               <p className="text-espresso-muted">
                 Method: <strong className="text-espresso-deep">{payment.paymentMethodSnapshot.methodName}</strong>
               </p>
@@ -120,21 +126,28 @@ export function PaymentStatusCard({
                 Sender Account: <strong className="text-espresso-deep">{payment.paymentMethodSnapshot.senderName}</strong>
               </p>
               <p className="text-espresso-muted">
-                Transaction / Ref ID: <strong className="font-mono text-primary">{payment.paymentMethodSnapshot.transactionId}</strong>
+                Transaction / Ref ID: <strong className="font-mono text-strawberry-blush">{payment.paymentMethodSnapshot.transactionId}</strong>
               </p>
             </div>
           )}
 
-          <div className="pt-2 flex flex-col sm:flex-row gap-3">
+          <div className="p-4 rounded-2xl bg-surface-custard/60 border border-border-warm/50 text-xs text-espresso-muted space-y-1">
+            <p className="font-semibold text-espresso-deep">What happens next?</p>
+            <p>
+              Once approved, your order moves to confirmed status and enters our handmade baking queue. You will receive an email confirmation notification.
+            </p>
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-end">
             <Link
               href={orderUrl}
-              className="py-3 px-6 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs text-center hover:bg-surface-container transition-all"
+              className="px-6 py-3 rounded-full bg-surface-cloud text-espresso-deep font-semibold text-xs hover:bg-surface-custard transition-colors border border-border-warm text-center shadow-xs"
             >
               Review Order Details
             </Link>
             <Link
               href="/shop"
-              className="py-3 px-6 rounded-full bg-primary text-white font-bold text-xs text-center hover:bg-opacity-95 shadow-sm transition-all"
+              className="px-6 py-3 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all text-center shadow-xs"
             >
               Explore More Handmade Keepsakes
             </Link>
@@ -145,20 +158,22 @@ export function PaymentStatusCard({
       {/* STATE 3: REJECTED */}
       {payment.status === "rejected" && (
         <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-error/10 border border-error/30 shadow-xs space-y-3">
-            <div className="flex items-start gap-3">
-              <span className="text-2xl shrink-0">⚠️</span>
+          <div className="p-8 rounded-3xl bg-error/5 border border-error/30 shadow-xs space-y-4">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-error/15 text-error flex items-center justify-center text-2xl shrink-0">
+                ⚠️
+              </div>
               <div>
-                <h2 className="font-headline font-bold text-lg text-error">
+                <span className="inline-block px-3 py-0.5 rounded-full bg-error/15 text-error font-bold text-xs uppercase tracking-wider mb-2">
                   Payment Verification Notice
-                </h2>
-                <p className="text-xs text-espresso-muted mt-1">
+                </span>
+                <h2 className="font-headline font-bold text-xl text-espresso-deep">
                   Our studio could not verify the transfer with the details provided:
-                </p>
-                <div className="mt-2 p-3 rounded-xl bg-surface-custard border border-error/20 text-xs text-espresso-deep font-medium italic">
+                </h2>
+                <div className="mt-2 p-3.5 rounded-2xl bg-surface-custard border border-error/20 text-xs text-espresso-deep font-medium italic">
                   &ldquo;{payment.rejectionReason}&rdquo;
                 </div>
-                <p className="text-[11px] text-espresso-muted mt-2">
+                <p className="text-xs text-espresso-muted mt-2">
                   Please review our verified account details below and re-submit your transaction screenshot.
                 </p>
               </div>
@@ -178,7 +193,7 @@ export function PaymentStatusCard({
         </div>
       )}
 
-      {/* STATE 4: AWAITING PAYMENT */}
+      {/* STATE 4: AWAITING PAYMENT (Default initial state) */}
       {payment.status === "awaiting_payment" && (
         <div className="space-y-8">
           <PaymentInstructionsCard
