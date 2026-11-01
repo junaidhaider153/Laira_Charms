@@ -41,3 +41,4 @@ export const PAKISTANI_PAYMENT_ACCOUNTS: PaymentAccount[] = [
     badge: "Instant Wallet",
   },
 ];
+

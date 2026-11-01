@@ -59,3 +59,4 @@ export const quoteDecisionSchema = z.object({
 });
 
 export type QuoteDecisionInput = z.infer<typeof quoteDecisionSchema>;
+

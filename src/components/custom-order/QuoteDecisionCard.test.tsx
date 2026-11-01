@@ -117,3 +117,4 @@ describe("QuoteDecisionCard Component", () => {
     expect(confirmationStatus).toHaveTextContent(/Quotation accepted/i);
   });
 });
+

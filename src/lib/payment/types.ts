@@ -42,3 +42,4 @@ export interface ReviewPaymentInput {
   action: "verify" | "reject";
   rejectionReason?: string;
 }
+

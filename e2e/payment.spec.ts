@@ -50,3 +50,4 @@ test.describe("Manual Bank Transfer & Proof Verification Flow", () => {
     await expect(page.locator("body")).toContainText(/404/i);
   });
 });
+

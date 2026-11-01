@@ -72,29 +72,35 @@ export async function adminReviewPaymentAction(rawInput: ReviewPaymentInput) {
     };
   }
 
-  let adminUserId: string | null = null;
-  try {
-    const { createServerSupabaseClient } = await import("@/lib/supabase/server");
-    const supabase = await createServerSupabaseClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      return { success: false, message: "Unauthorized. Admin authentication required." };
+  let adminUserId = "admin-dev-fallback";
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const isLiveSupabase = Boolean(
+    supabaseUrl && !supabaseUrl.includes("dummy-project") && !supabaseUrl.includes("example.com")
+  );
+
+  if (isLiveSupabase) {
+    try {
+      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
+      const supabase = await createServerSupabaseClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        return { success: false, message: "Unauthorized. Admin authentication required." };
+      }
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .single();
+
+      if ((profile as { role?: string } | null)?.role !== "admin") {
+        return { success: false, message: "Forbidden. Admin privileges required." };
+      }
+
+      adminUserId = user.id;
+    } catch {
+      return { success: false, message: "Admin authorization check failed." };
     }
-
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
-
-    if ((profile as { role?: string } | null)?.role !== "admin") {
-      return { success: false, message: "Forbidden. Admin privileges required." };
-    }
-
-    adminUserId = user.id;
-  } catch {
-    // In dev / test fallback when Supabase is offline
-    adminUserId = "admin-dev-fallback";
   }
 
   try {
@@ -112,3 +118,4 @@ export async function adminReviewPaymentAction(rawInput: ReviewPaymentInput) {
     };
   }
 }
+

@@ -56,3 +56,4 @@ export default async function PaymentPage({ params, searchParams }: PaymentPageP
     </main>
   );
 }
+

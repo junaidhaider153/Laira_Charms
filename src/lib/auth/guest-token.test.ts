@@ -45,3 +45,4 @@ describe("Guest Token HMAC Security", () => {
     expect(verifyGuestToken(requestId, email, "nonce.invalidhex")).toBe(false);
   });
 });
+

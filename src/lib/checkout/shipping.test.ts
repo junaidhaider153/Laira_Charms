@@ -64,3 +64,4 @@ describe("Pakistani Shipping Fee Calculations", () => {
     expect(totals.hasFreeShipping).toBe(true);
   });
 });
+

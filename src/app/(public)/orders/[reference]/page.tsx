@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getOrderByReference } from "@/lib/checkout/order-service";
 import { formatMoney } from "@/lib/utils";
+import { CustomerOrderTimeline } from "@/components/order/CustomerOrderTimeline";
 
 interface OrderPageProps {
   params: Promise<{ reference: string }>;
@@ -106,6 +107,13 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
             </Link>
           </div>
         </div>
+
+        {/* Artisanal Commission Progress Timeline */}
+        <CustomerOrderTimeline
+          orderStatus={order.orderStatus}
+          paymentStatus={order.paymentStatus}
+          notes={order.notes}
+        />
 
         {/* Order Details Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
@@ -227,3 +235,4 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
     </main>
   );
 }
+
