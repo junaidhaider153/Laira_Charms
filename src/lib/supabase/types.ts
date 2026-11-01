@@ -75,6 +75,53 @@ export interface Database {
           updated_at?: string;
         };
       };
+      addresses: {
+        Row: {
+          id: string;
+          user_id: string;
+          recipient_name: string;
+          phone: string;
+          address_line1: string;
+          address_line2: string | null;
+          city: string;
+          province: string;
+          postal_code: string | null;
+          delivery_notes: string | null;
+          is_default: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          recipient_name: string;
+          phone: string;
+          address_line1: string;
+          address_line2?: string | null;
+          city: string;
+          province: string;
+          postal_code?: string | null;
+          delivery_notes?: string | null;
+          is_default?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          recipient_name?: string;
+          phone?: string;
+          address_line1?: string;
+          address_line2?: string | null;
+          city?: string;
+          province?: string;
+          postal_code?: string | null;
+          delivery_notes?: string | null;
+          is_default?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
       categories: {
         Row: {
           id: string;

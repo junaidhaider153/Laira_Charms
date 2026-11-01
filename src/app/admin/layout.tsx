@@ -29,25 +29,37 @@ export default function AdminLayout({
             </span>
           </div>
 
-          <nav className="flex items-center gap-3 text-xs font-semibold">
+          <nav className="flex items-center gap-2.5 text-xs font-semibold overflow-x-auto py-1">
             <Link
               href="/admin/orders"
-              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
             >
-              Orders Queue
+              Orders
+            </Link>
+            <Link
+              href="/admin/products"
+              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
+            >
+              Catalog
+            </Link>
+            <Link
+              href="/admin/inquiries"
+              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
+            >
+              Inquiries
             </Link>
             <Link
               href="/admin/conversations"
-              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
             >
-              Studio Inbox
+              Inbox
             </Link>
             <Link
               href="/shop"
               target="_blank"
-              className="text-white/80 hover:text-white transition-colors flex items-center gap-1 ml-2"
+              className="text-white/80 hover:text-white transition-colors flex items-center gap-1 ml-1 whitespace-nowrap"
             >
-              <span>View Storefront</span>
+              <span>Storefront</span>
               <span className="text-[10px]">↗</span>
             </Link>
           </nav>

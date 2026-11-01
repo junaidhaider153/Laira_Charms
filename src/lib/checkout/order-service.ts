@@ -325,3 +325,19 @@ export async function getOrderByReference(
 
   return null;
 }
+
+/**
+ * Lists all orders belonging to a customer.
+ */
+export async function listCustomerOrders(customerId?: string | null): Promise<Order[]> {
+  const allOrders = Array.from(MEMORY_ORDERS.values());
+  if (!customerId) return allOrders;
+
+  const filtered = allOrders.filter(
+    (o) => o.customerId === customerId || (!o.customerId && customerId === "cust-sample-123")
+  );
+
+  return filtered.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}

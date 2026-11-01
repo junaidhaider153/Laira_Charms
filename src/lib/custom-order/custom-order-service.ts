@@ -307,3 +307,19 @@ export async function respondToQuotation(
       : "Quotation declined. Thank you for your feedback.",
   };
 }
+
+/**
+ * Lists all custom bespoke requests for a customer.
+ */
+export async function listCustomerCustomRequests(customerId?: string | null): Promise<CustomRequest[]> {
+  const allRequests = Array.from(MEMORY_CUSTOM_REQUESTS.values());
+  if (!customerId) return allRequests;
+
+  const filtered = allRequests.filter(
+    (r) => r.customerId === customerId || (!r.customerId && customerId === "cust-sample-123")
+  );
+
+  return filtered.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
