@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { getOrderByReference } from "@/lib/checkout/order-service";
 import { formatMoney } from "@/lib/utils";
 import { CustomerOrderTimeline } from "@/components/order/CustomerOrderTimeline";
+import { getOrCreateOrderConversation } from "@/lib/messaging/messaging-service";
+import { ChatThread } from "@/components/messaging/ChatThread";
 
 interface OrderPageProps {
   params: Promise<{ reference: string }>;
@@ -53,6 +55,13 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
   const paymentProofUrl = token
     ? `/payment/${order.reference}?token=${encodeURIComponent(token)}`
     : `/payment/${order.reference}`;
+
+  const { conversation, messages, guestToken } = await getOrCreateOrderConversation(
+    order.reference,
+    order.guestEmail,
+    order.customerId,
+    token
+  );
 
   return (
     <main className="min-h-screen bg-canvas-butter py-10">
@@ -231,6 +240,24 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
             </div>
           </div>
         </div>
+
+        {/* Studio Realtime Communication Thread */}
+        <section className="mt-8 space-y-3">
+          <div>
+            <h3 className="font-headline font-bold text-xl text-espresso-deep">
+              Artisanal Studio Messages & Craft Inquiries
+            </h3>
+            <p className="text-xs text-espresso-muted">
+              Directly message our studio artists regarding personalization, clay finishes, or dispatch updates.
+            </p>
+          </div>
+          <ChatThread
+            conversation={conversation}
+            initialMessages={messages}
+            isAdmin={isAdmin}
+            guestToken={guestToken}
+          />
+        </section>
       </div>
     </main>
   );

@@ -460,6 +460,24 @@ export function AdminOrderDetailView({
               </div>
             )}
           </div>
+
+          {/* Quick Studio Messaging Thread Link */}
+          <div className="p-5 rounded-3xl bg-surface-custard border border-border-warm shadow-xs flex items-center justify-between gap-4">
+            <div>
+              <h3 className="font-headline font-bold text-sm text-espresso-deep flex items-center gap-1.5">
+                <span>💬</span> Studio Inquiries &amp; Messages
+              </h3>
+              <p className="text-[11px] text-espresso-muted mt-0.5">
+                Direct chat with customer, photo references, and private artisan notes.
+              </p>
+            </div>
+            <Link
+              href="/admin/conversations"
+              className="px-3.5 py-2 rounded-xl bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-colors shrink-0"
+            >
+              Open Inbox &rarr;
+            </Link>
+          </div>
         </div>
 
         {/* Right: Order Details, Delivery Address & Audit Trail */}
