@@ -20,28 +20,30 @@ test.describe("Manual Bank Transfer & Proof Verification Flow", () => {
     await expect(page.locator("body")).toContainText("EasyPaisa");
     await expect(page.locator("body")).toContainText("JazzCash");
 
-    // 3. Fill and submit payment proof if form is awaiting submission
-    const senderName = page.locator("#senderName");
-    if (await senderName.isVisible()) {
-      await senderName.fill("Ayesha Noor");
-      await page.locator("#transactionId").fill("TXN-MEEZAN-889900");
+    // 3. Fill and submit payment proof
+    const senderName = page.locator("#senderName").first();
+    await expect(senderName).toBeVisible({ timeout: 15000 });
+    await senderName.fill("Ayesha Noor");
+    await page.locator("#transactionId").first().fill("TXN-MEEZAN-889900");
 
-      // 4. Attach a dummy screenshot
-      await page.locator("#proofFile").setInputFiles({
-        name: "meezan_receipt.png",
-        mimeType: "image/png",
-        buffer: Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==", "base64"),
-      });
+    // 4. Attach a dummy screenshot
+    await page.locator("#proofFile").first().setInputFiles({
+      name: "meezan_receipt.png",
+      mimeType: "image/png",
+      buffer: Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==", "base64"),
+    });
 
-      // 5. Submit proof form
-      const submitBtn = page.getByRole("button", {
-        name: /Submit Payment Proof for Studio Review/i,
-      });
-      await submitBtn.click();
-    }
+    // 5. Submit proof form
+    const submitBtn = page.getByRole("button", {
+      name: /Submit Payment Proof for Studio Review/i,
+    }).first();
+    await submitBtn.click();
 
     // 6. Verify transition to verification_pending review state
-    await expect(page.locator("body")).toContainText(/Payment Proof Received|Payment Verified|Under Studio Review/i);
+    await expect(page.locator("body")).toContainText(
+      /Payment Proof Received|Payment Verified|Under Studio Review/i,
+      { timeout: 15000 }
+    );
   });
 
   test("blocks unauthenticated guest access without guest token", async ({ page }) => {

@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ProductCard } from "./ProductCard";
+import { Icon } from "@/components/ui/Icon";
 import type { CatalogProduct } from "@/lib/catalog/types";
 
 interface CatalogGridProps {
@@ -33,7 +34,7 @@ export function CatalogGrid({
           className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
         >
           <span>View All Charms</span>
-          <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          <Icon name="arrow_forward" className="text-[16px]" aria-hidden="true" />
         </Link>
       </div>
     );

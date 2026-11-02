@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/cart-context";
+import { Icon } from "@/components/ui/Icon";
 
 const ANNOUNCEMENTS = [
   "🧸 Every charm baked with gentle love & sealed with triple UV diamond glaze",
@@ -75,7 +76,7 @@ export function SiteHeader() {
           {/* Brand Identity */}
           <Link href="/" className="flex items-center gap-2 sm:gap-2.5 shrink group min-w-0">
             <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush-dark shadow-sm group-hover:scale-105 transition-transform shrink-0">
-              <span className="material-symbols-outlined text-[20px] sm:text-[22px]" aria-hidden="true">pets</span>
+              <Icon name="pets" className="text-[20px] sm:text-[22px]" aria-hidden="true" />
             </div>
             <div className="flex flex-col min-w-0">
               <span className="font-headline text-[17px] sm:text-[20px] md:text-headline-sm text-espresso-deep font-bold tracking-tight leading-none group-hover:text-primary transition-colors truncate">
@@ -115,9 +116,7 @@ export function SiteHeader() {
               method="GET"
               className="hidden sm:flex items-center bg-peach-tint/80 hover:bg-peach-tint rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 transition-all border border-border-warm/40"
             >
-              <span className="material-symbols-outlined text-espresso-muted text-[18px] mr-1.5">
-                search
-              </span>
+              <Icon name="search" className="text-espresso-muted text-[18px] mr-1.5" aria-hidden="true" />
               <input
                 type="text"
                 name="q"
@@ -141,9 +140,7 @@ export function SiteHeader() {
               aria-label="Account Profile"
               title="Account Profile"
             >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
+              <Icon name="person" className="text-[18px]" aria-hidden="true" />
             </Link>
 
             {/* Shopping Bag Trigger Button */}
@@ -151,9 +148,7 @@ export function SiteHeader() {
               onClick={openDrawer}
               className="flex items-center gap-1.5 sm:gap-2 bg-strawberry-blush text-on-primary rounded-full px-2.5 py-1.5 sm:px-4 sm:py-2 font-label-md text-label-md shadow-sm hover:opacity-95 transition-transform active:scale-95 shrink-0"
             >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z" />
-              </svg>
+              <Icon name="shopping_bag" className="text-[18px]" aria-hidden="true" />
               <span className="font-bold hidden sm:inline">Bag</span>
               <span
                 className="bg-surface-cloud text-primary font-bold rounded-full w-5 h-5 flex items-center justify-center text-label-sm font-label-sm shadow-sm"
@@ -171,9 +166,7 @@ export function SiteHeader() {
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle mobile menu"
             >
-              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
-                {isMobileMenuOpen ? "close" : "menu"}
-              </span>
+              <Icon name={isMobileMenuOpen ? "close" : "menu"} className="text-[20px]" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -200,7 +193,7 @@ export function SiteHeader() {
               <div className="p-5 bg-surface-custard border-b border-border-warm flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush">
-                    <span className="material-symbols-outlined text-[18px]">pets</span>
+                    <Icon name="pets" className="text-[18px]" aria-hidden="true" />
                   </div>
                   <span className="font-headline font-bold text-lg text-espresso-deep">
                     Laira Charms
@@ -211,7 +204,7 @@ export function SiteHeader() {
                   className="w-8 h-8 rounded-full bg-surface-cloud text-espresso-muted hover:text-espresso-deep flex items-center justify-center shadow-xs"
                   aria-label="Close mobile menu"
                 >
-                  <span className="material-symbols-outlined text-[18px]">close</span>
+                  <Icon name="close" className="text-[18px]" aria-hidden="true" />
                 </button>
               </div>
 
@@ -231,9 +224,7 @@ export function SiteHeader() {
                       }`}
                     >
                       <span>{link.label}</span>
-                      <span className="material-symbols-outlined text-[16px] text-espresso-muted">
-                        arrow_forward
-                      </span>
+                      <Icon name="arrow_forward" className="text-[16px] text-espresso-muted" aria-hidden="true" />
                     </Link>
                   );
                 })}
@@ -244,9 +235,7 @@ export function SiteHeader() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 rounded-2xl text-label-lg text-espresso-deep hover:bg-surface-custard"
                   >
-                    <span className="material-symbols-outlined text-[20px] text-primary">
-                      person
-                    </span>
+                    <Icon name="person" className="text-[20px] text-primary" aria-hidden="true" />
                     <span>My Account &amp; Orders</span>
                   </Link>
 
@@ -277,7 +266,7 @@ export function SiteHeader() {
                     type="submit"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-espresso-muted"
                   >
-                    <span className="material-symbols-outlined text-[18px]">search</span>
+                    <Icon name="search" className="text-[18px]" aria-hidden="true" />
                   </button>
                 </form>
               </div>

@@ -60,7 +60,7 @@ export default async function CustomerConversationPage({
   }
 
   return (
-    <main className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 bg-surface-cloud/30">
+    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 bg-surface-cloud/30">
       <div className="max-w-4xl mx-auto mb-4">
         <Link
           href="/"
@@ -76,6 +76,6 @@ export default async function CustomerConversationPage({
         isAdmin={false}
         guestToken={token || null}
       />
-    </main>
+    </div>
   );
 }

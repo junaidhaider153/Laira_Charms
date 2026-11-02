@@ -47,13 +47,13 @@ export default async function PaymentPage({ params, searchParams }: PaymentPageP
   }
 
   return (
-    <main className="min-h-screen bg-canvas-butter py-6">
+    <div className="min-h-screen bg-canvas-butter py-6">
       <PaymentStatusCard
         order={result.order}
         initialPayment={result.payment}
         guestToken={token}
       />
-    </main>
+    </div>
   );
 }
 

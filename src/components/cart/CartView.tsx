@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/cart-context";
 import { formatMoney } from "@/lib/utils";
+import { Icon } from "@/components/ui/Icon";
 import {
   calculateShippingFee,
   FREE_SHIPPING_THRESHOLD_MINOR,
@@ -26,9 +27,9 @@ export function CartView() {
         <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-strawberry-subtle flex items-center justify-center text-4xl shadow-xs">
           🛍️
         </div>
-        <h1 className="font-headline font-bold text-3xl sm:text-4xl text-espresso-deep mb-3">
+        <h2 className="font-headline font-bold text-3xl sm:text-4xl text-espresso-deep mb-3">
           Your Charm Bag is Empty
-        </h1>
+        </h2>
         <p className="font-body-md text-espresso-muted max-w-md mx-auto mb-8 text-sm sm:text-base leading-relaxed">
           You haven&apos;t added any handcrafted keepsakes yet. Explore our sculpted clay charms,
           custom letter stamps, and bespoke miniatures.
@@ -38,7 +39,7 @@ export function CartView() {
           className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-sm hover:opacity-95 shadow-md hover:shadow-lg transition-all active:scale-95"
         >
           <span>Explore Handmade Collection</span>
-          <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+          <Icon name="arrow_forward" className="text-[18px]" aria-hidden="true" />
         </Link>
       </div>
     );
@@ -226,17 +227,17 @@ export function CartView() {
               className="w-full py-4 rounded-full bg-strawberry-blush text-on-primary font-bold text-sm text-center shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-98"
             >
               <span>Proceed to Checkout</span>
-              <span className="material-symbols-outlined text-[18px]">lock</span>
+              <Icon name="lock" className="text-[18px]" aria-hidden="true" />
             </Link>
           </div>
 
           <div className="pt-2 border-t border-border-warm/40 space-y-2 text-xs text-espresso-muted">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-[16px] text-strawberry-blush">verified</span>
+              <Icon name="verified" className="text-[16px] text-strawberry-blush" aria-hidden="true" />
               <span>Manual Bank Verification (Meezan, EasyPaisa, JazzCash)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-[16px] text-strawberry-blush">local_shipping</span>
+              <Icon name="local_shipping" className="text-[16px] text-strawberry-blush" aria-hidden="true" />
               <span>Nationwide Domestic Couriers (Trax, PostEx, TCS)</span>
             </div>
           </div>

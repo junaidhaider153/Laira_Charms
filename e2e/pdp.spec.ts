@@ -25,6 +25,7 @@ test.describe("Product Detail Page & Media Gallery", () => {
 
     // Thumbnails should be visible
     const thumbnails = page.getByRole("tablist", { name: /Product image thumbnails/i }).getByRole("tab");
+    await expect(thumbnails.first()).toBeVisible({ timeout: 10000 });
     const count = await thumbnails.count();
     expect(count).toBeGreaterThan(1);
 

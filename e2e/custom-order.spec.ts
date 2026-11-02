@@ -34,7 +34,7 @@ test.describe("Bespoke Custom Inquiry & Quotation Approval Lifecycle", () => {
     await page.goto(activeQuoteUrl);
 
     // Verify quote presentation
-    const card = page.getByTestId("quote-decision-card");
+    const card = page.getByTestId("quote-decision-card").first();
     await expect(card).toBeVisible();
     await expect(card).toContainText("Rs. 3,800");
     await expect(card).toContainText(/7 Studio Business Days/i);

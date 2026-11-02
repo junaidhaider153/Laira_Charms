@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { Icon } from "@/components/ui/Icon";
 import { PaymentInstructionsCard } from "./PaymentInstructionsCard";
 import { ProofUploadForm } from "./ProofUploadForm";
 import type { Order } from "@/lib/checkout/types";
@@ -85,7 +86,7 @@ export function PaymentStatusCard({
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 shadow-sm transition-all active:scale-95"
             >
               <span>View Order Confirmation</span>
-              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              <Icon name="arrow_forward" className="text-[16px]" aria-hidden="true" />
             </Link>
           </div>
         </div>

@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function CartPage() {
   return (
-    <main className="min-h-screen bg-canvas-butter py-6">
+    <div className="min-h-screen bg-canvas-butter py-6">
       <CartView />
-    </main>
+    </div>
   );
 }
 

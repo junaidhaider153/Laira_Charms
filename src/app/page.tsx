@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useOptionalCart } from "@/context/cart-context";
+import { Icon } from "@/components/ui/Icon";
 
 // Featured Charms Showcase items matching design spec
 const FEATURED_CHARMS = [
@@ -282,20 +283,20 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 rounded-full bg-surface-cloud px-7 py-3.5 font-label-lg text-label-lg text-espresso-deep shadow-sm hover:bg-surface-container transition-all transform hover:-translate-y-0.5 border border-border-warm"
               >
                 <span>Request Bespoke Charm</span>
-                <span className="material-symbols-outlined text-[18px] text-strawberry-blush">auto_awesome</span>
+                <Icon name="auto_awesome" className="text-[18px] text-strawberry-blush" aria-hidden="true" />
               </Link>
             </div>
 
             {/* Micro Feature Badges */}
             <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint px-3.5 py-1 text-label-sm font-label-sm text-tertiary shadow-sm">
-                <span className="material-symbols-outlined text-[14px]">brush</span> Hand-sculpted Polymer Clay
+                <Icon name="brush" className="text-[14px]" aria-hidden="true" /> Hand-sculpted Polymer Clay
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-matcha-tint px-3.5 py-1 text-label-sm font-label-sm text-secondary shadow-sm">
-                <span className="material-symbols-outlined text-[14px]">water_drop</span> Water-resistant UV Glaze
+                <Icon name="water_drop" className="text-[14px]" aria-hidden="true" /> Water-resistant UV Glaze
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle px-3.5 py-1 text-label-sm font-label-sm text-primary shadow-sm">
-                <span className="material-symbols-outlined text-[14px]">star</span> 100% Unique Artisanal 1-of-1
+                <Icon name="star" className="text-[14px]" aria-hidden="true" /> 100% Unique Artisanal 1-of-1
               </span>
             </div>
           </div>
@@ -328,7 +329,7 @@ export default function HomePage() {
                     onClick={() => handleQuickAdd(charm)}
                     className="w-8 h-8 rounded-full bg-peach-tint flex items-center justify-center text-strawberry-blush shadow-xs hover:bg-strawberry-blush hover:text-white transition-colors shrink-0 ml-2"
                   >
-                    <span className="material-symbols-outlined text-[16px]" aria-hidden="true">add_shopping_cart</span>
+                    <Icon name="add_shopping_cart" className="text-[16px]" aria-hidden="true" />
                     <span className="sr-only">Quick add {charm.name} to bag</span>
                   </button>
                 </div>
@@ -429,7 +430,7 @@ export default function HomePage() {
                       title="Save to lovelist"
                       className="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-xs"
                     >
-                      <span className="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                      <Icon name="favorite" className="text-[18px]" aria-hidden="true" />
                       <span className="sr-only">Save to lovelist</span>
                     </button>
                   </div>
@@ -450,7 +451,7 @@ export default function HomePage() {
                     className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-xs active:scale-95"
                   >
                     <span>Add</span>
-                    <span className="material-symbols-outlined text-[16px]" aria-hidden="true">add_shopping_cart</span>
+                    <Icon name="add_shopping_cart" className="text-[16px]" aria-hidden="true" />
                   </button>
                 </div>
               </div>
@@ -464,7 +465,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 rounded-full bg-strawberry-blush text-on-primary px-8 py-3.5 font-label-lg text-label-lg shadow-sm hover:opacity-95 transition-all transform hover:-translate-y-0.5"
             >
               <span>View All 42 Creations</span>
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+              <Icon name="arrow_forward" className="text-[18px]" aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -575,9 +576,7 @@ export default function HomePage() {
                             : "bg-surface-cloud border border-border-warm/40 hover:bg-surface-custard"
                         }`}
                       >
-                        <span className={`material-symbols-outlined text-[26px] ${clasp.color} mb-1`}>
-                          {clasp.icon}
-                        </span>
+                        <Icon name={clasp.icon} className={`text-[26px] ${clasp.color} mb-1`} aria-hidden="true" />
                         <span className="font-title-sm text-title-sm text-espresso-deep font-semibold truncate w-full">
                           {clasp.name}
                         </span>
@@ -640,9 +639,7 @@ export default function HomePage() {
               <div className="relative w-full aspect-square rounded-2xl bg-surface-custard p-4 flex flex-col items-center justify-center overflow-hidden mb-6 shadow-inner border border-border-warm/30">
                 {/* Clasp Badge */}
                 <div className="mb-2 px-3 py-1 bg-surface-cloud rounded-full shadow-xs text-label-sm font-label-sm text-espresso-deep flex items-center gap-1">
-                  <span className={`material-symbols-outlined text-[16px] ${selectedClasp.color}`}>
-                    {selectedClasp.icon}
-                  </span>
+                  <Icon name={selectedClasp.icon} className={`text-[16px] ${selectedClasp.color}`} aria-hidden="true" />
                   <span>{selectedClasp.name}</span>
                 </div>
 
@@ -702,7 +699,7 @@ export default function HomePage() {
                 onClick={handleAddCustomToBag}
                 className="w-full rounded-full bg-strawberry-blush text-on-primary py-4 font-label-lg text-label-lg font-bold shadow-md hover:opacity-95 transition-all transform hover:-translate-y-0.5 active:scale-98 flex items-center justify-center gap-2"
               >
-                <span className="material-symbols-outlined text-[20px]">brush</span>
+                <Icon name="brush" className="text-[20px]" aria-hidden="true" />
                 <span>Craft &amp; Add Custom to Bag</span>
               </button>
               <p className="text-center font-label-sm text-label-sm text-espresso-muted mt-3">
@@ -733,7 +730,7 @@ export default function HomePage() {
             <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
               <div>
                 <div className="w-14 h-14 rounded-2xl bg-strawberry-subtle text-primary flex items-center justify-center mb-5 shadow-xs">
-                  <span className="material-symbols-outlined text-[28px]">local_fire_department</span>
+                  <Icon name="local_fire_department" className="text-[28px]" aria-hidden="true" />
                 </div>
                 <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
                   100% Handcrafted
@@ -743,14 +740,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="pt-4 flex items-center gap-1.5 text-strawberry-blush font-label-sm text-label-sm font-semibold">
-                <span className="material-symbols-outlined text-[16px]">check_circle</span> Impact Tested
+                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> Impact Tested
               </div>
             </div>
 
             <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
               <div>
                 <div className="w-14 h-14 rounded-2xl bg-peach-tint text-tertiary flex items-center justify-center mb-5 shadow-xs">
-                  <span className="material-symbols-outlined text-[28px]">diamond</span>
+                  <Icon name="diamond" className="text-[28px]" aria-hidden="true" />
                 </div>
                 <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
                   UV Diamond Glaze
@@ -760,14 +757,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="pt-4 flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm font-semibold">
-                <span className="material-symbols-outlined text-[16px]">check_circle</span> 100% Water Resistant
+                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> 100% Water Resistant
               </div>
             </div>
 
             <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
               <div>
                 <div className="w-14 h-14 rounded-2xl bg-matcha-tint text-secondary flex items-center justify-center mb-5 shadow-xs">
-                  <span className="material-symbols-outlined text-[28px]">link</span>
+                  <Icon name="link" className="text-[28px]" aria-hidden="true" />
                 </div>
                 <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
                   Personalized Atelier
@@ -777,14 +774,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="pt-4 flex items-center gap-1.5 text-secondary font-label-sm text-label-sm font-semibold">
-                <span className="material-symbols-outlined text-[16px]">check_circle</span> Snag-Proof Guarantee
+                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> Snag-Proof Guarantee
               </div>
             </div>
 
             <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
               <div>
                 <div className="w-14 h-14 rounded-2xl bg-strawberry-subtle text-primary flex items-center justify-center mb-5 shadow-xs">
-                  <span className="material-symbols-outlined text-[28px]">redeem</span>
+                  <Icon name="redeem" className="text-[28px]" aria-hidden="true" />
                 </div>
                 <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
                   Sweet Bakery Unboxing
@@ -794,7 +791,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="pt-4 flex items-center gap-1.5 text-strawberry-blush font-label-sm text-label-sm font-semibold">
-                <span className="material-symbols-outlined text-[16px]">check_circle</span> Ready to Gift
+                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> Ready to Gift
               </div>
             </div>
           </div>
@@ -908,9 +905,7 @@ export default function HomePage() {
             <details className="group bg-surface-cloud rounded-2xl p-5 shadow-xs transition-all open:bg-surface-custard border border-border-warm/40">
               <summary className="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
                 <span>Are clay charms waterproof and scratch-resistant?</span>
-                <span className="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">
-                  expand_more
-                </span>
+                <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
                 Yes! While unfinished polymer clay can be porous, every Laira Charms piece is sealed with 3 glossy coats of jewelry-grade UV resin. They easily survive rain, sink splashes, and daily pocket rubbing.
@@ -920,9 +915,7 @@ export default function HomePage() {
             <details className="group bg-surface-cloud rounded-2xl p-5 shadow-xs transition-all open:bg-surface-custard border border-border-warm/40">
               <summary className="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
                 <span>Can I request a custom character or pet portrait?</span>
-                <span className="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">
-                  expand_more
-                </span>
+                <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
                 Absolutely! We open bespoke pet and anime commission slots monthly. You can submit reference photos through our Custom Atelier, and we will sculpt your favorite furry friend or gaming avatar with custom hardware.
@@ -932,9 +925,7 @@ export default function HomePage() {
             <details className="group bg-surface-cloud rounded-2xl p-5 shadow-xs transition-all open:bg-surface-custard border border-border-warm/40">
               <summary className="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
                 <span>How fast do charm orders ship across Pakistan?</span>
-                <span className="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">
-                  expand_more
-                </span>
+                <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
                 Ready-to-ship charms from our drops dispatch within 24 to 48 hours. Custom Atelier pieces cure in 3 to 5 business days before departing our sweet studio via Trax, PostEx, or TCS.
@@ -944,9 +935,7 @@ export default function HomePage() {
             <details className="group bg-surface-cloud rounded-2xl p-5 shadow-xs transition-all open:bg-surface-custard border border-border-warm/40">
               <summary className="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
                 <span>What is your 30-Day Snag &amp; Snap Warranty?</span>
-                <span className="material-symbols-outlined text-[20px] text-strawberry-blush transition-transform group-open:rotate-180">
-                  expand_more
-                </span>
+                <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
                 If your charm ever snaps from its jump ring or sustains damage within 30 days of arrival during normal daily wear, send us a photo! We will fix it at no cost or craft an identical replacement right away.
@@ -966,7 +955,7 @@ export default function HomePage() {
               href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-surface-cloud text-espresso-deep px-6 py-2.5 font-label-md text-label-md shadow-xs hover:bg-surface-custard transition-all border border-border-warm/40"
             >
-              <span className="material-symbols-outlined text-[16px] text-strawberry-blush">mail</span>
+              <Icon name="mail" className="text-[16px] text-strawberry-blush" aria-hidden="true" />
               <span>Message Studio Maker</span>
             </Link>
           </div>

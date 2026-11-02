@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { submitPaymentProofAction } from "@/lib/payment/actions";
 import { PAKISTANI_PAYMENT_ACCOUNTS } from "@/lib/payment/bank-details";
+import { Icon } from "@/components/ui/Icon";
 
 interface ProofUploadFormProps {
   orderReference: string;
@@ -191,9 +192,7 @@ export function ProofUploadForm({
             className="sr-only"
           />
           <label htmlFor="proofFile" className="cursor-pointer block">
-            <span className="material-symbols-outlined text-[32px] text-strawberry-blush mb-2">
-              cloud_upload
-            </span>
+            <Icon name="cloud_upload" className="text-[32px] text-strawberry-blush mb-2" aria-hidden="true" />
             <span className="block font-bold text-sm text-espresso-deep">
               {selectedFileName ? selectedFileName : "Choose receipt file or tap to browse"}
             </span>

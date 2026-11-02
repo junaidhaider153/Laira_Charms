@@ -64,7 +64,7 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
   );
 
   return (
-    <main className="min-h-screen bg-canvas-butter py-10">
+    <div className="min-h-screen bg-canvas-butter py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Success Header */}
         <div className="p-8 rounded-3xl bg-surface-cloud border border-border-warm/60 text-center shadow-sm">
@@ -259,7 +259,7 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
           />
         </section>
       </div>
-    </main>
+    </div>
   );
 }
 

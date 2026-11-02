@@ -5,7 +5,7 @@ test.describe("Fixed Customization Engine & Live Price Recalculation", () => {
     await page.goto("/products/custom-pastel-nameplate-keychain");
 
     // Customization engine should be visible
-    const customizer = page.getByTestId("customization-engine");
+    const customizer = page.getByTestId("customization-engine").first();
     await expect(customizer).toBeVisible();
 
     // Verify initial base price is Rs. 1,800
@@ -46,7 +46,7 @@ test.describe("Fixed Customization Engine & Live Price Recalculation", () => {
 
   test("consolidates unique custom configurations as distinct items in cart", async ({ page }) => {
     await page.goto("/products/custom-pastel-nameplate-keychain");
-    const customizer = page.getByTestId("customization-engine");
+    const customizer = page.getByTestId("customization-engine").first();
 
     // Item 1: "FATIMA" + Gold Star
     const nameInput = page.getByPlaceholder("e.g. LAIRA");

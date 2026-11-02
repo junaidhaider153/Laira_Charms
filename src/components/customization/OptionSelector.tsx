@@ -3,6 +3,7 @@
 import React, { useState, useId } from "react";
 import { formatMoney } from "@/lib/utils";
 import { useCart } from "@/context/cart-context";
+import { Icon } from "@/components/ui/Icon";
 import { validateAndCalculateCustomization } from "@/lib/customization/calculator";
 import type { CatalogProduct } from "@/lib/catalog/types";
 import type { OptionGroup } from "@/lib/customization/types";
@@ -284,7 +285,7 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
           <>✓ Custom Charm Added to Bag</>
         ) : (
           <>
-            <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+            <Icon name="shopping_bag" className="text-[18px]" aria-hidden="true" />
             Add Custom Keepsake • {formatMoney(validation.calculatedUnitPriceMinor)}
           </>
         )}

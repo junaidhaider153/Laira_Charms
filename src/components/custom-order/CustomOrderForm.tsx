@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { submitCustomRequestAction } from "@/lib/custom-order/actions";
+import { Icon } from "@/components/ui/Icon";
 
 interface CustomOrderFormProps {
   initialProductRef?: string;
@@ -238,7 +239,7 @@ export function CustomOrderForm({
             disabled={referenceFiles.length >= 5}
           />
           <label htmlFor="referenceFiles" className="cursor-pointer block space-y-1">
-            <span className="material-symbols-outlined text-[32px] text-strawberry-blush">add_photo_alternate</span>
+            <Icon name="add_photo_alternate" className="text-[32px] text-strawberry-blush" aria-hidden="true" />
             <span className="block font-bold text-sm text-espresso-deep">
               Click to choose reference images
             </span>
@@ -344,7 +345,7 @@ export function CustomOrderForm({
             <span>Sending to Atelier...</span>
           ) : (
             <>
-              <span className="material-symbols-outlined text-[20px]">auto_awesome</span>
+              <Icon name="auto_awesome" className="text-[20px]" aria-hidden="true" />
               <span>Submit Bespoke Inquiry</span>
             </>
           )}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { formatMoney } from "@/lib/utils";
 import { useCart } from "@/context/cart-context";
+import { Icon } from "@/components/ui/Icon";
 import type { CatalogProduct } from "@/lib/catalog/types";
 
 interface ProductCardProps {
@@ -83,9 +84,11 @@ export function ProductCard({ product }: ProductCardProps) {
               isFavorited ? "text-strawberry-blush" : "text-espresso-muted hover:text-strawberry-blush"
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
-              {isFavorited ? "favorite" : "favorite_border"}
-            </span>
+            <Icon
+              name={isFavorited ? "favorite" : "favorite_border"}
+              className="text-[18px]"
+              aria-hidden="true"
+            />
             <span className="sr-only">Save to lovelist</span>
           </button>
 
@@ -140,7 +143,7 @@ export function ProductCard({ product }: ProductCardProps) {
               className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-white text-strawberry-blush px-4 py-2 font-label-md text-label-md font-bold transition-all shadow-xs active:scale-95"
             >
               <span>+ Bag</span>
-              <span className="material-symbols-outlined text-[16px]" aria-hidden="true">add_shopping_cart</span>
+              <Icon name="add_shopping_cart" className="text-[16px]" aria-hidden="true" />
               <span className="sr-only"> - Quick add {product.title} to bag</span>
             </button>
           ) : (

@@ -69,7 +69,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
       <Breadcrumbs items={breadcrumbItems} />
 
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 pt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 pt-6">
         {/* Left Column: Artisanal Media Gallery with Thumbnails & Zoom Lightbox */}
         <section aria-label="Product Media Gallery">
           <ProductMediaGallery media={product.media} title={product.title} />
@@ -79,7 +79,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <section aria-label="Product Details and Purchase Options">
           <ProductInfo product={product} optionGroups={optionGroups} />
         </section>
-      </main>
+      </div>
 
       {/* Related Studio Keepsakes */}
       <RelatedProducts

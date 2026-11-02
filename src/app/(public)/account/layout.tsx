@@ -20,7 +20,7 @@ export default function AccountLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen bg-canvas-butter py-10">
+    <div className="min-h-screen bg-canvas-butter py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Account Header */}
         <div className="p-6 sm:p-8 rounded-3xl bg-surface-custard border border-border-warm/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
@@ -63,7 +63,7 @@ export default function AccountLayout({
         {/* Main Content View */}
         <div className="min-h-[400px]">{children}</div>
       </div>
-    </main>
+    </div>
   );
 }
 

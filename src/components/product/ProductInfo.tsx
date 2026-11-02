@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { formatMoney } from "@/lib/utils";
 import { useCart } from "@/context/cart-context";
+import { Icon } from "@/components/ui/Icon";
 import { OptionSelector } from "@/components/customization/OptionSelector";
 import type { CatalogProduct } from "@/lib/catalog/types";
 import type { OptionGroup } from "@/lib/customization/types";
@@ -181,7 +182,7 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
                 <>Out of Stock</>
               ) : (
                 <>
-                  <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+                  <Icon name="shopping_bag" className="text-[18px]" aria-hidden="true" />
                   Add to Bag • {formatMoney(product.basePriceMinor * quantity)}
                 </>
               )}

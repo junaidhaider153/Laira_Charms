@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { Icon } from "@/components/ui/Icon";
 
 export function SiteFooter() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -35,7 +36,7 @@ export function SiteFooter() {
           <div className="w-full md:w-auto flex flex-col sm:flex-row gap-2 shrink-0">
             {newsletterSubmitted ? (
               <div className="p-4 bg-matcha-tint border border-secondary/30 text-secondary text-sm rounded-full font-semibold px-6 shadow-xs flex items-center gap-2">
-                <span className="material-symbols-outlined text-[18px]">verified</span>
+                <Icon name="verified" className="text-[18px]" aria-hidden="true" />
                 Thank you! You&apos;re subscribed to studio drops.
               </div>
             ) : (
@@ -66,7 +67,7 @@ export function SiteFooter() {
           <div className="space-y-4">
             <Link href="/" className="inline-flex items-center gap-2.5 group">
               <div className="w-9 h-9 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush shadow-xs group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-[20px]" aria-hidden="true">pets</span>
+                <Icon name="pets" className="text-[20px]" aria-hidden="true" />
               </div>
               <span className="font-headline font-bold text-xl text-espresso-deep leading-none group-hover:text-primary transition-colors">
                 Laira Charms
@@ -77,10 +78,10 @@ export function SiteFooter() {
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <span className="inline-flex items-center gap-1 bg-matcha-tint text-secondary rounded-full px-3 py-1 text-label-sm font-label-sm">
-                <span className="material-symbols-outlined text-[14px]">verified</span> Handcrafted 1-of-1
+                <Icon name="verified" className="text-[14px]" aria-hidden="true" /> Handcrafted 1-of-1
               </span>
               <span className="inline-flex items-center gap-1 bg-peach-tint text-tertiary rounded-full px-3 py-1 text-label-sm font-label-sm">
-                <span className="material-symbols-outlined text-[14px]">favorite</span> Resin Glazed
+                <Icon name="favorite" className="text-[14px]" aria-hidden="true" /> Resin Glazed
               </span>
             </div>
           </div>
@@ -150,7 +151,7 @@ export function SiteFooter() {
             </h4>
             <div className="bg-surface-container-low rounded-2xl p-4 space-y-2 border border-border-warm/50">
               <div className="flex items-center gap-2 text-primary font-bold text-label-md font-label-md">
-                <span className="material-symbols-outlined text-[18px]">shield</span>
+                <Icon name="shield" className="text-[18px]" aria-hidden="true" />
                 100% Artisan Sealed
               </div>
               <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">

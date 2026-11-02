@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/cart-context";
 import { formatMoney } from "@/lib/utils";
+import { Icon } from "@/components/ui/Icon";
 
 const FREE_SHIPPING_THRESHOLD_MINOR = 300000; // Rs. 3,000 in paisa
 
@@ -71,7 +72,7 @@ export function CartDrawer() {
           {/* Header */}
           <div className="p-6 bg-surface-custard border-b border-border-warm flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <span className="material-symbols-outlined text-[22px] text-strawberry-blush">shopping_bag</span>
+              <Icon name="shopping_bag" className="text-[22px] text-strawberry-blush" aria-hidden="true" />
               <h2 className="font-headline font-bold text-xl text-espresso-deep">
                 Your Charm Bag ({itemCount})
               </h2>
@@ -81,7 +82,7 @@ export function CartDrawer() {
               className="w-9 h-9 rounded-full bg-surface-cloud text-espresso-muted hover:text-espresso-deep hover:bg-surface-container flex items-center justify-center transition-colors shadow-xs"
               aria-label="Close Shopping Bag"
             >
-              <span className="material-symbols-outlined text-[18px]">close</span>
+              <Icon name="close" className="text-[18px]" aria-hidden="true" />
             </button>
           </div>
 
