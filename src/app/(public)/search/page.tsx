@@ -16,7 +16,7 @@ interface SearchPageProps {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const resolvedParams = await searchParams;
-  const query = resolvedParams.q || "";
+  const query = (resolvedParams.q || "").trim().slice(0, 100);
 
   const { products, total } = await getProducts({
     query,
@@ -68,7 +68,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <Suspense fallback={<div className="py-12 text-center text-xs text-espresso-muted">Searching workshop...</div>}>
         <CatalogGrid
           products={products}
-          emptyMessage={`We couldn't find any charms matching "${query}".`}
+          emptyMessage={
+            query
+              ? `We couldn't find any charms matching "${query}". Try fewer or simpler words, or browse the full collection.`
+              : "Try fewer or simpler words, or browse the full collection."
+          }
           resetHref="/shop"
         />
       </Suspense>

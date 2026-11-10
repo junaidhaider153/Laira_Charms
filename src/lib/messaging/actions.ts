@@ -12,14 +12,10 @@ import {
   type ActorContext,
 } from "./messaging-service";
 import type { MessageVisibility } from "./types";
+import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
 
-async function resolveActor(guestToken?: string | null, requestedAdmin?: boolean): Promise<ActorContext> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const isLiveSupabase = Boolean(
-    supabaseUrl && !supabaseUrl.includes("dummy-project") && !supabaseUrl.includes("example.com")
-  );
-
-  if (isLiveSupabase) {
+export async function resolveActor(guestToken?: string | null, requestedAdmin?: boolean): Promise<ActorContext> {
+  if (isLiveSupabaseConfigured()) {
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
@@ -40,13 +36,23 @@ async function resolveActor(guestToken?: string | null, requestedAdmin?: boolean
           guestToken: guestToken || null,
         };
       }
+
+      return {
+        userId: null,
+        role: "customer",
+        guestToken: guestToken || null,
+      };
     } catch {
-      // Fallback
+      return {
+        userId: null,
+        role: "customer",
+        guestToken: guestToken || null,
+      };
     }
   }
 
-  // Offline dev/test fallback
-  if (requestedAdmin) {
+  // Offline dev/test fallback (only when allowOfflineFallback() is permitted)
+  if (allowOfflineFallback() && requestedAdmin) {
     return {
       userId: "admin-dev-fallback",
       role: "admin",
@@ -54,7 +60,6 @@ async function resolveActor(guestToken?: string | null, requestedAdmin?: boolean
     };
   }
 
-  // If a guestToken was passed in dev/guest mode
   return {
     userId: null,
     role: "customer",

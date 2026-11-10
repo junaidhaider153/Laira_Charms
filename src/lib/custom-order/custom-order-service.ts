@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import { generateGuestToken, verifyGuestToken } from "@/lib/auth/guest-token";
 import { enqueueNotification } from "@/lib/notifications/outbox-service";
+import { isLiveSupabaseConfigured } from "@/lib/auth/offline-mode";
 import type {
   CustomRequest,
   Quotation,
@@ -8,14 +9,6 @@ import type {
   CreateCustomRequestInput,
   QuoteDecisionInput,
 } from "./types";
-
-function isLiveSupabaseConfigured(): boolean {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!url || url.includes("dummy-project") || url.includes("example.com")) {
-    return false;
-  }
-  return true;
-}
 
 // In-memory persistent cache for development and test execution
 export const MEMORY_CUSTOM_REQUESTS: Map<string, CustomRequest> = new Map();
@@ -331,6 +324,45 @@ export async function respondToQuotation(
  * Lists all custom bespoke requests for a customer.
  */
 export async function listCustomerCustomRequests(customerId?: string | null): Promise<CustomRequest[]> {
+  if (isLiveSupabaseConfigured() && customerId) {
+    try {
+      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
+      const supabase = await createServerSupabaseClient();
+      const { data, error } = await supabase
+        .from("custom_requests")
+        .select("*, custom_request_media(*)")
+        .eq("customer_id", customerId)
+        .order("created_at", { ascending: false });
+
+      if (!error && data) {
+        return (data as unknown as DbCustomRequestRow[]).map((row) => ({
+          id: row.id,
+          customerId: row.customer_id,
+          guestEmail: row.guest_email,
+          guestTokenHash: row.guest_token_hash,
+          title: row.title,
+          brief: row.brief,
+          productReferenceId: row.product_reference_id,
+          desiredDeliveryDate: row.desired_delivery_date,
+          status: row.status,
+          assignedAdminId: row.assigned_admin_id,
+          media: (row.custom_request_media || []).map((m: DbMediaRow) => ({
+            id: m.id,
+            requestId: m.request_id,
+            storagePath: m.storage_path,
+            mimeType: m.mime_type,
+            sizeBytes: Number(m.size_bytes),
+            createdAt: m.created_at,
+          })),
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+        }));
+      }
+    } catch {
+      // Fallback to memory
+    }
+  }
+
   const allRequests = Array.from(MEMORY_CUSTOM_REQUESTS.values());
   if (!customerId) return allRequests;
 
@@ -341,4 +373,156 @@ export async function listCustomerCustomRequests(customerId?: string | null): Pr
   return filtered.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
+}
+
+/**
+ * Retrieves all quotations for a specific bespoke request.
+ */
+export async function getQuotationsForRequest(requestId: string): Promise<Quotation[]> {
+  if (isLiveSupabaseConfigured()) {
+    try {
+      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
+      const supabase = await createServerSupabaseClient();
+      const { data, error } = await supabase
+        .from("quotations")
+        .select("*")
+        .eq("request_id", requestId)
+        .order("version", { ascending: true });
+
+      if (!error && data) {
+        return (data as Array<{
+          id: string;
+          request_id: string;
+          version: number;
+          status: Quotation["status"];
+          amount_minor: number | string;
+          currency: string;
+          scope: string;
+          production_days: number;
+          valid_until: string;
+          created_by: string | null;
+          accepted_at: string | null;
+          created_at: string;
+        }>).map((q) => {
+          const isExpired = new Date(q.valid_until).getTime() < Date.now();
+          return {
+            id: q.id,
+            requestId: q.request_id,
+            version: q.version,
+            status: q.status,
+            amountMinor: Number(q.amount_minor),
+            currency: q.currency,
+            scope: q.scope,
+            productionDays: q.production_days,
+            validUntil: q.valid_until,
+            createdBy: q.created_by,
+            acceptedAt: q.accepted_at,
+            createdAt: q.created_at,
+            isExpired: isExpired || q.status === "expired",
+          };
+        });
+      }
+    } catch {
+      // Fallback
+    }
+  }
+
+  const quotes = Array.from(MEMORY_QUOTATIONS.values()).filter(
+    (q) => q.requestId === requestId
+  );
+  return quotes.map((quote) => ({
+    ...quote,
+    isExpired: new Date(quote.validUntil).getTime() < Date.now() || quote.status === "expired",
+  }));
+}
+
+/**
+ * Lists all bespoke requests and their associated quotations for admin overview.
+ */
+export async function listAllCustomRequests(): Promise<{
+  requests: CustomRequest[];
+  quotations: Quotation[];
+}> {
+  if (isLiveSupabaseConfigured()) {
+    try {
+      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
+      const supabase = await createServerSupabaseClient();
+      const { data: reqData, error: reqErr } = await supabase
+        .from("custom_requests")
+        .select("*, custom_request_media(*)")
+        .order("created_at", { ascending: false });
+
+      const { data: quoteData } = await supabase
+        .from("quotations")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (!reqErr && reqData) {
+        const requests: CustomRequest[] = (reqData as unknown as DbCustomRequestRow[]).map((row) => ({
+          id: row.id,
+          customerId: row.customer_id,
+          guestEmail: row.guest_email,
+          guestTokenHash: row.guest_token_hash,
+          title: row.title,
+          brief: row.brief,
+          productReferenceId: row.product_reference_id,
+          desiredDeliveryDate: row.desired_delivery_date,
+          status: row.status,
+          assignedAdminId: row.assigned_admin_id,
+          media: (row.custom_request_media || []).map((m: DbMediaRow) => ({
+            id: m.id,
+            requestId: m.request_id,
+            storagePath: m.storage_path,
+            mimeType: m.mime_type,
+            sizeBytes: Number(m.size_bytes),
+            createdAt: m.created_at,
+          })),
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+        }));
+
+        const quotations: Quotation[] = ((quoteData || []) as Array<{
+          id: string;
+          request_id: string;
+          version: number;
+          status: Quotation["status"];
+          amount_minor: number | string;
+          currency: string;
+          scope: string;
+          production_days: number;
+          valid_until: string;
+          created_by: string | null;
+          accepted_at: string | null;
+          created_at: string;
+        }>).map((q) => {
+          const isExpired = new Date(q.valid_until).getTime() < Date.now();
+          return {
+            id: q.id,
+            requestId: q.request_id,
+            version: q.version,
+            status: q.status,
+            amountMinor: Number(q.amount_minor),
+            currency: q.currency,
+            scope: q.scope,
+            productionDays: q.production_days,
+            validUntil: q.valid_until,
+            createdBy: q.created_by,
+            acceptedAt: q.accepted_at,
+            createdAt: q.created_at,
+            isExpired: isExpired || q.status === "expired",
+          };
+        });
+
+        return { requests, quotations };
+      }
+    } catch {
+      // Fallback
+    }
+  }
+
+  const requests = Array.from(MEMORY_CUSTOM_REQUESTS.values()).sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+  const quotations = Array.from(MEMORY_QUOTATIONS.values());
+  return { requests, quotations };
 }

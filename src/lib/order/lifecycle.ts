@@ -13,11 +13,11 @@ export const ORDER_STATUS_ORDER: OrderStatus[] = [
 ];
 
 export const COURIER_PARTNERS = [
+  "TCS",
+  "PostEx",
   "Trax",
   "Leopards Courier",
-  "TCS",
   "Call Courier",
-  "PostEx",
   "M&P Express",
 ] as const;
 

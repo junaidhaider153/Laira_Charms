@@ -37,6 +37,22 @@ export default function ShippingPage() {
                 <span className="font-bold">FREE SHIPPING</span>
               </div>
             </div>
+
+            <div className="p-4 bg-surface-cloud rounded-2xl border border-border-warm/50 text-xs text-espresso-muted space-y-1">
+              <p className="font-bold text-espresso-deep">Advance Payment Required • No Cash on Delivery (COD)</p>
+              <p>
+                To protect bespoke crafting time and limited oven batches, we do not support Cash on Delivery (COD). All orders must be confirmed with receipt screenshot upload (Meezan Bank, EasyPaisa, or JazzCash) prior to dispatch.
+              </p>
+            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="font-headline text-xl font-bold text-espresso-deep flex items-center gap-2">
+              <span>🚚</span> Verified Courier Partners
+            </h2>
+            <p className="text-espresso-muted">
+              Parcels are dispatched with tracking numbers via <strong className="text-espresso-deep">TCS, PostEx, and other trusted couriers</strong>. Once dispatched, transit typically takes 2 to 4 business days depending on your destination city.
+            </p>
           </section>
 
           <section className="space-y-3">

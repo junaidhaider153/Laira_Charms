@@ -8,6 +8,7 @@ import {
   registerSchema,
   forgotPasswordSchema,
   resetPasswordSchema,
+  isSafeReturnTo,
 } from "./auth-validators";
 
 export interface AuthActionResult {
@@ -52,8 +53,32 @@ export async function signInAction(
     };
   }
 
-  const returnTo = formData.get("returnTo") as string;
-  redirect(returnTo && returnTo.startsWith("/") ? returnTo : "/account");
+  const rawReturnTo = formData.get("returnTo");
+  let targetUrl = isSafeReturnTo(rawReturnTo) ? rawReturnTo : null;
+
+  // If no safe returnTo was given, check if the authenticated user is an admin
+  if (!targetUrl) {
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", user.id)
+          .single();
+
+        if ((profile as { role?: string } | null)?.role === "admin") {
+          targetUrl = "/admin/orders";
+        }
+      }
+    } catch {
+      // Fallback
+    }
+  }
+
+  redirect(targetUrl || "/account");
 }
 
 /**

@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 import { listConversations, getConversation } from "@/lib/messaging/messaging-service";
 import { AdminConversationsView } from "@/components/messaging/AdminConversationsView";
+import { guardAdmin } from "@/lib/auth/guards";
 import type { Message } from "@/lib/messaging/types";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Studio Inbox | Admin Portal - Laira Charms",
@@ -9,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminConversationsPage() {
-  const actor = { role: "admin" as const, userId: "admin-view" };
+  const admin = await guardAdmin("/admin/conversations");
+  const actor = { role: "admin" as const, userId: admin.id };
   const conversations = await listConversations(actor);
 
   const initialMessagesMap: Record<string, Message[]> = {};

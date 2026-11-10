@@ -53,6 +53,16 @@ export const resetPasswordSchema = z
     path: ["confirmPassword"],
   });
 
+/**
+ * Validates that a returnTo URL is a safe local pathname.
+ * Rejects protocol-relative paths (//evil.com), backslashes (/\evil.com), and absolute URLs.
+ */
+export function isSafeReturnTo(url: unknown): url is string {
+  if (typeof url !== "string") return false;
+  const trimmed = url.trim();
+  return trimmed.startsWith("/") && !trimmed.startsWith("//") && !trimmed.includes("\\");
+}
+
 export type LoginInput = z.infer<typeof loginSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;

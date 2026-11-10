@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { forgotPasswordAction } from "./auth-actions";
-import { registerSchema } from "./auth-validators";
+import { registerSchema, isSafeReturnTo } from "./auth-validators";
 
 // Mock Supabase server client
 vi.mock("@/lib/supabase/server", () => ({
@@ -89,6 +89,41 @@ describe("Auth Security Negative & Privacy Tests", () => {
         confirmPassword: "lowercase12345",
       });
       expect(noUpper.success).toBe(false);
+    });
+  });
+
+  describe("Open Redirect Prevention (H1)", () => {
+    it("rejects protocol-relative URL starting with //", () => {
+      expect(isSafeReturnTo("//evil.com")).toBe(false);
+      expect(isSafeReturnTo("//evil.com/path")).toBe(false);
+    });
+
+    it("rejects backslash-escaped URL starting with /\\", () => {
+      expect(isSafeReturnTo("/\\evil.com")).toBe(false);
+    });
+
+    it("rejects URLs containing backslashes anywhere", () => {
+      expect(isSafeReturnTo("/account\\../evil")).toBe(false);
+    });
+
+    it("rejects absolute URLs with protocol", () => {
+      expect(isSafeReturnTo("https://evil.com")).toBe(false);
+      expect(isSafeReturnTo("http://evil.com")).toBe(false);
+      expect(isSafeReturnTo("javascript:alert(1)")).toBe(false);
+    });
+
+    it("rejects non-string inputs", () => {
+      expect(isSafeReturnTo(null)).toBe(false);
+      expect(isSafeReturnTo(undefined)).toBe(false);
+      expect(isSafeReturnTo(123)).toBe(false);
+      expect(isSafeReturnTo({})).toBe(false);
+    });
+
+    it("accepts valid relative local routes", () => {
+      expect(isSafeReturnTo("/account")).toBe(true);
+      expect(isSafeReturnTo("/account/orders")).toBe(true);
+      expect(isSafeReturnTo("/checkout")).toBe(true);
+      expect(isSafeReturnTo("/admin/orders?page=2")).toBe(true);
     });
   });
 });

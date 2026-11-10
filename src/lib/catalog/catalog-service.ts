@@ -1,5 +1,7 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { FIXTURE_CATEGORIES, FIXTURE_PRODUCTS } from "./fixtures";
+import { isLiveSupabaseConfigured } from "@/lib/auth/offline-mode";
+import { tokenizeSearchQuery, matchesAllTokens } from "./search";
 import type {
   CatalogCategory,
   CatalogProduct,
@@ -44,13 +46,6 @@ interface DbProductRow {
   product_media: DbProductMediaRow[];
 }
 
-function isLiveSupabaseConfigured(): boolean {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!url || url.includes("dummy-project") || url.includes("example.com")) {
-    return false;
-  }
-  return true;
-}
 
 /**
  * Retrieves all published categories.
@@ -152,8 +147,13 @@ export async function getProducts(params: CatalogFilterParams = {}): Promise<{
         dbQuery = dbQuery.lte("base_price_minor", maxPriceMinor);
       }
 
-      if (query) {
-        dbQuery = dbQuery.or(`title.ilike.%${query}%,description.ilike.%${query}%`);
+      const tokens = tokenizeSearchQuery(query);
+      if (tokens.length > 0) {
+        for (const token of tokens) {
+          dbQuery = dbQuery.or(
+            `title.ilike.%${token}%,description.ilike.%${token}%,slug.ilike.%${token}%`
+          );
+        }
       }
 
       // Apply sorting
@@ -231,12 +231,10 @@ export async function getProducts(params: CatalogFilterParams = {}): Promise<{
     filtered = filtered.filter((p) => p.productType === productType);
   }
 
-  if (query) {
-    const qLower = query.toLowerCase().trim();
-    filtered = filtered.filter(
-      (p) =>
-        p.title.toLowerCase().includes(qLower) ||
-        p.description.toLowerCase().includes(qLower)
+  const tokens = tokenizeSearchQuery(query);
+  if (tokens.length > 0) {
+    filtered = filtered.filter((p) =>
+      matchesAllTokens(tokens, [p.title, p.description, p.categoryName, p.slug])
     );
   }
 

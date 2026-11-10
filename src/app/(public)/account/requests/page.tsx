@@ -2,7 +2,9 @@ import React from "react";
 import { Metadata } from "next";
 import { listCustomerCustomRequests } from "@/lib/custom-order/custom-order-service";
 import { CustomerRequestsHistory } from "@/components/account/CustomerRequestsHistory";
-import { SAMPLE_CUSTOMER_USER_ID } from "@/lib/account/address-service";
+import { guardCustomer } from "@/lib/auth/guards";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Bespoke Requests | My Account - Laira Charms",
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CustomerRequestsPage() {
-  const userId = SAMPLE_CUSTOMER_USER_ID;
+  const userId = await guardCustomer("/account/requests");
   const requests = await listCustomerCustomRequests(userId);
 
   return (

@@ -22,6 +22,15 @@ export default function ReturnsPage() {
         <div className="space-y-8 text-sm text-espresso-deep leading-relaxed">
           <section className="space-y-3">
             <h2 className="font-headline text-xl font-bold text-espresso-deep flex items-center gap-2">
+              <span>⚠️</span> Strict No Returns or Refunds Policy
+            </h2>
+            <p className="text-espresso-muted">
+              Because all Laira Charms keepsakes and keychains are individually sculpted, oven-cured, and glazed by hand in small studio batches, <strong className="text-espresso-deep">we do not accept returns, exchanges, or refunds for change of mind</strong> once an order is confirmed.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="font-headline text-xl font-bold text-espresso-deep flex items-center gap-2">
               <span>🛡️</span> Damaged in Transit Guarantee
             </h2>
             <p className="text-espresso-muted">

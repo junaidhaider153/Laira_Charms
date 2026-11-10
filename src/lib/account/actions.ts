@@ -8,14 +8,10 @@ import {
   SAMPLE_CUSTOMER_USER_ID,
 } from "./address-service";
 import type { SaveAddressInput } from "./types";
+import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
 
 async function resolveCustomerUserId(): Promise<string> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const isLiveSupabase = Boolean(
-    supabaseUrl && !supabaseUrl.includes("dummy-project") && !supabaseUrl.includes("example.com")
-  );
-
-  if (isLiveSupabase) {
+  if (isLiveSupabaseConfigured()) {
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
@@ -26,13 +22,21 @@ async function resolveCustomerUserId(): Promise<string> {
       if (user) {
         return user.id;
       }
-    } catch {
-      // Fallback
+      throw new Error("Please sign in to manage your addresses.");
+    } catch (err: unknown) {
+      if (err instanceof Error && err.message.includes("Please sign in")) {
+        throw err;
+      }
+      throw new Error("Please sign in to manage your addresses.");
     }
   }
 
-  // Local development / mock fallback
-  return SAMPLE_CUSTOMER_USER_ID;
+  // Local development / mock fallback only
+  if (allowOfflineFallback()) {
+    return SAMPLE_CUSTOMER_USER_ID;
+  }
+
+  throw new Error("Please sign in to manage your addresses.");
 }
 
 export async function saveAddressAction(input: SaveAddressInput) {

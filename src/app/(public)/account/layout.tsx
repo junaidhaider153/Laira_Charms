@@ -1,6 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { guardCustomer } from "@/lib/auth/guards";
+import { signOutAction } from "@/lib/auth/auth-actions";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "My Account | Laira Charms",
@@ -14,11 +18,12 @@ const NAV_LINKS = [
   { href: "/account/requests", label: "Bespoke Requests", icon: "🎨" },
 ];
 
-export default function AccountLayout({
+export default async function AccountLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  await guardCustomer("/account");
   return (
     <div className="min-h-screen bg-canvas-butter py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -38,12 +43,22 @@ export default function AccountLayout({
             </div>
           </div>
 
-          <Link
-            href="/shop"
-            className="px-5 py-2.5 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all shadow-xs active:scale-95"
-          >
-            Explore Catalog &rarr;
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/shop"
+              className="px-5 py-2.5 rounded-full bg-surface-cloud border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all shadow-xs active:scale-95"
+            >
+              Explore Catalog &rarr;
+            </Link>
+            <form action={signOutAction} className="inline-flex">
+              <button
+                type="submit"
+                className="px-4 py-2.5 rounded-full bg-strawberry-subtle text-primary hover:bg-strawberry-blush hover:text-white transition-all text-xs font-bold border border-primary/20 cursor-pointer shadow-xs active:scale-95"
+              >
+                Sign out
+              </button>
+            </form>
+          </div>
         </div>
 
         {/* Tab Navigation */}

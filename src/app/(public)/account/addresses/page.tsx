@@ -1,7 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
-import { listAddresses, SAMPLE_CUSTOMER_USER_ID } from "@/lib/account/address-service";
+import { listAddresses } from "@/lib/account/address-service";
 import { AddressBook } from "@/components/account/AddressBook";
+import { guardCustomer } from "@/lib/auth/guards";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Saved Delivery Addresses | My Account - Laira Charms",
@@ -9,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CustomerAddressesPage() {
-  const userId = SAMPLE_CUSTOMER_USER_ID;
+  const userId = await guardCustomer("/account/addresses");
   const addresses = await listAddresses(userId);
 
   return (

@@ -13,20 +13,24 @@ export default function FaqPage() {
       a: "Our charms are baked to the exact curing temperature and triple-coated with high-grade UV diamond glaze. This makes them drop-resistant and resilient for daily use on keyrings, bags, and phone straps. However, like any fine miniature artwork, avoid deliberate heavy crushing or picking at tiny sculpted details.",
     },
     {
-      q: "How does payment work?",
-      a: "We accept manual bank and digital wallet transfers (Meezan Bank, EasyPaisa, and JazzCash). Upon placing your order, our account details will be presented. Simply transfer the exact order amount and upload a clear screenshot of your receipt. Our team independently verifies the receipt before marking your order confirmed.",
+      q: "Do you offer Cash on Delivery (COD)?",
+      a: "No, we do not offer Cash on Delivery (COD). Because each charm is delicately sculpted, oven-baked, and custom-packaged by hand, we only accept advance payments via manual bank or digital wallet transfer (Meezan Bank, EasyPaisa, or JazzCash).",
     },
     {
-      q: "How long does shipping take across Pakistan?",
-      a: "Ready-made orders are dispatched within 1–2 business days. Delivery across major cities (Karachi, Lahore, Islamabad) typically takes 2–3 business days. Remote or regional deliveries may take 3–5 business days.",
+      q: "How does payment work?",
+      a: "We accept manual bank and digital wallet transfers (Meezan Bank, EasyPaisa, and JazzCash). Upon placing your order, our studio account details will be presented on screen. Simply transfer the exact order amount and upload a clear screenshot of your receipt. Our team independently verifies the receipt before marking your order confirmed.",
+    },
+    {
+      q: "Which courier services do you use and how long does shipping take?",
+      a: "Ready-made orders dispatch within 1–2 business days, and custom atelier pieces cure in 3–5 business days. We ship parcels nationwide across Pakistan via TCS, PostEx, and other trusted couriers. Courier transit typically takes 2–3 business days for major cities (Karachi, Lahore, Islamabad) and 3–5 business days for regional areas, with active tracking numbers provided.",
     },
     {
       q: "Can I order a custom name or design?",
-      a: "Yes! We offer both configurable personalized items (where you choose preset options and names directly) and bespoke custom commissions where you submit an idea, receive an official quote, and review terms before payment.",
+      a: "Yes! We offer both configurable personalized items (where you choose preset options and stamped initials directly) and bespoke custom commissions where you submit an idea, receive an official quote, and review terms before payment.",
     },
     {
-      q: "What is your refund policy?",
-      a: "If your parcel arrives damaged during shipping, contact us within 48 hours with unboxing photos and we will craft a free replacement or refund the full amount. Personalized custom items cannot be cancelled once production begins.",
+      q: "What is your return and refund policy?",
+      a: "Due to the artisanal, handmade, and personalized nature of our keepsakes, we do not accept returns or refunds for change of mind once an order is placed. However, your order is 100% covered under our 48-Hour Damaged in Transit Guarantee: if your piece arrives damaged during shipping, contact us within 48 hours with unboxing photos/video and we will craft and dispatch a free replacement.",
     },
   ];
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import {
   getCustomRequestById,
-  MEMORY_QUOTATIONS,
+  getQuotationsForRequest,
 } from "@/lib/custom-order/custom-order-service";
 
 interface StatusPageProps {
@@ -29,9 +29,7 @@ export default async function CustomRequestStatusPage({
   }
 
   // Find quotation for this request if issued
-  const quotes = Array.from(MEMORY_QUOTATIONS.values()).filter(
-    (q) => q.requestId === request.id
-  );
+  const quotes = await getQuotationsForRequest(request.id);
   const activeQuote = quotes[quotes.length - 1];
 
   const statusSteps = [

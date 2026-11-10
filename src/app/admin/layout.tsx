@@ -1,17 +1,20 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { guardAdmin } from "@/lib/auth/guards";
+import { signOutAction } from "@/lib/auth/auth-actions";
 
 export const metadata: Metadata = {
   title: "Admin Portal | Laira Charms",
   description: "Administrative studio management portal for orders, inquiries, and atelier fulfillment.",
 };
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  await guardAdmin("/admin/orders");
   return (
     <div className="min-h-screen bg-canvas-butter flex flex-col">
       {/* Admin Top Navigation Bar */}
@@ -62,6 +65,14 @@ export default function AdminLayout({
               <span>Storefront</span>
               <span className="text-[10px]">↗</span>
             </Link>
+            <form action={signOutAction} className="inline-flex ml-2">
+              <button
+                type="submit"
+                className="px-3 py-1.5 rounded-full bg-red-900/60 text-red-100 hover:bg-red-800 transition-colors whitespace-nowrap text-xs font-semibold cursor-pointer"
+              >
+                Sign out
+              </button>
+            </form>
           </nav>
         </div>
       </header>

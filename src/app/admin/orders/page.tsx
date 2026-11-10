@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { listAdminOrders } from "@/lib/order/order-admin-service";
 import { AdminOrdersDashboard } from "@/components/admin/AdminOrdersDashboard";
+import { guardAdmin } from "@/lib/auth/guards";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Orders Queue | Admin Portal - Laira Charms",
@@ -8,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminOrdersPage() {
+  await guardAdmin("/admin/orders");
   const { orders, counts } = await listAdminOrders();
 
   return (

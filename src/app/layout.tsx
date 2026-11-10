@@ -5,6 +5,7 @@ import { CartProvider } from "@/context/cart-context";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { FloatingChatWidget } from "@/components/messaging/FloatingChatWidget";
 
 const epilogue = Epilogue({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export default function RootLayout({
           <CartDrawer />
           <main className="flex-1 flex flex-col">{children}</main>
           <SiteFooter />
+          <FloatingChatWidget />
         </CartProvider>
       </body>
     </html>

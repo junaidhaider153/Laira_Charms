@@ -31,7 +31,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   });
 
   return (
-    <div className="w-full bg-background min-h-screen pt-20 sm:pt-24 pb-16">
+    <div className="w-full bg-background min-h-screen pt-6 sm:pt-8 pb-16">
       {/* Page Header Banner */}
       <div className="w-full bg-surface-custard border-b border-border-warm py-8 sm:py-12 mb-8">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6">

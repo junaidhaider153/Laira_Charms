@@ -7,6 +7,7 @@ import {
   toggleProductStatus,
 } from "./catalog-admin-service";
 import type { ProductStatus } from "@/lib/catalog/types";
+import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
 
 const updateStockSchema = z.object({
   productId: z.string().min(1),
@@ -24,12 +25,7 @@ const toggleStatusSchema = z.object({
 });
 
 async function verifyAdminAuth() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const isLiveSupabase = Boolean(
-    supabaseUrl && !supabaseUrl.includes("dummy-project") && !supabaseUrl.includes("example.com")
-  );
-
-  if (isLiveSupabase) {
+  if (isLiveSupabaseConfigured()) {
     const { createServerSupabaseClient } = await import("@/lib/supabase/server");
     const supabase = await createServerSupabaseClient();
     const { data: { user } } = await supabase.auth.getUser();
@@ -44,6 +40,8 @@ async function verifyAdminAuth() {
     if ((profile as { role?: string } | null)?.role !== "admin") {
       throw new Error("Forbidden. Admin privileges required.");
     }
+  } else if (!allowOfflineFallback()) {
+    throw new Error("Unauthorized. Admin authentication required.");
   }
 }
 

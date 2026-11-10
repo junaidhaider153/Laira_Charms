@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { transitionOrderStatus } from "./order-admin-service";
 import type { OrderStatus } from "./lifecycle";
+import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
 
 const updateOrderStatusSchema = z.object({
   orderId: z.string().min(1, "Order identifier is required"),
@@ -42,12 +43,7 @@ export async function updateOrderStatusAction(input: {
 
   // Admin authorization check
   let adminId = "admin-dev-fallback";
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const isLiveSupabase = Boolean(
-    supabaseUrl && !supabaseUrl.includes("dummy-project") && !supabaseUrl.includes("example.com")
-  );
-
-  if (isLiveSupabase) {
+  if (isLiveSupabaseConfigured()) {
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
@@ -70,13 +66,15 @@ export async function updateOrderStatusAction(input: {
     } catch {
       return { success: false, message: "Admin authorization check failed." };
     }
+  } else if (!allowOfflineFallback()) {
+    return { success: false, message: "Unauthorized. Admin authentication required." };
   }
 
   try {
     const trackingInfo =
       parsed.data.targetStatus === "shipped" && parsed.data.trackingNumber
         ? {
-            courierPartner: parsed.data.courierPartner || "Trax",
+            courierPartner: parsed.data.courierPartner || "TCS",
             trackingNumber: parsed.data.trackingNumber,
             trackingUrl: parsed.data.trackingUrl,
           }

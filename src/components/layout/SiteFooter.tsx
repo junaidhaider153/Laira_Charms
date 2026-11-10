@@ -2,11 +2,17 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Icon } from "@/components/ui/Icon";
 
 export function SiteFooter() {
+  const pathname = usePathname();
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   function handleNewsletterSubmit(e: React.FormEvent) {
     e.preventDefault();

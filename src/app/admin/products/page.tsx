@@ -2,6 +2,9 @@ import React from "react";
 import { Metadata } from "next";
 import { listAdminProducts } from "@/lib/admin/catalog-admin-service";
 import { AdminProductsTable } from "@/components/admin/AdminProductsTable";
+import { guardAdmin } from "@/lib/auth/guards";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Catalog & Inventory | Admin Portal - Laira Charms",
@@ -9,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminProductsPage() {
+  await guardAdmin("/admin/products");
   const products = await listAdminProducts();
 
   return (

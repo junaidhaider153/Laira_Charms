@@ -238,7 +238,7 @@ export function CartView() {
             </div>
             <div className="flex items-center gap-2">
               <Icon name="local_shipping" className="text-[16px] text-strawberry-blush" aria-hidden="true" />
-              <span>Nationwide Domestic Couriers (Trax, PostEx, TCS)</span>
+              <span>Nationwide Domestic Couriers (TCS, PostEx &amp; others)</span>
             </div>
           </div>
         </div>

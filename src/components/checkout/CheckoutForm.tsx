@@ -389,11 +389,16 @@ export function CheckoutForm() {
             </h2>
 
             <div className="p-5 rounded-2xl bg-surface-custard border border-border-warm/60 text-xs text-espresso-deep space-y-2">
-              <div className="flex items-center gap-2 font-bold text-espresso-deep text-sm">
-                <span>🏦</span> Meezan Bank &bull; EasyPaisa &bull; JazzCash
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2 font-bold text-espresso-deep text-sm">
+                  <span>🏦</span> Meezan Bank &bull; EasyPaisa &bull; JazzCash
+                </div>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-peach-tint text-espresso-deep font-bold text-[10px] border border-border-warm/40">
+                  No Cash on Delivery (COD)
+                </span>
               </div>
               <p className="text-xs text-espresso-muted leading-relaxed">
-                To guarantee secure handmade commissions, we process payments via verified direct manual transfers. After clicking <span className="font-bold text-espresso-deep">&quot;Place Order&quot;</span>, our studio bank IBAN and wallet accounts will be presented on screen to upload your transfer screenshot proof.
+                To guarantee secure handmade commissions, we process payments exclusively via verified direct manual transfers. After clicking <span className="font-bold text-espresso-deep">&quot;Place Order&quot;</span>, our studio bank IBAN and wallet accounts will be presented on screen to upload your transfer screenshot proof.
               </p>
             </div>
           </div>
@@ -483,8 +488,8 @@ export function CheckoutForm() {
             )}
           </button>
 
-          <p className="font-label-sm text-[11px] text-center text-espresso-muted leading-tight">
-            By placing your order, you confirm acceptance of our handmade lead time and direct payment policy.
+          <p className="font-label-sm text-[11px] text-center text-espresso-muted leading-relaxed">
+            By placing your order, you confirm acceptance of our <span className="font-bold text-espresso-deep">No COD</span> advance payment policy and <span className="font-bold text-espresso-deep">no-refunds/no-returns</span> policy on handmade pieces (covered under 48h transit protection).
           </p>
         </div>
       </form>

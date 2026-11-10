@@ -1,13 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { listAddresses, SAMPLE_CUSTOMER_USER_ID } from "@/lib/account/address-service";
+import { listAddresses } from "@/lib/account/address-service";
 import { listCustomerOrders } from "@/lib/checkout/order-service";
 import { listCustomerCustomRequests } from "@/lib/custom-order/custom-order-service";
 import { formatMoney } from "@/lib/utils";
 import { formatOrderStatus } from "@/lib/order/lifecycle";
+import { guardCustomer } from "@/lib/auth/guards";
+
+export const dynamic = "force-dynamic";
 
 export default async function AccountOverviewPage() {
-  const userId = SAMPLE_CUSTOMER_USER_ID;
+  const userId = await guardCustomer("/account");
   const addresses = await listAddresses(userId);
   const orders = await listCustomerOrders(userId);
   const requests = await listCustomerCustomRequests(userId);

@@ -211,7 +211,7 @@ export default function HomePage() {
       : FEATURED_CHARMS.filter((item) => item.category === activeCategory);
 
   return (
-    <div className="flex flex-col w-full bg-background min-h-screen pt-24 sm:pt-28">
+    <div className="flex flex-col w-full bg-background min-h-screen pt-4 sm:pt-6">
       {/* SECTION 1: HERO WITH SCALLOP / CLOUD CONTOUR */}
       <section className="relative w-full overflow-hidden bg-surface-custard pb-20 pt-8 sm:pt-12">
         {/* Decorative Floating Pastel Doodles & Glows */}
@@ -928,7 +928,7 @@ export default function HomePage() {
                 <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Ready-to-ship charms from our drops dispatch within 24 to 48 hours. Custom Atelier pieces cure in 3 to 5 business days before departing our sweet studio via Trax, PostEx, or TCS.
+                Ready-to-ship charms from our drops dispatch within 24 to 48 hours. Custom Atelier pieces cure in 3 to 5 business days before departing our sweet studio via TCS, PostEx, and other trusted couriers.
               </div>
             </details>
 
@@ -1003,7 +1003,7 @@ export default function HomePage() {
 
       {/* TOAST NOTIFICATION ON QUICK ACTIONS */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 transform transition-all duration-300">
+        <div className="fixed bottom-24 right-6 z-50 transform transition-all duration-300">
           <div className="bg-espresso-deep text-on-primary rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-3 border border-border-warm">
             <span className="w-8 h-8 rounded-full bg-strawberry-blush text-on-primary flex items-center justify-center text-sm font-bold">
               🍓

@@ -36,7 +36,7 @@ export function AdminOrderDetailView({
   const [targetStatus, setTargetStatus] = useState<OrderStatus>(
     allowedNextStatuses[0] || order.orderStatus
   );
-  const [courierPartner, setCourierPartner] = useState<string>("Trax");
+  const [courierPartner, setCourierPartner] = useState<string>("TCS");
   const [trackingNumber, setTrackingNumber] = useState("");
   const [trackingUrl, setTrackingUrl] = useState("");
   const [statusNote, setStatusNote] = useState("");

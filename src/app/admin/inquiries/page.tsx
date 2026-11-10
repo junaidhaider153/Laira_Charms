@@ -1,7 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { MEMORY_CUSTOM_REQUESTS, MEMORY_QUOTATIONS } from "@/lib/custom-order/custom-order-service";
+import { listAllCustomRequests } from "@/lib/custom-order/custom-order-service";
+import { guardAdmin } from "@/lib/auth/guards";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Bespoke Inquiries | Admin Portal - Laira Charms",
@@ -9,9 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminInquiriesPage() {
-  const requests = Array.from(MEMORY_CUSTOM_REQUESTS.values()).sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
+  await guardAdmin("/admin/inquiries");
+  const { requests, quotations } = await listAllCustomRequests();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
@@ -45,13 +47,7 @@ export default async function AdminInquiriesPage() {
               </tr>
             ) : (
               requests.map((req) => {
-                let quote = null;
-                for (const q of MEMORY_QUOTATIONS.values()) {
-                  if (q.requestId === req.id) {
-                    quote = q;
-                    break;
-                  }
-                }
+                const quote = quotations.find((q) => q.requestId === req.id) || null;
 
                 return (
                   <tr key={req.id} className="hover:bg-surface-cloud/40 transition-colors">

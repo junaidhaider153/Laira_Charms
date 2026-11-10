@@ -28,6 +28,16 @@ cp .env.example .env.local
 
 Configure your local Supabase keys and transactional email keys. Never commit `.env.local` or expose `SUPABASE_SERVICE_ROLE_KEY` to browser bundles.
 
+### Creating the First Admin
+
+To designate an account as an administrator:
+1. Sign up normally through the website registration at `/register`.
+2. In the Supabase SQL editor or CLI, run:
+```sql
+update public.profiles set role = 'admin' where email = '<your-email@example.com>';
+```
+3. When signed in, administrators will have access to the Admin Portal at `/admin/orders` and an Admin link in the navigation header.
+
 ### Commands
 
 | Command | Description |
