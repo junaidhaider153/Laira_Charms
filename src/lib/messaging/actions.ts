@@ -13,6 +13,8 @@ import {
 } from "./messaging-service";
 import type { MessageVisibility } from "./types";
 import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
+import { checkRateLimit } from "@/lib/security/rate-limit";
+import { isHoneypotClean } from "@/lib/security/spam-protection";
 
 export async function resolveActor(guestToken?: string | null, requestedAdmin?: boolean): Promise<ActorContext> {
   if (isLiveSupabaseConfigured()) {
@@ -73,6 +75,7 @@ export async function createConversationAction(input: {
   contextId?: string | null;
   guestEmail?: string | null;
   initialMessage: string;
+  websiteHp?: string | null;
   attachments?: Array<{
     fileName: string;
     mimeType: "image/jpeg" | "image/png" | "image/webp" | "application/pdf";
@@ -80,6 +83,26 @@ export async function createConversationAction(input: {
     base64Data?: string;
   }>;
 }) {
+  if (!isHoneypotClean(input.websiteHp)) {
+    return {
+      success: false,
+      message: "Spam submission detected.",
+    };
+  }
+
+  const rateLimit = await checkRateLimit({
+    keyPrefix: "chat_thread_create",
+    limit: 10,
+    windowSeconds: 60,
+  });
+
+  if (!rateLimit.success) {
+    return {
+      success: false,
+      message: `Too many chat inquiries initiated. Please wait ${rateLimit.resetInSeconds} seconds before trying again.`,
+    };
+  }
+
   const parsed = createConversationSchema.safeParse(input);
   if (!parsed.success) {
     return {
@@ -121,6 +144,21 @@ export async function sendMessageAction(input: {
     base64Data?: string;
   }>;
 }) {
+  if (!input.isAdminAction) {
+    const rateLimit = await checkRateLimit({
+      keyPrefix: "chat_send_message",
+      limit: 20,
+      windowSeconds: 60,
+    });
+
+    if (!rateLimit.success) {
+      return {
+        success: false,
+        message: `Message rate limit reached. Please wait ${rateLimit.resetInSeconds} seconds.`,
+      };
+    }
+  }
+
   const parsed = sendMessageSchema.safeParse(input);
   if (!parsed.success) {
     return {

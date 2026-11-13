@@ -7,6 +7,9 @@ import {
 } from './types';
 import { renderEmail } from './email-templates';
 import { createAdminClient } from '../supabase/admin';
+import { ResendEmailProvider } from './resend-provider';
+
+export { ResendEmailProvider };
 
 // In-memory fallback store for test environments or offline mock mode
 const inMemoryOutbox = new Map<string, OutboxRecord>();
@@ -94,7 +97,16 @@ export class MockFailingEmailProvider implements IEmailProvider {
   }
 }
 
-const defaultProvider = new ConsoleEmailProvider();
+export function getActiveEmailProvider(): IEmailProvider {
+  if (process.env.RESEND_API_KEY && !process.env.RESEND_API_KEY.startsWith("re_dummy")) {
+    return new ResendEmailProvider();
+  }
+  return new ConsoleEmailProvider();
+}
+
+const defaultProvider: IEmailProvider = {
+  sendEmail: (to, subject, html, text) => getActiveEmailProvider().sendEmail(to, subject, html, text),
+};
 
 export function calculateBackoffMs(
   attempt: number,

@@ -10,6 +10,8 @@ import {
   resetPasswordSchema,
   isSafeReturnTo,
 } from "./auth-validators";
+import { checkRateLimit } from "@/lib/security/rate-limit";
+import { isHoneypotClean } from "@/lib/security/spam-protection";
 
 export interface AuthActionResult {
   success: boolean;
@@ -24,6 +26,19 @@ export async function signInAction(
   _prevState: AuthActionResult | null,
   formData: FormData
 ): Promise<AuthActionResult> {
+  const rateLimit = await checkRateLimit({
+    keyPrefix: "auth_signin",
+    limit: 10,
+    windowSeconds: 900,
+  });
+
+  if (!rateLimit.success) {
+    return {
+      success: false,
+      message: `Too many sign-in attempts. Please wait ${rateLimit.resetInSeconds} seconds before trying again.`,
+    };
+  }
+
   const rawData = {
     email: formData.get("email"),
     password: formData.get("password"),
@@ -88,6 +103,27 @@ export async function signUpAction(
   _prevState: AuthActionResult | null,
   formData: FormData
 ): Promise<AuthActionResult> {
+  const honeypot = formData.get("auth_hp")?.toString();
+  if (!isHoneypotClean(honeypot)) {
+    return {
+      success: false,
+      message: "Spam registration rejected.",
+    };
+  }
+
+  const rateLimit = await checkRateLimit({
+    keyPrefix: "auth_signup",
+    limit: 6,
+    windowSeconds: 900,
+  });
+
+  if (!rateLimit.success) {
+    return {
+      success: false,
+      message: `Too many registration attempts. Please wait ${rateLimit.resetInSeconds} seconds before trying again.`,
+    };
+  }
+
   const rawData = {
     displayName: formData.get("displayName"),
     email: formData.get("email"),
@@ -140,6 +176,19 @@ export async function forgotPasswordAction(
   _prevState: AuthActionResult | null,
   formData: FormData
 ): Promise<AuthActionResult> {
+  const rateLimit = await checkRateLimit({
+    keyPrefix: "auth_forgot",
+    limit: 5,
+    windowSeconds: 900,
+  });
+
+  if (!rateLimit.success) {
+    return {
+      success: false,
+      message: `Too many password reset requests. Please wait ${rateLimit.resetInSeconds} seconds before trying again.`,
+    };
+  }
+
   const rawData = {
     email: formData.get("email"),
   };

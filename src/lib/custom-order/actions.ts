@@ -2,11 +2,46 @@
 
 import { createCustomRequestSchema, quoteDecisionSchema } from "./schemas";
 import { createCustomRequest, respondToQuotation } from "./custom-order-service";
+import { checkRateLimit } from "@/lib/security/rate-limit";
+import { isHoneypotClean, verifyTurnstileToken } from "@/lib/security/spam-protection";
 
 export async function submitCustomRequestAction(
   _prevState: unknown,
   formData: FormData
 ) {
+  // 1. Honeypot check
+  const honeypot = formData.get("studio_inquiry_hp")?.toString();
+  if (!isHoneypotClean(honeypot)) {
+    return {
+      success: false,
+      message: "Spam submission detected.",
+    };
+  }
+
+  // 2. IP Rate limit check: max 5 requests per 10 minutes
+  const rateLimit = await checkRateLimit({
+    keyPrefix: "custom_order_inquiry",
+    limit: 5,
+    windowSeconds: 600,
+  });
+
+  if (!rateLimit.success) {
+    return {
+      success: false,
+      message: `Too many inquiries submitted from this connection. Please wait ${rateLimit.resetInSeconds} seconds before submitting again.`,
+    };
+  }
+
+  // 3. Optional Turnstile challenge token verification
+  const turnstileToken = formData.get("cf-turnstile-response")?.toString();
+  const turnstileCheck = await verifyTurnstileToken(turnstileToken);
+  if (!turnstileCheck.success) {
+    return {
+      success: false,
+      message: turnstileCheck.error || "Bot verification challenge failed.",
+    };
+  }
+
   const rawData = {
     title: formData.get("title")?.toString() || "",
     brief: formData.get("brief")?.toString() || "",

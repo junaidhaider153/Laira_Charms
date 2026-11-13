@@ -8,6 +8,7 @@ import type { CatalogProduct, ProductStatus } from "@/lib/catalog/types";
 import {
   updateProductStockAction,
   toggleProductStatusAction,
+  deleteProductAction,
 } from "@/lib/admin/catalog-actions";
 
 interface AdminProductsTableProps {
@@ -72,6 +73,24 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
     setUpdatingId(null);
   };
 
+  const handleDeleteProduct = async (productId: string, title: string) => {
+    if (!window.confirm(`Are you sure you want to delete "${title}"?`)) {
+      return;
+    }
+
+    setUpdatingId(productId);
+    setFeedback(null);
+
+    const result = await deleteProductAction({ productId });
+    if (result.success) {
+      setProducts((prev) => prev.filter((p) => p.id !== productId));
+      setFeedback({ type: "success", message: result.message });
+    } else {
+      setFeedback({ type: "error", message: result.message });
+    }
+    setUpdatingId(null);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -82,6 +101,20 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
           <p className="text-xs sm:text-sm text-espresso-muted mt-1">
             Manage keepsake collection items, update live in-stock counts, and adjust pricing.
           </p>
+        </div>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <Link
+            href="/admin/categories"
+            className="flex-1 sm:flex-none text-center px-4 py-2.5 rounded-full border border-border-warm text-xs font-bold text-espresso-deep hover:bg-canvas-pearl transition-colors shadow-2xs"
+          >
+            Manage Categories
+          </Link>
+          <Link
+            href="/admin/products/new"
+            className="flex-1 sm:flex-none text-center px-5 py-2.5 rounded-full bg-strawberry-deep text-white text-xs font-bold hover:bg-strawberry-blush transition-colors shadow-xs"
+          >
+            + Add New Product
+          </Link>
         </div>
       </div>
 
@@ -219,14 +252,31 @@ export function AdminProductsTable({ initialProducts }: AdminProductsTableProps)
                   </td>
 
                   <td className="py-3.5 px-4 text-right whitespace-nowrap">
-                    <Link
-                      href={`/products/${prod.slug}`}
-                      target="_blank"
-                      className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
-                    >
-                      <span>View</span>
-                      <span className="text-[10px]">↗</span>
-                    </Link>
+                    <div className="flex items-center justify-end gap-1.5">
+                      <Link
+                        href={`/admin/products/${prod.id}`}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-canvas-butter border border-border-warm text-espresso-deep font-bold text-xs hover:bg-canvas-pearl transition-all"
+                      >
+                        Edit
+                      </Link>
+                      <Link
+                        href={`/products/${prod.slug}`}
+                        target="_blank"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-custard border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-container transition-all active:scale-95"
+                      >
+                        <span>View</span>
+                        <span className="text-[10px]">↗</span>
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteProduct(prod.id, prod.title)}
+                        disabled={updatingId === prod.id}
+                        className="inline-flex items-center px-2.5 py-1.5 rounded-full border border-red-200 text-red-700 font-bold text-xs hover:bg-red-50 transition-all cursor-pointer"
+                        title="Delete Product"
+                      >
+                        ✕
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))

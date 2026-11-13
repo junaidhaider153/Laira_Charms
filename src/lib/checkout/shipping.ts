@@ -17,7 +17,7 @@ export function calculateShippingFee(subtotalMinor: number): number {
 }
 
 /**
- * Calculates complete order totals server-side.
+ * Calculates complete order totals server-side and client-side.
  */
 export function calculateOrderTotals(
   items: Array<{ unitPriceMinor: number; quantity: number }>
@@ -46,4 +46,5 @@ export function calculateOrderTotals(
     hasFreeShipping,
   };
 }
+
 

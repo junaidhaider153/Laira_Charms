@@ -13,6 +13,7 @@ import {
   MAX_ATTACHMENT_SIZE_BYTES,
   MAX_ATTACHMENTS_PER_MESSAGE,
 } from "./schemas";
+import { enqueueNotification } from "@/lib/notifications/outbox-service";
 
 export const MEMORY_CONVERSATIONS: Map<string, Conversation> = new Map();
 export const MEMORY_MESSAGES: Map<string, Message[]> = new Map();
@@ -388,6 +389,28 @@ export async function sendMessage(
   MEMORY_MESSAGES.set(conversation.id, existingMsgs);
 
   conversation.updatedAt = now;
+
+  // Trigger transactional email notification when studio artisan replies to customer thread
+  if (actor.role === "admin" && visibility === "customer_and_admin") {
+    const recipientEmail = conversation.guestEmail;
+    if (recipientEmail) {
+      try {
+        await enqueueNotification({
+          recipientEmail,
+          recipientName: recipientEmail.split("@")[0] || "Valued Customer",
+          eventType: "new_message",
+          idempotencyKey: `reply_notif_${messageId}`,
+          data: {
+            threadTitle: conversation.title,
+            messageSnippet: input.body.slice(0, 160),
+            threadUrl: `${process.env.NEXT_PUBLIC_APP_URL || "https://lairacharms.vercel.app"}/conversations/${conversation.id}`,
+          },
+        });
+      } catch {
+        // Notification failure should not block message sending
+      }
+    }
+  }
 
   return message;
 }

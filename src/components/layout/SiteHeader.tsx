@@ -20,6 +20,7 @@ const ANNOUNCEMENTS = [
 export function SiteHeader() {
   const pathname = usePathname();
   const { itemCount, openDrawer } = useCart();
+  const [announcements, setAnnouncements] = useState<string[]>(ANNOUNCEMENTS);
   const [announcementIndex, setAnnouncementIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +31,18 @@ export function SiteHeader() {
     signedIn: false,
     isAdmin: false,
   });
+
+  // Load custom announcement if configured in store_settings
+  useEffect(() => {
+    fetch("/api/settings/banner")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((b) => {
+        if (b && b.isEnabled && b.text) {
+          setAnnouncements((prev) => [b.text, ...prev.filter((t) => t !== b.text)]);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Client-side auth state detection (skipped when Supabase is not live)
   useEffect(() => {
@@ -83,10 +96,10 @@ export function SiteHeader() {
   // Rotate announcement ticker every 4.5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setAnnouncementIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
+      setAnnouncementIndex((prev) => (prev + 1) % announcements.length);
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [announcements.length]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -128,7 +141,7 @@ export function SiteHeader() {
               key={announcementIndex}
               className="inline-flex items-center gap-2 text-espresso-deep transition-opacity duration-300 animate-fadeIn"
             >
-              {ANNOUNCEMENTS[announcementIndex]}
+              {announcements[announcementIndex]}
             </span>
           </div>
         </div>

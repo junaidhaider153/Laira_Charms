@@ -46,6 +46,12 @@ export default async function AdminLayout({
               Catalog
             </Link>
             <Link
+              href="/admin/categories"
+              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
+            >
+              Categories
+            </Link>
+            <Link
               href="/admin/inquiries"
               className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
             >
@@ -56,6 +62,12 @@ export default async function AdminLayout({
               className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
             >
               Inbox
+            </Link>
+            <Link
+              href="/admin/settings"
+              className="px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors whitespace-nowrap"
+            >
+              Settings
             </Link>
             <Link
               href="/shop"

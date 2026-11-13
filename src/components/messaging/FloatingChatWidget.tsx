@@ -19,6 +19,7 @@ export function FloatingChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [previousChat, setPreviousChat] = useState<StoredConversation | null>(null);
@@ -93,6 +94,7 @@ export function FloatingChatWidget() {
         contextType: "general",
         guestEmail: trimmedEmail,
         initialMessage: trimmedQuestion,
+        websiteHp: honeypot,
       });
 
       if (!result.success || !result.conversation) {
@@ -217,6 +219,20 @@ export function FloatingChatWidget() {
 
             {/* Inquiry Form */}
             <form onSubmit={handleSubmit} className="space-y-3">
+              {/* Honeypot field for bot spam prevention */}
+              <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                <label htmlFor="chat-company">Company</label>
+                <input
+                  id="chat-company"
+                  type="text"
+                  name="websiteHp"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="chat-email"

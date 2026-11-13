@@ -145,6 +145,18 @@ export function CustomOrderForm({
       onSubmit={handleSubmit}
       className="bg-surface-cloud p-6 sm:p-10 rounded-3xl border border-border-warm/50 shadow-sm space-y-8 max-w-3xl mx-auto"
     >
+      {/* Honeypot field for bot spam prevention */}
+      <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+        <label htmlFor="studio_inquiry_hp">Leave empty</label>
+        <input
+          id="studio_inquiry_hp"
+          type="text"
+          name="studio_inquiry_hp"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="border-b border-border-warm/50 pb-5">
         <span className="font-label-sm text-xs uppercase font-bold tracking-widest text-primary block mb-1">
           Custom Commission Atelier

@@ -22,12 +22,23 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lairacharms.pk";
+  const canonicalUrl = `${baseUrl}/products/${slug}`;
+  const priceFormatted = `PKR ${(product.basePriceMinor / 100).toLocaleString()}`;
+
   return {
     title: `${product.title} • Laira Charms Pakistan`,
-    description: product.description,
+    description: `${product.description} Handcrafted in Pakistan. Price: ${priceFormatted}.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: `${product.title} • Laira Charms`,
+      title: `${product.title} • Laira Charms Pakistan`,
       description: product.description,
+      url: canonicalUrl,
+      siteName: "Laira Charms",
+      type: "website",
+      locale: "en_PK",
       images: [
         {
           url: product.primaryImage,
@@ -36,6 +47,12 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
           alt: product.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.title} • Laira Charms`,
+      description: product.description,
+      images: [product.primaryImage],
     },
   };
 }
@@ -65,8 +82,38 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     { label: product.title },
   ];
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lairacharms.pk";
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description,
+    image: product.media.map((m) => m.publicUrl),
+    brand: {
+      "@type": "Brand",
+      name: "Laira Charms",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `${baseUrl}/products/${product.slug}`,
+      priceCurrency: "PKR",
+      price: (product.basePriceMinor / 100).toFixed(2),
+      availability:
+        product.stockQuantity > 0
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      {/* Product Schema JSON-LD for Search Engines & Instagram crawler */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
       <Breadcrumbs items={breadcrumbItems} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 pt-6">
@@ -90,4 +137,3 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     </div>
   );
 }
-

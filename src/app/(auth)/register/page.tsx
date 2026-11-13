@@ -26,6 +26,18 @@ export default function RegisterPage() {
       )}
 
       <form action={formAction} className="space-y-4">
+        {/* Honeypot field for bot spam prevention */}
+        <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+          <label htmlFor="auth_hp">Company</label>
+          <input
+            id="auth_hp"
+            name="auth_hp"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         <div>
           <label
             htmlFor="displayName"
