@@ -103,4 +103,28 @@ describe("Order Service & Idempotency", () => {
     expect(retrievedByAdmin).not.toBeNull();
     expect(retrievedByAdmin?.id).toBe(order.id);
   });
+
+  it("prevents client price tampering: recomputes authoritative prices on server", async () => {
+    const tamperedInput: CreateOrderInput = {
+      ...baseOrderInput,
+      idempotencyKey: "tampering-test-" + Date.now(),
+      items: [
+        {
+          productId: "11111111-1111-1111-1111-111111111102",
+          slug: "strawberry-matcha-latte-charm",
+          title: "Strawberry Matcha Latte Charm",
+          unitPriceMinor: 0, // Malicious client attempts Rs. 0
+          quantity: 2,
+        },
+      ],
+    };
+
+    const result = await createOrder(tamperedInput);
+
+    // Server must reject client's Rs. 0 and authoritatively enforce base price (Rs. 1,450 = 145000 paisa)
+    expect(result.order.items[0].unitPriceMinor).toBe(145000);
+    expect(result.order.items[0].totalMinor).toBe(290000);
+    expect(result.order.subtotalMinor).toBe(290000);
+    expect(result.order.totalMinor).toBe(315000);
+  });
 });

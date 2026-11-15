@@ -277,3 +277,75 @@ export async function getProductBySlug(slug: string): Promise<CatalogProduct | n
   return products.find((p) => p.slug === slug) || null;
 }
 
+/**
+ * Retrieves a single product by its unique ID.
+ */
+export async function getProductById(id: string): Promise<CatalogProduct | null> {
+  if (isLiveSupabaseConfigured()) {
+    try {
+      const supabase = await createServerSupabaseClient();
+      const { data, error } = await supabase
+        .from("products")
+        .select(`
+          id,
+          category_id,
+          slug,
+          title,
+          description,
+          product_type,
+          base_price_minor,
+          currency,
+          status,
+          stock_mode,
+          stock_quantity,
+          lead_time_days,
+          is_featured,
+          created_at,
+          categories (id, slug, name),
+          product_media (id, storage_path, public_url, alt_text, display_order)
+        `)
+        .eq("id", id)
+        .maybeSingle();
+
+      if (!error && data) {
+        const row = data as unknown as DbProductRow;
+        const mediaList: CatalogProductMedia[] = (row.product_media || [])
+          .sort((a, b) => a.display_order - b.display_order)
+          .map((m) => ({
+            id: m.id,
+            productId: row.id,
+            storagePath: m.storage_path,
+            publicUrl: m.public_url,
+            altText: m.alt_text || "",
+            displayOrder: m.display_order,
+          }));
+
+        return {
+          id: row.id,
+          categoryId: row.category_id,
+          categorySlug: row.categories?.slug,
+          categoryName: row.categories?.name,
+          slug: row.slug,
+          title: row.title,
+          description: row.description,
+          productType: row.product_type,
+          basePriceMinor: Number(row.base_price_minor),
+          currency: row.currency,
+          status: row.status as ProductStatus,
+          stockMode: row.stock_mode,
+          stockQuantity: row.stock_quantity,
+          leadTimeDays: row.lead_time_days,
+          isFeatured: row.is_featured,
+          media: mediaList,
+          primaryImage: mediaList[0]?.publicUrl || "/images/placeholder.jpg",
+          createdAt: row.created_at,
+        };
+      }
+    } catch {
+      // Fall through to memory fixtures
+    }
+  }
+
+  return FIXTURE_PRODUCTS.find((p) => p.id === id || p.slug === id) || null;
+}
+

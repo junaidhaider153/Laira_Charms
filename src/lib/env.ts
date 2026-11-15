@@ -37,6 +37,15 @@ function validateEnv(): Env {
     throw new Error("Invalid environment variables. See console logs for details.");
   }
 
+  if (parsed.data.NODE_ENV === "production") {
+    const rawSecret = process.env.GUEST_TOKEN_SECRET;
+    if (!rawSecret || rawSecret === "laira-charms-secure-guest-hmac-secret-min-32-chars") {
+      throw new Error(
+        "Production configuration error: GUEST_TOKEN_SECRET must be explicitly set with a unique secure secret."
+      );
+    }
+  }
+
   return parsed.data;
 }
 

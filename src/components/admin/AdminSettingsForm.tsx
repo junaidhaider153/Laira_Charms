@@ -179,7 +179,7 @@ export function AdminSettingsForm({ initialSettings }: AdminSettingsFormProps) {
               required
               value={couriers}
               onChange={(e) => setCouriers(e.target.value)}
-              placeholder="TCS, PostEx & others"
+              placeholder="PostEx &amp; TCS"
               className="w-full text-xs rounded-xl border border-border-warm bg-white px-4 py-2.5 text-espresso-deep focus:outline-none focus:ring-2 focus:ring-strawberry-blush font-medium"
             />
           </div>

@@ -22,7 +22,7 @@ export default function FaqPage() {
     },
     {
       q: "Which courier services do you use and how long does shipping take?",
-      a: "Ready-made orders dispatch within 1–2 business days, and custom atelier pieces cure in 3–5 business days. We ship parcels nationwide across Pakistan via TCS, PostEx, and other trusted couriers. Courier transit typically takes 2–3 business days for major cities (Karachi, Lahore, Islamabad) and 3–5 business days for regional areas, with active tracking numbers provided.",
+      a: "Ready-made orders dispatch within 2–3 business days, and custom atelier pieces require 7–14 business days for hand-sculpting, baking, and UV curing. We ship parcels nationwide across Pakistan exclusively via PostEx and TCS. Courier transit typically takes 2–3 business days for major cities (Karachi, Lahore, Islamabad) and 3–5 business days for regional areas, with active tracking numbers provided.",
     },
     {
       q: "Can I order a custom name or design?",

@@ -102,7 +102,7 @@ describe("Custom Order & Quotation Logic", () => {
     ).rejects.toThrow(/expired and can no longer be accepted/i);
   });
 
-  it("successfully updates quotation and custom request to accepted on active quote", async () => {
+  it("successfully updates quotation and custom request to accepted on active quote and creates order (H-05)", async () => {
     const activeQuoteId = "44444444-4444-4444-4444-444444444401";
 
     const result = await respondToQuotation(
@@ -118,6 +118,23 @@ describe("Custom Order & Quotation Logic", () => {
     expect(result.success).toBe(true);
     expect(result.quotation.status).toBe("accepted");
     expect(result.quotation.acceptedAt).toBeDefined();
+    expect(result.orderUrl).toBeDefined();
+  });
+
+  it("blocks accepting an older quotation version when a newer revision exists (H-05)", async () => {
+    const olderQuoteId = "44444444-4444-4444-4444-444444444402"; // v1 where v2 exists
+
+    await expect(
+      respondToQuotation(
+        {
+          quotationId: olderQuoteId,
+          action: "accept",
+          guestToken: "sample-guest-token-123",
+        },
+        null,
+        false
+      )
+    ).rejects.toThrow();
   });
 });
 

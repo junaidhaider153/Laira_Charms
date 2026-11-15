@@ -3,6 +3,7 @@
 import { submitPaymentProofSchema, reviewPaymentSchema } from "./schemas";
 import { submitPaymentProof, reviewPayment } from "./payment-service";
 import type { ReviewPaymentInput } from "./types";
+import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
 
 export async function submitPaymentProofAction(
   _prevState: unknown,
@@ -73,12 +74,7 @@ export async function adminReviewPaymentAction(rawInput: ReviewPaymentInput) {
   }
 
   let adminUserId = "admin-dev-fallback";
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const isLiveSupabase = Boolean(
-    supabaseUrl && !supabaseUrl.includes("dummy-project") && !supabaseUrl.includes("example.com")
-  );
-
-  if (isLiveSupabase) {
+  if (isLiveSupabaseConfigured()) {
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
@@ -101,6 +97,8 @@ export async function adminReviewPaymentAction(rawInput: ReviewPaymentInput) {
     } catch {
       return { success: false, message: "Admin authorization check failed." };
     }
+  } else if (!allowOfflineFallback()) {
+    return { success: false, message: "Unauthorized. Admin authentication required." };
   }
 
   try {

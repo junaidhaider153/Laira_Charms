@@ -3,7 +3,7 @@ import type { PaymentStatus } from "@/lib/supabase/types";
 export type { PaymentStatus };
 
 export interface PaymentMethodDetails {
-  methodId: "meezan" | "easypaisa" | "jazzcash";
+  methodId: string;
   methodName: string;
   senderName: string;
   transactionId: string;
@@ -30,7 +30,7 @@ export interface PaymentRecord {
 
 export interface SubmitPaymentProofInput {
   orderReference: string;
-  methodId: "meezan" | "easypaisa" | "jazzcash";
+  methodId: string;
   senderName: string;
   transactionId: string;
   proofPath: string;

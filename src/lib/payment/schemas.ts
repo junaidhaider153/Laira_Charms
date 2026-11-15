@@ -5,9 +5,7 @@ export const submitPaymentProofSchema = z.object({
     .string()
     .trim()
     .min(5, "Order reference is required"),
-  methodId: z.enum(["meezan", "easypaisa", "jazzcash"], {
-    errorMap: () => ({ message: "Please select a valid payment method (Meezan Bank, EasyPaisa, or JazzCash)" }),
-  }),
+  methodId: z.string().trim().min(1, "Please select a valid payment method"),
   senderName: z
     .string()
     .trim()
@@ -21,7 +19,11 @@ export const submitPaymentProofSchema = z.object({
   proofPath: z
     .string()
     .trim()
-    .min(3, "Payment screenshot proof is required"),
+    .min(3, "Payment screenshot proof is required")
+    .refine(
+      (path) => path.startsWith("payment-proofs/"),
+      "Storage security violation: payment proof must be located in the payment-proofs directory"
+    ),
   guestToken: z.string().optional(),
 });
 

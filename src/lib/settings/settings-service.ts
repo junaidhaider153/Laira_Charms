@@ -18,6 +18,10 @@ export interface PaymentInstructionsSettings {
   accountNumber: string;
   iban: string;
   instructions: string;
+  easypaisaTitle?: string;
+  easypaisaNumber?: string;
+  jazzcashTitle?: string;
+  jazzcashNumber?: string;
 }
 
 export interface AllStoreSettings {
@@ -30,8 +34,8 @@ export interface AllStoreSettings {
 export const DEFAULT_SHIPPING_SETTINGS: ShippingPolicySettings = {
   standardRateMinor: 25000, // Rs. 250
   freeShippingThresholdMinor: 300000, // Rs. 3,000
-  estimatedDays: "3 to 5 business days across Pakistan",
-  couriers: "TCS, PostEx & others",
+  estimatedDays: "2 to 4 business days across Pakistan",
+  couriers: "PostEx & TCS",
 };
 
 export const DEFAULT_BANNER_SETTINGS: BannerSettings = {
@@ -140,8 +144,8 @@ export async function getShippingPolicySettings(): Promise<ShippingPolicySetting
     freeShippingThresholdMinor: Number(
       raw.free_shipping_threshold_minor ?? raw.freeShippingThresholdMinor ?? 300000
     ),
-    estimatedDays: String(raw.estimated_days ?? raw.estimatedDays ?? "3 to 5 business days across Pakistan"),
-    couriers: String(raw.couriers ?? "TCS, PostEx & others"),
+    estimatedDays: String(raw.estimated_days ?? raw.estimatedDays ?? "2 to 4 business days across Pakistan"),
+    couriers: String(raw.couriers ?? "PostEx & TCS"),
   };
 }
 

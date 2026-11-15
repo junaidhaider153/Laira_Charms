@@ -44,5 +44,18 @@ describe("Guest Token HMAC Security", () => {
     expect(verifyGuestToken(requestId, email, "invalid-token-without-dot")).toBe(false);
     expect(verifyGuestToken(requestId, email, "nonce.invalidhex")).toBe(false);
   });
+
+  it("enforces token expiration and rejects expired tokens", () => {
+    // Generate token that expired 10 seconds ago
+    const { token } = generateGuestToken(requestId, email, -10000);
+    const isValid = verifyGuestToken(requestId, email, token);
+    expect(isValid).toBe(false);
+  });
+
+  it("verifies valid non-expired token", () => {
+    const { token } = generateGuestToken(requestId, email, 60000); // 1 minute TTL
+    const isValid = verifyGuestToken(requestId, email, token);
+    expect(isValid).toBe(true);
+  });
 });
 

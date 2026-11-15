@@ -1,5 +1,6 @@
 import { FIXTURE_OPTION_GROUPS } from "./fixtures";
 import type { OptionGroup } from "./types";
+import { isLiveSupabaseConfigured } from "@/lib/auth/offline-mode";
 
 interface DbOptionValueRow {
   id: string;
@@ -19,13 +20,6 @@ interface DbOptionGroupRow {
   option_values: DbOptionValueRow[];
 }
 
-function isLiveSupabaseConfigured(): boolean {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!url || url.includes("dummy-project") || url.includes("example.com")) {
-    return false;
-  }
-  return true;
-}
 
 /**
  * Retrieves option groups configured for a product from database or fixtures.

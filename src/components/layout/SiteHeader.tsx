@@ -397,7 +397,7 @@ export function SiteHeader() {
                         Free Shipping Above Rs. 3,000
                       </span>
                       <span className="text-body-sm text-on-surface-variant block">
-                        Delivery via TCS, PostEx &amp; others
+                        Delivery via PostEx &amp; TCS
                       </span>
                     </div>
                   </div>

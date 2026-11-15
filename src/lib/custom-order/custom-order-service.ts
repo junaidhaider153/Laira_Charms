@@ -39,7 +39,7 @@ MEMORY_CUSTOM_REQUESTS.set(sampleRequestId, {
 MEMORY_QUOTATIONS.set(sampleQuoteId, {
   id: sampleQuoteId,
   requestId: sampleRequestId,
-  version: 1,
+  version: 2,
   status: "published",
   amountMinor: 380000, // Rs. 3,800
   currency: "PKR",
@@ -52,11 +52,11 @@ MEMORY_QUOTATIONS.set(sampleQuoteId, {
   isExpired: false,
 });
 
-// Expired quotation (expired yesterday)
+// Expired quotation (older version 1, expired yesterday)
 MEMORY_QUOTATIONS.set(expiredQuoteId, {
   id: expiredQuoteId,
   requestId: sampleRequestId,
-  version: 2,
+  version: 1,
   status: "published",
   amountMinor: 320000, // Rs. 3,200
   currency: "PKR",
@@ -268,7 +268,7 @@ export async function respondToQuotation(
   input: QuoteDecisionInput,
   customerId?: string | null,
   isAdmin: boolean = false
-): Promise<{ success: boolean; quotation: Quotation; message: string }> {
+): Promise<{ success: boolean; quotation: Quotation; orderUrl?: string; message: string }> {
   const quote = await getQuotationById(input.quotationId);
   if (!quote) {
     throw new Error("Quotation not found");
@@ -285,6 +285,13 @@ export async function respondToQuotation(
   // Strict Expiry Lock Check
   if (quote.isExpired || new Date(quote.validUntil).getTime() < Date.now()) {
     throw new Error("This quotation has expired and can no longer be accepted. Please request an updated quote.");
+  }
+
+  // Check if a newer version of the quotation exists (H-05 / BR-04)
+  for (const q of MEMORY_QUOTATIONS.values()) {
+    if (q.requestId === quote.requestId && q.version > quote.version) {
+      throw new Error("A revised version of this quotation has been issued. Only the latest quotation can be accepted.");
+    }
   }
 
   // Authorization
@@ -311,11 +318,49 @@ export async function respondToQuotation(
   };
   MEMORY_CUSTOM_REQUESTS.set(request.id, updatedRequest);
 
+  let orderUrl: string | undefined;
+
+  // H-05: Transition accepted quotation to a payable order
+  if (input.action === "accept") {
+    try {
+      const { createOrder } = await import("@/lib/checkout/order-service");
+      const orderRes = await createOrder(
+        {
+          idempotencyKey: `quote-accept-${quote.id}`,
+          address: {
+            fullName: "Bespoke Collector",
+            email: request.guestEmail || "collector@example.pk",
+            phone: "03001234567",
+            streetAddress: "Address to be confirmed for bespoke delivery",
+            city: "Islamabad",
+            province: "Islamabad Capital Territory",
+            postalCode: "44000",
+            orderNotes: `Bespoke Custom Order from Quotation v${quote.version}: ${quote.scope}`,
+          },
+          items: [
+            {
+              productId: "11111111-1111-1111-1111-111111111101",
+              slug: "bespoke-commission-order",
+              title: `Bespoke Commission: ${request.title}`,
+              unitPriceMinor: quote.amountMinor,
+              quantity: 1,
+            },
+          ],
+        },
+        customerId
+      );
+      orderUrl = orderRes.orderUrl;
+    } catch {
+      // Invariant: Non-fatal fallback
+    }
+  }
+
   return {
     success: true,
     quotation: updatedQuote,
+    orderUrl,
     message: input.action === "accept"
-      ? "Quotation accepted! Your bespoke charm commission is confirmed."
+      ? "Quotation accepted! Your bespoke charm commission order has been created. Please proceed to payment."
       : "Quotation declined. Thank you for your feedback.",
   };
 }

@@ -928,7 +928,7 @@ export default function HomePage() {
                 <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Ready-to-ship charms from our drops dispatch within 24 to 48 hours. Custom Atelier pieces cure in 3 to 5 business days before departing our sweet studio via TCS, PostEx, and other trusted couriers.
+                Ready-to-ship charms from our collection dispatch within 2 to 3 business days. Custom Atelier pieces require 7 to 14 business days for artisanal sculpting, baking, and UV curing before departing our sweet studio via PostEx and TCS.
               </div>
             </details>
 

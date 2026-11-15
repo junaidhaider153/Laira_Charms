@@ -105,15 +105,34 @@ describe("Order Admin Service & State Transition Audit", () => {
       "admin",
       undefined,
       {
-        courierPartner: "Trax",
-        trackingNumber: "TRX-98765432",
-        trackingUrl: "https://sonic.pk/tracking?tracking_number=TRX-98765432",
+        courierPartner: "PostEx",
+        trackingNumber: "PEX-98765432",
+        trackingUrl: "https://postex.pk/tracking?tracking_number=PEX-98765432",
       }
     );
 
     expect(shippedResult.order.orderStatus).toBe("shipped");
-    expect(shippedResult.order.notes).toContain("Trax");
-    expect(shippedResult.order.notes).toContain("TRX-98765432");
+    expect(shippedResult.order.notes).toContain("PostEx");
+    expect(shippedResult.order.notes).toContain("PEX-98765432");
+  });
+
+  it("blocks starting production when payment failed or is on hold due to rejected payment (H-03)", async () => {
+    // Customer submits proof, order moves to awaiting_verification
+    await transitionOrderStatus(testOrderId, "awaiting_verification", null, "customer");
+
+    // Admin rejects proof, order put on hold with failed payment
+    const holdOrder = await transitionOrderStatus(
+      testOrderId,
+      "on_hold",
+      "admin-1",
+      "admin",
+      "Payment rejected"
+    );
+    holdOrder.order.paymentStatus = "rejected";
+
+    await expect(
+      transitionOrderStatus(testOrderId, "in_production", "admin-1", "admin")
+    ).rejects.toThrow(/Cannot advance order to "in_production" because payment failed/i);
   });
 
   it("filters orders and counts queues accurately in listAdminOrders", async () => {

@@ -39,11 +39,13 @@ describe("Order Lifecycle & State Machine Transitions", () => {
     expect(canTransitionOrderStatus("on_hold", "confirmed")).toBe(true);
   });
 
-  it("enforces terminal states for cancelled and refunded orders", () => {
+  it("enforces terminal states for cancelled, refunded, and delivered orders", () => {
     expect(getNextAllowedOrderStatuses("cancelled")).toEqual([]);
     expect(getNextAllowedOrderStatuses("refunded")).toEqual([]);
+    expect(getNextAllowedOrderStatuses("delivered")).toEqual([]);
     expect(canTransitionOrderStatus("cancelled", "confirmed")).toBe(false);
     expect(canTransitionOrderStatus("refunded", "in_production")).toBe(false);
+    expect(canTransitionOrderStatus("delivered", "refunded")).toBe(false);
   });
 
   it("provides helpful labels and badge styling for display", () => {

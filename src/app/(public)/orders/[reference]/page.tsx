@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getOrderByReference } from "@/lib/checkout/order-service";
 import { formatMoney } from "@/lib/utils";
 import { CustomerOrderTimeline } from "@/components/order/CustomerOrderTimeline";
+import { OrderReceipt } from "@/components/order/OrderReceipt";
 import { getOrCreateOrderConversation } from "@/lib/messaging/messaging-service";
 import { ChatThread } from "@/components/messaging/ChatThread";
 
@@ -240,6 +241,9 @@ export default async function OrderConfirmationPage({ params, searchParams }: Or
             </div>
           </div>
         </div>
+
+        {/* Official Sales Receipt & Tax Invoice */}
+        <OrderReceipt order={order} />
 
         {/* Studio Realtime Communication Thread */}
         <section className="mt-8 space-y-3">

@@ -39,7 +39,7 @@ export default function ReturnsPage() {
             <ul className="list-disc pl-5 space-y-1.5 text-espresso-muted">
               <li>Contact us within 48 hours of parcel delivery via website messaging or contact form.</li>
               <li>Provide clear unboxing photos/video showing the damaged item and courier packaging.</li>
-              <li>We will craft and dispatch a free replacement or issue a full refund upon verification.</li>
+              <li>We will prioritize crafting and dispatching a free identical replacement upon verification.</li>
             </ul>
           </section>
 

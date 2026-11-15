@@ -53,7 +53,7 @@ export const checkoutLineItemSchema = z.object({
   productId: z.string().min(1, "Product ID is required"),
   slug: z.string().min(1, "Product slug is required"),
   title: z.string().min(1, "Product title is required"),
-  unitPriceMinor: z.number().int().nonnegative("Unit price must be non-negative"),
+  unitPriceMinor: z.number().int().nonnegative("Unit price must be non-negative").optional(),
   quantity: z.number().int().min(1, "Quantity must be at least 1").max(50, "Max quantity is 50"),
   imageUrl: z.string().optional(),
   customization: z.record(z.string()).optional(),

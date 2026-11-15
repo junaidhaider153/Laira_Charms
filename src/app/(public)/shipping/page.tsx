@@ -51,7 +51,7 @@ export default function ShippingPage() {
               <span>🚚</span> Verified Courier Partners
             </h2>
             <p className="text-espresso-muted">
-              Parcels are dispatched with tracking numbers via <strong className="text-espresso-deep">TCS, PostEx, and other trusted couriers</strong>. Once dispatched, transit typically takes 2 to 4 business days depending on your destination city.
+              Parcels are dispatched with tracking numbers exclusively via <strong className="text-espresso-deep">PostEx and TCS</strong>. Once dispatched, transit typically takes 2 to 4 business days depending on your destination city.
             </p>
           </section>
 
@@ -64,13 +64,13 @@ export default function ShippingPage() {
             </p>
             <ul className="list-disc pl-5 space-y-1.5 text-espresso-muted">
               <li>
-                <strong className="text-espresso-deep">Ready-Made Charms:</strong> Dispatched within 24–48 hours of payment verification.
+                <strong className="text-espresso-deep">Ready-Made Charms:</strong> Dispatched within 2–3 business days of payment verification.
               </li>
               <li>
-                <strong className="text-espresso-deep">Personalized Configured Charms:</strong> Handcrafted and cured in 3–5 business days.
+                <strong className="text-espresso-deep">Personalized &amp; Made-to-Order Charms:</strong> Handcrafted, oven-cured, and UV glazed in 7–14 business days.
               </li>
               <li>
-                <strong className="text-espresso-deep">Bespoke Made-to-Order Charms:</strong> Production lead time confirmed upon custom quotation acceptance (typically 7–10 days).
+                <strong className="text-espresso-deep">Bespoke Atelier Commissions:</strong> Custom miniature sculpts require 7–14 business days following custom quotation acceptance.
               </li>
             </ul>
             <p className="text-xs text-espresso-muted">

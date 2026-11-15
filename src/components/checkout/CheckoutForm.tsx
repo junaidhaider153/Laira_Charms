@@ -18,6 +18,8 @@ export function CheckoutForm() {
   const router = useRouter();
   const { items, itemCount, subtotalMinor, clearCart } = useCart();
 
+  const [policyAccepted, setPolicyAccepted] = useState(false);
+  const [policyError, setPolicyError] = useState<string | null>(null);
   const [idempotencyKey, setIdempotencyKey] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -81,6 +83,12 @@ export function CheckoutForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setServerError(null);
+    setPolicyError(null);
+
+    if (!policyAccepted) {
+      setPolicyError("Please accept the handmade order policy to place your order.");
+      return;
+    }
 
     // Client validation
     const parsed = shippingAddressSchema.safeParse(form);
@@ -468,6 +476,28 @@ export function CheckoutForm() {
                 <span className="block text-[10px] text-espresso-muted">PKR (Includes Delivery)</span>
               </div>
             </div>
+          </div>
+
+          {/* Policy Acceptance Checkbox (Statutory pre-checkout disclosure) */}
+          <div className="pt-2 border-t border-border-warm/60">
+            <label className="flex items-start gap-3 cursor-pointer text-xs text-espresso-deep select-none">
+              <input
+                type="checkbox"
+                name="policyAccepted"
+                checked={policyAccepted}
+                onChange={(e) => {
+                  setPolicyAccepted(e.target.checked);
+                  if (e.target.checked) setPolicyError(null);
+                }}
+                className="mt-0.5 w-4 h-4 rounded text-strawberry-blush border-border-warm focus:ring-primary shrink-0"
+              />
+              <span className="leading-snug text-[11px] text-espresso-muted">
+                I understand and agree that handcrafted keepsakes require <strong className="text-espresso-deep">7–14 business days</strong> artisanal crafting time. Orders are advance payment only (no COD) and final sale; transit damage will be promptly remade/replaced when reported with photos within 48 hours of delivery.
+              </span>
+            </label>
+            {policyError && (
+              <p className="text-[11px] text-error font-semibold mt-1.5">{policyError}</p>
+            )}
           </div>
 
           <button

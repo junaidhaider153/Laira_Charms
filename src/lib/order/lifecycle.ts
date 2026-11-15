@@ -13,12 +13,8 @@ export const ORDER_STATUS_ORDER: OrderStatus[] = [
 ];
 
 export const COURIER_PARTNERS = [
-  "TCS",
   "PostEx",
-  "Trax",
-  "Leopards Courier",
-  "Call Courier",
-  "M&P Express",
+  "TCS",
 ] as const;
 
 export type CourierPartner = (typeof COURIER_PARTNERS)[number];
@@ -51,7 +47,7 @@ export const ALLOWED_TRANSITIONS: Record<OrderStatus, OrderStatus[]> = {
   in_production: ["ready_to_ship", "on_hold"],
   ready_to_ship: ["shipped", "on_hold"],
   shipped: ["delivered", "on_hold"],
-  delivered: ["refunded"],
+  delivered: [], // Terminal delivery state (replacements for transit damage handled via new order)
   on_hold: [
     "awaiting_verification",
     "confirmed",
@@ -59,7 +55,6 @@ export const ALLOWED_TRANSITIONS: Record<OrderStatus, OrderStatus[]> = {
     "ready_to_ship",
     "shipped",
     "cancelled",
-    "refunded",
   ],
   cancelled: [], // Terminal
   refunded: [],  // Terminal

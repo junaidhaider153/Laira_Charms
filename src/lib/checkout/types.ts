@@ -34,7 +34,7 @@ export interface CheckoutLineItem {
   productId: string;
   slug: string;
   title: string;
-  unitPriceMinor: number;
+  unitPriceMinor?: number;
   quantity: number;
   imageUrl?: string;
   customization?: Record<string, string>;

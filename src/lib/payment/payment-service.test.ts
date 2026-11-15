@@ -179,4 +179,30 @@ describe("Payment Service & Verification State Machine", () => {
       })
     ).rejects.toThrow(/not authorized/i);
   });
+
+  it("does not regress an already shipped order back to confirmed when reviewPayment runs (H-01)", async () => {
+    const submitResult = await submitPaymentProof({
+      orderReference: testOrderRef,
+      methodId: "meezan",
+      senderName: "Hira Salman",
+      transactionId: "TXN-SHIP-1",
+      proofPath: "payment-proofs/pship.png",
+      guestToken: testGuestToken,
+    });
+
+    // Advance order to shipped
+    submitResult.order.orderStatus = "shipped";
+
+    await reviewPayment(
+      {
+        paymentId: submitResult.payment.id,
+        action: "verify",
+      },
+      "admin-uuid-001"
+    );
+
+    // Order status should remain "shipped", NOT regressed to "confirmed"
+    expect(submitResult.order.orderStatus).toBe("shipped");
+    expect(submitResult.order.paymentStatus).toBe("verified");
+  });
 });

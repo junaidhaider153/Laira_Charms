@@ -74,7 +74,7 @@ export async function updateOrderStatusAction(input: {
     const trackingInfo =
       parsed.data.targetStatus === "shipped" && parsed.data.trackingNumber
         ? {
-            courierPartner: parsed.data.courierPartner || "TCS",
+            courierPartner: parsed.data.courierPartner || "PostEx",
             trackingNumber: parsed.data.trackingNumber,
             trackingUrl: parsed.data.trackingUrl,
           }

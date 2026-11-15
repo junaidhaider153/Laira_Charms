@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { MEMORY_ORDERS } from "@/lib/checkout/order-service";
+import { MEMORY_ORDERS, mapDbOrderToDomain } from "@/lib/checkout/order-service";
 import { MEMORY_PAYMENTS } from "@/lib/payment/payment-service";
 import { enqueueNotification } from "@/lib/notifications/outbox-service";
 import {
@@ -10,34 +10,30 @@ import {
 } from "./lifecycle";
 import type { Order } from "@/lib/checkout/types";
 import type { PaymentRecord } from "@/lib/payment/types";
-
-function isLiveSupabaseConfigured(): boolean {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!url || url.includes("dummy-project") || url.includes("example.com")) {
-    return false;
-  }
-  return true;
-}
+import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
 
 export const MEMORY_ORDER_HISTORY: Map<string, OrderStatusHistoryEntry[]> = new Map();
 
-// Seed sample order history
+// Seed sample order history only in non-production
 const sampleOrderId = "55555555-5555-5555-5555-555555555501";
-MEMORY_ORDER_HISTORY.set(sampleOrderId, [
-  {
-    id: "history-sample-001",
-    orderId: sampleOrderId,
-    previousStatus: "pending_payment",
-    newStatus: "pending_payment",
-    actorId: null,
-    actorType: "customer",
-    note: "Order placed by customer via website checkout.",
-    createdAt: new Date(Date.now() - 3600000).toISOString(),
-  },
-]);
+if (process.env.NODE_ENV !== "production") {
+  MEMORY_ORDER_HISTORY.set(sampleOrderId, [
+    {
+      id: "history-sample-001",
+      orderId: sampleOrderId,
+      previousStatus: "pending_payment",
+      newStatus: "pending_payment",
+      actorId: null,
+      actorType: "customer",
+      note: "Order placed by customer via website checkout.",
+      createdAt: new Date(Date.now() - 3600000).toISOString(),
+    },
+  ]);
+}
 
 /**
  * Transitions an order to a new status according to state machine rules.
+ * Enforces transition validity, payment verification prerequisites, and audit logging.
  */
 export async function transitionOrderStatus(
   orderIdOrRef: string,
@@ -60,15 +56,16 @@ export async function transitionOrderStatus(
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
-      const { data } = await supabase
-        .from("orders")
-        .select("*, order_items(*)")
-        .or(`id.eq.${orderIdOrRef},reference.eq.${orderIdOrRef}`)
-        .single();
+      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(orderIdOrRef);
 
-      if (data) {
-        // Hydrate from live supabase
-        order = data as unknown as Order;
+      const query = supabase.from("orders").select("*, order_items(*)");
+      const { data, error } = await (isUuid
+        ? query.eq("id", orderIdOrRef)
+        : query.eq("reference", orderIdOrRef)
+      ).maybeSingle();
+
+      if (!error && data) {
+        order = mapDbOrderToDomain(data as unknown as Record<string, unknown>);
       }
     } catch {
       // Fallback
@@ -84,6 +81,15 @@ export async function transitionOrderStatus(
     throw new Error(
       `Illegal order transition: cannot advance order from "${order.orderStatus}" to "${targetStatus}".`
     );
+  }
+
+  // H-03: Block starting production or fulfillment if payment failed / rejected
+  if (order.paymentStatus === "rejected") {
+    if (["in_production", "ready_to_ship", "shipped"].includes(targetStatus)) {
+      throw new Error(
+        `Cannot advance order to "${targetStatus}" because payment failed or was rejected. Re-verify payment before proceeding.`
+      );
+    }
   }
 
   // Validate courier tracking if advancing to shipped
@@ -110,6 +116,9 @@ export async function transitionOrderStatus(
 
   // Update order object
   order.orderStatus = targetStatus;
+  if (targetStatus === "confirmed" && actorType === "admin") {
+    order.paymentStatus = "verified";
+  }
   order.updatedAt = now;
 
   if (trackingInfo) {
@@ -125,14 +134,14 @@ export async function transitionOrderStatus(
   const existingHistory = MEMORY_ORDER_HISTORY.get(order.id) || [];
   MEMORY_ORDER_HISTORY.set(order.id, [...existingHistory, historyEntry]);
 
-  // If live Supabase is configured, persist
+  // If live Supabase is configured, persist using admin client
   if (isLiveSupabaseConfigured()) {
     try {
-      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
-      const supabase = await createServerSupabaseClient();
+      const { createAdminClient } = await import("@/lib/supabase/admin");
+      const supabaseAdmin = createAdminClient();
 
-      await (supabase.from("orders") as unknown as {
-        update: (row: Record<string, unknown>) => { eq: (col: string, val: string) => Promise<unknown> };
+      const { error: updateError } = await (supabaseAdmin.from("orders") as unknown as {
+        update: (row: Record<string, unknown>) => { eq: (col: string, val: string) => Promise<{ error: { message: string } | null }> };
       })
         .update({
           order_status: order.orderStatus,
@@ -141,8 +150,12 @@ export async function transitionOrderStatus(
         })
         .eq("id", order.id);
 
-      await (supabase.from("order_status_history") as unknown as {
-        insert: (row: Record<string, unknown>) => Promise<unknown>;
+      if (updateError && !allowOfflineFallback()) {
+        throw new Error(`Order status update failed: ${updateError.message}`);
+      }
+
+      const { error: histError } = await (supabaseAdmin.from("order_status_history") as unknown as {
+        insert: (row: Record<string, unknown>) => Promise<{ error: { message: string } | null }>;
       }).insert({
         id: historyEntry.id,
         order_id: historyEntry.orderId,
@@ -154,8 +167,12 @@ export async function transitionOrderStatus(
         created_at: now,
       });
 
-      await (supabase.from("audit_logs") as unknown as {
-        insert: (row: Record<string, unknown>) => Promise<unknown>;
+      if (histError && !allowOfflineFallback()) {
+        throw new Error(`Order history insertion failed: ${histError.message}`);
+      }
+
+      await (supabaseAdmin.from("audit_logs") as unknown as {
+        insert: (row: Record<string, unknown>) => Promise<{ error: { message: string } | null }>;
       }).insert({
         id: crypto.randomUUID(),
         actor_id: actorId,
@@ -168,8 +185,10 @@ export async function transitionOrderStatus(
           trackingInfo,
         },
       });
-    } catch {
-      // Fallback
+    } catch (err: unknown) {
+      if (!allowOfflineFallback()) {
+        throw err;
+      }
     }
   }
 
@@ -233,13 +252,13 @@ export async function getOrderHistory(orderId: string): Promise<OrderStatusHisto
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("order_status_history")
         .select("*")
         .eq("order_id", orderId)
         .order("created_at", { ascending: true });
 
-      if (data) {
+      if (!error && data) {
         return (data as unknown as OrderStatusHistoryEntry[]);
       }
     } catch {
@@ -263,13 +282,13 @@ export async function listAdminOrders(filter?: {
     try {
       const { createServerSupabaseClient } = await import("@/lib/supabase/server");
       const supabase = await createServerSupabaseClient();
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("orders")
         .select("*, order_items(*)")
         .order("created_at", { ascending: false });
 
-      if (data) {
-        allOrders = data as unknown as Order[];
+      if (!error && data) {
+        allOrders = (data as unknown as Array<Record<string, unknown>>).map(mapDbOrderToDomain);
       }
     } catch {
       // Fallback
@@ -337,6 +356,26 @@ export async function getAdminOrderById(orderIdOrRef: string): Promise<{
     }
   }
 
+  if (!order && isLiveSupabaseConfigured()) {
+    try {
+      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
+      const supabase = await createServerSupabaseClient();
+      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(orderIdOrRef);
+
+      const query = supabase.from("orders").select("*, order_items(*)");
+      const { data, error } = await (isUuid
+        ? query.eq("id", orderIdOrRef)
+        : query.eq("reference", orderIdOrRef)
+      ).maybeSingle();
+
+      if (!error && data) {
+        order = mapDbOrderToDomain(data as unknown as Record<string, unknown>);
+      }
+    } catch {
+      // Fallback
+    }
+  }
+
   if (!order) return null;
 
   const history = await getOrderHistory(order.id);
@@ -349,6 +388,56 @@ export async function getAdminOrderById(orderIdOrRef: string): Promise<{
     }
   }
 
+  if (!payment && isLiveSupabaseConfigured()) {
+    try {
+      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
+      const supabase = await createServerSupabaseClient();
+      const { data, error } = await supabase
+        .from("payments")
+        .select("*")
+        .eq("order_id", order.id)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (!error && data) {
+        const row = data as unknown as {
+          id: string;
+          order_id: string;
+          amount_minor: number;
+          currency: string;
+          status: PaymentRecord["status"];
+          payment_method_snapshot: Record<string, unknown> | null;
+          proof_storage_path: string | null;
+          proof_submitted_at: string | null;
+          reviewed_by: string | null;
+          reviewed_at: string | null;
+          rejection_reason: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+
+        payment = {
+          id: row.id,
+          orderId: row.order_id,
+          orderReference: order.reference,
+          amountMinor: Number(row.amount_minor),
+          currency: row.currency,
+          status: row.status,
+          paymentMethodSnapshot: row.payment_method_snapshot as unknown as PaymentRecord["paymentMethodSnapshot"],
+          proofStoragePath: row.proof_storage_path,
+          proofSubmittedAt: row.proof_submitted_at,
+          reviewedBy: row.reviewed_by,
+          reviewedAt: row.reviewed_at,
+          rejectionReason: row.rejection_reason,
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+        };
+      }
+    } catch {
+      // Fallback
+    }
+  }
+
   return { order, history, payment };
 }
-
