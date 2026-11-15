@@ -42,7 +42,7 @@ export const FIXTURE_PRODUCTS: CatalogProduct[] = [
     status: "published",
     stockMode: "tracked",
     stockQuantity: 18,
-    leadTimeDays: 1,
+    leadTimeDays: 7,
     isFeatured: true,
     primaryImage: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
     media: [
@@ -87,7 +87,7 @@ export const FIXTURE_PRODUCTS: CatalogProduct[] = [
     status: "published",
     stockMode: "tracked",
     stockQuantity: 12,
-    leadTimeDays: 1,
+    leadTimeDays: 7,
     isFeatured: true,
     primaryImage: "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?auto=format&fit=crop&w=600&q=80",
     media: [
@@ -124,7 +124,7 @@ export const FIXTURE_PRODUCTS: CatalogProduct[] = [
     status: "published",
     stockMode: "tracked",
     stockQuantity: 25,
-    leadTimeDays: 1,
+    leadTimeDays: 7,
     isFeatured: false,
     primaryImage: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
     media: [
@@ -153,7 +153,7 @@ export const FIXTURE_PRODUCTS: CatalogProduct[] = [
     status: "published",
     stockMode: "made_to_order",
     stockQuantity: 999,
-    leadTimeDays: 4,
+    leadTimeDays: 7,
     isFeatured: true,
     primaryImage: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
     media: [
@@ -182,7 +182,7 @@ export const FIXTURE_PRODUCTS: CatalogProduct[] = [
     status: "published",
     stockMode: "made_to_order",
     stockQuantity: 999,
-    leadTimeDays: 3,
+    leadTimeDays: 7,
     isFeatured: false,
     primaryImage: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
     media: [

@@ -934,11 +934,11 @@ export default function HomePage() {
 
             <details className="group bg-surface-cloud rounded-2xl p-5 shadow-xs transition-all open:bg-surface-custard border border-border-warm/40">
               <summary className="flex items-center justify-between font-title-sm text-title-sm text-espresso-deep font-bold cursor-pointer list-none">
-                <span>What is your 30-Day Snag &amp; Snap Warranty?</span>
+                <span>What is your return &amp; transit replacement policy?</span>
                 <Icon name="expand_more" className="text-[20px] text-strawberry-blush transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <div className="pt-3 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                If your charm ever snaps from its jump ring or sustains damage within 30 days of arrival during normal daily wear, send us a photo! We will fix it at no cost or craft an identical replacement right away.
+                Because each keepsake charm is bespoke and made to order, sales are final. However, under Punjab Consumer Protection Act 2005 §12, liability for transit damage is fully honored: if an item arrives damaged, simply email unboxing photos/video within 48 hours of courier delivery to lairacharmsofficial@gmail.com for a free replacement.
               </div>
             </details>
           </div>

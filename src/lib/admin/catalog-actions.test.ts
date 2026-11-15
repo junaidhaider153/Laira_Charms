@@ -9,6 +9,7 @@ import {
   createCategoryAction,
   updateCategoryAction,
   deleteCategoryAction,
+  uploadProductMediaAction,
 } from "./catalog-actions";
 import {
   MEMORY_ADMIN_PRODUCTS,
@@ -182,6 +183,26 @@ describe("Catalog Admin Server Actions", () => {
 
       expect(result.success).toBe(true);
       expect(MEMORY_ADMIN_CATEGORIES.has(target.id)).toBe(false);
+    });
+
+    it("uploads product image file successfully in offline mode", async () => {
+      const fd = new FormData();
+      const fakeFile = new File(["fake-image-bytes"], "charm-photo.jpg", { type: "image/jpeg" });
+      fd.append("file", fakeFile);
+
+      const result = await uploadProductMediaAction(fd);
+      expect(result.success).toBe(true);
+      expect(result.url).toBeDefined();
+    });
+
+    it("rejects non-image files for product media", async () => {
+      const fd = new FormData();
+      const fakeFile = new File(["malicious"], "virus.exe", { type: "application/x-msdownload" });
+      fd.append("file", fakeFile);
+
+      const result = await uploadProductMediaAction(fd);
+      expect(result.success).toBe(false);
+      expect(result.message).toMatch(/Invalid image format/i);
     });
   });
 });

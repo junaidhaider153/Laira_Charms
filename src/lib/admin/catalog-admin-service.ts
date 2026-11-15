@@ -404,7 +404,7 @@ export async function createAdminProduct(input: CreateProductInput): Promise<Cat
     status: input.status || "draft",
     stockMode: input.stockMode || "tracked",
     stockQuantity: input.stockQuantity ?? 0,
-    leadTimeDays: input.leadTimeDays ?? 3,
+    leadTimeDays: input.leadTimeDays ?? 7,
     isFeatured: Boolean(input.isFeatured),
     primaryImage: media[0].publicUrl,
     media,

@@ -4,6 +4,7 @@ import { createCustomRequestSchema, quoteDecisionSchema } from "./schemas";
 import { createCustomRequest, respondToQuotation } from "./custom-order-service";
 import { checkRateLimit } from "@/lib/security/rate-limit";
 import { isHoneypotClean, verifyTurnstileToken } from "@/lib/security/spam-protection";
+import { isLiveSupabaseConfigured } from "@/lib/auth/offline-mode";
 
 export async function submitCustomRequestAction(
   _prevState: unknown,
@@ -86,6 +87,48 @@ export async function submitCustomRequestAction(
       parsed.data,
       customerId
     );
+
+    // Persist uploaded customer reference sketches/photos into storage
+    const referenceFiles = formData.getAll("referenceFiles");
+    if (referenceFiles.length > 0 && isLiveSupabaseConfigured()) {
+      try {
+        const { createAdminClient } = await import("@/lib/supabase/admin");
+        const supabaseAdmin = createAdminClient();
+        for (const fileItem of referenceFiles) {
+          if (
+            fileItem &&
+            typeof fileItem === "object" &&
+            "arrayBuffer" in fileItem &&
+            fileItem.size > 0 &&
+            fileItem.size <= 15 * 1024 * 1024
+          ) {
+            const file = fileItem as File;
+            const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
+            const storagePath = `${request.id}/${Date.now()}_${safeName}`;
+            const buffer = Buffer.from(await file.arrayBuffer());
+            const { error: uploadError } = await supabaseAdmin.storage
+              .from("custom-request-media")
+              .upload(storagePath, buffer, {
+                contentType: file.type || "application/octet-stream",
+                upsert: true,
+              });
+
+            if (!uploadError) {
+              await (supabaseAdmin.from("custom_request_media") as unknown as {
+                insert: (row: Record<string, unknown>) => Promise<unknown>;
+              }).insert({
+                request_id: request.id,
+                storage_path: storagePath,
+                mime_type: file.type || "image/jpeg",
+                size_bytes: file.size,
+              });
+            }
+          }
+        }
+      } catch (uploadErr) {
+        console.error("Failed to upload custom request reference media:", uploadErr);
+      }
+    }
 
     return {
       success: true,

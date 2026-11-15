@@ -2,24 +2,28 @@
 
 import React, { useState } from "react";
 import { submitPaymentProofAction } from "@/lib/payment/actions";
-import { PAKISTANI_PAYMENT_ACCOUNTS } from "@/lib/payment/bank-details";
+import { PAKISTANI_PAYMENT_ACCOUNTS, type PaymentAccount } from "@/lib/payment/bank-details";
 import { Icon } from "@/components/ui/Icon";
 
 interface ProofUploadFormProps {
   orderReference: string;
   guestToken?: string;
+  accounts?: PaymentAccount[];
   onSuccess?: (payment?: unknown) => void;
 }
 
 export function ProofUploadForm({
   orderReference,
   guestToken,
+  accounts,
   onSuccess,
 }: ProofUploadFormProps) {
-  const [methodId, setMethodId] = useState<"meezan" | "easypaisa" | "jazzcash">("meezan");
+  const activeAccounts = accounts && accounts.length > 0 ? accounts : PAKISTANI_PAYMENT_ACCOUNTS;
+  const [methodId, setMethodId] = useState<string>(activeAccounts[0]?.id || "meezan");
   const [senderName, setSenderName] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+  const [proofFile, setProofFile] = useState<File | null>(null);
   const [proofPath, setProofPath] = useState<string>("");
   const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -29,15 +33,16 @@ export function ProofUploadForm({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 5 * 1024 * 1024) {
-      setErrorMessage("File exceeds 5 MB limit. Please select a compressed image or PDF.");
+    if (file.size > 10 * 1024 * 1024) {
+      setErrorMessage("File exceeds 10 MB limit. Please select a compressed image or PDF.");
       return;
     }
 
     setErrorMessage(null);
+    setProofFile(file);
     setSelectedFileName(file.name);
 
-    // In local dev/mock or Supabase client storage, construct safe relative path
+    // Safe relative storage path
     const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
     const generatedPath = `payment-proofs/${orderReference}/${Date.now()}_${safeName}`;
     setProofPath(generatedPath);
@@ -48,7 +53,7 @@ export function ProofUploadForm({
     setErrorMessage(null);
     setFieldErrors({});
 
-    if (!proofPath && !selectedFileName) {
+    if (!proofFile && !proofPath && !selectedFileName) {
       setErrorMessage("Please select your bank or wallet transfer screenshot proof.");
       return;
     }
@@ -64,6 +69,9 @@ export function ProofUploadForm({
       "proofPath",
       proofPath || `payment-proofs/${orderReference}/receipt_${Date.now()}.png`
     );
+    if (proofFile) {
+      formData.append("proofFile", proofFile);
+    }
     if (guestToken) {
       formData.append("guestToken", guestToken);
     }
@@ -116,7 +124,7 @@ export function ProofUploadForm({
           Selected Transfer Channel <span className="text-strawberry-blush">*</span>
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {PAKISTANI_PAYMENT_ACCOUNTS.map((acc) => (
+          {activeAccounts.map((acc) => (
             <label
               key={acc.id}
               className={`p-3.5 rounded-2xl border text-xs font-semibold cursor-pointer transition-all flex items-center justify-between ${
@@ -131,7 +139,7 @@ export function ProofUploadForm({
                 name="paymentChannel"
                 value={acc.id}
                 checked={methodId === acc.id}
-                onChange={() => setMethodId(acc.id as "meezan" | "easypaisa" | "jazzcash")}
+                onChange={() => setMethodId(acc.id)}
                 className="text-strawberry-blush focus:ring-primary"
               />
             </label>

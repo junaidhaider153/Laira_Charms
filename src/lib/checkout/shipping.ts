@@ -8,19 +8,25 @@ export const FREE_SHIPPING_THRESHOLD_MINOR = 300000; // Rs. 3,000 in paisa
 
 /**
  * Calculates delivery fee based on order subtotal in paisa.
- * Free delivery on orders of Rs. 3,000 or more across Pakistan.
+ * Supports configurable rates from store settings with standard fallback.
  */
-export function calculateShippingFee(subtotalMinor: number): number {
+export function calculateShippingFee(
+  subtotalMinor: number,
+  options?: { standardRateMinor?: number; freeShippingThresholdMinor?: number }
+): number {
+  const standardFee = options?.standardRateMinor ?? STANDARD_SHIPPING_FEE_MINOR;
+  const threshold = options?.freeShippingThresholdMinor ?? FREE_SHIPPING_THRESHOLD_MINOR;
   if (subtotalMinor <= 0) return 0;
-  if (subtotalMinor >= FREE_SHIPPING_THRESHOLD_MINOR) return 0;
-  return STANDARD_SHIPPING_FEE_MINOR;
+  if (threshold > 0 && subtotalMinor >= threshold) return 0;
+  return standardFee;
 }
 
 /**
  * Calculates complete order totals server-side and client-side.
  */
 export function calculateOrderTotals(
-  items: Array<{ unitPriceMinor: number; quantity: number }>
+  items: Array<{ unitPriceMinor: number; quantity: number }>,
+  options?: { standardRateMinor?: number; freeShippingThresholdMinor?: number }
 ): {
   subtotalMinor: number;
   shippingMinor: number;
@@ -28,15 +34,21 @@ export function calculateOrderTotals(
   freeShippingRemainingMinor: number;
   hasFreeShipping: boolean;
 } {
+  const standardFee = options?.standardRateMinor ?? STANDARD_SHIPPING_FEE_MINOR;
+  const threshold = options?.freeShippingThresholdMinor ?? FREE_SHIPPING_THRESHOLD_MINOR;
+
   const subtotalMinor = items.reduce(
     (sum, item) => sum + Math.max(0, item.unitPriceMinor) * Math.max(1, item.quantity),
     0
   );
 
-  const shippingMinor = calculateShippingFee(subtotalMinor);
+  const shippingMinor = calculateShippingFee(subtotalMinor, {
+    standardRateMinor: standardFee,
+    freeShippingThresholdMinor: threshold,
+  });
   const totalMinor = subtotalMinor + shippingMinor;
-  const freeShippingRemainingMinor = Math.max(0, FREE_SHIPPING_THRESHOLD_MINOR - subtotalMinor);
-  const hasFreeShipping = subtotalMinor >= FREE_SHIPPING_THRESHOLD_MINOR;
+  const freeShippingRemainingMinor = threshold > 0 ? Math.max(0, threshold - subtotalMinor) : 0;
+  const hasFreeShipping = threshold > 0 && subtotalMinor >= threshold;
 
   return {
     subtotalMinor,

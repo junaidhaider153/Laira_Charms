@@ -31,7 +31,7 @@ export function OrderReceipt({ order }: OrderReceiptProps) {
             Official Document
           </span>
           <h3 className="font-headline font-bold text-xl text-espresso-deep">
-            Customer Sales Receipt &amp; Tax Invoice
+            Official Customer Sales Receipt
           </h3>
           <p className="text-xs text-espresso-muted">
             Issued in compliance with Section 19 of the Punjab Consumer Protection Act 2005.
@@ -41,7 +41,7 @@ export function OrderReceipt({ order }: OrderReceiptProps) {
         <button
           type="button"
           onClick={handlePrint}
-          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-surface-container border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-high transition-all active:scale-95 shadow-2xs self-start sm:self-auto"
+          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-surface-container border border-border-warm text-espresso-deep font-bold text-xs hover:bg-surface-high transition-all active:scale-95 shadow-2xs self-start sm:self-auto cursor-pointer"
         >
           <svg
             className="w-4 h-4 text-espresso-muted"
@@ -68,11 +68,13 @@ export function OrderReceipt({ order }: OrderReceiptProps) {
             <div className="font-headline font-bold text-lg text-espresso-deep">
               Laira Charms
             </div>
-            <p className="text-xs text-primary font-medium">Handcrafted Keepsakes Studio</p>
+            <p className="text-xs text-primary font-medium">Artisanal Handcrafted Keepsakes</p>
             <p className="text-xs text-espresso-muted mt-1 leading-relaxed">
-              Email: lairacharmsofficial@gmail.com
+              Proprietor / Studio Workshop
               <br />
-              Punjab, Pakistan
+              Rawalpindi / Islamabad, Punjab, Pakistan
+              <br />
+              Email: lairacharmsofficial@gmail.com
             </p>
           </div>
 

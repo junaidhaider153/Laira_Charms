@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPaymentByOrderReference } from "@/lib/payment/payment-service";
 import { PaymentStatusCard } from "@/components/payment/PaymentStatusCard";
+import { getPaymentInstructionsSettings } from "@/lib/settings/settings-service";
+import { formatPaymentAccountsFromSettings } from "@/lib/payment/bank-details";
 
 interface PaymentPageProps {
   params: Promise<{ reference: string }>;
@@ -46,12 +48,16 @@ export default async function PaymentPage({ params, searchParams }: PaymentPageP
     notFound();
   }
 
+  const paymentSettings = await getPaymentInstructionsSettings();
+  const accounts = formatPaymentAccountsFromSettings(paymentSettings);
+
   return (
     <div className="min-h-screen bg-canvas-butter py-6">
       <PaymentStatusCard
         order={result.order}
         initialPayment={result.payment}
         guestToken={token}
+        accounts={accounts}
       />
     </div>
   );

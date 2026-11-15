@@ -7,6 +7,7 @@ import { getProductById, getProductBySlug } from "@/lib/catalog/catalog-service"
 import { getOptionGroupsForProduct } from "@/lib/customization/service";
 import { validateAndCalculateCustomization } from "@/lib/customization/calculator";
 import { isLiveSupabaseConfigured, allowOfflineFallback } from "@/lib/auth/offline-mode";
+import { getShippingPolicySettings } from "@/lib/settings/settings-service";
 
 export const MEMORY_ORDERS: Map<string, Order> = new Map();
 export const MEMORY_IDEMPOTENCY_INDEX: Map<string, string> = new Map();
@@ -127,8 +128,26 @@ export async function createOrder(
     let productTitle = item.title;
 
     if (product) {
+      if (product.status !== "published" && !allowOfflineFallback()) {
+        throw new Error(`Product "${product.title}" is currently unavailable.`);
+      }
+      if (
+        product.stockMode === "tracked" &&
+        product.stockQuantity < item.quantity &&
+        !allowOfflineFallback()
+      ) {
+        throw new Error(
+          `Insufficient stock for "${product.title}". Only ${product.stockQuantity} available.`
+        );
+      }
+
       productTitle = product.title;
       const optionGroups = await getOptionGroupsForProduct(product.id);
+      const hasRequiredGroup = optionGroups.some((g) => g.isRequired);
+
+      if (hasRequiredGroup && !item.customization && !allowOfflineFallback()) {
+        throw new Error(`Customization options are required for "${product.title}".`);
+      }
 
       if (optionGroups.length > 0 && item.customization) {
         const customResult = validateAndCalculateCustomization(
@@ -136,6 +155,9 @@ export async function createOrder(
           optionGroups,
           { options: item.customization, customText: item.customText }
         );
+        if (!customResult.isValid && !allowOfflineFallback()) {
+          throw new Error(customResult.errors[0] || `Invalid customization for "${product.title}".`);
+        }
         authoritativeUnitPriceMinor = customResult.calculatedUnitPriceMinor;
       } else {
         authoritativeUnitPriceMinor = product.basePriceMinor;
@@ -168,8 +190,12 @@ export async function createOrder(
     });
   }
 
-  // Calculate authoritative order totals from validated line items
-  const totals = calculateOrderTotals(orderItems);
+  // Calculate authoritative order totals from validated line items using configured store rates
+  const shippingPolicy = await getShippingPolicySettings();
+  const totals = calculateOrderTotals(orderItems, {
+    standardRateMinor: shippingPolicy.standardRateMinor,
+    freeShippingThresholdMinor: shippingPolicy.freeShippingThresholdMinor,
+  });
 
   let guestToken: string | undefined;
   let guestTokenHash: string | null = null;
@@ -348,16 +374,21 @@ export async function getOrderByReference(
 
   if (!order && isLiveSupabaseConfigured()) {
     try {
-      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
-      const supabase = await createServerSupabaseClient();
-      const { data: dbOrder } = await supabase
-        .from("orders")
+      const { createAdminClient } = await import("@/lib/supabase/admin");
+      const supabaseAdmin = createAdminClient();
+      const { data: dbOrder } = await (supabaseAdmin.from("orders") as unknown as {
+        select: (cols: string) => {
+          eq: (col: string, val: string) => {
+            maybeSingle: () => Promise<{ data: Record<string, unknown> | null }>;
+          };
+        };
+      })
         .select("*, order_items(*)")
         .eq("reference", reference)
         .maybeSingle();
 
       if (dbOrder) {
-        order = mapDbOrderToDomain(dbOrder as unknown as Record<string, unknown>);
+        order = mapDbOrderToDomain(dbOrder);
       }
     } catch {
       // Fallback

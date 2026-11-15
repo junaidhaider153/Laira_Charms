@@ -14,7 +14,7 @@ import {
 import type { Order } from "@/lib/checkout/types";
 import type { PaymentRecord } from "@/lib/payment/types";
 import { updateOrderStatusAction } from "@/lib/order/actions";
-import { adminReviewPaymentAction } from "@/lib/payment/actions";
+import { adminReviewPaymentAction, getPaymentProofSignedUrlAction } from "@/lib/payment/actions";
 
 interface AdminOrderDetailViewProps {
   order: Order;
@@ -47,6 +47,23 @@ export function AdminOrderDetailView({
   const [isReviewingPayment, setIsReviewingPayment] = useState(false);
   const [rejectReason, setRejectReason] = useState("");
   const [isRejectDialogOpen, setIsRejectDialogOpen] = useState(false);
+  const [isGeneratingSignedUrl, setIsGeneratingSignedUrl] = useState(false);
+
+  const handleViewProof = async (path: string) => {
+    setIsGeneratingSignedUrl(true);
+    try {
+      const res = await getPaymentProofSignedUrlAction(path);
+      if (res.success && res.signedUrl) {
+        window.open(res.signedUrl, "_blank", "noopener,noreferrer");
+      } else {
+        alert(res.message || "Unable to open proof image.");
+      }
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Error opening proof");
+    } finally {
+      setIsGeneratingSignedUrl(false);
+    }
+  };
 
   const handleStatusTransition = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -382,12 +399,22 @@ export function AdminOrderDetailView({
                   </strong>
                 </p>
                 {payment.proofStoragePath && (
-                  <p className="pt-1">
-                    <span className="text-espresso-muted">Screenshot Proof:</span>{" "}
-                    <span className="font-mono text-[10px] text-espresso-deep truncate block">
-                      {payment.proofStoragePath}
-                    </span>
-                  </p>
+                  <div className="pt-2 space-y-1">
+                    <span className="text-espresso-muted block">Screenshot Proof:</span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[10px] text-espresso-deep truncate block flex-1 bg-canvas-butter p-1.5 rounded-lg border border-border-warm">
+                        {payment.proofStoragePath}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleViewProof(payment.proofStoragePath!)}
+                        disabled={isGeneratingSignedUrl}
+                        className="px-3 py-1.5 rounded-xl bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-2xs shrink-0 cursor-pointer"
+                      >
+                        {isGeneratingSignedUrl ? "Loading..." : "View Proof ↗"}
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
             ) : (

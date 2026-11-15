@@ -1,18 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { PAKISTANI_PAYMENT_ACCOUNTS } from "@/lib/payment/bank-details";
+import { PAKISTANI_PAYMENT_ACCOUNTS, type PaymentAccount } from "@/lib/payment/bank-details";
 import { formatMoney } from "@/lib/utils";
 
 interface PaymentInstructionsCardProps {
   amountMinor: number;
   orderReference: string;
+  accounts?: PaymentAccount[];
 }
 
 export function PaymentInstructionsCard({
   amountMinor,
   orderReference,
+  accounts,
 }: PaymentInstructionsCardProps) {
+  const activeAccounts = accounts && accounts.length > 0 ? accounts : PAKISTANI_PAYMENT_ACCOUNTS;
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const handleCopy = (text: string, id: string) => {
@@ -62,7 +65,7 @@ export function PaymentInstructionsCard({
 
       {/* Account Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {PAKISTANI_PAYMENT_ACCOUNTS.map((account) => (
+        {activeAccounts.map((account) => (
           <div
             key={account.id}
             className="p-5 rounded-3xl bg-canvas-butter border border-border-warm/60 flex flex-col justify-between space-y-3 shadow-xs"

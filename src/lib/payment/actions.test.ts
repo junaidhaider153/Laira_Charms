@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { adminReviewPaymentAction } from "./actions";
+import { adminReviewPaymentAction, getPaymentProofSignedUrlAction, submitPaymentProofAction } from "./actions";
 
 describe("Payment Actions Fail-Closed Guard (C-04)", () => {
   beforeEach(() => {
@@ -31,5 +31,26 @@ describe("Payment Actions Fail-Closed Guard (C-04)", () => {
 
     expect(result.success).toBe(false);
     expect(result.message).toMatch(/rejection reason/i);
+  });
+
+  it("generates signed url or safe preview in offline mode", async () => {
+    vi.stubEnv("NODE_ENV", "test");
+    const result = await getPaymentProofSignedUrlAction("payment-proofs/test-order/screenshot.png");
+    expect(result.success).toBe(true);
+    expect(result.signedUrl).toBeDefined();
+  });
+
+  it("rejects invalid file formats when submitting payment proof", async () => {
+    const fd = new FormData();
+    fd.append("orderReference", "LC-20261115-001");
+    fd.append("methodId", "meezan");
+    fd.append("senderName", "Test Sender");
+    fd.append("transactionId", "TXN123456");
+    const fakeFile = new File(["dummy content"], "test.exe", { type: "application/x-msdownload" });
+    fd.append("proofFile", fakeFile);
+
+    const result = await submitPaymentProofAction(null, fd);
+    expect(result.success).toBe(false);
+    expect(result.message).toMatch(/Invalid file format/i);
   });
 });

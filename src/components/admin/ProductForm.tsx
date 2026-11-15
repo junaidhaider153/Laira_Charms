@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { CatalogProduct, CatalogCategory, ProductStatus } from "@/lib/catalog/types";
-import { createProductAction, updateProductAction } from "@/lib/admin/catalog-actions";
+import { createProductAction, updateProductAction, uploadProductMediaAction } from "@/lib/admin/catalog-actions";
 
 interface ProductFormProps {
   initialProduct?: CatalogProduct | null;
@@ -31,7 +31,7 @@ export function ProductForm({ initialProduct, categories }: ProductFormProps) {
   const [stockMode, setStockMode] = useState<CatalogProduct["stockMode"]>(
     initialProduct?.stockMode || "tracked"
   );
-  const [leadTimeDays, setLeadTimeDays] = useState<number>(initialProduct?.leadTimeDays ?? 3);
+  const [leadTimeDays, setLeadTimeDays] = useState<number>(initialProduct?.leadTimeDays ?? 7);
   const [status, setStatus] = useState<ProductStatus>(initialProduct?.status || "draft");
   const [isFeatured, setIsFeatured] = useState<boolean>(initialProduct?.isFeatured || false);
 
@@ -41,14 +41,37 @@ export function ProductForm({ initialProduct, categories }: ProductFormProps) {
       (initialProduct?.primaryImage ? [initialProduct.primaryImage] : ["/images/placeholder.jpg"])
   );
   const [newImageUrl, setNewImageUrl] = useState("");
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsUploadingImage(true);
+    setError(null);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await uploadProductMediaAction(fd);
+      if (!res.success || !res.url) {
+        setError(res.message || "Failed to upload image.");
+      } else {
+        setImages((prev) => (prev.length === 1 && prev[0] === "/images/placeholder.jpg" ? [res.url!] : [...prev, res.url!]));
+      }
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Error uploading image");
+    } finally {
+      setIsUploadingImage(false);
+      e.target.value = "";
+    }
+  };
+
   const handleAddImage = () => {
     if (!newImageUrl.trim()) return;
-    setImages((prev) => [...prev, newImageUrl.trim()]);
+    setImages((prev) => (prev.length === 1 && prev[0] === "/images/placeholder.jpg" ? [newImageUrl.trim()] : [...prev, newImageUrl.trim()]));
     setNewImageUrl("");
   };
 
@@ -261,15 +284,18 @@ export function ProductForm({ initialProduct, categories }: ProductFormProps) {
 
           <div>
             <label className="block text-xs font-bold text-espresso-deep uppercase tracking-wider mb-2">
-              Lead Time (Days)
+              Lead Time (7–14 Days) *
             </label>
             <input
               type="number"
-              min="0"
+              min="7"
+              max="14"
+              required
               value={leadTimeDays}
               onChange={(e) => setLeadTimeDays(Number(e.target.value))}
               className="w-full text-sm rounded-xl border border-border-warm bg-white px-4 py-3 text-espresso-deep focus:outline-none focus:ring-2 focus:ring-strawberry-blush"
             />
+            <p className="text-[10px] text-espresso-muted mt-1">Standard studio lead time: 7 to 14 business days.</p>
           </div>
 
           <div>
@@ -337,12 +363,33 @@ export function ProductForm({ initialProduct, categories }: ProductFormProps) {
           <label className="block text-xs font-bold text-espresso-deep uppercase tracking-wider">
             Product Images &amp; Media
           </label>
+
+          {/* Upload from device / camera */}
+          <div className="p-4 rounded-2xl bg-canvas-butter border border-border-warm/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span className="font-bold text-xs text-espresso-deep block">Upload Photo from Phone or Computer</span>
+              <span className="text-[11px] text-espresso-muted">Supports JPG, PNG, WebP up to 10 MB. Saved directly to studio storage.</span>
+            </div>
+            <div>
+              <label className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-strawberry-blush text-on-primary text-xs font-bold transition-all shadow-2xs ${isUploadingImage ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:opacity-95 active:scale-95"}`}>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/avif"
+                  onChange={handleFileUpload}
+                  disabled={isUploadingImage}
+                  className="hidden"
+                />
+                <span>{isUploadingImage ? "Uploading..." : "📷 Choose Photo File"}</span>
+              </label>
+            </div>
+          </div>
+
           <div className="flex gap-2">
             <input
               type="url"
               value={newImageUrl}
               onChange={(e) => setNewImageUrl(e.target.value)}
-              placeholder="Paste public image URL (e.g. Supabase Storage, Cloudinary, Unsplash)"
+              placeholder="Or paste an image URL directly"
               className="flex-1 text-xs rounded-xl border border-border-warm bg-white px-4 py-2.5 text-espresso-deep focus:outline-none focus:ring-2 focus:ring-strawberry-blush"
             />
             <button
@@ -350,7 +397,7 @@ export function ProductForm({ initialProduct, categories }: ProductFormProps) {
               onClick={handleAddImage}
               className="px-4 py-2.5 rounded-xl bg-espresso-deep text-white text-xs font-bold hover:bg-espresso-muted transition-colors cursor-pointer"
             >
-              Add Image
+              Add URL
             </button>
           </div>
 

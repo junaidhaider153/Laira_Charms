@@ -8,17 +8,20 @@ import { ProofUploadForm } from "./ProofUploadForm";
 import type { Order } from "@/lib/checkout/types";
 import type { PaymentRecord } from "@/lib/payment/types";
 import { formatMoney } from "@/lib/utils";
+import type { PaymentAccount } from "@/lib/payment/bank-details";
 
 interface PaymentStatusCardProps {
   order: Order;
   initialPayment: PaymentRecord;
   guestToken?: string;
+  accounts?: PaymentAccount[];
 }
 
 export function PaymentStatusCard({
   order,
   initialPayment,
   guestToken,
+  accounts,
 }: PaymentStatusCardProps) {
   const [payment, setPayment] = useState<PaymentRecord>(initialPayment);
 
@@ -184,11 +187,13 @@ export function PaymentStatusCard({
           <PaymentInstructionsCard
             amountMinor={order.totalMinor}
             orderReference={order.reference}
+            accounts={accounts}
           />
 
           <ProofUploadForm
             orderReference={order.reference}
             guestToken={guestToken}
+            accounts={accounts}
             onSuccess={handleProofSubmitted}
           />
         </div>
@@ -200,11 +205,13 @@ export function PaymentStatusCard({
           <PaymentInstructionsCard
             amountMinor={order.totalMinor}
             orderReference={order.reference}
+            accounts={accounts}
           />
 
           <ProofUploadForm
             orderReference={order.reference}
             guestToken={guestToken}
+            accounts={accounts}
             onSuccess={handleProofSubmitted}
           />
         </div>

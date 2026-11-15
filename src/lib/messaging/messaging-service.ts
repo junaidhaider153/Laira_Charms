@@ -21,10 +21,18 @@ export const MEMORY_MESSAGES: Map<string, Message[]> = new Map();
 // Seed initial conversations for testing and development
 const sampleConv1Id = "conv-order-7788";
 const sampleGuestEmail = "ayesha@example.com";
-const { hash: sampleGuestHash, token: sampleGuestToken } = generateGuestToken(
-  sampleConv1Id,
-  sampleGuestEmail
-);
+let sampleGuestHash = "sample-guest-hash-7788";
+let sampleGuestToken = "sample-guest-token-7788";
+
+if (process.env.NODE_ENV !== "production") {
+  try {
+    const generated = generateGuestToken(sampleConv1Id, sampleGuestEmail);
+    sampleGuestHash = generated.hash;
+    sampleGuestToken = generated.token;
+  } catch {
+    // Suppress if token secret is not set during production build
+  }
+}
 
 export const SAMPLE_GUEST_CONV_ID = sampleConv1Id;
 export const SAMPLE_GUEST_TOKEN = sampleGuestToken;

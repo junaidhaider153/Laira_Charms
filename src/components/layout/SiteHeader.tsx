@@ -12,9 +12,9 @@ import { signOutAction } from "@/lib/auth/auth-actions";
 const ANNOUNCEMENTS = [
   "🧸 Every charm baked with gentle love & sealed with triple UV diamond glaze",
   "✨ Small batch handmade drops • Limited studio oven batches",
-  "🚚 Free delivery across Pakistan on orders over Rs. 3,000 🍓",
+  "📦 Nationwide tracked delivery via PostEx & TCS • Handcrafted in Pakistan",
   "🎨 Custom Atelier open: bespoke character charms sculpted to order",
-  "📦 Dispatched via reliable couriers nationwide with careful gift packaging",
+  "💌 Studio baking & dispatch turnaround: 7 to 14 business days",
 ];
 
 export function SiteHeader() {

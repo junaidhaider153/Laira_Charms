@@ -63,5 +63,20 @@ describe("Pakistani Shipping Fee Calculations", () => {
     expect(totals.freeShippingRemainingMinor).toBe(0);
     expect(totals.hasFreeShipping).toBe(true);
   });
+
+  it("supports configurable shipping rates and custom free delivery thresholds", () => {
+    const customOptions = {
+      standardRateMinor: 35000, // Rs. 350
+      freeShippingThresholdMinor: 500000, // Rs. 5,000
+    };
+
+    expect(calculateShippingFee(200000, customOptions)).toBe(35000);
+    expect(calculateShippingFee(500000, customOptions)).toBe(0);
+
+    const totals = calculateOrderTotals([{ unitPriceMinor: 200000, quantity: 1 }], customOptions);
+    expect(totals.shippingMinor).toBe(35000);
+    expect(totals.totalMinor).toBe(235000);
+    expect(totals.freeShippingRemainingMinor).toBe(300000);
+  });
 });
 

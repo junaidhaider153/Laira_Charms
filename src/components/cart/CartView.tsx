@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/cart-context";
@@ -8,6 +8,7 @@ import { formatMoney } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import {
   calculateShippingFee,
+  STANDARD_SHIPPING_FEE_MINOR,
   FREE_SHIPPING_THRESHOLD_MINOR,
 } from "@/lib/checkout/shipping";
 
@@ -20,6 +21,28 @@ export function CartView() {
     removeItem,
     clearCart,
   } = useCart();
+
+  const [shippingPolicy, setShippingPolicy] = useState<{
+    standardRateMinor: number;
+    freeShippingThresholdMinor: number;
+  }>({
+    standardRateMinor: STANDARD_SHIPPING_FEE_MINOR,
+    freeShippingThresholdMinor: FREE_SHIPPING_THRESHOLD_MINOR,
+  });
+
+  useEffect(() => {
+    fetch("/api/settings/shipping")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && typeof data.standardRateMinor === "number") {
+          setShippingPolicy({
+            standardRateMinor: data.standardRateMinor,
+            freeShippingThresholdMinor: data.freeShippingThresholdMinor,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   if (items.length === 0) {
     return (
@@ -45,13 +68,15 @@ export function CartView() {
     );
   }
 
-  const shippingFeeMinor = calculateShippingFee(subtotalMinor);
+  const standardFee = shippingPolicy.standardRateMinor;
+  const threshold = shippingPolicy.freeShippingThresholdMinor;
+  const shippingFeeMinor = calculateShippingFee(subtotalMinor, {
+    standardRateMinor: standardFee,
+    freeShippingThresholdMinor: threshold,
+  });
   const totalMinor = subtotalMinor + shippingFeeMinor;
-  const freeShippingRemainingMinor = Math.max(0, FREE_SHIPPING_THRESHOLD_MINOR - subtotalMinor);
-  const freeShippingProgress = Math.min(
-    100,
-    Math.round((subtotalMinor / FREE_SHIPPING_THRESHOLD_MINOR) * 100)
-  );
+  const freeShippingRemainingMinor = threshold > 0 ? Math.max(0, threshold - subtotalMinor) : 0;
+  const freeShippingProgress = threshold > 0 ? Math.min(100, Math.round((subtotalMinor / threshold) * 100)) : 100;
 
   return (
     <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
@@ -85,7 +110,7 @@ export function CartView() {
             </p>
           )}
           <span className="text-[11px] font-semibold text-espresso-muted self-end sm:self-auto">
-            {freeShippingProgress}% of Rs. 3,000 threshold
+            {freeShippingProgress}% of {formatMoney(threshold)} threshold
           </span>
         </div>
         <div className="w-full bg-surface-cloud h-2.5 rounded-full overflow-hidden border border-border-warm/40 shadow-inner">

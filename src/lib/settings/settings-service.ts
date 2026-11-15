@@ -165,13 +165,20 @@ export async function getBannerSettings(): Promise<BannerSettings> {
 }
 
 /**
+ * Retrieves payment instructions settings.
+ */
+export async function getPaymentInstructionsSettings(): Promise<PaymentInstructionsSettings> {
+  return getStoreSetting<PaymentInstructionsSettings>("payment_instructions", DEFAULT_PAYMENT_SETTINGS);
+}
+
+/**
  * Retrieves all store settings for admin dashboard.
  */
 export async function getAllStoreSettings(): Promise<AllStoreSettings> {
   const [shippingPolicy, banner, paymentInstructions] = await Promise.all([
     getShippingPolicySettings(),
     getBannerSettings(),
-    getStoreSetting<PaymentInstructionsSettings>("payment_instructions", DEFAULT_PAYMENT_SETTINGS),
+    getPaymentInstructionsSettings(),
   ]);
 
   return {

@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { guardAdmin } from "@/lib/auth/guards";
+import { isLiveSupabaseConfigured } from "@/lib/auth/offline-mode";
 import {
   createAdminProduct,
   updateAdminProduct,
@@ -29,7 +30,7 @@ const createProductSchema = z.object({
   basePriceMinor: z.number().int().min(100, "Price must be at least 1 PKR (100 paisa)"),
   stockMode: z.enum(["tracked", "unlimited", "made_to_order"] as [CatalogProduct["stockMode"], ...CatalogProduct["stockMode"][]]).default("tracked"),
   stockQuantity: z.number().int().min(0, "Stock cannot be negative").default(0),
-  leadTimeDays: z.number().int().min(0).default(3),
+  leadTimeDays: z.number().int().min(7, "Production lead time must be between 7 and 14 days").max(14, "Production lead time must be between 7 and 14 days").default(7),
   isFeatured: z.boolean().default(false),
   status: z.enum(["published", "draft", "archived"] as [ProductStatus, ...ProductStatus[]]).default("draft"),
   primaryImage: z.string().optional(),
@@ -46,7 +47,7 @@ const updateProductSchema = z.object({
   basePriceMinor: z.number().int().min(100).optional(),
   stockMode: z.enum(["tracked", "unlimited", "made_to_order"] as [CatalogProduct["stockMode"], ...CatalogProduct["stockMode"][]]).optional(),
   stockQuantity: z.number().int().min(0).optional(),
-  leadTimeDays: z.number().int().min(0).optional(),
+  leadTimeDays: z.number().int().min(7, "Production lead time must be between 7 and 14 days").max(14, "Production lead time must be between 7 and 14 days").optional(),
   isFeatured: z.boolean().optional(),
   status: z.enum(["published", "draft", "archived"] as [ProductStatus, ...ProductStatus[]]).optional(),
   primaryImage: z.string().optional(),
@@ -311,4 +312,60 @@ export async function deleteCategoryAction(input: { categoryId: string }) {
     const message = err instanceof Error ? err.message : "Failed to delete category.";
     return { success: false, message };
   }
+}
+
+export async function uploadProductMediaAction(
+  formData: FormData
+): Promise<{ success: boolean; url?: string; message?: string }> {
+  try {
+    await guardAdmin("/admin/products");
+  } catch {
+    return { success: false, message: "Unauthorized. Admin privileges required." };
+  }
+
+  const file = formData.get("file") as File | null;
+  if (!file || typeof file !== "object" || !("size" in file) || Number((file as unknown as { size: number }).size) === 0) {
+    return { success: false, message: "No image file provided." };
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    return { success: false, message: "Image exceeds 10 MB limit." };
+  }
+
+  const allowed = ["image/jpeg", "image/png", "image/webp", "image/avif"];
+  if (!allowed.includes(file.type)) {
+    return { success: false, message: "Invalid image format. Allowed: JPG, PNG, WebP, AVIF." };
+  }
+
+  const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
+  const filePath = `products/${Date.now()}_${safeName}`;
+
+  if (isLiveSupabaseConfigured()) {
+    try {
+      const { createAdminClient } = await import("@/lib/supabase/admin");
+      const supabaseAdmin = createAdminClient();
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const { error: uploadError } = await supabaseAdmin.storage
+        .from("product-media")
+        .upload(filePath, buffer, {
+          contentType: file.type,
+          upsert: true,
+        });
+
+      if (uploadError) {
+        return { success: false, message: `Upload failed: ${uploadError.message}` };
+      }
+
+      const { data: publicUrlData } = supabaseAdmin.storage
+        .from("product-media")
+        .getPublicUrl(filePath);
+
+      return { success: true, url: publicUrlData.publicUrl };
+    } catch (err: unknown) {
+      return { success: false, message: err instanceof Error ? err.message : "Upload error" };
+    }
+  }
+
+  // Offline mock mode for tests/development
+  return { success: true, url: `/images/${safeName}` };
 }

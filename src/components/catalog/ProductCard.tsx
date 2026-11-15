@@ -103,7 +103,7 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* Lead time pill */}
           <div className="absolute bottom-2.5 right-2.5 z-10">
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-surface-cloud/90 text-espresso-muted border border-border-warm/40 backdrop-blur-xs shadow-xs">
-              {product.leadTimeDays === 1 ? "Next day drop" : `${product.leadTimeDays}d craft`}
+              {product.leadTimeDays ? `${product.leadTimeDays}d lead` : "7–14d craft"}
             </span>
           </div>
         </div>

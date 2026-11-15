@@ -61,9 +61,9 @@ export async function getPaymentByOrderReference(
 
   if (!payment && isLiveSupabaseConfigured()) {
     try {
-      const { createServerSupabaseClient } = await import("@/lib/supabase/server");
-      const supabase = await createServerSupabaseClient();
-      const { data, error } = await supabase
+      const { createAdminClient } = await import("@/lib/supabase/admin");
+      const supabaseAdmin = createAdminClient();
+      const { data, error } = await supabaseAdmin
         .from("payments")
         .select("*")
         .eq("order_id", order.id)
@@ -388,7 +388,7 @@ export async function reviewPayment(
     payment.updatedAt = now;
 
     order.paymentStatus = "rejected";
-    if (!["cancelled", "delivered"].includes(order.orderStatus)) {
+    if (!["cancelled", "delivered", "shipped"].includes(order.orderStatus)) {
       order.orderStatus = "on_hold";
     }
     order.updatedAt = now;

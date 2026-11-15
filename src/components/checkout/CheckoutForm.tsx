@@ -6,7 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/cart-context";
 import { formatMoney } from "@/lib/utils";
-import { calculateShippingFee } from "@/lib/checkout/shipping";
+import { calculateShippingFee, STANDARD_SHIPPING_FEE_MINOR, FREE_SHIPPING_THRESHOLD_MINOR } from "@/lib/checkout/shipping";
+import type { ShippingPolicySettings } from "@/lib/settings/settings-service";
 import {
   PAKISTANI_PROVINCES,
   type ShippingAddress,
@@ -14,7 +15,11 @@ import {
 import { shippingAddressSchema } from "@/lib/checkout/schemas";
 import { createOrderAction } from "@/lib/checkout/actions";
 
-export function CheckoutForm() {
+interface CheckoutFormProps {
+  shippingPolicy?: ShippingPolicySettings;
+}
+
+export function CheckoutForm({ shippingPolicy }: CheckoutFormProps = {}) {
   const router = useRouter();
   const { items, itemCount, subtotalMinor, clearCart } = useCart();
 
@@ -63,7 +68,12 @@ export function CheckoutForm() {
     );
   }
 
-  const shippingFeeMinor = calculateShippingFee(subtotalMinor);
+  const standardRate = shippingPolicy?.standardRateMinor ?? STANDARD_SHIPPING_FEE_MINOR;
+  const threshold = shippingPolicy?.freeShippingThresholdMinor ?? FREE_SHIPPING_THRESHOLD_MINOR;
+  const shippingFeeMinor = calculateShippingFee(subtotalMinor, {
+    standardRateMinor: standardRate,
+    freeShippingThresholdMinor: threshold,
+  });
   const totalMinor = subtotalMinor + shippingFeeMinor;
 
   const handleChange = (

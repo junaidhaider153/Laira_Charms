@@ -129,7 +129,7 @@ export async function createCustomRequest(
 
   const trackingUrl = guestToken
     ? `/custom-order/status/${requestId}?token=${encodeURIComponent(guestToken)}`
-    : `/account/custom-orders/${requestId}`;
+    : `/account/requests`;
 
   // Safely enqueue guest access / acknowledgment notification (FR-017)
   try {
