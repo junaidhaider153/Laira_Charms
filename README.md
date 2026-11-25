@@ -26,7 +26,14 @@ Copy `.env.example` to `.env.local`:
 cp .env.example .env.local
 ```
 
-Configure your local Supabase keys and transactional email keys. Never commit `.env.local` or expose `SUPABASE_SERVICE_ROLE_KEY` to browser bundles.
+Configure your local Supabase keys and transactional email keys (`GMAIL_USER` + `GMAIL_APP_PASSWORD`, or `RESEND_API_KEY`). Never commit `.env.local` or expose `SUPABASE_SERVICE_ROLE_KEY`, `GMAIL_APP_PASSWORD`, `GROQ_API_KEY`, or `GEMINI_API_KEY` to browser bundles.
+
+### AI Studio Chat Assistant (Optional)
+
+The floating `Laira Studio Chat` widget includes both an **AI Chat** mode (grounded in live catalog & store policies via Groq `llama-3.3-70b-versatile` or Gemini `gemini-2.5-flash`) and the existing **Email Inquiry** form:
+- Set `GROQ_API_KEY` (or `GEMINI_API_KEY`) in `.env.local` (or Vercel Environment Variables) to enable live AI replies via `POST /api/chat`.
+- Optional: set `AI_CHAT_PROVIDER=groq|gemini|auto` and `AI_CHAT_MODEL` to choose a specific provider or model.
+- When no AI key is set or offline mode is active, the widget gracefully falls back with a one-click prompt to **Email Inquiry**.
 
 ### Creating the First Admin
 

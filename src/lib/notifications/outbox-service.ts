@@ -8,8 +8,9 @@ import {
 import { renderEmail } from './email-templates';
 import { createAdminClient } from '../supabase/admin';
 import { ResendEmailProvider } from './resend-provider';
+import { GmailSmtpEmailProvider, isGmailSmtpConfigured } from './gmail-provider';
 
-export { ResendEmailProvider };
+export { ResendEmailProvider, GmailSmtpEmailProvider };
 
 // In-memory fallback store for test environments or offline mock mode
 const inMemoryOutbox = new Map<string, OutboxRecord>();
@@ -98,6 +99,20 @@ export class MockFailingEmailProvider implements IEmailProvider {
 }
 
 export function getActiveEmailProvider(): IEmailProvider {
+  const preferred = process.env.EMAIL_PROVIDER?.trim().toLowerCase();
+
+  if (preferred === "console") {
+    return new ConsoleEmailProvider();
+  }
+  if (preferred === "resend") {
+    if (process.env.RESEND_API_KEY && !process.env.RESEND_API_KEY.startsWith("re_dummy")) {
+      return new ResendEmailProvider();
+    }
+    return new ConsoleEmailProvider();
+  }
+  if (preferred === "gmail" || isGmailSmtpConfigured()) {
+    return new GmailSmtpEmailProvider();
+  }
   if (process.env.RESEND_API_KEY && !process.env.RESEND_API_KEY.startsWith("re_dummy")) {
     return new ResendEmailProvider();
   }

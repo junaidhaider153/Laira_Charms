@@ -65,3 +65,53 @@ test.describe("Realtime Website Messaging & Internal Note Isolation Flow", () =>
   });
 });
 
+test.describe("FloatingChatWidget Dual-Mode AI + Email Inquiry Flow", () => {
+  test("supports AI chat replies, handoff prefill, and Email Inquiry submission", async ({
+    page,
+  }) => {
+    await page.route("**/api/chat", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "text/plain; charset=utf-8",
+        body: "Custom clay figures take 7 to 14 business days. Visit /custom-order to request a quote!",
+      });
+    });
+
+    await page.goto("/");
+
+    // 1. Open floating chat widget
+    await page.getByRole("button", { name: /Chat with studio atelier/i }).click();
+
+    // 2. Verify both AI Chat and Email Inquiry tabs exist with AI Chat default active
+    const aiTab = page.getByRole("tab", { name: /AI Chat/i });
+    const inquiryTab = page.getByRole("tab", { name: /Email Inquiry/i });
+    await expect(aiTab).toHaveAttribute("aria-selected", "true");
+    await expect(inquiryTab).toHaveAttribute("aria-selected", "false");
+
+    // 3. Send a message in AI Chat and verify mocked assistant reply
+    const aiInput = page.getByLabel(/Message Laira Studio Assistant/i);
+    await aiInput.fill("Custom clay figure turnaround?");
+    await page.getByRole("button", { name: /Send message to AI assistant/i }).click();
+
+    await expect(page.locator("[role='dialog']")).toContainText(
+      "Custom clay figures take 7 to 14 business days."
+    );
+
+    // 4. Click human handoff CTA to switch to Email Inquiry with pre-filled context
+    await page
+      .getByRole("button", { name: /Need a custom quote or human reply\? Switch to Email Inquiry/i })
+      .click();
+
+    await expect(inquiryTab).toHaveAttribute("aria-selected", "true");
+    const questionBox = page.getByLabel(/Your Question/i);
+    await expect(questionBox).toHaveValue("Custom clay figure turnaround?");
+
+    // 5. Complete Email Inquiry submission and confirm conversation flow works
+    await page.getByLabel(/Your Email/i).fill("e2e-collector@example.pk");
+    await page.getByRole("button", { name: /Send Inquiry/i }).click();
+
+    await page.waitForURL(/\/conversations\//);
+    await expect(page.locator("body")).toContainText("Custom clay figure turnaround?");
+  });
+});
+

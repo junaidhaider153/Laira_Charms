@@ -5,7 +5,7 @@ import { ResendEmailProvider } from "@/lib/notifications/resend-provider";
 export const dynamic = "force-dynamic";
 
 /**
- * Vercel Cron-triggered endpoint that drains the notification outbox every 5 minutes.
+ * Vercel Cron-triggered endpoint that drains the notification outbox daily (midnight UTC).
  * Protected by CRON_SECRET bearer token.
  */
 export async function GET(request: Request) {

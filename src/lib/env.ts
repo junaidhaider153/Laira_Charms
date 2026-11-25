@@ -10,9 +10,16 @@ const envSchema = z.object({
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).default("dummy-service-role-key-for-server-only"),
   SUPABASE_DB_URL: z.string().optional(),
   RESEND_API_KEY: z.string().min(1).default("re_dummy_mock_key_for_testing"),
+  GMAIL_USER: z.string().optional(),
+  GMAIL_APP_PASSWORD: z.string().optional(),
+  EMAIL_PROVIDER: z.enum(["auto", "gmail", "resend", "console"]).default("auto"),
   EMAIL_FROM: z.string().min(1).default("Laira Charms <no-reply@lairacharms.pk>"),
   GUEST_TOKEN_SECRET: z.string().min(32, "GUEST_TOKEN_SECRET must be at least 32 characters long").default("laira-charms-secure-guest-hmac-secret-min-32-chars"),
   ADMIN_BOOTSTRAP_TOKEN: z.string().min(1).default("laira-admin-bootstrap-dev-token-only"),
+  GEMINI_API_KEY: z.string().optional(),
+  GROQ_API_KEY: z.string().optional(),
+  AI_CHAT_PROVIDER: z.enum(["auto", "groq", "gemini"]).default("auto"),
+  AI_CHAT_MODEL: z.string().optional(),
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
 });
 
@@ -26,9 +33,16 @@ function validateEnv(): Env {
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
     SUPABASE_DB_URL: process.env.SUPABASE_DB_URL,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
+    GMAIL_USER: process.env.GMAIL_USER,
+    GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD,
+    EMAIL_PROVIDER: process.env.EMAIL_PROVIDER,
     EMAIL_FROM: process.env.EMAIL_FROM,
     GUEST_TOKEN_SECRET: process.env.GUEST_TOKEN_SECRET,
     ADMIN_BOOTSTRAP_TOKEN: process.env.ADMIN_BOOTSTRAP_TOKEN,
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+    GROQ_API_KEY: process.env.GROQ_API_KEY,
+    AI_CHAT_PROVIDER: process.env.AI_CHAT_PROVIDER,
+    AI_CHAT_MODEL: process.env.AI_CHAT_MODEL,
     NODE_ENV: process.env.NODE_ENV,
   });
 
