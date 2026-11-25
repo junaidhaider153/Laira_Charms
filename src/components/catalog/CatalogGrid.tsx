@@ -19,19 +19,19 @@ export function CatalogGrid({
 }: CatalogGridProps) {
   if (products.length === 0) {
     return (
-      <div className="py-20 px-6 text-center max-w-md mx-auto bg-surface-cloud rounded-3xl border border-border-warm/50 shadow-sm my-8">
-        <div className="w-20 h-20 rounded-full bg-strawberry-subtle text-strawberry-blush flex items-center justify-center text-3xl mx-auto mb-4 shadow-xs">
+      <div className="py-20 px-6 text-center max-w-md mx-auto bg-[#FFF9F5] rounded-2xl border border-[#2C1E16]/15 shadow-sm my-8">
+        <div className="w-16 h-16 rounded-md bg-transparent border border-[#2C1E16]/15 text-[#2C1E16] flex items-center justify-center text-3xl mx-auto mb-4">
           🧸
         </div>
-        <h3 className="font-headline font-bold text-xl text-espresso-deep mb-2">
+        <h3 className="font-headline font-bold text-xl text-[#2C1E16] mb-2">
           No charms found
         </h3>
-        <p className="font-body-sm text-body-sm text-espresso-muted mb-6 leading-relaxed">
+        <p className="font-body-sm text-body-sm text-[#2C1E16]/70 mb-6 leading-relaxed">
           {emptyMessage} Try adjusting your search query, price range, or category filter.
         </p>
         <Link
           href={resetHref}
-          className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 transition-all shadow-xs active:scale-95"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#A62C4B] hover:bg-[#2C1E16] text-[#FFF9F5] font-bold text-xs transition-colors active:scale-95"
         >
           <span>View All Charms</span>
           <Icon name="arrow_forward" className="text-[16px]" aria-hidden="true" />
@@ -41,7 +41,7 @@ export function CatalogGrid({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

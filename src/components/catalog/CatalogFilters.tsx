@@ -44,7 +44,7 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
 
   return (
     <div className="space-y-4 mb-8">
-      {/* Category Pills Rail */}
+      {/* Category Filter Rail */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
         <Link
           href={createFilterUrl("category", "")}
@@ -52,10 +52,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
             e.preventDefault();
             navigateTo(createFilterUrl("category", ""));
           }}
-          className={`px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap shrink-0 ${
+          className={`px-4 py-2 rounded-md font-label-md text-label-md transition-colors whitespace-nowrap shrink-0 ${
             !currentCategory
-              ? "bg-strawberry-blush text-on-primary shadow-xs font-bold"
-              : "bg-surface-cloud text-espresso-deep hover:bg-surface-custard border border-border-warm/60 shadow-xs"
+              ? "bg-[#2C1E16] text-[#FFF9F5] font-bold"
+              : "bg-[#FFF9F5] text-[#2C1E16] hover:border-[#2C1E16]/45 border border-[#2C1E16]/15"
           }`}
         >
           All Keepsakes
@@ -72,10 +72,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
                 e.preventDefault();
                 navigateTo(url);
               }}
-              className={`px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap shrink-0 ${
+              className={`px-4 py-2 rounded-md font-label-md text-label-md transition-colors whitespace-nowrap shrink-0 ${
                 isActive
-                  ? "bg-strawberry-blush text-on-primary shadow-xs font-bold"
-                  : "bg-surface-cloud text-espresso-deep hover:bg-surface-custard border border-border-warm/60 shadow-xs"
+                  ? "bg-[#2C1E16] text-[#FFF9F5] font-bold"
+                  : "bg-[#FFF9F5] text-[#2C1E16] hover:border-[#2C1E16]/45 border border-[#2C1E16]/15"
               }`}
             >
               {cat.name}
@@ -85,10 +85,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
       </div>
 
       {/* Second Row: Filter Badges, Counter, and Sort Selector */}
-      <div className="p-4 sm:p-5 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 rounded-2xl bg-[#FFF9F5] border border-[#2C1E16]/15 shadow-sm flex flex-wrap items-center justify-between gap-4">
         {/* Left: Product Type filter chips */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="font-label-sm text-[11px] font-bold uppercase tracking-wider text-espresso-muted mr-1">
+          <span className="font-label-sm text-[11px] font-bold uppercase tracking-wider text-[#2C1E16]/65 mr-1">
             Filter:
           </span>
           <Link
@@ -97,10 +97,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", ""));
             }}
-            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
+            className={`px-3 py-1 rounded-sm text-label-sm font-label-sm font-semibold transition-colors ${
               !currentType
-                ? "bg-surface-custard text-espresso-deep border border-border-warm/60 font-bold shadow-xs"
-                : "text-espresso-muted hover:text-espresso-deep bg-background"
+                ? "bg-[#2C1E16] text-[#FFF9F5] font-bold"
+                : "text-[#2C1E16]/75 hover:text-[#2C1E16] bg-transparent border border-[#2C1E16]/15"
             }`}
           >
             All
@@ -111,10 +111,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", "ready_made"));
             }}
-            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
+            className={`px-3 py-1 rounded-sm text-label-sm font-label-sm font-semibold transition-colors ${
               currentType === "ready_made"
-                ? "bg-matcha-tint text-secondary border border-secondary/20 font-bold shadow-xs"
-                : "text-espresso-muted hover:text-espresso-deep bg-background"
+                ? "bg-[#2C1E16] text-[#FFF9F5] font-bold"
+                : "text-[#2C1E16]/75 hover:text-[#2C1E16] bg-transparent border border-[#2C1E16]/15"
             }`}
           >
             In Stock (Ready)
@@ -125,10 +125,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", "customizable"));
             }}
-            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
+            className={`px-3 py-1 rounded-sm text-label-sm font-label-sm font-semibold transition-colors ${
               currentType === "customizable"
-                ? "bg-strawberry-subtle text-primary border border-primary/20 font-bold shadow-xs"
-                : "text-espresso-muted hover:text-espresso-deep bg-background"
+                ? "bg-[#A62C4B] text-[#FFF9F5] font-bold"
+                : "text-[#2C1E16]/75 hover:text-[#2C1E16] bg-transparent border border-[#2C1E16]/15"
             }`}
           >
             Personalized
@@ -139,10 +139,10 @@ export function CatalogFilters({ categories, totalProducts }: CatalogFiltersProp
               e.preventDefault();
               navigateTo(createFilterUrl("type", "bespoke_quote"));
             }}
-            className={`px-3 py-1 rounded-full text-label-sm font-label-sm font-semibold transition-all ${
+            className={`px-3 py-1 rounded-sm text-label-sm font-label-sm font-semibold transition-colors ${
               currentType === "bespoke_quote"
-                ? "bg-peach-tint text-tertiary border border-border-warm font-bold shadow-xs"
-                : "text-espresso-muted hover:text-espresso-deep bg-background"
+                ? "bg-[#2C1E16] text-[#FFF9F5] font-bold"
+                : "text-[#2C1E16]/75 hover:text-[#2C1E16] bg-transparent border border-[#2C1E16]/15"
             }`}
           >
             Bespoke Atelier

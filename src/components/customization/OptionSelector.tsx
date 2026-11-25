@@ -88,10 +88,11 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
         </div>
 
         <div className="text-right">
-          <span className="text-[10px] font-semibold text-secondary uppercase bg-matcha-tint px-3 py-1 rounded-full inline-block shadow-xs">
-            ⏱️ {product.leadTimeDays}d Craft Time
+          <span className="text-[11px] font-semibold text-[#2C1E16] uppercase tracking-wider inline-flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#2F5D3A]" aria-hidden="true" />
+            {product.leadTimeDays}d Craft Time
           </span>
-          <span className="font-label-sm text-[11px] text-espresso-muted block mt-1">
+          <span className="font-label-sm text-[11px] text-[#2C1E16]/65 block mt-1">
             Handmade to order
           </span>
         </div>
@@ -226,11 +227,11 @@ export function OptionSelector({ product, groups }: OptionSelectorProps) {
                         </div>
 
                         {val.priceDeltaMinor > 0 ? (
-                          <span className="text-[11px] font-bold text-secondary bg-matcha-tint px-2 py-0.5 rounded-full ml-2">
+                          <span className="text-[11px] font-bold text-[#2C1E16] border border-[#2C1E16]/20 px-2 py-0.5 rounded-sm ml-2">
                             +{formatMoney(val.priceDeltaMinor)}
                           </span>
                         ) : (
-                          <span className="text-[11px] text-espresso-muted font-medium ml-2">
+                          <span className="text-[11px] text-[#2C1E16]/65 font-medium ml-2">
                             Incl.
                           </span>
                         )}

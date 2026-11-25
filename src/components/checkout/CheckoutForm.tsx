@@ -411,7 +411,7 @@ export function CheckoutForm({ shippingPolicy }: CheckoutFormProps = {}) {
                 <div className="flex items-center gap-2 font-bold text-espresso-deep text-sm">
                   <span>🏦</span> Meezan Bank &bull; EasyPaisa &bull; JazzCash
                 </div>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-peach-tint text-espresso-deep font-bold text-[10px] border border-border-warm/40">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-sm bg-[#2C1E16] text-[#FFF9F5] font-bold text-[10px] uppercase tracking-wider">
                   No Cash on Delivery (COD)
                 </span>
               </div>

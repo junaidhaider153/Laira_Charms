@@ -26,22 +26,22 @@ export function SiteFooter() {
     <footer className="w-full bg-surface-custard pt-16 pb-12 mt-auto border-t border-border-warm">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         {/* Join the Charm Club Newsletter Vitrine */}
-        <div className="bg-surface-cloud rounded-3xl p-8 lg:p-12 mb-16 shadow-[0_8px_24px_-4px_rgba(60,42,33,0.07)] border border-border-warm/60 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="bg-[#FFF9F5] rounded-2xl p-8 lg:p-12 mb-16 shadow-sm border border-[#2C1E16]/15 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-md text-center md:text-left">
-            <div className="inline-flex items-center gap-2 bg-strawberry-subtle text-primary rounded-full px-3.5 py-1 text-label-sm font-label-sm mb-3 font-bold">
-              <span>✨</span> Secret Drop Access
-            </div>
-            <h3 className="font-headline text-2xl md:text-headline-sm text-espresso-deep mb-2 font-bold">
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.16em] text-[#A62C4B] mb-2">
+              Secret Drop Access
+            </span>
+            <h3 className="font-headline text-2xl md:text-headline-sm text-[#2C1E16] mb-2 font-bold">
               Join the Charm Club
             </h3>
-            <p className="font-body-md text-body-md text-on-surface-variant">
+            <p className="font-body-md text-body-md text-[#2C1E16]/75">
               Receive monthly secret drops, bespoke clay recipe previews, and a sweet discount on your next handmade charm.
             </p>
           </div>
 
           <div className="w-full md:w-auto flex flex-col sm:flex-row gap-2 shrink-0">
             {newsletterSubmitted ? (
-              <div className="p-4 bg-matcha-tint border border-secondary/30 text-secondary text-sm rounded-full font-semibold px-6 shadow-xs flex items-center gap-2">
+              <div className="p-3.5 border border-[#2F5D3A]/30 text-[#2F5D3A] text-sm rounded-md font-semibold px-5 flex items-center gap-2">
                 <Icon name="verified" className="text-[18px]" aria-hidden="true" />
                 Thank you! You&apos;re subscribed to studio drops.
               </div>
@@ -54,11 +54,11 @@ export function SiteFooter() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Your email address..."
                   aria-label="Email address for newsletter"
-                  className="bg-canvas-butter rounded-full px-5 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-espresso-muted outline-none min-w-[260px] border border-border-warm focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="bg-canvas-butter rounded-md px-4 py-3 font-body-sm text-body-sm text-[#2C1E16] placeholder:text-[#2C1E16]/50 outline-none min-w-[260px] border border-[#2C1E16]/20 focus:ring-2 focus:ring-[#A62C4B]/20 focus:border-[#A62C4B] transition-all"
                 />
                 <button
                   type="submit"
-                  className="bg-strawberry-blush text-on-primary rounded-full px-7 py-3 font-label-lg text-label-lg font-bold shadow-[0_4px_12px_-2px_rgba(60,42,33,0.05)] hover:opacity-95 transition-all active:scale-95 text-center"
+                  className="bg-[#A62C4B] hover:bg-[#2C1E16] text-[#FFF9F5] rounded-md px-6 py-3 font-label-lg text-label-lg font-bold transition-colors active:scale-95 text-center"
                 >
                   Join Collector Club
                 </button>
@@ -68,26 +68,26 @@ export function SiteFooter() {
         </div>
 
         {/* 4-Column Boutique Information Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-border-warm/60">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[#2C1E16]/10">
           {/* Brand Mission & Identity */}
           <div className="space-y-4">
             <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-full bg-strawberry-subtle flex items-center justify-center text-strawberry-blush shadow-xs group-hover:scale-105 transition-transform">
-                <Icon name="pets" className="text-[20px]" aria-hidden="true" />
+              <div className="w-9 h-9 rounded-md bg-[#2C1E16] flex items-center justify-center text-[#FFF9F5] group-hover:bg-[#A62C4B] transition-colors">
+                <Icon name="pets" className="text-[19px]" aria-hidden="true" />
               </div>
-              <span className="font-headline font-bold text-xl text-espresso-deep leading-none group-hover:text-primary transition-colors">
+              <span className="font-headline font-bold text-xl text-[#2C1E16] leading-none group-hover:text-[#A62C4B] transition-colors">
                 Laira Charms
               </span>
             </Link>
-            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            <p className="font-body-sm text-body-sm text-[#2C1E16]/75 leading-relaxed">
               Individually shaped, oven-baked, hand-painted, and triple UV diamond glazed clay keepsakes crafted with love in Pakistan.
             </p>
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <span className="inline-flex items-center gap-1 bg-matcha-tint text-secondary rounded-full px-3 py-1 text-label-sm font-label-sm">
-                <Icon name="verified" className="text-[14px]" aria-hidden="true" /> Handcrafted 1-of-1
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-1 text-xs font-medium text-[#2C1E16]">
+              <span className="inline-flex items-center gap-1">
+                <Icon name="verified" className="text-[14px] text-[#A62C4B]" aria-hidden="true" /> Handcrafted 1-of-1
               </span>
-              <span className="inline-flex items-center gap-1 bg-peach-tint text-tertiary rounded-full px-3 py-1 text-label-sm font-label-sm">
-                <Icon name="favorite" className="text-[14px]" aria-hidden="true" /> Resin Glazed
+              <span className="inline-flex items-center gap-1">
+                <Icon name="favorite" className="text-[14px] text-[#A62C4B]" aria-hidden="true" /> Resin Glazed
               </span>
             </div>
           </div>

@@ -11,6 +11,9 @@ describe("HomePage Component", () => {
     });
     expect(brandHeading).toBeInTheDocument();
     expect(screen.getByText(/Polymer Clay, Resin & Endless Affection/i)).toBeInTheDocument();
+    expect(screen.getByText(/Small batch handmade drops/i)).toBeInTheDocument();
+    expect(screen.getByText(/Hand-sculpted Polymer Clay/i)).toBeInTheDocument();
+    expect(screen.getByText("Made to Order")).toBeInTheDocument();
   });
 
   it("provides primary call to action links", () => {

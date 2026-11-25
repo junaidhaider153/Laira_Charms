@@ -72,8 +72,8 @@ export function PaymentInstructionsCard({
           >
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="font-bold text-sm text-espresso-deep">{account.name}</span>
-                <span className="font-label-sm text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-peach-tint text-tertiary">
+                <span className="font-bold text-sm text-[#2C1E16]">{account.name}</span>
+                <span className="font-label-sm text-[10px] font-bold px-2 py-0.5 rounded-sm border border-[#2C1E16]/20 text-[#2C1E16]">
                   {account.badge}
                 </span>
               </div>

@@ -11,12 +11,12 @@ export default function AboutPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Breadcrumbs items={[{ label: "Our Story & Craft" }]} />
 
-      <div className="bg-surface-cloud p-8 sm:p-12 rounded-3xl border border-border-warm/60 shadow-sm mt-4">
-        <div className="inline-flex items-center gap-2 rounded-full bg-strawberry-subtle text-strawberry-blush-dark px-3.5 py-1 text-xs font-bold mb-4">
-          <span>🍓</span> Baked with Love in Pakistan
-        </div>
+      <div className="bg-[#FFF9F5] p-8 sm:p-12 rounded-2xl border border-[#2C1E16]/15 shadow-sm mt-4">
+        <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#A62C4B] mb-3">
+          Baked with Love in Pakistan
+        </span>
 
-        <h1 className="font-headline text-3xl sm:text-4xl font-bold text-espresso-deep mb-4">
+        <h1 className="font-headline text-3xl sm:text-4xl font-bold text-[#2C1E16] mb-4">
           Every charm tells a sweet story.
         </h1>
         <p className="text-sm text-espresso-muted mb-8 leading-relaxed">

@@ -13,7 +13,7 @@ const FEATURED_CHARMS = [
     name: "Cuddle Bear Clay Charm",
     priceMinor: 180000,
     priceFormatted: "Rs. 1,800",
-    badge: "🍯 Studio Favorite",
+    badge: "Studio Favorite",
     category: "critters",
     description: "Chubby polymer bear with warm caramel undertones, fine hand-painted blush cheeks, and stainless silver swivel ring.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_",
@@ -24,7 +24,7 @@ const FEATURED_CHARMS = [
     name: "Acrobat Spidey Keyring",
     priceMinor: 220000,
     priceFormatted: "Rs. 2,200",
-    badge: "🕸️ Best Seller",
+    badge: "Best Seller",
     category: "heroes",
     description: "Vibrant crimson and indigo hero sculpted hanging inverted by hand-twisted silver wire webbing with spider-sigil backing.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBCFJBErDthdL3hVVV_JEZdWGc_oU1MbdwwMf7N05yOHobzRAdhFQzY2dHP2bBcMUH3TURWPZry_MqkgwllT4iqW18pIYzjPusDn1AI9dicV74sUAnz0K-IJqR09LW_jAzu-OHCjV5SCZVULgMXgD_HUQ2bpBaWg5pPIUjGmz7rRo6jTEO_0IWcaTXuYvM2i13mXIWwaCHWaAK8BDWFWNX3OMynRwB-ECro2oB8HDFP8ShOdfj6pmCp",
@@ -35,7 +35,7 @@ const FEATURED_CHARMS = [
     name: "Chibi Shinobi Pendant",
     priceMinor: 200000,
     priceFormatted: "Rs. 2,000",
-    badge: "🍃 Anime Edition",
+    badge: "Anime Edition",
     category: "heroes",
     description: "Features iconic spiky hair and leaf forehead protector with rich mandarin jumpsuits sculpted from pre-tinted polymer.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvJiLMGHVgmSLO-6F0UY_UImVAurSHTuB2iEnH54oMICk91WQaREUHHDMk5K-YW2uNQXaAgEPt38azjf7Kr_fEH6NuPFyhrA5kWNrLqqkOQmza3ajscOGtJaDXmXE_X3gwnE53-N6QiPsHbapRed7qdIATFRviCQ41A_TP9YH-kMKrzdCyfDxPSzsAtpGX7l76mW7p-bZydT4znfe2_PvpZX_1FT-tn5Yh2Aj6odFC2rVNW4hHfylB",
@@ -46,7 +46,7 @@ const FEATURED_CHARMS = [
     name: "Shadow Star Walker",
     priceMinor: 190000,
     priceFormatted: "Rs. 1,900",
-    badge: "⭐ Pixel Star Clasp",
+    badge: "Pixel Star Clasp",
     category: "gaming",
     description: "Midnight charcoal silhouette with electric amethyst eyes paired with our custom five-point golden star clip clasp.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMlAn47ftbMELAtDcCJTo2MUrH864bbZ5fVvKE0UrawWPsCvSJEqXlfNWxceX87dhIi46YcOzV3HQlql7v7SmsGy-FNiSy59WamVM2LWubBFN_tFolop8IoQjzUVp6tFpgpB0Bwse7Z_ViBLg7JWcv1FsWYABr022mQ8ZT89W_RNr8qU_hvdlbx5nnEip0s13_evWXtncTp2zDk3MOgdeHPA1Pi6gGMmIqN4pAQHmbKLK6j88UI292",
@@ -57,7 +57,7 @@ const FEATURED_CHARMS = [
     name: "Honey Teddy Keepsake",
     priceMinor: 185000,
     priceFormatted: "Rs. 1,850",
-    badge: "🧸 Small Batch",
+    badge: "Small Batch",
     category: "critters",
     description: "Curved arms and cozy posture, fired with triple-strength core clay to survive backpacks, keyrings, and travel cases.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxTq8MIlWsTVOdWjmqhR3BpAej9PqZLlfhzXIpakycP2BoMR5RjSOBySxHE41agokCtRDlRJ16ULkQesRTFO-Wk_BNqgsw6UfzsJfTdTxjXp9Xl404QKdksjUVYtZi6JHLWtMgcHWUW3Z8IFwjBjEA7xw-bznUkh-KN9xgBcm0MbZHlVxI6ktQ0EP7kvlFDZtnZzN4u2xh-bFcbUmYMAHqD08PGYGbLAhO18YZwT1ve0NKX08x1mV_",
@@ -68,7 +68,7 @@ const FEATURED_CHARMS = [
     name: "Matcha Roll Neko Charm",
     priceMinor: 170000,
     priceFormatted: "Rs. 1,700",
-    badge: "🍵 Pastry Cafe",
+    badge: "Pastry Cafe",
     category: "pastry",
     description: "Soft jade green clay swirl topped with miniature powdered sugar texture and a glossy resin strawberry slice.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDk3Z-iguUECUvUWJT-ZaI6_ZMBsBs9TGn3fRt6Le6RmO_XKTL16uROILplBPC0oTIKr1h_r-lk29-TByvGj4aNtNdDs_UAuV0TYQFrl664uEknA-v30wMS2_FeEvgZy5cswIhqN7pH6yi_LStl6vhX3LtJBW2EQ7V1AO04pv_7rTTSAT42J4DP0N6BtoYdNAGGLTRn0x5PsqgCWxy34-bKwt-T9NxBR--o5MKjUQY",
@@ -79,7 +79,7 @@ const FEATURED_CHARMS = [
     name: "Amber Caramel Purin Charm",
     priceMinor: 165000,
     priceFormatted: "Rs. 1,650",
-    badge: "🍮 Custard Purin",
+    badge: "Custard Purin",
     category: "pastry",
     description: "Jelly-like glazed polymer custard with hand-dripped caramel syrup layer and delicate gold star dangle bead.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAGv135mV4alOOTxXNWNYmVdD8ShpejuRiombUoJ5ld9GMNxxAPObvrSeNkWwA8ySNWpDvmnMVlyMNRiCOiTn3aulUH3HeIG370Kr_CxR_ivx6owkYrO9eEfrtV27_Zm8ZlT1HCKEQJbObadZF1RuEz7xmjIV-PJWd9659-AxMFLhAzGj6Rwa7IhH_EbS5OZzyrj5h4r3K5fM5uE2CgxZqVDA9GNQawzVSmUnGiqJs",
@@ -90,7 +90,7 @@ const FEATURED_CHARMS = [
     name: "Mochi Usagi Snow Bunny",
     priceMinor: 175000,
     priceFormatted: "Rs. 1,750",
-    badge: "🐰 Limited Restock",
+    badge: "Limited Restock",
     category: "critters",
     description: "Silky matte-textured bunny silhouette with gentle blush accents and miniature pastel chime bell.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCP08iCBRGaLFOWpY3ISIZt6BqxgZ9C0cO0-DE7Rjz9Z2_TMhtC0QEnr65fdKUAP6_bi7Clnnt0ydfrWKZAbcQFm0FL2uBccyOGKeU0T4KxeXvEh_APhkyde_mJl6axqvB5ZBqB6a9fJAyLTPbYc5uiBRRedS30Vtv_7b9KnU7OwD-6tkqHCz2te_QOikLYu6DaIWM3C0kFAV3hqXcGLjwe1bWOWiPWWSAHXAQeQaU",
@@ -146,6 +146,12 @@ export default function HomePage() {
   const [selectedClasp, setSelectedClasp] = useState(CLASP_OPTIONS[0]);
   const [selectedDangles, setSelectedDangles] = useState([DANGLE_OPTIONS[0], DANGLE_OPTIONS[1]]);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [justAddedId, setJustAddedId] = useState<string | null>(null);
+  const [favoritedIds, setFavoritedIds] = useState<string[]>([]);
+
+  const toggleFavorite = (id: string) => {
+    setFavoritedIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
+  };
 
   // Toggle Dangles (max 2)
   const toggleDangle = (dangle: typeof DANGLE_OPTIONS[0]) => {
@@ -174,10 +180,12 @@ export default function HomePage() {
       unitPriceMinor: charm.priceMinor,
       quantity: 1,
       imageUrl: charm.image,
-      leadTimeDays: 2,
+      leadTimeDays: 7,
     });
+    setJustAddedId(charm.id);
     setToastMessage(`Added ${charm.name} to Bag!`);
     openDrawer();
+    setTimeout(() => setJustAddedId((curr) => (curr === charm.id ? null : curr)), 1800);
     setTimeout(() => setToastMessage(null), 3000);
   };
 
@@ -211,46 +219,36 @@ export default function HomePage() {
       : FEATURED_CHARMS.filter((item) => item.category === activeCategory);
 
   return (
-    <div className="flex flex-col w-full bg-background min-h-screen pt-4 sm:pt-6">
+    <div className="flex flex-col w-full bg-background min-h-screen pt-0">
       {/* SECTION 1: HERO WITH SCALLOP / CLOUD CONTOUR */}
       <section className="relative w-full overflow-hidden bg-surface-custard pb-20 pt-8 sm:pt-12">
-        {/* Decorative Floating Pastel Doodles & Glows */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute left-8 top-12 h-24 w-24 rounded-full bg-strawberry-subtle/70 blur-2xl" />
-          <div className="absolute right-12 top-20 h-32 w-32 rounded-full bg-peach-cream/30 blur-3xl" />
-          <div className="absolute bottom-24 left-1/3 h-28 w-28 rounded-full bg-matcha-soft/20 blur-2xl" />
-        </div>
-
         <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6">
-          {/* Breadcrumb badge pill */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-surface-cloud px-4 py-1.5 shadow-sm text-espresso-deep border border-border-warm/40">
-              <span className="text-strawberry-blush font-bold">🍓</span>
-              <span className="font-label-sm text-label-sm uppercase tracking-wider text-espresso-muted">
-                Polymer Clay, Resin &amp; Endless Affection • Limited Atelier Studio
-              </span>
-              <span className="text-matcha-soft">✨</span>
-            </div>
+          {/* Editorial Studio Metadata */}
+          <div className="flex flex-col items-center justify-center gap-1 mb-6 text-center">
+            <p className="font-label-sm text-[11px] uppercase tracking-[0.18em] text-[#2C1E16]/75 font-semibold">
+              Polymer Clay, Resin &amp; Endless Affection &bull; Limited Atelier Studio
+            </p>
+            <p className="text-[11px] text-[#A62C4B] font-medium tracking-wide">
+              Small batch handmade drops &bull; Limited studio oven batches
+            </p>
           </div>
 
           {/* Hero Header & JUMPING HONEY BEAR CHARACTER */}
           <div className="text-center max-w-3xl mx-auto mb-10 relative">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-display text-espresso-deep tracking-tight mb-5 leading-tight relative inline-block">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-display text-[#2C1E16] tracking-tight mb-5 leading-tight relative inline-block">
               Tiny Pals &amp; Sweet Keepsakes,<br />
               <span className="relative inline-flex items-center flex-wrap justify-center gap-2">
-                <span className="text-strawberry-blush inline-block">Handcrafted Just for You</span>
-                <span className="text-strawberry-blush">✨</span>
+                <span className="text-[#A62C4B] inline-block">Handcrafted Just for You</span>
 
                 {/* JUMPING HONEY BEAR MASCOT */}
                 <span className="relative inline-block ml-1 align-middle group cursor-pointer" title="Hugging Honey Bear jumps for joy!">
                   {/* Sparkle particles */}
                   <span className="absolute -top-3 -right-2 text-tertiary-container animate-sparkle-pop pointer-events-none text-base">✦</span>
-                  <span className="absolute top-1 -left-3 text-strawberry-blush animate-sparkle-pop pointer-events-none text-sm">✧</span>
-                  <span className="absolute -bottom-1 -right-3 text-matcha-soft animate-sparkle-pop pointer-events-none text-xs">✨</span>
+                  <span className="absolute top-1 -left-3 text-[#A62C4B] animate-sparkle-pop pointer-events-none text-sm">✧</span>
 
                   {/* Animated jumping bear container */}
                   <span className="inline-block animate-honey-jump origin-bottom transform-gpu hover:scale-110 transition-transform">
-                    <span className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full p-1 bg-surface-cloud shadow-md border-2 border-strawberry-blush/60 flex items-center justify-center overflow-hidden inline-block align-middle backdrop-blur-sm">
+                    <span className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full p-1 bg-[#FFF9F5] shadow-md border-2 border-[#A62C4B]/60 flex items-center justify-center overflow-hidden inline-block align-middle">
                       <img
                         alt="Jumping Honey Bear mascot"
                         className="w-full h-full object-contain p-1 rounded-full pointer-events-none"
@@ -259,82 +257,97 @@ export default function HomePage() {
                     </span>
                   </span>
                   {/* Squish shadow beneath bear */}
-                  <span className="block w-10 sm:w-12 h-2 mx-auto bg-espresso-deep/15 rounded-full blur-[1px] -mt-1 scale-90" />
+                  <span className="block w-10 sm:w-12 h-2 mx-auto bg-[#2C1E16]/15 rounded-full blur-[1px] -mt-1 scale-90" />
                 </span>
               </span>
               <span className="sr-only"> - Handcrafted keepsakes baked to brighten everyday rituals</span>
             </h1>
 
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+            <p className="font-body-lg text-body-lg text-[#2C1E16]/80 max-w-2xl mx-auto leading-relaxed">
               Handcrafted keepsakes baked to brighten everyday rituals. Playful polymer clay charms, hand-glazed figurines, and tactile bag trinkets baked with slow affection and sealed with triple diamond UV glaze for everyday adventures.
             </p>
 
             {/* CTA Action Hub */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+            <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mt-8">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 rounded-full bg-strawberry-blush px-8 py-3.5 font-label-lg text-label-lg text-on-primary shadow-md hover:opacity-95 transition-all transform hover:-translate-y-0.5 active:scale-95"
+                className="inline-flex items-center gap-2 rounded-md bg-[#A62C4B] hover:bg-[#2C1E16] px-7 sm:px-8 py-3.5 font-label-lg text-label-lg text-[#FFF9F5] shadow-sm transition-colors active:scale-95"
               >
                 <span>Browse Ready-Made Charms</span>
-                <span>🍓</span>
+                <Icon name="arrow_forward" className="text-[18px]" aria-hidden="true" />
               </Link>
               <Link
                 href="/custom-order"
-                className="inline-flex items-center gap-2 rounded-full bg-surface-cloud px-7 py-3.5 font-label-lg text-label-lg text-espresso-deep shadow-sm hover:bg-surface-container transition-all transform hover:-translate-y-0.5 border border-border-warm"
+                className="inline-flex items-center gap-2 rounded-md bg-[#FFF9F5] px-6 sm:px-7 py-3.5 font-label-lg text-label-lg text-[#2C1E16] hover:bg-[#2C1E16] hover:text-[#FFF9F5] transition-colors border border-[#2C1E16]/25"
               >
                 <span>Request Bespoke Charm</span>
-                <Icon name="auto_awesome" className="text-[18px] text-strawberry-blush" aria-hidden="true" />
+                <Icon name="auto_awesome" className="text-[18px] text-[#A62C4B]" aria-hidden="true" />
               </Link>
             </div>
 
-            {/* Micro Feature Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint px-3.5 py-1 text-label-sm font-label-sm text-tertiary shadow-sm">
-                <Icon name="brush" className="text-[14px]" aria-hidden="true" /> Hand-sculpted Polymer Clay
+            {/* Borderless Artisanal Metadata Row */}
+            <div className="mt-9 pt-6 border-t border-[#2C1E16]/10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs font-medium text-[#2C1E16]">
+              <span className="inline-flex items-center gap-1.5">
+                <Icon name="brush" className="text-[15px] text-[#A62C4B]" aria-hidden="true" />
+                <span>Hand-sculpted Polymer Clay</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-matcha-tint px-3.5 py-1 text-label-sm font-label-sm text-secondary shadow-sm">
-                <Icon name="water_drop" className="text-[14px]" aria-hidden="true" /> Water-resistant UV Glaze
+              <span className="hidden sm:inline text-[#2C1E16]/25" aria-hidden="true">|</span>
+              <span className="inline-flex items-center gap-1.5">
+                <Icon name="water_drop" className="text-[15px] text-[#A62C4B]" aria-hidden="true" />
+                <span>Water-resistant UV Glaze</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle px-3.5 py-1 text-label-sm font-label-sm text-primary shadow-sm">
-                <Icon name="star" className="text-[14px]" aria-hidden="true" /> 100% Unique Artisanal 1-of-1
+              <span className="hidden sm:inline text-[#2C1E16]/25" aria-hidden="true">|</span>
+              <span className="inline-flex items-center gap-1.5">
+                <Icon name="star" className="text-[15px] text-[#A62C4B]" aria-hidden="true" />
+                <span>100% Unique Artisanal 1-of-1</span>
               </span>
             </div>
           </div>
 
           {/* Hero Visual Vitrine Showcase (4 Charm Showcase Cards) */}
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
-            {FEATURED_CHARMS.slice(0, 4).map((charm, idx) => (
-              <div
-                key={charm.id}
-                className={`group relative rounded-3xl bg-surface-cloud p-3 shadow-md hover:shadow-xl transition-all duration-300 border border-border-warm/40 ${
-                  idx % 2 === 1 ? "-translate-y-1 sm:translate-y-2" : ""
-                }`}
-              >
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard">
-                  <img
-                    alt={charm.name}
-                    className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    src={charm.image}
-                  />
-                  <span className="absolute top-2.5 left-2.5 rounded-full bg-surface-cloud/95 px-2.5 py-0.5 font-label-sm text-label-sm text-espresso-deep backdrop-blur-sm shadow-xs">
-                    {charm.badge}
-                  </span>
-                </div>
-                <div className="pt-3 pb-1 px-1 flex items-center justify-between">
-                  <div className="overflow-hidden">
-                    <p className="font-title-sm text-title-sm text-espresso-deep truncate">{charm.name}</p>
-                    <p className="font-label-sm text-label-sm text-espresso-muted">{charm.priceFormatted}</p>
+          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+            {FEATURED_CHARMS.slice(0, 4).map((charm, idx) => {
+              const isAdded = justAddedId === charm.id;
+              return (
+                <div
+                  key={charm.id}
+                  className={`group relative rounded-2xl bg-[#FFF9F5] p-2.5 sm:p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-[#2C1E16]/10 ${
+                    idx % 2 === 1 ? "-translate-y-1 sm:translate-y-2" : ""
+                  }`}
+                >
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-surface-custard">
+                    <img
+                      alt={charm.name}
+                      className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      src={charm.image}
+                    />
+                    <span className="absolute top-2.5 left-2.5 rounded-sm bg-[#2C1E16]/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] font-semibold uppercase tracking-wider text-[#FFF9F5]">
+                      {charm.badge}
+                    </span>
                   </div>
-                  <button
-                    onClick={() => handleQuickAdd(charm)}
-                    className="w-8 h-8 rounded-full bg-peach-tint flex items-center justify-center text-strawberry-blush shadow-xs hover:bg-strawberry-blush hover:text-white transition-colors shrink-0 ml-2"
-                  >
-                    <Icon name="add_shopping_cart" className="text-[16px]" aria-hidden="true" />
-                    <span className="sr-only">Quick add {charm.name} to bag</span>
-                  </button>
+                  <div className="pt-3 pb-1 px-0.5 sm:px-1 flex items-center justify-between gap-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-title-sm text-xs sm:text-title-sm text-[#2C1E16] font-semibold truncate">{charm.name}</p>
+                      <p className="font-label-sm text-[11px] sm:text-label-sm text-[#2C1E16]/70 mt-0.5">{charm.priceFormatted}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleQuickAdd(charm)}
+                      className={`w-10 h-10 -mr-1 rounded-md bg-transparent flex items-center justify-center transition-all shrink-0 hover:bg-[#2C1E16]/5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A62C4B] ${
+                        isAdded ? "text-[#A62C4B]" : "text-[#2C1E16] hover:text-[#A62C4B]"
+                      }`}
+                    >
+                      <Icon
+                        name={isAdded ? "check" : "add_shopping_cart"}
+                        className="text-[19px] transition-transform group-hover:scale-105"
+                        aria-hidden="true"
+                      />
+                      <span className="sr-only">Quick add {charm.name} to bag</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -396,10 +409,10 @@ export default function HomePage() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveCategory(tab.id)}
-                  className={`rounded-full px-4 py-1.5 font-label-md text-label-md shadow-xs transition-all ${
+                  className={`rounded-md px-3.5 py-1.5 font-label-md text-xs sm:text-label-md transition-colors ${
                     activeCategory === tab.id
-                      ? "bg-strawberry-blush text-on-primary shadow-sm"
-                      : "bg-surface-cloud text-espresso-deep hover:bg-surface-custard border border-border-warm/40"
+                      ? "bg-[#2C1E16] text-[#FFF9F5]"
+                      : "bg-[#FFF9F5] text-[#2C1E16] hover:border-[#2C1E16]/45 border border-[#2C1E16]/15"
                   }`}
                 >
                   {tab.label}
@@ -409,60 +422,71 @@ export default function HomePage() {
           </div>
 
           {/* Product Cards Grid: 8-Vitrine Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredCharms.map((charm) => (
-              <div
-                key={charm.id}
-                className="group bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-border-warm/40"
-              >
-                <div>
-                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
-                    <img
-                      alt={charm.name}
-                      className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      src={charm.image}
-                    />
-                    <div className="absolute top-3 left-3 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-xs flex items-center gap-1">
-                      {charm.badge}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            {filteredCharms.map((charm) => {
+              const isAdded = justAddedId === charm.id;
+              const isFav = favoritedIds.includes(charm.id);
+              return (
+                <div
+                  key={charm.id}
+                  className="group bg-[#FFF9F5] rounded-2xl p-2.5 sm:p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between border border-[#2C1E16]/10"
+                >
+                  <div>
+                    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-surface-custard mb-3 sm:mb-4">
+                      <img
+                        alt={charm.name}
+                        className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        src={charm.image}
+                      />
+                      <span className="absolute top-2.5 left-2.5 rounded-sm bg-[#2C1E16]/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] font-semibold uppercase tracking-wider text-[#FFF9F5]">
+                        {charm.badge}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => toggleFavorite(charm.id)}
+                        title="Save to lovelist"
+                        className={`absolute top-2.5 right-2.5 w-9 h-9 rounded-md bg-[#FFF9F5]/90 border border-[#2C1E16]/15 flex items-center justify-center transition-colors ${
+                          isFav ? "text-[#A62C4B]" : "text-[#2C1E16]/70 hover:text-[#A62C4B]"
+                        }`}
+                      >
+                        <Icon name={isFav ? "favorite" : "favorite_border"} className="text-[18px]" aria-hidden="true" />
+                        <span className="sr-only">Save to lovelist</span>
+                      </button>
                     </div>
+                    <h3 className="font-title-md text-sm sm:text-title-md text-[#2C1E16] font-bold mb-1 line-clamp-1">
+                      {charm.name}
+                    </h3>
+                    <p className="font-body-sm text-xs sm:text-body-sm text-[#2C1E16]/70 mb-3 sm:mb-4 line-clamp-2">
+                      {charm.description}
+                    </p>
+                  </div>
+                  <div className="pt-2.5 flex items-center justify-between gap-2 border-t border-[#2C1E16]/10">
+                    <span className="font-headline-sm text-base sm:text-headline-sm text-[#2C1E16] font-bold">
+                      {charm.priceFormatted}
+                    </span>
                     <button
                       type="button"
-                      title="Save to lovelist"
-                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-cloud/90 text-espresso-muted hover:text-strawberry-blush flex items-center justify-center transition-colors shadow-xs"
+                      onClick={() => handleQuickAdd(charm)}
+                      className={`inline-flex items-center gap-1.5 rounded-md px-3 sm:px-3.5 py-2 text-xs font-semibold transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A62C4B] focus-visible:ring-offset-2 ${
+                        isAdded
+                          ? "bg-[#A62C4B] text-[#FFF9F5]"
+                          : "bg-[#2C1E16] hover:bg-[#A62C4B] text-[#FFF9F5]"
+                      }`}
                     >
-                      <Icon name="favorite" className="text-[18px]" aria-hidden="true" />
-                      <span className="sr-only">Save to lovelist</span>
+                      <span>{isAdded ? "Added" : "Add"}</span>
+                      <Icon name={isAdded ? "check" : "add_shopping_cart"} className="text-[15px]" aria-hidden="true" />
                     </button>
                   </div>
-                  <h3 className="font-title-md text-title-md text-espresso-deep font-bold mb-1">
-                    {charm.name}
-                  </h3>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">
-                    {charm.description}
-                  </p>
                 </div>
-                <div className="pt-2 flex items-center justify-between border-t border-border-warm/30">
-                  <span className="font-headline-sm text-headline-sm text-espresso-deep font-bold">
-                    {charm.priceFormatted}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => handleQuickAdd(charm)}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-on-primary text-strawberry-blush px-4 py-2 font-label-md text-label-md transition-all shadow-xs active:scale-95"
-                  >
-                    <span>Add</span>
-                    <Icon name="add_shopping_cart" className="text-[16px]" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Bottom View All Button */}
           <div className="mt-12 text-center">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 rounded-full bg-strawberry-blush text-on-primary px-8 py-3.5 font-label-lg text-label-lg shadow-sm hover:opacity-95 transition-all transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-md bg-[#A62C4B] hover:bg-[#2C1E16] text-[#FFF9F5] px-8 py-3.5 font-label-lg text-label-lg shadow-sm transition-colors"
             >
               <span>View All 42 Creations</span>
               <Icon name="arrow_forward" className="text-[18px]" aria-hidden="true" />
@@ -494,13 +518,13 @@ export default function HomePage() {
               </span>
             </div>
 
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle text-primary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-3 font-bold">
-              <span>✨</span> Interactive Charm Atelier
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#A62C4B] mb-2">
+              Interactive Charm Atelier
             </span>
-            <h2 className="font-headline text-3xl md:text-headline-lg text-espresso-deep font-bold tracking-tight">
+            <h2 className="font-headline text-3xl md:text-headline-lg text-[#2C1E16] font-bold tracking-tight">
               Build Your Bespoke Charm
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-2">
+            <p className="font-body-md text-body-md text-[#2C1E16]/75 mt-2">
               Pick your hand-sculpted clay muse, pair it with artisan clasp hardware, and string tiny sweets to create your signature bag companion.
             </p>
           </div>
@@ -508,17 +532,17 @@ export default function HomePage() {
           {/* Customizer Studio Grid: Controls & Live Preview */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Interactive Controls (Left 7 Cols) */}
-            <div className="lg:col-span-7 bg-surface-cloud rounded-3xl p-6 lg:p-8 shadow-sm space-y-8 border border-border-warm/40">
+            <div className="lg:col-span-7 bg-[#FFF9F5] rounded-2xl p-6 lg:p-8 shadow-sm space-y-8 border border-[#2C1E16]/15">
               {/* STEP 1: Select Charm Figurine */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-label-lg text-label-lg text-espresso-deep flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-label-sm flex items-center justify-center font-bold">
+                  <span className="font-label-lg text-label-lg text-[#2C1E16] flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-sm bg-[#2C1E16] text-[#FFF9F5] text-label-sm flex items-center justify-center font-bold">
                       1
                     </span>
                     Choose Core Clay Pal
                   </span>
-                  <span className="font-label-sm text-label-sm text-strawberry-blush font-semibold">
+                  <span className="font-label-sm text-label-sm text-[#A62C4B] font-semibold">
                     {selectedChar.name} (+{selectedChar.priceFormatted})
                   </span>
                 </div>
@@ -530,19 +554,19 @@ export default function HomePage() {
                         key={char.name}
                         type="button"
                         onClick={() => setSelectedChar(char)}
-                        className={`flex flex-col items-center p-3 rounded-2xl text-center transition-all ${
+                        className={`flex flex-col items-center p-3 rounded-xl text-center transition-all ${
                           isSelected
-                            ? "bg-surface-custard border-2 border-strawberry-blush shadow-xs"
-                            : "bg-surface-cloud border border-border-warm/40 hover:bg-surface-custard"
+                            ? "bg-surface-custard border-2 border-[#A62C4B]"
+                            : "bg-[#FFF9F5] border border-[#2C1E16]/15 hover:border-[#2C1E16]/35"
                         }`}
                       >
-                        <div className="w-14 h-14 rounded-full overflow-hidden mb-2 bg-surface-custard shadow-xs">
+                        <div className="w-14 h-14 rounded-lg overflow-hidden mb-2 bg-surface-custard">
                           <img alt={char.name} className="w-full h-full object-cover" src={char.image} />
                         </div>
-                        <span className="font-title-sm text-title-sm text-espresso-deep leading-snug font-semibold truncate w-full">
+                        <span className="font-title-sm text-title-sm text-[#2C1E16] leading-snug font-semibold truncate w-full">
                           {char.name}
                         </span>
-                        <span className="font-label-sm text-label-sm text-espresso-muted">{char.priceFormatted}</span>
+                        <span className="font-label-sm text-label-sm text-[#2C1E16]/65">{char.priceFormatted}</span>
                       </button>
                     );
                   })}
@@ -552,13 +576,13 @@ export default function HomePage() {
               {/* STEP 2: Choose Hardware Clasp */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-label-lg text-label-lg text-espresso-deep flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-label-sm flex items-center justify-center font-bold">
+                  <span className="font-label-lg text-label-lg text-[#2C1E16] flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-sm bg-[#2C1E16] text-[#FFF9F5] text-label-sm flex items-center justify-center font-bold">
                       2
                     </span>
                     Choose Hardware Clasp
                   </span>
-                  <span className="font-label-sm text-label-sm text-strawberry-blush font-semibold">
+                  <span className="font-label-sm text-label-sm text-[#A62C4B] font-semibold">
                     {selectedClasp.name} (+{selectedClasp.priceFormatted})
                   </span>
                 </div>
@@ -570,17 +594,17 @@ export default function HomePage() {
                         key={clasp.name}
                         type="button"
                         onClick={() => setSelectedClasp(clasp)}
-                        className={`p-3 rounded-2xl text-center flex flex-col items-center transition-all ${
+                        className={`p-3 rounded-xl text-center flex flex-col items-center transition-all ${
                           isSelected
-                            ? "bg-surface-custard border-2 border-strawberry-blush shadow-xs"
-                            : "bg-surface-cloud border border-border-warm/40 hover:bg-surface-custard"
+                            ? "bg-surface-custard border-2 border-[#A62C4B]"
+                            : "bg-[#FFF9F5] border border-[#2C1E16]/15 hover:border-[#2C1E16]/35"
                         }`}
                       >
                         <Icon name={clasp.icon} className={`text-[26px] ${clasp.color} mb-1`} aria-hidden="true" />
-                        <span className="font-title-sm text-title-sm text-espresso-deep font-semibold truncate w-full">
+                        <span className="font-title-sm text-title-sm text-[#2C1E16] font-semibold truncate w-full">
                           {clasp.name}
                         </span>
-                        <span className="font-label-sm text-label-sm text-espresso-muted">{clasp.priceFormatted}</span>
+                        <span className="font-label-sm text-label-sm text-[#2C1E16]/65">{clasp.priceFormatted}</span>
                       </button>
                     );
                   })}
@@ -590,13 +614,13 @@ export default function HomePage() {
               {/* STEP 3: Add Dangle Accents */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-label-lg text-label-lg text-espresso-deep flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-strawberry-blush text-on-primary text-label-sm flex items-center justify-center font-bold">
+                  <span className="font-label-lg text-label-lg text-[#2C1E16] flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-sm bg-[#2C1E16] text-[#FFF9F5] text-label-sm flex items-center justify-center font-bold">
                       3
                     </span>
                     Select Tiny Dangles (Pick up to 2)
                   </span>
-                  <span className="font-label-sm text-label-sm text-espresso-muted">Multi-select allowed</span>
+                  <span className="font-label-sm text-label-sm text-[#2C1E16]/65">Multi-select allowed</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {DANGLE_OPTIONS.map((dangle) => {
@@ -606,17 +630,17 @@ export default function HomePage() {
                         key={dangle.name}
                         type="button"
                         onClick={() => toggleDangle(dangle)}
-                        className={`p-3 rounded-2xl text-center flex flex-col items-center transition-all ${
+                        className={`p-3 rounded-xl text-center flex flex-col items-center transition-all ${
                           isSelected
-                            ? "bg-surface-custard border-2 border-strawberry-blush shadow-xs"
-                            : "bg-surface-cloud border border-border-warm/40 hover:bg-surface-custard"
+                            ? "bg-surface-custard border-2 border-[#A62C4B]"
+                            : "bg-[#FFF9F5] border border-[#2C1E16]/15 hover:border-[#2C1E16]/35"
                         }`}
                       >
                         <span className="text-2xl mb-1">{dangle.emoji}</span>
-                        <span className="font-title-sm text-title-sm text-espresso-deep font-semibold">
+                        <span className="font-title-sm text-title-sm text-[#2C1E16] font-semibold">
                           {dangle.name}
                         </span>
-                        <span className="font-label-sm text-label-sm text-espresso-muted">
+                        <span className="font-label-sm text-label-sm text-[#2C1E16]/65">
                           {dangle.priceFormatted}
                         </span>
                       </button>
@@ -627,24 +651,24 @@ export default function HomePage() {
             </div>
 
             {/* Live Atelier Preview Card (Right 5 Cols Sticky) */}
-            <div className="lg:col-span-5 bg-surface-cloud rounded-3xl p-6 lg:p-8 shadow-md sticky top-32 border border-border-warm/40">
-              <div className="flex items-center justify-between border-b pb-4 mb-5 border-border-warm">
-                <span className="font-title-sm text-title-sm text-espresso-deep font-bold">Studio Preview</span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-matcha-tint text-secondary px-3 py-0.5 text-label-sm font-label-sm font-semibold">
-                  <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" /> Made to Order
+            <div className="lg:col-span-5 bg-[#FFF9F5] rounded-2xl p-6 lg:p-8 shadow-md sticky top-24 border border-[#2C1E16]/15">
+              <div className="flex items-center justify-between border-b pb-4 mb-5 border-[#2C1E16]/10">
+                <span className="font-title-sm text-title-sm text-[#2C1E16] font-bold">Studio Preview</span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide text-[#2C1E16]">
+                  <span className="w-2 h-2 rounded-full bg-[#2F5D3A]" aria-hidden="true" /> Made to Order
                 </span>
               </div>
 
               {/* Dynamic Visual Canvas */}
-              <div className="relative w-full aspect-square rounded-2xl bg-surface-custard p-4 flex flex-col items-center justify-center overflow-hidden mb-6 shadow-inner border border-border-warm/30">
-                {/* Clasp Badge */}
-                <div className="mb-2 px-3 py-1 bg-surface-cloud rounded-full shadow-xs text-label-sm font-label-sm text-espresso-deep flex items-center gap-1">
+              <div className="relative w-full aspect-square rounded-xl bg-surface-custard p-4 flex flex-col items-center justify-center overflow-hidden mb-6 border border-[#2C1E16]/10">
+                {/* Clasp Tag */}
+                <div className="mb-2.5 px-3 py-1 bg-[#FFF9F5] border border-[#2C1E16]/15 rounded-sm text-label-sm font-label-sm text-[#2C1E16] flex items-center gap-1.5">
                   <Icon name={selectedClasp.icon} className={`text-[16px] ${selectedClasp.color}`} aria-hidden="true" />
                   <span>{selectedClasp.name}</span>
                 </div>
 
                 {/* Figurine Centerpiece */}
-                <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-2xl overflow-hidden shadow-lg bg-surface-cloud relative group">
+                <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-xl overflow-hidden shadow-md bg-[#FFF9F5] relative group">
                   <img
                     alt="Customized Charm Preview"
                     className="w-full h-full object-cover transition-all duration-300"
@@ -658,36 +682,36 @@ export default function HomePage() {
                     selectedDangles.map((d) => (
                       <span
                         key={d.name}
-                        className="px-2.5 py-1 bg-surface-cloud/90 rounded-full text-label-sm font-label-sm text-espresso-deep shadow-xs"
+                        className="px-2.5 py-1 bg-[#FFF9F5] border border-[#2C1E16]/15 rounded-sm text-label-sm font-label-sm text-[#2C1E16]"
                       >
                         {d.emoji} {d.name}
                       </span>
                     ))
                   ) : (
-                    <span className="text-xs text-espresso-muted italic">No dangles selected</span>
+                    <span className="text-xs text-[#2C1E16]/60 italic">No dangles selected</span>
                   )}
                 </div>
               </div>
 
               {/* Custom Recipe Bill */}
               <div className="space-y-2 mb-6 text-sm">
-                <div className="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+                <div className="flex justify-between font-body-sm text-body-sm text-[#2C1E16]/75">
                   <span>{selectedChar.name} Clay Base</span>
                   <span>{selectedChar.priceFormatted}</span>
                 </div>
-                <div className="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+                <div className="flex justify-between font-body-sm text-body-sm text-[#2C1E16]/75">
                   <span>{selectedClasp.name}</span>
                   <span>{selectedClasp.priceFormatted}</span>
                 </div>
                 {selectedDangles.length > 0 && (
-                  <div className="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+                  <div className="flex justify-between font-body-sm text-body-sm text-[#2C1E16]/75">
                     <span>Dangles ({selectedDangles.map((d) => d.name).join(", ")})</span>
                     <span>Rs. {(danglesTotalPaisa / 100).toLocaleString()}</span>
                   </div>
                 )}
-                <div className="pt-3 border-t border-border-warm flex justify-between items-baseline">
-                  <span className="font-title-md text-title-md text-espresso-deep font-bold">Estimated Total</span>
-                  <span className="font-headline-sm text-headline-sm text-strawberry-blush font-bold">
+                <div className="pt-3 border-t border-[#2C1E16]/10 flex justify-between items-baseline">
+                  <span className="font-title-md text-title-md text-[#2C1E16] font-bold">Estimated Total</span>
+                  <span className="font-headline-sm text-headline-sm text-[#A62C4B] font-bold">
                     Rs. {(atelierTotalPaisa / 100).toLocaleString()}
                   </span>
                 </div>
@@ -697,13 +721,13 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={handleAddCustomToBag}
-                className="w-full rounded-full bg-strawberry-blush text-on-primary py-4 font-label-lg text-label-lg font-bold shadow-md hover:opacity-95 transition-all transform hover:-translate-y-0.5 active:scale-98 flex items-center justify-center gap-2"
+                className="w-full rounded-md bg-[#A62C4B] hover:bg-[#2C1E16] text-[#FFF9F5] py-4 font-label-lg text-label-lg font-bold shadow-sm transition-colors active:scale-98 flex items-center justify-center gap-2"
               >
                 <Icon name="brush" className="text-[20px]" aria-hidden="true" />
                 <span>Craft &amp; Add Custom to Bag</span>
               </button>
-              <p className="text-center font-label-sm text-label-sm text-espresso-muted mt-3">
-                Hand-glazed &amp; baked in 3-5 studio business days.
+              <p className="text-center font-label-sm text-label-sm text-[#2C1E16]/65 mt-3">
+                Hand-glazed &amp; baked in 7–14 studio business days.
               </p>
             </div>
           </div>
@@ -714,84 +738,84 @@ export default function HomePage() {
       <section className="w-full py-20 bg-background" id="quality-recipe">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint text-tertiary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-3 font-bold">
-              <span>🍰</span> Studio Durability Recipe
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#A62C4B] mb-2">
+              Studio Durability Recipe
             </span>
-            <h2 className="font-headline text-3xl md:text-headline-lg text-espresso-deep font-bold tracking-tight">
+            <h2 className="font-headline text-3xl md:text-headline-lg text-[#2C1E16] font-bold tracking-tight">
               Not Fragile: Built for Daily Adventures
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-2">
+            <p className="font-body-md text-body-md text-[#2C1E16]/75 mt-2">
               We know charms live rough lives on backpacks, tote bags, and keys. Here is how we engineered our keepsakes to last through years of cuddles and pocket scratches.
             </p>
           </div>
 
           {/* 4 Pillars of Handmade Durability */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
+            <div className="bg-surface-custard rounded-2xl p-6 flex flex-col justify-between border border-[#2C1E16]/10">
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-strawberry-subtle text-primary flex items-center justify-center mb-5 shadow-xs">
-                  <Icon name="local_fire_department" className="text-[28px]" aria-hidden="true" />
+                <div className="w-11 h-11 rounded-md border border-[#2C1E16]/15 bg-[#FFF9F5] text-[#A62C4B] flex items-center justify-center mb-5">
+                  <Icon name="local_fire_department" className="text-[24px]" aria-hidden="true" />
                 </div>
-                <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
+                <h3 className="font-headline text-lg md:text-title-md text-[#2C1E16] font-bold mb-2">
                   100% Handcrafted
                 </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                <p className="font-body-sm text-body-sm text-[#2C1E16]/75 leading-relaxed">
                   We slow-cure polymer clay at gentle calibrated temperatures, ensuring zero brittle bubbles and maximum flex-strength under drops.
                 </p>
               </div>
-              <div className="pt-4 flex items-center gap-1.5 text-strawberry-blush font-label-sm text-label-sm font-semibold">
-                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> Impact Tested
+              <div className="pt-4 flex items-center gap-1.5 text-[#2C1E16] font-label-sm text-label-sm font-semibold">
+                <Icon name="check_circle" className="text-[16px] text-[#A62C4B]" aria-hidden="true" /> Impact Tested
               </div>
             </div>
 
-            <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
+            <div className="bg-surface-custard rounded-2xl p-6 flex flex-col justify-between border border-[#2C1E16]/10">
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-peach-tint text-tertiary flex items-center justify-center mb-5 shadow-xs">
-                  <Icon name="diamond" className="text-[28px]" aria-hidden="true" />
+                <div className="w-11 h-11 rounded-md border border-[#2C1E16]/15 bg-[#FFF9F5] text-[#A62C4B] flex items-center justify-center mb-5">
+                  <Icon name="diamond" className="text-[24px]" aria-hidden="true" />
                 </div>
-                <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
+                <h3 className="font-headline text-lg md:text-title-md text-[#2C1E16] font-bold mb-2">
                   UV Diamond Glaze
                 </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                <p className="font-body-sm text-body-sm text-[#2C1E16]/75 leading-relaxed">
                   Every charm receives three micro-layers of crystal UV resin. The shell mimics kiln-fired porcelain gloss and shields painted acrylics.
                 </p>
               </div>
-              <div className="pt-4 flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm font-semibold">
-                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> 100% Water Resistant
+              <div className="pt-4 flex items-center gap-1.5 text-[#2C1E16] font-label-sm text-label-sm font-semibold">
+                <Icon name="check_circle" className="text-[16px] text-[#A62C4B]" aria-hidden="true" /> 100% Water Resistant
               </div>
             </div>
 
-            <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
+            <div className="bg-surface-custard rounded-2xl p-6 flex flex-col justify-between border border-[#2C1E16]/10">
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-matcha-tint text-secondary flex items-center justify-center mb-5 shadow-xs">
-                  <Icon name="link" className="text-[28px]" aria-hidden="true" />
+                <div className="w-11 h-11 rounded-md border border-[#2C1E16]/15 bg-[#FFF9F5] text-[#A62C4B] flex items-center justify-center mb-5">
+                  <Icon name="link" className="text-[24px]" aria-hidden="true" />
                 </div>
-                <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
+                <h3 className="font-headline text-lg md:text-title-md text-[#2C1E16] font-bold mb-2">
                   Personalized Atelier
                 </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                <p className="font-body-sm text-body-sm text-[#2C1E16]/75 leading-relaxed">
                   Screw eye pins are anchored deep into the raw clay core with industrial adhesive before firing, withstanding 20+ lbs of purse pull.
                 </p>
               </div>
-              <div className="pt-4 flex items-center gap-1.5 text-secondary font-label-sm text-label-sm font-semibold">
-                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> Snag-Proof Guarantee
+              <div className="pt-4 flex items-center gap-1.5 text-[#2C1E16] font-label-sm text-label-sm font-semibold">
+                <Icon name="check_circle" className="text-[16px] text-[#A62C4B]" aria-hidden="true" /> Snag-Proof Hardware
               </div>
             </div>
 
-            <div className="bg-surface-custard rounded-3xl p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow border border-border-warm/30">
+            <div className="bg-surface-custard rounded-2xl p-6 flex flex-col justify-between border border-[#2C1E16]/10">
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-strawberry-subtle text-primary flex items-center justify-center mb-5 shadow-xs">
-                  <Icon name="redeem" className="text-[28px]" aria-hidden="true" />
+                <div className="w-11 h-11 rounded-md border border-[#2C1E16]/15 bg-[#FFF9F5] text-[#A62C4B] flex items-center justify-center mb-5">
+                  <Icon name="redeem" className="text-[24px]" aria-hidden="true" />
                 </div>
-                <h3 className="font-headline text-lg md:text-title-md text-espresso-deep font-bold mb-2">
+                <h3 className="font-headline text-lg md:text-title-md text-[#2C1E16] font-bold mb-2">
                   Sweet Bakery Unboxing
                 </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Shipped inside tiny recyclable bakery boxes packed with pastel crinkle paper, wax seal stickers, and care instructions.
+                <p className="font-body-sm text-body-sm text-[#2C1E16]/75 leading-relaxed">
+                  Shipped inside tiny recyclable bakery boxes packed with crinkle paper, wax seal stickers, and care instructions.
                 </p>
               </div>
-              <div className="pt-4 flex items-center gap-1.5 text-strawberry-blush font-label-sm text-label-sm font-semibold">
-                <Icon name="check_circle" className="text-[16px]" aria-hidden="true" /> Ready to Gift
+              <div className="pt-4 flex items-center gap-1.5 text-[#2C1E16] font-label-sm text-label-sm font-semibold">
+                <Icon name="check_circle" className="text-[16px] text-[#A62C4B]" aria-hidden="true" /> Ready to Gift
               </div>
             </div>
           </div>
@@ -803,21 +827,21 @@ export default function HomePage() {
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle text-primary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-2 font-bold">
-                <span>📷</span> Everyday Moments
+              <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#A62C4B] mb-2">
+                Everyday Moments
               </span>
-              <h2 className="font-headline text-3xl md:text-headline-lg text-espresso-deep font-bold tracking-tight">
+              <h2 className="font-headline text-3xl md:text-headline-lg text-[#2C1E16] font-bold tracking-tight">
                 Charm Diaries • In the Wild
               </h2>
-              <p className="font-body-md text-body-md text-on-surface-variant mt-1">
-                See where our handmade companions end up! Tag <span className="font-bold text-strawberry-blush">@LairaCharms</span> to be featured.
+              <p className="font-body-md text-body-md text-[#2C1E16]/75 mt-1">
+                See where our handmade companions end up! Tag <span className="font-bold text-[#A62C4B]">@LairaCharms</span> to be featured.
               </p>
             </div>
-            <div className="mt-4 md:mt-0 flex items-center gap-2">
-              <div className="w-9 h-9 rounded-full bg-strawberry-blush text-on-primary flex items-center justify-center font-bold text-label-sm border-2 border-surface-cloud shadow-xs">
+            <div className="mt-4 md:mt-0 flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-md bg-[#2C1E16] text-[#FFF9F5] flex items-center justify-center font-bold text-label-sm">
                 4.9
               </div>
-              <span className="font-label-md text-label-md text-espresso-deep font-semibold">
+              <span className="font-label-md text-label-md text-[#2C1E16] font-semibold">
                 Over 1,400+ 5-Star Keepsake Bags
               </span>
             </div>
@@ -889,13 +913,13 @@ export default function HomePage() {
       <section className="w-full py-20 bg-background" id="faq">
         <div className="max-w-[880px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-strawberry-subtle text-primary px-4 py-1 font-label-sm text-label-sm uppercase tracking-wider mb-2 font-bold">
-              <span>🌸</span> Helpful Answers
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#A62C4B] mb-2">
+              Helpful Answers
             </span>
-            <h2 className="font-headline text-3xl md:text-headline-md text-espresso-deep font-bold">
+            <h2 className="font-headline text-3xl md:text-headline-md text-[#2C1E16] font-bold">
               Frequently Wondered Questions
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-2">
+            <p className="font-body-md text-body-md text-[#2C1E16]/75 mt-2">
               Everything you need to know about polymer clay care, custom commission slots, and shipping in Pakistan.
             </p>
           </div>
@@ -944,18 +968,18 @@ export default function HomePage() {
           </div>
 
           {/* Quick Contact Box */}
-          <div className="mt-12 rounded-3xl bg-peach-tint p-6 text-center border border-border-warm/40">
-            <h4 className="font-title-sm text-title-sm text-espresso-deep font-bold mb-1">
+          <div className="mt-12 rounded-2xl bg-[#FFF9F5] p-6 text-center border border-[#2C1E16]/15">
+            <h4 className="font-title-sm text-title-sm text-[#2C1E16] font-bold mb-1">
               Have a special question?
             </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">
+            <p className="font-body-sm text-body-sm text-[#2C1E16]/75 mb-4">
               Our studio maker reads every message personally with a cup of warm tea.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-surface-cloud text-espresso-deep px-6 py-2.5 font-label-md text-label-md shadow-xs hover:bg-surface-custard transition-all border border-border-warm/40"
+              className="inline-flex items-center gap-2 rounded-md bg-[#2C1E16] text-[#FFF9F5] px-6 py-2.5 font-label-md text-label-md hover:bg-[#A62C4B] transition-colors"
             >
-              <Icon name="mail" className="text-[16px] text-strawberry-blush" aria-hidden="true" />
+              <Icon name="mail" className="text-[16px]" aria-hidden="true" />
               <span>Message Studio Maker</span>
             </Link>
           </div>

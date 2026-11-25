@@ -17,9 +17,10 @@ const renderHeader = () =>
   );
 
 describe("SiteHeader Component", () => {
-  it("renders brand logo, title and navigation links", () => {
-    renderHeader();
+  it("renders brand logo, title and navigation links flush at the top without an announcement banner", () => {
+    const { container } = renderHeader();
 
+    expect(container.firstElementChild?.tagName).toBe("HEADER");
     expect(screen.getByText("Laira Charms")).toBeInTheDocument();
     expect(screen.getByText("Artisanal Keepsakes")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Shop Catalog/i })).toHaveAttribute("href", "/shop");

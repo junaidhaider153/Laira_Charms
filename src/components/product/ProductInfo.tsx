@@ -64,18 +64,19 @@ export function ProductInfo({ product, optionGroups }: ProductInfoProps) {
         <span className="text-border-warm">•</span>
 
         {product.productType === "ready_made" && (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold bg-matcha-tint text-secondary shadow-xs">
-            <span>⚡</span> Ready-Made In Stock
+          <span className="inline-flex items-center gap-1.5 text-label-sm font-label-sm font-bold text-[#2C1E16]">
+            <span className="w-2 h-2 rounded-full bg-[#2F5D3A]" aria-hidden="true" />
+            Ready-Made In Stock
           </span>
         )}
         {product.productType === "customizable" && (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold bg-strawberry-subtle text-primary shadow-xs">
-            <span>✏️</span> Customizable Keepsake
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm border border-[#A62C4B]/30 text-label-sm font-label-sm font-bold text-[#A62C4B]">
+            Customizable Keepsake
           </span>
         )}
         {product.productType === "bespoke_quote" && (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-sm font-label-sm font-bold bg-peach-tint text-tertiary shadow-xs">
-            <span>🎨</span> Bespoke Commission
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm border border-[#2C1E16]/25 text-label-sm font-label-sm font-bold text-[#2C1E16]">
+            Bespoke Commission
           </span>
         )}
       </div>

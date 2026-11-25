@@ -167,7 +167,7 @@ export function CartView() {
                         {Object.entries(item.customization).map(([k, v]) => (
                           <span
                             key={k}
-                            className="inline-flex items-center text-[11px] px-2.5 py-0.5 rounded-full bg-peach-tint text-tertiary border border-border-warm/30 font-semibold"
+                            className="inline-flex items-center text-[11px] px-2 py-0.5 rounded-sm bg-transparent text-[#2C1E16] border border-[#2C1E16]/20 font-medium"
                           >
                             {k}: {v}
                           </span>

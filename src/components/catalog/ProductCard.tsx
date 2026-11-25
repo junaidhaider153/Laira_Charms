@@ -14,6 +14,7 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem, openDrawer } = useCart();
   const [isFavorited, setIsFavorited] = useState(false);
+  const [justAdded, setJustAdded] = useState(false);
 
   const isReadyMade = product.productType === "ready_made";
   const isCustomizable = product.productType === "customizable";
@@ -33,7 +34,9 @@ export function ProductCard({ product }: ProductCardProps) {
       imageUrl: product.primaryImage,
       leadTimeDays: product.leadTimeDays,
     });
+    setJustAdded(true);
     openDrawer();
+    setTimeout(() => setJustAdded(false), 1800);
   };
 
   const toggleFavorite = (e: React.MouseEvent) => {
@@ -43,11 +46,11 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group relative bg-surface-cloud rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-border-warm/40">
+    <div className="group relative bg-[#FFF9F5] rounded-2xl p-2.5 sm:p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between border border-[#2C1E16]/10">
       {/* Whole-card navigation link */}
       <Link
         href={`/products/${product.slug}`}
-        className="absolute inset-0 z-0 rounded-3xl"
+        className="absolute inset-0 z-0 rounded-2xl"
         aria-label={`View ${product.title} details`}
       >
         <span className="sr-only">View {product.title}</span>
@@ -55,22 +58,22 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <div>
         {/* Image Vitrine Container */}
-        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface-custard mb-4">
-          {/* Status Badge */}
-          <div className="absolute top-3 left-3 z-10">
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-surface-custard mb-3 sm:mb-4">
+          {/* Editorial Status Tag */}
+          <div className="absolute top-2.5 left-2.5 z-10">
             {isReadyMade && (
-              <span className="inline-flex items-center gap-1 bg-surface-cloud/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-espresso-deep shadow-xs font-semibold">
-                <span>⚡</span> In Stock
+              <span className="inline-block rounded-sm bg-[#2C1E16]/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#FFF9F5]">
+                In Stock
               </span>
             )}
             {isCustomizable && (
-              <span className="inline-flex items-center gap-1 bg-strawberry-subtle/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-primary shadow-xs font-semibold">
-                <span>✨</span> Customizable
+              <span className="inline-block rounded-sm bg-[#A62C4B]/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#FFF9F5]">
+                Customizable
               </span>
             )}
             {isBespoke && (
-              <span className="inline-flex items-center gap-1 bg-peach-tint/95 backdrop-blur-sm rounded-full px-3 py-1 font-label-sm text-label-sm text-tertiary shadow-xs font-semibold">
-                <span>🎨</span> Bespoke Quote
+              <span className="inline-block rounded-sm bg-[#FFF9F5]/95 border border-[#2C1E16]/25 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#2C1E16]">
+                Bespoke Quote
               </span>
             )}
           </div>
@@ -80,8 +83,8 @@ export function ProductCard({ product }: ProductCardProps) {
             type="button"
             onClick={toggleFavorite}
             title="Save to lovelist"
-            className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-surface-cloud/90 flex items-center justify-center transition-colors shadow-xs ${
-              isFavorited ? "text-strawberry-blush" : "text-espresso-muted hover:text-strawberry-blush"
+            className={`absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-md bg-[#FFF9F5]/90 border border-[#2C1E16]/15 flex items-center justify-center transition-colors ${
+              isFavorited ? "text-[#A62C4B]" : "text-[#2C1E16]/70 hover:text-[#A62C4B]"
             }`}
           >
             <Icon
@@ -100,56 +103,60 @@ export function ProductCard({ product }: ProductCardProps) {
             loading="lazy"
           />
 
-          {/* Lead time pill */}
+          {/* Lead time tag */}
           <div className="absolute bottom-2.5 right-2.5 z-10">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-surface-cloud/90 text-espresso-muted border border-border-warm/40 backdrop-blur-xs shadow-xs">
+            <span className="px-2 py-0.5 rounded-sm text-[10px] font-medium bg-[#FFF9F5]/95 text-[#2C1E16] border border-[#2C1E16]/15">
               {product.leadTimeDays ? `${product.leadTimeDays}d lead` : "7–14d craft"}
             </span>
           </div>
         </div>
 
         {/* Product Details */}
-        <div className="px-1">
+        <div className="px-0.5 sm:px-1">
           {product.categoryName && (
-            <span className="font-label-sm text-[10px] uppercase font-bold tracking-wider text-espresso-muted block mb-1">
+            <span className="font-label-sm text-[10px] uppercase font-bold tracking-wider text-[#2C1E16]/60 block mb-1 truncate">
               {product.categoryName}
             </span>
           )}
-          <h3 className="font-title-md text-title-md text-espresso-deep font-bold mb-1 group-hover:text-primary transition-colors line-clamp-1">
+          <h3 className="font-title-md text-sm sm:text-title-md text-[#2C1E16] font-bold mb-1 group-hover:text-[#A62C4B] transition-colors line-clamp-1">
             {product.title}
           </h3>
-          <p className="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2 leading-relaxed">
+          <p className="font-body-sm text-xs sm:text-body-sm text-[#2C1E16]/70 mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         </div>
       </div>
 
       {/* Pricing & Call to Action */}
-      <div className="pt-3 px-1 border-t border-border-warm/40 flex items-center justify-between relative z-10">
-        <div>
-          <span className="font-label-sm text-[10px] text-espresso-muted block leading-none mb-1">
+      <div className="pt-3 px-0.5 sm:px-1 border-t border-[#2C1E16]/10 flex items-center justify-between gap-2 relative z-10">
+        <div className="min-w-0">
+          <span className="font-label-sm text-[10px] text-[#2C1E16]/65 block leading-none mb-1 truncate">
             {isBespoke ? "Starting estimate" : "Studio price"}
           </span>
-          <span className="font-headline-sm text-headline-sm text-espresso-deep font-bold">
+          <span className="font-headline-sm text-base sm:text-headline-sm text-[#2C1E16] font-bold">
             {formatMoney(product.basePriceMinor)}
           </span>
         </div>
 
-        <div>
+        <div className="shrink-0">
           {isReadyMade ? (
             <button
               type="button"
               onClick={handleQuickAdd}
-              className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint hover:bg-strawberry-blush hover:text-white text-strawberry-blush px-4 py-2 font-label-md text-label-md font-bold transition-all shadow-xs active:scale-95"
+              className={`inline-flex items-center gap-1.5 rounded-md px-3 sm:px-3.5 py-2 text-xs font-semibold transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A62C4B] focus-visible:ring-offset-2 ${
+                justAdded
+                  ? "bg-[#A62C4B] text-[#FFF9F5]"
+                  : "bg-[#2C1E16] hover:bg-[#A62C4B] text-[#FFF9F5]"
+              }`}
             >
-              <span>+ Bag</span>
-              <Icon name="add_shopping_cart" className="text-[16px]" aria-hidden="true" />
+              <span>{justAdded ? "Added" : "Add"}</span>
+              <Icon name={justAdded ? "check" : "add_shopping_cart"} className="text-[15px]" aria-hidden="true" />
               <span className="sr-only"> - Quick add {product.title} to bag</span>
             </button>
           ) : (
             <Link
               href={`/products/${product.slug}`}
-              className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-surface-custard text-espresso-deep font-bold text-xs hover:bg-strawberry-blush hover:text-white transition-all border border-border-warm/60 shadow-xs"
+              className="inline-flex items-center gap-1 px-3 sm:px-3.5 py-2 rounded-md border border-[#2C1E16]/25 bg-transparent text-[#2C1E16] font-semibold text-xs hover:bg-[#2C1E16] hover:text-[#FFF9F5] transition-colors"
             >
               <span>{isCustomizable ? "Customize →" : "Inquire →"}</span>
             </Link>

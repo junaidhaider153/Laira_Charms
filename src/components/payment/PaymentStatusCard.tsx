@@ -70,23 +70,24 @@ export function PaymentStatusCard({
 
       {/* STATE 1: VERIFIED */}
       {payment.status === "verified" && (
-        <div className="p-8 sm:p-10 rounded-3xl bg-surface-cloud border-2 border-secondary/40 shadow-sm text-center space-y-4">
-          <div className="w-16 h-16 mx-auto rounded-full bg-matcha-tint text-secondary flex items-center justify-center text-3xl shadow-xs">
-            ✨
+        <div className="p-8 sm:p-10 rounded-2xl bg-[#FFF9F5] border-2 border-[#2F5D3A]/40 shadow-sm text-center space-y-4">
+          <div className="w-14 h-14 mx-auto rounded-md border border-[#2F5D3A]/30 text-[#2F5D3A] flex items-center justify-center text-2xl">
+            ✓
           </div>
-          <span className="inline-block px-4 py-1 rounded-full bg-matcha-tint text-secondary font-bold text-xs uppercase tracking-wider">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#2F5D3A]">
+            <span className="w-2 h-2 rounded-full bg-[#2F5D3A]" aria-hidden="true" />
             Payment Verified &bull; Confirmed
           </span>
-          <h2 className="font-headline font-bold text-2xl sm:text-3xl text-espresso-deep">
+          <h2 className="font-headline font-bold text-2xl sm:text-3xl text-[#2C1E16]">
             Your Payment is Confirmed!
           </h2>
-          <p className="font-body-md text-espresso-muted text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+          <p className="font-body-md text-[#2C1E16]/75 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
             Our studio has verified your bank transfer on our account statement. Your handmade charms are now scheduled for custom sculpting and glaze baking!
           </p>
           <div className="pt-2">
             <Link
               href={orderUrl}
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-strawberry-blush text-on-primary font-bold text-xs hover:opacity-95 shadow-sm transition-all active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-md bg-[#A62C4B] hover:bg-[#2C1E16] text-[#FFF9F5] font-bold text-xs shadow-sm transition-colors active:scale-95"
             >
               <span>View Order Confirmation</span>
               <Icon name="arrow_forward" className="text-[16px]" aria-hidden="true" />
@@ -97,13 +98,13 @@ export function PaymentStatusCard({
 
       {/* STATE 2: VERIFICATION PENDING */}
       {payment.status === "verification_pending" && (
-        <div className="p-8 sm:p-10 rounded-3xl bg-surface-cloud border border-border-warm/50 shadow-sm space-y-5">
+        <div className="p-8 sm:p-10 rounded-2xl bg-[#FFF9F5] border border-[#2C1E16]/15 shadow-sm space-y-5">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-peach-tint text-tertiary flex items-center justify-center text-2xl shrink-0 shadow-xs">
+            <div className="w-11 h-11 rounded-md border border-[#2C1E16]/20 text-[#2C1E16] flex items-center justify-center text-xl shrink-0">
               ⏳
             </div>
             <div>
-              <span className="inline-block px-3 py-0.5 rounded-full bg-peach-tint text-tertiary font-bold text-xs uppercase tracking-wider mb-2">
+              <span className="inline-block px-2.5 py-0.5 rounded-sm bg-[#2C1E16] text-[#FFF9F5] font-bold text-[10px] uppercase tracking-wider mb-2">
                 Under Studio Review
               </span>
               <h2 className="font-headline font-bold text-xl sm:text-2xl text-espresso-deep">

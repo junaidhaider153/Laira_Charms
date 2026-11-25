@@ -27,7 +27,7 @@ describe("ProductCard Component", () => {
     expect(quickAddButton).toBeInTheDocument();
 
     fireEvent.click(quickAddButton);
-    // After click, item is added to cart
+    expect(screen.getByText("Added")).toBeInTheDocument();
   });
 
   it("renders customizable product with customizable badge and customize action", () => {

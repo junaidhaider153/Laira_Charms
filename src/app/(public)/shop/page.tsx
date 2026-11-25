@@ -38,19 +38,19 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           <Breadcrumbs items={[{ label: "Shop Catalog" }]} />
           <div className="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-surface-cloud px-3.5 py-1 shadow-xs text-espresso-deep text-xs font-semibold mb-3 border border-border-warm/40">
-                <span className="text-strawberry-blush font-bold">🍓</span> Small Batch Atelier Drops
-              </div>
-              <h1 className="font-headline text-3xl sm:text-headline-lg text-espresso-deep font-bold tracking-tight">
+              <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#A62C4B] mb-2">
+                Small Batch Atelier Drops
+              </span>
+              <h1 className="font-headline text-3xl sm:text-headline-lg text-[#2C1E16] font-bold tracking-tight">
                 Artisanal Charm Catalog
               </h1>
-              <p className="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
+              <p className="font-body-md text-body-md text-[#2C1E16]/75 mt-2 max-w-2xl leading-relaxed">
                 Oven-cured polymer charms, custom stamped initials, and drop-resistant glazed keepsakes handcrafted with care in Pakistan.
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-peach-tint px-3.5 py-1 text-label-sm font-label-sm text-tertiary shadow-xs">
-                ✨ Triple Diamond UV Glaze
+            <div className="flex items-center gap-2 text-xs font-medium text-[#2C1E16]">
+              <span className="inline-flex items-center gap-1.5 border border-[#2C1E16]/15 rounded-sm bg-[#FFF9F5] px-3 py-1">
+                Triple Diamond UV Glaze
               </span>
             </div>
           </div>
